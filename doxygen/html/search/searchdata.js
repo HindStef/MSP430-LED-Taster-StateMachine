@@ -8,7 +8,8 @@ var indexSectionsWithContent =
   5: "bl",
   6: "bl",
   7: "_bdfghlnsu",
-  8: "abcdefglmoprstuw"
+  8: "abcdefglmoprstuvw",
+  9: "aclst"
 };
 
 var indexSectionNames =
@@ -21,7 +22,8 @@ var indexSectionNames =
   5: "enums",
   6: "enumvalues",
   7: "defines",
-  8: "groups"
+  8: "groups",
+  9: "pages"
 };
 
 var indexSectionLabels =
@@ -34,6 +36,7 @@ var indexSectionLabels =
   5: "Aufzählungen",
   6: "Aufzählungswerte",
   7: "Makrodefinitionen",
-  8: "Gruppen"
+  8: "Gruppen",
+  9: "Seiten"
 };
 

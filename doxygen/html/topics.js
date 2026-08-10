@@ -40,5 +40,7 @@ var topics =
     [ "usci_a_uart", "d1/db0/group__usci__a__uart__api.html", null ],
     [ "usci_b_i2c", "d8/de9/group__usci__b__i2c__api.html", null ],
     [ "usci_b_spi", "db/d84/group__usci__b__spi__api.html", null ],
-    [ "wdt_a", "d7/d7a/group__wdt__a__api.html", null ]
+    [ "wdt_a", "d7/d7a/group__wdt__a__api.html", null ],
+    [ "Compiler Vorgaben", "d4/d1d/group__compiling__group.html", null ],
+    [ "Copyright", "d1/ddc/group___c_o_p_y_r_i_g_h_t___g_r_o_u_p.html", null ]
 ];

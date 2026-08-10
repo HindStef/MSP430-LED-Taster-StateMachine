@@ -2,11 +2,37 @@
  * @file main.c
  * @brief LED-Taste-StateMachine
  * State Machine zur Auswertung eines Tasters zur Steuerung einer LED.
+ *
+ * @author Stefan Hinderegger
+ *
+ * @todo doxygen Dokumentation.
+ *
+ * @section TODO todo
  * 
- */
-/* --COPYRIGHT--,BSD
- * Copyright (c) 2017, Texas Instruments Incorporated
- * All rights reserved.
+ * @mainpage LED Taster Statemachine 
+ *
+ * @anchor mango Sensor Mainpage
+ *
+ * Testprogramm für das MSP-EXP430F5529LP Eval Board von Texas Instruments. <br>
+ * Leiterplatte : MSP-EXP430F5529LP Eval Board
+ *
+ * \version   0.01
+ * 
+ *
+ * @author Stefan Hinderegger
+ *
+ * \addtogroup compiling_group Compiler Vorgaben
+ * - nnn
+ *
+ * @section sec_call Compilierung
+ *  -# mit TI Code Composer Studio
+ *
+ * \author Stefan Hinderegger
+ *
+ *
+ * \addtogroup COPYRIGHT_GROUP  Copyright
+ * --COPYRIGHT--,BSD
+ *  \copyright (c) 2017, Texas Instruments Incorporated , All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -34,7 +60,8 @@
  * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * --/COPYRIGHT--*/
+ * --/COPYRIGHT--
+ */
 
 #include <stdint.h>
 #include <stdbool.h>

@@ -9,5 +9,7 @@ var searchData=
   ['aes_6',['aes',['../d6/da7/group__aes__api.html',1,'']]],
   ['aes_2ec_7',['aes.c',['../dd/d34/aes_8c.html',1,'']]],
   ['aes_2eh_8',['aes.h',['../db/dcb/aes_8h.html',1,'']]],
-  ['app_5f1ms_5ftick_9',['App_1ms_Tick',['../d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf',1,'main.c']]]
+  ['app_5f1ms_5ftick_9',['App_1ms_Tick',['../d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf',1,'main.c']]],
+  ['aufgaben_10',['Ausstehende Aufgaben',['../dd/da0/todo.html',1,'']]],
+  ['ausstehende_20aufgaben_11',['Ausstehende Aufgaben',['../dd/da0/todo.html',1,'']]]
 ];

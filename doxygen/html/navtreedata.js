@@ -25,6 +25,8 @@
 var NAVTREE =
 [
   [ "MSP430 Test FSM Switch Key on MSP430 Eval Board.", "index.html", [
+    [ "LED Taster Statemachine", "index.html", null ],
+    [ "Ausstehende Aufgaben", "dd/da0/todo.html", null ],
     [ "Themen", "topics.html", "topics" ],
     [ "Datenstrukturen", "annotated.html", [
       [ "Datenstrukturen", "annotated.html", "annotated_dup" ],
@@ -51,7 +53,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"de/d0e/timer__a_8h_source.html"
+"dd/d9f/ram_8c_source.html"
 ];
 
 const SYNCONMSG = 'Klicken um Panelsynchronisation auszuschalten';
