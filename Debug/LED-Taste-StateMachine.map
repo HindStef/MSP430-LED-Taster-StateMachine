@@ -1,7 +1,7 @@
 ******************************************************************************
                   MSP430 Linker PC v21.6.2                     
 ******************************************************************************
->> Linked Mon Aug 10 16:20:17 2026
+>> Linked Mon Aug 10 17:05:49 2026
 
 OUTPUT FILE NAME:   <LED-Taste-StateMachine.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00004428
@@ -85,7 +85,7 @@ MEMORY CONFIGURATION
   INT61                 0000fffa   00000002  00000002  00000000  RWIX
   INT62                 0000fffc   00000002  00000002  00000000  RWIX
   RESET                 0000fffe   00000002  00000002  00000000  RWIX
-  FLASH2                00010000   000143f8  0000099c  00013a5c  RWIX
+  FLASH2                00010000   000143f8  000009b4  00013a44  RWIX
 
 
 SECTION ALLOCATION MAP
@@ -204,63 +204,64 @@ SYSNMI     0    0000fffc    00000002
 .reset     0    0000fffe    00000002     
                   0000fffe    00000002     rts430x_lc_rd_eabi.lib : boot.c.obj (.reset)
 
-.text      0    00010000    0000099c     
+.text      0    00010000    000009b4     
                   00010000    000000e2     ucs.obj (.text:UCS_initFLL)
                   000100e2    000000e0     pmm.obj (.text:PMM_setVCoreUp)
-                  000101c2    000000bc     main.obj (.text:Button_Process_1ms)
-                  0001027e    000000a6     ucs.obj (.text:UCS_initClockSignal)
-                  00010324    000000a2     pmm.obj (.text:PMM_setVCoreDown)
-                  000103c6    00000076     rts430x_lc_rd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  0001043c    0000006e     main.obj (.text:LED_HandleEvent)
-                  000104aa    0000006c     main.obj (.text:setup)
-                  00010516    00000062     main.obj (.text:init_clock)
-                  00010578    00000058     rts430x_lc_rd_eabi.lib : div32u.asm.obj (.text)
-                  000105d0    00000054                            : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
-                  00010624    00000052     pmm.obj (.text:PMM_setVCore)
-                  00010676    0000003e     gpio.obj (.text:GPIO_setAsInputPinWithPullUpResistor)
-                  000106b4    0000003e     rts430x_lc_rd_eabi.lib : lsr32.asm.obj (.text:l_lsr_const)
-                  000106f2    0000003c     main.obj (.text:main)
-                  0001072e    0000003a     main.obj (.text:delay)
-                  00010768    00000036     ucs.obj (.text:UCS_initFLLSettle)
-                  0001079e    00000034     gpio.obj (.text:GPIO_setAsInputPin)
-                  000107d2    0000002e     main.obj (.text:LED_Process_1ms)
-                  00010800    00000028     gpio.obj (.text:GPIO_setAsOutputPin)
-                  00010828    00000028     BCUart.obj (.text:bcUartInit)
-                  00010850    00000024     BCUart.obj (.text:bcUartSend)
-                  00010874    00000024     rts430x_lc_rd_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  00010898    00000020     main.obj (.text:App_1ms_Tick)
-                  000108b8    0000001c     gpio.obj (.text:GPIO_getInputPinValue)
-                  000108d4    0000001c     gpio.obj (.text:GPIO_setOutputLowOnPin)
-                  000108f0    00000014     main.obj (.text:LED_Init)
-                  00010904    00000014     rts430x_lc_rd_eabi.lib : memcpy.c.obj (.text:memcpy)
-                  00010918    00000014     main.obj (.text:read_KeyS1)
-                  0001092c    00000014     main.obj (.text:str_to_bcUART)
-                  00010940    00000012     main.obj (.text:Button_Init)
-                  00010952    00000012     rts430x_lc_rd_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  00010964    00000010     main.obj (.text:LED_SetHardware)
-                  00010974    0000000e     rts430x_lc_rd_eabi.lib : strlen.c.obj (.text:strlen)
-                  00010982    00000008     main.obj (.text:StopWatchdog)
-                  0001098a    00000006     main.obj (.text:Button_ReadRaw)
-                  00010990    00000006     rts430x_lc_rd_eabi.lib : exit.c.obj (.text:abort)
-                  00010996    00000004                            : pre_init.c.obj (.text:_system_pre_init)
-                  0001099a    00000002                            : startup.c.obj (.text:_system_post_cinit)
+                  000101c2    000000c4     main.obj (.text:Button_Process_1ms)
+                  00010286    000000a6     ucs.obj (.text:UCS_initClockSignal)
+                  0001032c    000000a2     pmm.obj (.text:PMM_setVCoreDown)
+                  000103ce    00000076     rts430x_lc_rd_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00010444    0000006e     main.obj (.text:LED_HandleEvent)
+                  000104b2    00000062     main.obj (.text:init_clock)
+                  00010514    00000058     rts430x_lc_rd_eabi.lib : div32u.asm.obj (.text)
+                  0001056c    00000058     main.obj (.text:setup)
+                  000105c4    00000054     rts430x_lc_rd_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit_hold_wdt:__TI_auto_init_nobinit_nopinit_hold_wdt)
+                  00010618    00000052     pmm.obj (.text:PMM_setVCore)
+                  0001066a    0000003e     gpio.obj (.text:GPIO_setAsInputPinWithPullUpResistor)
+                  000106a8    0000003e     rts430x_lc_rd_eabi.lib : lsr32.asm.obj (.text:l_lsr_const)
+                  000106e6    0000003c     main.obj (.text:main)
+                  00010722    0000003a     main.obj (.text:delay)
+                  0001075c    00000036     ucs.obj (.text:UCS_initFLLSettle)
+                  00010792    00000034     gpio.obj (.text:GPIO_setAsInputPin)
+                  000107c6    0000002e     main.obj (.text:LED_Process_1ms)
+                  000107f4    00000028     gpio.obj (.text:GPIO_setAsOutputPin)
+                  0001081c    00000028     BCUart.obj (.text:bcUartInit)
+                  00010844    00000024     BCUart.obj (.text:bcUartSend)
+                  00010868    00000024     rts430x_lc_rd_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  0001088c    00000020     main.obj (.text:App_1ms_Tick)
+                  000108ac    0000001c     gpio.obj (.text:GPIO_getInputPinValue)
+                  000108c8    0000001c     gpio.obj (.text:GPIO_setOutputHighOnPin)
+                  000108e4    0000001c     gpio.obj (.text:GPIO_setOutputLowOnPin)
+                  00010900    00000018     main.obj (.text:LED_SetHardware)
+                  00010918    00000014     main.obj (.text:LED_Init)
+                  0001092c    00000014     rts430x_lc_rd_eabi.lib : memcpy.c.obj (.text:memcpy)
+                  00010940    00000014     main.obj (.text:read_KeyS1)
+                  00010954    00000014     main.obj (.text:str_to_bcUART)
+                  00010968    00000012     main.obj (.text:Button_Init)
+                  0001097a    00000012     rts430x_lc_rd_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  0001098c    0000000e                            : strlen.c.obj (.text:strlen)
+                  0001099a    00000008     main.obj (.text:StopWatchdog)
+                  000109a2    00000006     main.obj (.text:Button_ReadRaw)
+                  000109a8    00000006     rts430x_lc_rd_eabi.lib : exit.c.obj (.text:abort)
+                  000109ae    00000004                            : pre_init.c.obj (.text:_system_pre_init)
+                  000109b2    00000002                            : startup.c.obj (.text:_system_post_cinit)
 
 MODULE SUMMARY
 
        Module                       code   ro data   rw data
        ------                       ----   -------   -------
     .\
-       main.obj                     808    218       14     
+       main.obj                     804    218       14     
        BCUart.obj                   116    2         131    
     +--+----------------------------+------+---------+---------+
-       Total:                       924    220       145    
+       Total:                       920    220       145    
                                                             
     .\driverlib\MSP430F5xx_6xx\
        pmm.obj                      468    0         0      
        ucs.obj                      446    0         0      
-       gpio.obj                     210    28        0      
+       gpio.obj                     238    28        0      
     +--+----------------------------+------+---------+---------+
-       Total:                       1124   28        0      
+       Total:                       1152   28        0      
                                                             
     D:\ti\ccs2100\ccs\tools\compiler\ti-cgt-msp430_21.6.2.LTS\lib\rts430x_lc_rd_eabi.lib
        copy_decompress_lzss.c.obj   118    0         0      
@@ -303,7 +304,7 @@ MODULE SUMMARY
        Stack:                       0      0         160    
        Linker Generated:            0      41        0      
     +--+----------------------------+------+---------+---------+
-       Grand Total:                 2536   333       305    
+       Grand Total:                 2560   333       305    
 
 
 LINKER GENERATED COPY TABLES
@@ -407,8 +408,8 @@ address   name
 00000732  ADC12MEM9                              
 00000733  ADC12MEM9_H                            
 00000732  ADC12MEM9_L                            
-00010898  App_1ms_Tick                           
-00010990  C$$EXIT                                
+0001088c  App_1ms_Tick                           
+000109a8  C$$EXIT                                
 000008c0  CBCTL0                                 
 000008c1  CBCTL0_H                               
 000008c0  CBCTL0_L                               
@@ -476,11 +477,12 @@ address   name
 00000146  FCTL4                                  
 00000147  FCTL4_H                                
 00000146  FCTL4_L                                
-000108b8  GPIO_getInputPinValue                  
-0001079e  GPIO_setAsInputPin                     
-00010676  GPIO_setAsInputPinWithPullUpResistor   
-00010800  GPIO_setAsOutputPin                    
-000108d4  GPIO_setOutputLowOnPin                 
+000108ac  GPIO_getInputPinValue                  
+00010792  GPIO_setAsInputPin                     
+0001066a  GPIO_setAsInputPinWithPullUpResistor   
+000107f4  GPIO_setAsOutputPin                    
+000108c8  GPIO_setOutputHighOnPin                
+000108e4  GPIO_setOutputLowOnPin                 
 000004c4  MAC                                    
 000004da  MAC32H                                 
 000004db  MAC32H_H                               
@@ -660,8 +662,8 @@ address   name
 0000012e  PMMRIE                                 
 0000012f  PMMRIE_H                               
 0000012e  PMMRIE_L                               
-00010624  PMM_setVCore                           
-00010324  PMM_setVCoreDown                       
+00010618  PMM_setVCore                           
+0001032c  PMM_setVCoreDown                       
 000100e2  PMM_setVCoreUp                         
 00000158  RCCTL0                                 
 00000159  RCCTL0_H                               
@@ -775,7 +777,7 @@ address   name
 0000019a  SYSUNIV                                
 0000019b  SYSUNIV_H                              
 0000019a  SYSUNIV_L                              
-00010982  StopWatchdog                           
+0001099a  StopWatchdog                           
 00000352  TA0CCR0                                
 00000354  TA0CCR1                                
 00000356  TA0CCR2                                
@@ -929,9 +931,9 @@ address   name
 00000170  UCSCTL8                                
 00000171  UCSCTL8_H                              
 00000170  UCSCTL8_L                              
-0001027e  UCS_initClockSignal                    
+00010286  UCS_initClockSignal                    
 00010000  UCS_initFLL                            
-00010768  UCS_initFLLSettle                      
+0001075c  UCS_initFLLSettle                      
 00000902  USBCNF                                 
 00000903  USBCNF_H                               
 00000902  USBCNF_L                               
@@ -1077,9 +1079,9 @@ address   name
 00004542  __TI_Handler_Table_Base                
 0000454e  __TI_Handler_Table_Limit               
 00004444  __TI_ISR_TRAP                          
-000105d0  __TI_auto_init_nobinit_nopinit_hold_wdt
-000103c6  __TI_decompress_lzss                   
-00010952  __TI_decompress_none                   
+000105c4  __TI_auto_init_nobinit_nopinit_hold_wdt
+000103ce  __TI_decompress_lzss                   
+0001097a  __TI_decompress_none                   
 0000ffd2  __TI_int41                             
 0000ffd4  __TI_int42                             
 0000ffd6  __TI_int43                             
@@ -1105,45 +1107,45 @@ address   name
 ffffffff  __TI_pprof_out_hndl                    
 ffffffff  __TI_prof_data_size                    
 ffffffff  __TI_prof_data_start                   
-00010874  __TI_zero_init_nomemset                
+00010868  __TI_zero_init_nomemset                
 ffffffff  __c_args__                             
-00010578  __mspabi_divul                         
-00010578  __mspabi_remul                         
-000106ec  __mspabi_srll_1                        
-000106c8  __mspabi_srll_10                       
-000106c4  __mspabi_srll_11                       
-000106c0  __mspabi_srll_12                       
-000106bc  __mspabi_srll_13                       
-000106b8  __mspabi_srll_14                       
-000106b4  __mspabi_srll_15                       
-000106e8  __mspabi_srll_2                        
-000106e4  __mspabi_srll_3                        
-000106e0  __mspabi_srll_4                        
-000106dc  __mspabi_srll_5                        
-000106d8  __mspabi_srll_6                        
-000106d4  __mspabi_srll_7                        
-000106d0  __mspabi_srll_8                        
-000106cc  __mspabi_srll_9                        
+00010514  __mspabi_divul                         
+00010514  __mspabi_remul                         
+000106e0  __mspabi_srll_1                        
+000106bc  __mspabi_srll_10                       
+000106b8  __mspabi_srll_11                       
+000106b4  __mspabi_srll_12                       
+000106b0  __mspabi_srll_13                       
+000106ac  __mspabi_srll_14                       
+000106a8  __mspabi_srll_15                       
+000106dc  __mspabi_srll_2                        
+000106d8  __mspabi_srll_3                        
+000106d4  __mspabi_srll_4                        
+000106d0  __mspabi_srll_5                        
+000106cc  __mspabi_srll_6                        
+000106c8  __mspabi_srll_7                        
+000106c4  __mspabi_srll_8                        
+000106c0  __mspabi_srll_9                        
 00004428  _c_int00_noargs                        
 0000fffe  _reset_vector                          
 00004360  _stack                                 
-0001099a  _system_post_cinit                     
-00010996  _system_pre_init                       
-00010990  abort                                  
+000109b2  _system_post_cinit                     
+000109ae  _system_pre_init                       
+000109a8  abort                                  
 00004400  bcUartISR                              
-00010828  bcUartInit                             
+0001081c  bcUartInit                             
 00002400  bcUartRcvBuf                           
 0000248e  bcUartRcvBufIndex                      
 00002490  bcUartRxThreshReached                  
-00010850  bcUartSend                             
-0001072e  delay                                  
-00010516  init_clock                             
-000106f2  main                                   
-00010904  memcpy                                 
-00010918  read_KeyS1                             
-000104aa  setup                                  
-0001092c  str_to_bcUART                          
-00010974  strlen                                 
+00010844  bcUartSend                             
+00010722  delay                                  
+000104b2  init_clock                             
+000106e6  main                                   
+0001092c  memcpy                                 
+00010940  read_KeyS1                             
+0001056c  setup                                  
+00010954  str_to_bcUART                          
+0001098c  strlen                                 
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -1919,55 +1921,56 @@ address   name
 0000fffe  _reset_vector                          
 00010000  UCS_initFLL                            
 000100e2  PMM_setVCoreUp                         
-0001027e  UCS_initClockSignal                    
-00010324  PMM_setVCoreDown                       
-000103c6  __TI_decompress_lzss                   
-000104aa  setup                                  
-00010516  init_clock                             
-00010578  __mspabi_divul                         
-00010578  __mspabi_remul                         
-000105d0  __TI_auto_init_nobinit_nopinit_hold_wdt
-00010624  PMM_setVCore                           
-00010676  GPIO_setAsInputPinWithPullUpResistor   
-000106b4  __mspabi_srll_15                       
-000106b8  __mspabi_srll_14                       
-000106bc  __mspabi_srll_13                       
-000106c0  __mspabi_srll_12                       
-000106c4  __mspabi_srll_11                       
-000106c8  __mspabi_srll_10                       
-000106cc  __mspabi_srll_9                        
-000106d0  __mspabi_srll_8                        
-000106d4  __mspabi_srll_7                        
-000106d8  __mspabi_srll_6                        
-000106dc  __mspabi_srll_5                        
-000106e0  __mspabi_srll_4                        
-000106e4  __mspabi_srll_3                        
-000106e8  __mspabi_srll_2                        
-000106ec  __mspabi_srll_1                        
-000106f2  main                                   
-0001072e  delay                                  
-00010768  UCS_initFLLSettle                      
-0001079e  GPIO_setAsInputPin                     
-00010800  GPIO_setAsOutputPin                    
-00010828  bcUartInit                             
-00010850  bcUartSend                             
-00010874  __TI_zero_init_nomemset                
-00010898  App_1ms_Tick                           
-000108b8  GPIO_getInputPinValue                  
-000108d4  GPIO_setOutputLowOnPin                 
-00010904  memcpy                                 
-00010918  read_KeyS1                             
-0001092c  str_to_bcUART                          
-00010952  __TI_decompress_none                   
-00010974  strlen                                 
-00010982  StopWatchdog                           
-00010990  C$$EXIT                                
-00010990  abort                                  
-00010996  _system_pre_init                       
-0001099a  _system_post_cinit                     
+00010286  UCS_initClockSignal                    
+0001032c  PMM_setVCoreDown                       
+000103ce  __TI_decompress_lzss                   
+000104b2  init_clock                             
+00010514  __mspabi_divul                         
+00010514  __mspabi_remul                         
+0001056c  setup                                  
+000105c4  __TI_auto_init_nobinit_nopinit_hold_wdt
+00010618  PMM_setVCore                           
+0001066a  GPIO_setAsInputPinWithPullUpResistor   
+000106a8  __mspabi_srll_15                       
+000106ac  __mspabi_srll_14                       
+000106b0  __mspabi_srll_13                       
+000106b4  __mspabi_srll_12                       
+000106b8  __mspabi_srll_11                       
+000106bc  __mspabi_srll_10                       
+000106c0  __mspabi_srll_9                        
+000106c4  __mspabi_srll_8                        
+000106c8  __mspabi_srll_7                        
+000106cc  __mspabi_srll_6                        
+000106d0  __mspabi_srll_5                        
+000106d4  __mspabi_srll_4                        
+000106d8  __mspabi_srll_3                        
+000106dc  __mspabi_srll_2                        
+000106e0  __mspabi_srll_1                        
+000106e6  main                                   
+00010722  delay                                  
+0001075c  UCS_initFLLSettle                      
+00010792  GPIO_setAsInputPin                     
+000107f4  GPIO_setAsOutputPin                    
+0001081c  bcUartInit                             
+00010844  bcUartSend                             
+00010868  __TI_zero_init_nomemset                
+0001088c  App_1ms_Tick                           
+000108ac  GPIO_getInputPinValue                  
+000108c8  GPIO_setOutputHighOnPin                
+000108e4  GPIO_setOutputLowOnPin                 
+0001092c  memcpy                                 
+00010940  read_KeyS1                             
+00010954  str_to_bcUART                          
+0001097a  __TI_decompress_none                   
+0001098c  strlen                                 
+0001099a  StopWatchdog                           
+000109a8  C$$EXIT                                
+000109a8  abort                                  
+000109ae  _system_pre_init                       
+000109b2  _system_post_cinit                     
 ffffffff  __TI_pprof_out_hndl                    
 ffffffff  __TI_prof_data_size                    
 ffffffff  __TI_prof_data_start                   
 ffffffff  __c_args__                             
 
-[819 symbols]
+[820 symbols]

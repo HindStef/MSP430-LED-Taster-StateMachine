@@ -78,13 +78,13 @@
 
 #define DEBOUNCE_TIME_MS         20U     /* Entprellzeit                  */
 #define LONG_PRESS_THRESHOLD_MS  2000U   /* Schwelle fuer langen Tastendruck */
-#define BLINK_PERIOD_MS          330U    //500U    /* LED-Blinkperiode (an/aus je 500ms) */
+#define BLINK_PERIOD_MS          330U    /* LED-Blinkperiode (an/aus je 500ms) */
 
 /* ---------------------------------------------------------------------- */
 /* Definitionen */
 #define FOREVER         1
-#define LED_ROT         0x01  /* rote LED an PortA.0 */
-#define LED_ROT_MASK    2  /* Taster an PortA.0 */
+#define LED_ROT         0x01    /* rote LED an PortA.0 */
+#define LED_ROT_MASK    2       /* Taster an PortA.0 */
 #define LED_GREEN_P4    0x80
 
 /* ---------------------------------------------------------------------- */
@@ -195,17 +195,19 @@ void setup (void) {
         // an Port 1 bit 0 ist die rote LED angeschlossen, LED über Vorwiderstand an VCC, 0 bedeutet LED ist an und leuchtet.
         // an Port 4 bit 7 ist die grüne LED angeschlossen, 
         // an Port 2 bit 1 ist der Taster S1 angeschlossen
+    #if 0
     P1DIR |= 0x01;          // P1.0 output, P1.1 input
 	P1OUT = 0x03;           // rote LED aus, LED
 	P4DIR = 0x80;           // P4.7 output grüne LED / LED_GREEN_P4
    	P4OUT = 0x00;
+    #endif 
         //Set P2.1 to input direction
     GPIO_setAsInputPin ( GPIO_PORT_P2, GPIO_PIN1 ) ;
     GPIO_setAsInputPinWithPullUpResistor ( GPIO_PORT_P2, GPIO_PIN1 ) ;
-    GPIO_setAsOutputPin ( GPIO_PORT_P1, GPIO_PIN1 ) ;
+    GPIO_setAsOutputPin ( GPIO_PORT_P1, GPIO_PIN0 ) ;
     GPIO_setAsOutputPin ( GPIO_PORT_P4, GPIO_PIN7 ) ;
 
-    GPIO_setOutputLowOnPin(GPIO_PORT_P1, GPIO_PIN1);
+    GPIO_setOutputLowOnPin(GPIO_PORT_P1, GPIO_PIN0);
     GPIO_setOutputLowOnPin(GPIO_PORT_P4, GPIO_PIN7);
     
     // init Variable of FSM
@@ -267,10 +269,12 @@ static bool Button_ReadRaw(void) {
 static void LED_SetHardware(bool on) {
     if (on) {
         // LED einschalten.
-        P1OUT |= LED_ROT;  // P1.0 = 1
+        GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN0);
+        // P1OUT |= LED_ROT;  // P1.0 = 1
     } else {
         // LED ausschalten.
-        P1OUT &= ~LED_ROT;  // P1.0 = 0
+        GPIO_setOutputLowOnPin(GPIO_PORT_P1, GPIO_PIN0);
+        // P1OUT &= ~LED_ROT;  // P1.0 = 0
     }
 }
 
@@ -292,6 +296,10 @@ bool readLED(void) {
 /* Button FSM                                                              */
 /* ---------------------------------------------------------------------- */
 
+/**
+ * @brief Taster Variable initialisieren.
+ * 
+ */
 static void Button_Init(Button_t *btn) {
     btn->state            = BTN_STATE_IDLE;
     btn->press_time_ms    = 0U;
@@ -309,13 +317,14 @@ static ButtonEvent_t Button_Process_1ms(Button_t *btn) {
     bool raw_level = Button_ReadRaw();
 
     if (raw_level == true) {
-        P4OUT |= LED_GREEN_P4;      // Grüne LED an
+        // P4OUT |= LED_GREEN_P4;      // Grüne LED an
+        GPIO_setOutputHighOnPin(GPIO_PORT_P4, GPIO_PIN7);
     } else {
-        P4OUT &= ~LED_GREEN_P4;     // Grüne LED aus
+        // P4OUT &= ~LED_GREEN_P4;     // Grüne LED aus
+        GPIO_setOutputLowOnPin(GPIO_PORT_P4, GPIO_PIN7);
     }
 
-    switch (btn->state)
-    {
+    switch (btn->state) {
         case BTN_STATE_IDLE:
             if (raw_level == true) {
                 /* Moeglicher Tastendruck erkannt -> entprellen */
@@ -378,6 +387,10 @@ static ButtonEvent_t Button_Process_1ms(Button_t *btn) {
 /* LED FSM                                                                 */
 /* ---------------------------------------------------------------------- */
 
+/**
+ * @brief LED Variable initialisieren und LED ausschalten.
+ * 
+ */
 static void LED_Init(Led_t *led) {
     led->state           = LED_STATE_OFF;
     led->blink_timer_ms   = 0U;
@@ -392,8 +405,7 @@ static void LED_Init(Led_t *led) {
  *          - LONG_PRESS : -> BLINK (unabhaengig vom vorherigen Zustand)
  */
 static void LED_HandleEvent(Led_t *led, ButtonEvent_t event) {
-    switch (event)
-    {
+    switch (event) {
         case BTN_EVT_SHORT_PRESS:
             if (led->state == LED_STATE_ON) {
                 led->state = LED_STATE_OFF;
@@ -480,12 +492,8 @@ void main (void) {
     volatile bool bTick = 0 ;
     uint16_t u16_MS_cnt = 0 ;
     uint16_t u16SekCnt = 0 ;
-//    uint8_t sStr[80];
 
     setup ();
-    
-    // strcpy ((char*) &sStr[0], "LED Tasten State Machine.\r\n");
-    // bcUartSend(sStr, strlen(sStr));
     
     str_to_bcUART ("LED Tasten State Machine.\r\n") ;
 

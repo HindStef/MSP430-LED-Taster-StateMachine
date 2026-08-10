@@ -296,10 +296,10 @@ Datenstrukturen</h2></td></tr>
 Makrodefinitionen</h2></td></tr>
 <tr class="memitem:a2e699cd3601e5b0fec029441306d46aa" id="r_a2e699cd3601e5b0fec029441306d46aa"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2e699cd3601e5b0fec029441306d46aa">DEBOUNCE_TIME_MS</a>&#160;&#160;&#160;20U     /* Entprellzeit                  */</td></tr>
 <tr class="memitem:a6f6289e063d8b621ec46bbd1d2809f62" id="r_a6f6289e063d8b621ec46bbd1d2809f62"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a6f6289e063d8b621ec46bbd1d2809f62">LONG_PRESS_THRESHOLD_MS</a>&#160;&#160;&#160;2000U   /* Schwelle fuer langen Tastendruck */</td></tr>
-<tr class="memitem:a8cfc4352ae90bdf0d97b6f3599f73acc" id="r_a8cfc4352ae90bdf0d97b6f3599f73acc"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8cfc4352ae90bdf0d97b6f3599f73acc">BLINK_PERIOD_MS</a>&#160;&#160;&#160;330U</td></tr>
+<tr class="memitem:a8cfc4352ae90bdf0d97b6f3599f73acc" id="r_a8cfc4352ae90bdf0d97b6f3599f73acc"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8cfc4352ae90bdf0d97b6f3599f73acc">BLINK_PERIOD_MS</a>&#160;&#160;&#160;330U    /* LED-Blinkperiode (an/aus je 500ms) */</td></tr>
 <tr class="memitem:a75c828ed6c02fcd44084e67a032e422c" id="r_a75c828ed6c02fcd44084e67a032e422c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a75c828ed6c02fcd44084e67a032e422c">FOREVER</a>&#160;&#160;&#160;1</td></tr>
-<tr class="memitem:a2eddf48fa63431bcbfcab672956ac233" id="r_a2eddf48fa63431bcbfcab672956ac233"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2eddf48fa63431bcbfcab672956ac233">LED_ROT</a>&#160;&#160;&#160;0x01  /* rote LED an PortA.0 */</td></tr>
-<tr class="memitem:aa31746117f2029075e00c1419533f16f" id="r_aa31746117f2029075e00c1419533f16f"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa31746117f2029075e00c1419533f16f">LED_ROT_MASK</a>&#160;&#160;&#160;2  /* Taster an PortA.0 */</td></tr>
+<tr class="memitem:a2eddf48fa63431bcbfcab672956ac233" id="r_a2eddf48fa63431bcbfcab672956ac233"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2eddf48fa63431bcbfcab672956ac233">LED_ROT</a>&#160;&#160;&#160;0x01    /* rote LED an PortA.0 */</td></tr>
+<tr class="memitem:aa31746117f2029075e00c1419533f16f" id="r_aa31746117f2029075e00c1419533f16f"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa31746117f2029075e00c1419533f16f">LED_ROT_MASK</a>&#160;&#160;&#160;2       /* Taster an PortA.0 */</td></tr>
 <tr class="memitem:a391f22f1623e951933eeb272e9c512b6" id="r_a391f22f1623e951933eeb272e9c512b6"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a391f22f1623e951933eeb272e9c512b6">LED_GREEN_P4</a>&#160;&#160;&#160;0x80</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -338,9 +338,11 @@ Funktionen</h2></td></tr>
 <tr class="memitem:a9bdd6c2793087b0207fd0464ce017df1" id="r_a9bdd6c2793087b0207fd0464ce017df1"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a9bdd6c2793087b0207fd0464ce017df1">LED_SetHardware</a> (bool on)</td></tr>
 <tr class="memdesc:a9bdd6c2793087b0207fd0464ce017df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO-Ansteuerung anpassen, z.B.: if (on) { LED_PORT |= LED_MASK; } else { LED_PORT &amp;= ~LED_MASK; }.  <br /></td></tr>
 <tr class="memitem:a1ac687a2cb5c5d3a70360cde7dd17d59" id="r_a1ac687a2cb5c5d3a70360cde7dd17d59"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a1ac687a2cb5c5d3a70360cde7dd17d59">Button_Init</a> (<a class="el" href="../../dc/dc2/struct_button__t.html">Button_t</a> *btn)</td></tr>
+<tr class="memdesc:a1ac687a2cb5c5d3a70360cde7dd17d59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taster Variable initialisieren.  <br /></td></tr>
 <tr class="memitem:a7294f3e15e28e0bbe48469461aca9588" id="r_a7294f3e15e28e0bbe48469461aca9588"><td class="memItemLeft">static <a class="el" href="#ae5736cc0356593df91646b7ad407808b">ButtonEvent_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a7294f3e15e28e0bbe48469461aca9588">Button_Process_1ms</a> (<a class="el" href="../../dc/dc2/struct_button__t.html">Button_t</a> *btn)</td></tr>
 <tr class="memdesc:a7294f3e15e28e0bbe48469461aca9588"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zyklisch (alle 1 ms) aufzurufende Button-FSM.  <br /></td></tr>
 <tr class="memitem:ab0168987d8bc3c3d7b066f74b56fdf21" id="r_ab0168987d8bc3c3d7b066f74b56fdf21"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ab0168987d8bc3c3d7b066f74b56fdf21">LED_Init</a> (<a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a> *led)</td></tr>
+<tr class="memdesc:ab0168987d8bc3c3d7b066f74b56fdf21"><td class="mdescLeft">&#160;</td><td class="mdescRight">LED Variable initialisieren und LED ausschalten.  <br /></td></tr>
 <tr class="memitem:a3dce655dd03e27a06b8aa56167d545c2" id="r_a3dce655dd03e27a06b8aa56167d545c2"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a3dce655dd03e27a06b8aa56167d545c2">LED_HandleEvent</a> (<a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a> *led, <a class="el" href="#ae5736cc0356593df91646b7ad407808b">ButtonEvent_t</a> event)</td></tr>
 <tr class="memdesc:a3dce655dd03e27a06b8aa56167d545c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verarbeitet ein Button-Ereignis und aktualisiert den LED-Zustand. Zustandsuebergaenge gemaess Aufgabenstellung:  <br /></td></tr>
 <tr class="memitem:a451a90035e860d931a19c1a8890b8a11" id="r_a451a90035e860d931a19c1a8890b8a11"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a451a90035e860d931a19c1a8890b8a11">LED_Process_1ms</a> (<a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a> *led)</td></tr>
@@ -369,7 +371,7 @@ todo</h1>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define BLINK_PERIOD_MS&#160;&#160;&#160;330U</td>
+          <td class="memname">#define BLINK_PERIOD_MS&#160;&#160;&#160;330U    /* LED-Blinkperiode (an/aus je 500ms) */</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -434,7 +436,7 @@ todo</h1>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LED_ROT&#160;&#160;&#160;0x01  /* rote LED an PortA.0 */</td>
+          <td class="memname">#define LED_ROT&#160;&#160;&#160;0x01    /* rote LED an PortA.0 */</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -450,7 +452,7 @@ todo</h1>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LED_ROT_MASK&#160;&#160;&#160;2  /* Taster an PortA.0 */</td>
+          <td class="memname">#define LED_ROT_MASK&#160;&#160;&#160;2       /* Taster an PortA.0 */</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -559,7 +561,7 @@ todo</h1>
 
 <p>Zentraler 1ms-Tick, z.B. aus Timer-ISR oder Hauptschleife aufgerufen. Verbindet Button-FSM (Ereigniserzeugung) mit LED-FSM (Ereignis- verarbeitung + eigenes Zeitverhalten fuer das Blinken). </p>
 
-<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00461">461</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00473">473</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
 <div class="dynheader">
 Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
 <div class="dyncontent">
@@ -612,13 +614,15 @@ Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00295">295</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<p>Taster Variable initialisieren. </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00303">303</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
 <div class="dynheader">
 Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d29/main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59_icgraph" loading="lazy" alt=""/></div>
 <map name="ad0/d29/main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59_icgraph" id="ad0/d29/main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59_icgraph">
-<area shape="rect" title=" " alt="" coords="105,5,184,30"/>
+<area shape="rect" title="Taster Variable initialisieren." alt="" coords="105,5,184,30"/>
 <area shape="rect" href="../../d0/d29/main_8c.html#a7dfd9b79bc5a37d7df40207afbc5431f" title="Ports und Timer einrichten." alt="" coords="5,5,57,30"/>
 <area shape="poly" title=" " alt="" coords="87,18,57,20,57,15,92,17"/>
 </map>
@@ -658,7 +662,7 @@ Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 </dl>
 <dl class="section return"><dt>Rückgabe</dt><dd>Erkanntes Ereignis (oder BTN_EVT_NONE, wenn keins aufgetreten ist). </dd></dl>
 
-<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00307">307</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00315">315</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
 <div class="dynheader">
 Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
 <div class="dyncontent">
@@ -715,7 +719,7 @@ Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 <dl class="section return"><dt>Rückgabe</dt><dd>true = Taste gedrueckt false = Taste losgelassen</dd></dl>
 <p>TODO: An reale GPIO-Abfrage anpassen, z.B.: return (P0_PIN_BUTTON == 0); // Taster aktiv-low </p>
 
-<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00258">258</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00260">260</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
 <div class="dynheader">
 Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
 <div class="dyncontent">
@@ -765,7 +769,7 @@ Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 </dl>
 <dl class="section return"><dt>Rückgabe</dt><dd>void </dd></dl>
 
-<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00221">221</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00223">223</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
 
 </div>
 </div>
@@ -833,7 +837,7 @@ Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 <li>LONG_PRESS : -&gt; BLINK (unabhaengig vom vorherigen Zustand) </li>
 </ul>
 
-<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00394">394</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00407">407</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
 <div class="dynheader">
 Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
 <div class="dyncontent">
@@ -884,13 +888,15 @@ Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00381">381</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<p>LED Variable initialisieren und LED ausschalten. </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00394">394</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
 <div class="dynheader">
 Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_cgraph.gif" border="0" usemap="#ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_cgraph" loading="lazy" alt=""/></div>
 <map name="ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_cgraph" id="ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,74,30"/>
+<area shape="rect" title="LED Variable initialisieren und LED ausschalten." alt="" coords="5,5,74,30"/>
 <area shape="rect" href="../../d0/d29/main_8c.html#a9bdd6c2793087b0207fd0464ce017df1" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="122,5,246,30"/>
 <area shape="poly" title=" " alt="" coords="74,15,109,17,103,18,74,20"/>
 </map>
@@ -900,7 +906,7 @@ Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_icgraph" loading="lazy" alt=""/></div>
 <map name="ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_icgraph" id="ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_icgraph">
-<area shape="rect" title=" " alt="" coords="105,5,173,30"/>
+<area shape="rect" title="LED Variable initialisieren und LED ausschalten." alt="" coords="105,5,173,30"/>
 <area shape="rect" href="../../d0/d29/main_8c.html#a7dfd9b79bc5a37d7df40207afbc5431f" title="Ports und Timer einrichten." alt="" coords="5,5,57,30"/>
 <area shape="poly" title=" " alt="" coords="86,18,57,20,57,15,92,17"/>
 </map>
@@ -933,7 +939,7 @@ Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 
 <p>Zyklisch (alle 1 ms) aufzurufende LED-FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat ueber <a class="el" href="#a3dce655dd03e27a06b8aa56167d545c2" title="Verarbeitet ein Button-Ereignis und aktualisiert den LED-Zustand. Zustandsuebergaenge gemaess Aufgabe...">LED_HandleEvent()</a>. </p>
 
-<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00435">435</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00447">447</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
 <div class="dynheader">
 Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
 <div class="dyncontent">
@@ -982,7 +988,7 @@ Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 
 <p>Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO-Ansteuerung anpassen, z.B.: if (on) { LED_PORT |= LED_MASK; } else { LED_PORT &amp;= ~LED_MASK; }. </p>
 
-<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00267">267</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00269">269</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
 <div class="dynheader">
 Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 <div class="dyncontent">
@@ -991,7 +997,7 @@ Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 <area shape="rect" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="330,55,454,79"/>
 <area shape="rect" href="../../d0/d29/main_8c.html#a3dce655dd03e27a06b8aa56167d545c2" title="Verarbeitet ein Button&#45;Ereignis und aktualisiert den LED&#45;Zustand. Zustandsuebergaenge gemaess Aufgabe..." alt="" coords="157,5,280,30"/>
 <area shape="poly" title=" " alt="" coords="329,50,265,33,265,28,334,49"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#ab0168987d8bc3c3d7b066f74b56fdf21" title=" " alt="" coords="185,104,253,129"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#ab0168987d8bc3c3d7b066f74b56fdf21" title="LED Variable initialisieren und LED ausschalten." alt="" coords="185,104,253,129"/>
 <area shape="poly" title=" " alt="" coords="334,84,254,109,253,104,329,85"/>
 <area shape="rect" href="../../d0/d29/main_8c.html#a451a90035e860d931a19c1a8890b8a11" title="Zyklisch (alle 1 ms) aufzurufende LED&#45;FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat..." alt="" coords="156,55,282,79"/>
 <area shape="poly" title=" " alt="" coords="312,67,283,70,282,64,317,67"/>
@@ -1022,7 +1028,7 @@ Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 
 <p>gibt den Zustand des Tasters S1 zurück S1 an P2.1 S1 0x02 Taster an PortB.1 </p>
 
-<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00235">235</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00237">237</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
 <div class="dynheader">
 Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 <div class="dyncontent">
@@ -1066,11 +1072,11 @@ Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
 <area shape="rect" title="Ports und Timer einrichten." alt="" coords="5,104,57,129"/>
 <area shape="rect" href="../../d3/d9a/_b_c_uart_8c.html#a735d170f53369022348d8ba9bd6e387e" title=" " alt="" coords="119,5,192,30"/>
 <area shape="poly" title=" " alt="" coords="40,102,67,72,103,41,114,36,110,40,106,45,71,76,45,105"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#a1ac687a2cb5c5d3a70360cde7dd17d59" title=" " alt="" coords="116,55,195,79"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a1ac687a2cb5c5d3a70360cde7dd17d59" title="Taster Variable initialisieren." alt="" coords="116,55,195,79"/>
 <area shape="poly" title=" " alt="" coords="55,104,109,83,106,88,58,109"/>
 <area shape="rect" href="../../d0/d29/main_8c.html#a812dd7d99fdfe16bc1b8b0c324abc99f" title="Systemtak einstellen." alt="" coords="119,104,192,129"/>
 <area shape="poly" title=" " alt="" coords="56,114,106,114,102,118,58,119"/>
-<area shape="rect" href="../../d0/d29/main_8c.html#ab0168987d8bc3c3d7b066f74b56fdf21" title=" " alt="" coords="121,153,190,178"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#ab0168987d8bc3c3d7b066f74b56fdf21" title="LED Variable initialisieren und LED ausschalten." alt="" coords="121,153,190,178"/>
 <area shape="poly" title=" " alt="" coords="57,124,110,146,106,148,57,129"/>
 <area shape="rect" href="../../d0/d29/main_8c.html#a1874631cc718c96363194def377c9010" title="Watchdog ausschalten." alt="" coords="105,203,206,227"/>
 <area shape="poly" title=" " alt="" coords="43,126,71,156,106,188,115,195,109,194,103,192,67,160,42,132"/>
@@ -1129,7 +1135,7 @@ Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
 
 <p>sendet eine string an den MSP430 Backchannel UART. </p>
 
-<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00450">450</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00462">462</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
 <div class="dynheader">
 Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
 <div class="dyncontent">

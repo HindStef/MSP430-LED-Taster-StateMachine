@@ -1,5 +1,5 @@
 <map id="LED_Init" name="LED_Init">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,74,30"/>
+<area shape="rect" id="Node000001" title="LED Variable initialisieren und LED ausschalten." alt="" coords="5,5,74,30"/>
 <area shape="rect" id="Node000002" href="$d0/d29/main_8c.html#a9bdd6c2793087b0207fd0464ce017df1" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="122,5,246,30"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,15,109,17,103,18,74,20"/>
 </map>

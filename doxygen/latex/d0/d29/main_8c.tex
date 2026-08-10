@@ -12,8 +12,7 @@ LED-\/\+Taste-\/\+State\+Machine State Machine zur Auswertung eines Tasters zur 
 {\ttfamily \+\#include "{}msp430.\+h"{}}\newline
 {\ttfamily \+\#include "{}driverlib.\+h"{}}\newline
 {\ttfamily \+\#include "{}BCUart.\+h"{}}\newline
-Include-\/\+Abhängigkeitsdiagramm für main.\+c:\+
-\nopagebreak
+Include-\/\+Abhängigkeitsdiagramm für main.\+c:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -34,13 +33,13 @@ struct \doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}}
 \item 
 \+\#define \doxymbox{\hyperlink{main_8c_a6f6289e063d8b621ec46bbd1d2809f62}{LONG\+\_\+\+PRESS\+\_\+\+THRESHOLD\+\_\+\+MS}}~2000U   /\+\texorpdfstring{$\ast$}{*} Schwelle fuer langen Tastendruck \texorpdfstring{$\ast$}{*}/\+
 \item 
-\+\#define \doxymbox{\hyperlink{main_8c_a8cfc4352ae90bdf0d97b6f3599f73acc}{BLINK\+\_\+\+PERIOD\+\_\+\+MS}}~330U
+\+\#define \doxymbox{\hyperlink{main_8c_a8cfc4352ae90bdf0d97b6f3599f73acc}{BLINK\+\_\+\+PERIOD\+\_\+\+MS}}~330U    /\+\texorpdfstring{$\ast$}{*} LED-\/Blinkperiode (an/\+aus je 500ms) \texorpdfstring{$\ast$}{*}/\+
 \item 
 \+\#define \doxymbox{\hyperlink{main_8c_a75c828ed6c02fcd44084e67a032e422c}{FOREVER}}~1
 \item 
-\+\#define \doxymbox{\hyperlink{main_8c_a2eddf48fa63431bcbfcab672956ac233}{LED\+\_\+\+ROT}}~0x01  /\+\texorpdfstring{$\ast$}{*} rote LED an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+
+\+\#define \doxymbox{\hyperlink{main_8c_a2eddf48fa63431bcbfcab672956ac233}{LED\+\_\+\+ROT}}~0x01    /\+\texorpdfstring{$\ast$}{*} rote LED an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+
 \item 
-\+\#define \doxymbox{\hyperlink{main_8c_aa31746117f2029075e00c1419533f16f}{LED\+\_\+\+ROT\+\_\+\+MASK}}~2  /\+\texorpdfstring{$\ast$}{*} Taster an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+
+\+\#define \doxymbox{\hyperlink{main_8c_aa31746117f2029075e00c1419533f16f}{LED\+\_\+\+ROT\+\_\+\+MASK}}~2       /\+\texorpdfstring{$\ast$}{*} Taster an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+
 \item 
 \+\#define \doxymbox{\hyperlink{main_8c_a391f22f1623e951933eeb272e9c512b6}{LED\+\_\+\+GREEN\+\_\+\+P4}}~0x80
 \end{DoxyCompactItemize}
@@ -84,11 +83,11 @@ static bool \doxymbox{\hyperlink{main_8c_a137df2d65e6c7f17465d134883fa5a56}{Butt
 static void \doxymbox{\hyperlink{main_8c_a9bdd6c2793087b0207fd0464ce017df1}{LED\+\_\+\+Set\+Hardware}} (bool on)
 \begin{DoxyCompactList}\small\item\em Schaltet die LED hardwarenah ein/\+aus. TODO:\+ An reale GPIO-\/\+Ansteuerung anpassen, z.\+B.:\+ if (on) \{ LED\+\_\+\+PORT \texorpdfstring{$\vert$}{|}= LED\+\_\+\+MASK; \} else \{ LED\+\_\+\+PORT \&= \texorpdfstring{$\sim$}{\string~}\+LED\+\_\+\+MASK; \}. \end{DoxyCompactList}\item 
 static void \doxymbox{\hyperlink{main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59}{Button\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_button__t}{Button\+\_\+t}} \texorpdfstring{$\ast$}{*}btn)
-\item 
+\begin{DoxyCompactList}\small\item\em Taster Variable initialisieren. \end{DoxyCompactList}\item 
 static \doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808b}{Button\+Event\+\_\+t}} \doxymbox{\hyperlink{main_8c_a7294f3e15e28e0bbe48469461aca9588}{Button\+\_\+\+Process\+\_\+1ms}} (\doxymbox{\hyperlink{struct_button__t}{Button\+\_\+t}} \texorpdfstring{$\ast$}{*}btn)
 \begin{DoxyCompactList}\small\item\em Zyklisch (alle 1 ms) aufzurufende Button-\/\+FSM. \end{DoxyCompactList}\item 
 static void \doxymbox{\hyperlink{main_8c_ab0168987d8bc3c3d7b066f74b56fdf21}{LED\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}} \texorpdfstring{$\ast$}{*}led)
-\item 
+\begin{DoxyCompactList}\small\item\em LED Variable initialisieren und LED ausschalten. \end{DoxyCompactList}\item 
 static void \doxymbox{\hyperlink{main_8c_a3dce655dd03e27a06b8aa56167d545c2}{LED\+\_\+\+Handle\+Event}} (\doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}} \texorpdfstring{$\ast$}{*}led, \doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808b}{Button\+Event\+\_\+t}} event)
 \begin{DoxyCompactList}\small\item\em Verarbeitet ein Button-\/\+Ereignis und aktualisiert den LED-\/\+Zustand. Zustandsuebergaenge gemaess Aufgabenstellung:\+ \end{DoxyCompactList}\item 
 static void \doxymbox{\hyperlink{main_8c_a451a90035e860d931a19c1a8890b8a11}{LED\+\_\+\+Process\+\_\+1ms}} (\doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}} \texorpdfstring{$\ast$}{*}led)
@@ -126,7 +125,7 @@ Definiert in Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 \index{BLINK\_PERIOD\_MS@{BLINK\_PERIOD\_MS}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{BLINK\_PERIOD\_MS}{BLINK\_PERIOD\_MS}}
 {\footnotesize\ttfamily \label{main_8c_a8cfc4352ae90bdf0d97b6f3599f73acc} 
-\+\#define BLINK\+\_\+\+PERIOD\+\_\+\+MS~330U}
+\+\#define BLINK\+\_\+\+PERIOD\+\_\+\+MS~330U    /\+\texorpdfstring{$\ast$}{*} LED-\/Blinkperiode (an/\+aus je 500ms) \texorpdfstring{$\ast$}{*}/\+}
 
 
 
@@ -166,7 +165,7 @@ Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00088}{88}} der Datei \d
 \index{LED\_ROT@{LED\_ROT}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{LED\_ROT}{LED\_ROT}}
 {\footnotesize\ttfamily \label{main_8c_a2eddf48fa63431bcbfcab672956ac233} 
-\+\#define LED\+\_\+\+ROT~0x01  /\+\texorpdfstring{$\ast$}{*} rote LED an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+}
+\+\#define LED\+\_\+\+ROT~0x01    /\+\texorpdfstring{$\ast$}{*} rote LED an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+}
 
 
 
@@ -176,7 +175,7 @@ Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00086}{86}} der Datei \d
 \index{LED\_ROT\_MASK@{LED\_ROT\_MASK}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{LED\_ROT\_MASK}{LED\_ROT\_MASK}}
 {\footnotesize\ttfamily \label{main_8c_aa31746117f2029075e00c1419533f16f} 
-\+\#define LED\+\_\+\+ROT\+\_\+\+MASK~2  /\+\texorpdfstring{$\ast$}{*} Taster an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+}
+\+\#define LED\+\_\+\+ROT\+\_\+\+MASK~2       /\+\texorpdfstring{$\ast$}{*} Taster an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+}
 
 
 
@@ -316,10 +315,9 @@ Zentraler 1ms-\/\+Tick, z.\+B. aus Timer-\/\+ISR oder Hauptschleife aufgerufen. 
 
 
 
-Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00461}{461}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00473}{473}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
-Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
-\nopagebreak
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -334,7 +332,11 @@ void Button\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{str
 
 
 
-Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00295}{295}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+Taster Variable initialisieren. 
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00303}{303}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
 Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
 \nopagebreak
@@ -364,18 +366,16 @@ Erkanntes Ereignis (oder BTN\+\_\+\+EVT\+\_\+\+NONE, wenn keins aufgetreten ist)
 \end{DoxyReturn}
 
 
-Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00307}{307}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00315}{315}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
-Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
-\nopagebreak
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d0/d29/main_8c_a7294f3e15e28e0bbe48469461aca9588_cgraph}
 \end{center}
 \end{figure}
-Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
-\nopagebreak
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -397,18 +397,16 @@ true = Taste gedrueckt false = Taste losgelassen
 \end{DoxyReturn}
 TODO:\+ An reale GPIO-\/\+Abfrage anpassen, z.\+B.:\+ return (P0\+\_\+\+PIN\+\_\+\+BUTTON == 0); /\+/\+ Taster aktiv-\/low 
 
-Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00258}{258}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00260}{260}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
-Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
-\nopagebreak
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=272pt]{d0/d29/main_8c_a137df2d65e6c7f17465d134883fa5a56_cgraph}
 \end{center}
 \end{figure}
-Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
-\nopagebreak
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -435,7 +433,7 @@ void
 \end{DoxyReturn}
 
 
-Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00221}{221}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00223}{223}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
 \Hypertarget{main_8c_a812dd7d99fdfe16bc1b8b0c324abc99f}\index{main.c@{main.c}!init\_clock@{init\_clock}}
 \index{init\_clock@{init\_clock}!main.c@{main.c}}
@@ -451,8 +449,7 @@ Systemtak einstellen.
 
 Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00158}{158}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
-Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
-\nopagebreak
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -475,18 +472,16 @@ Verarbeitet ein Button-\/\+Ereignis und aktualisiert den LED-\/\+Zustand. Zustan
 \item LONG\+\_\+\+PRESS :\+ -\/\texorpdfstring{$>$}{>} BLINK (unabhaengig vom vorherigen Zustand) 
 \end{DoxyItemize}
 
-Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00394}{394}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00407}{407}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
-Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
-\nopagebreak
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d0/d29/main_8c_a3dce655dd03e27a06b8aa56167d545c2_cgraph}
 \end{center}
 \end{figure}
-Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
-\nopagebreak
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -501,7 +496,11 @@ void LED\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct
 
 
 
-Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00381}{381}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+LED Variable initialisieren und LED ausschalten. 
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00394}{394}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
 Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
 \nopagebreak
@@ -531,18 +530,16 @@ Zyklisch (alle 1 ms) aufzurufende LED-\/\+FSM fuer das Blinkverhalten. Ereignisb
 
 
 
-Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00435}{435}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00447}{447}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
-Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
-\nopagebreak
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=304pt]{d0/d29/main_8c_a451a90035e860d931a19c1a8890b8a11_cgraph}
 \end{center}
 \end{figure}
-Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
-\nopagebreak
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -561,7 +558,7 @@ Schaltet die LED hardwarenah ein/\+aus. TODO:\+ An reale GPIO-\/\+Ansteuerung an
 
 
 
-Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00267}{267}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00269}{269}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
 Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
 \nopagebreak
@@ -583,10 +580,9 @@ gibt den Zustand des Tasters S1 zurück S1 an P2.\+1 S1 0x02 Taster an Port\+B.\
 
 
 
-Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00235}{235}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00237}{237}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
-Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
-\nopagebreak
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -629,8 +625,7 @@ Watchdog ausschalten.
 
 Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00151}{151}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
-Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
-\nopagebreak
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -649,18 +644,16 @@ sendet eine string an den MSP430 Backchannel UART.
 
 
 
-Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00450}{450}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00462}{462}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
 
-Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
-\nopagebreak
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=258pt]{d0/d29/main_8c_a16451156c0206670a702e5809c302113_cgraph}
 \end{center}
 \end{figure}
-Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
-\nopagebreak
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

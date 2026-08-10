@@ -106,5 +106,6 @@ S62_DEPS__QUOTED :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 . \
+doxygen/latex \
 driverlib/MSP430F5xx_6xx \
 
