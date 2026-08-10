@@ -1,0 +1,376 @@
+\doxysection{usci\+\_\+b\+\_\+i2c.\+h}
+\hypertarget{usci__b__i2c_8h_source}{}\label{usci__b__i2c_8h_source}\index{driverlib/MSP430F5xx\_6xx/usci\_b\_i2c.h@{driverlib/MSP430F5xx\_6xx/usci\_b\_i2c.h}}
+\doxymbox{\hyperlink{usci__b__i2c_8h}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00003}00003\ \textcolor{comment}{//\ usci\_b\_i2c.h\ -\/\ Driver\ for\ the\ USCI\_B\_I2C\ Module.}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_\_MSP430WARE\_USCI\_B\_I2C\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_\_MSP430WARE\_USCI\_B\_I2C\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00012}00012\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_USCI\_Bx\_\_}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00014}00014\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00015}00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00016}00016\ \textcolor{comment}{//\ If\ building\ with\ a\ C++\ compiler,\ make\ all\ of\ the\ definitions\ in\ this\ header}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00017}00017\ \textcolor{comment}{//\ have\ a\ C\ binding.}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00019}00019\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00020}00020\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00021}00021\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00023}00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00026}00026\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00027}00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00029}00029\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00030}00030\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00031}00031\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }USCI\_B\_I2C\_initMasterParam\ \{}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00036}00036\ \ \ \ \ uint8\_t\ selectClockSource;}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00038}00038\ \ \ \ \ uint32\_t\ i2cClk;}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00043}00043\ \ \ \ \ uint32\_t\ dataRate;}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00044}00044\ \}\ USCI\_B\_I2C\_initMasterParam;}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00047}00047\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00048}00048\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00049}00049\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00050}00050\ \textcolor{comment}{//\ functions:\ USCI\_B\_I2C\_initMaster().}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00051}00051\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00052}00052\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00053}00053\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_CLOCKSOURCE\_ACLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCSSEL\_\_ACLK}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00054}00054\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_CLOCKSOURCE\_SMCLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCSSEL\_\_SMCLK}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00056}00056\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00057}00057\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00058}00058\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00059}00059\ \textcolor{comment}{//\ functions:\ USCI\_B\_I2C\_initMaster().}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00060}00060\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00061}00061\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00062}00062\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_SET\_DATA\_RATE\_400KBPS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 400000}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00063}00063\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_SET\_DATA\_RATE\_100KBPS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 100000}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00065}00065\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00066}00066\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00067}00067\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ mode\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00068}00068\ \textcolor{comment}{//\ functions:\ USCI\_B\_I2C\_setMode().}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00069}00069\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00070}00070\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00071}00071\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_TRANSMIT\_MODE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCTR}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00072}00072\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_RECEIVE\_MODE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00074}00074\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00075}00075\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00076}00076\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ mask\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00077}00077\ \textcolor{comment}{//\ functions:\ USCI\_B\_I2C\_enableInterrupt(),\ USCI\_B\_I2C\_disableInterrupt(),}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00078}00078\ \textcolor{comment}{//\ USCI\_B\_I2C\_clearInterrupt(),\ and\ USCI\_B\_I2C\_getInterruptStatus()\ as\ well\ as}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00079}00079\ \textcolor{comment}{//\ returned\ by\ the\ USCI\_B\_I2C\_getInterruptStatus()\ function.}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00080}00080\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00081}00081\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00082}00082\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_STOP\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCSTPIE}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00083}00083\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_START\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCSTTIE}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00084}00084\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_RECEIVE\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCRXIE}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00085}00085\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_TRANSMIT\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCTXIE}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00086}00086\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_NAK\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCNACKIE}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00087}00087\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_ARBITRATIONLOST\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCALIE}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00089}00089\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00090}00090\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00091}00091\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ toThe\ following\ are\ values\ that}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00092}00092\ \textcolor{comment}{//\ can\ be\ returned\ by\ the\ USCI\_B\_I2C\_isBusy()\ function\ and\ the}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00093}00093\ \textcolor{comment}{//\ USCI\_B\_I2C\_isBusBusy()\ function.}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00094}00094\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00095}00095\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00096}00096\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_BUS\_BUSY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCBBUSY}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00097}00097\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_BUS\_NOT\_BUSY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00099}00099\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00100}00100\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00101}00101\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ toThe\ following\ are\ values\ that}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00102}00102\ \textcolor{comment}{//\ can\ be\ returned\ by\ the\ USCI\_B\_I2C\_masterIsStartSent()\ function.}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00103}00103\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00104}00104\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00105}00105\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_SENDING\_START\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCTXSTT}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00106}00106\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_START\_SEND\_COMPLETE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00108}00108\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00109}00109\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00110}00110\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ toThe\ following\ are\ values\ that}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00111}00111\ \textcolor{comment}{//\ can\ be\ returned\ by\ the\ USCI\_B\_I2C\_masterIsStopSent()\ function.}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00112}00112\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00113}00113\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00114}00114\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_SENDING\_STOP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCTXSTP}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00115}00115\ \textcolor{preprocessor}{\#define\ USCI\_B\_I2C\_STOP\_SEND\_COMPLETE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00117}00117\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00118}00118\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00119}00119\ \textcolor{comment}{//\ Prototypes\ for\ the\ APIs.}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00120}00120\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00121}00121\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00123}00123\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00124}00124\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00143}00143\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00144}00144\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00145}00145\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_initMaster(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ USCI\_B\_I2C\_initMasterParam\ *param);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00148}00148\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00149}00149\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00164}00164\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00165}00165\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00166}00166\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_initSlave(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ slaveAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00169}00169\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00170}00170\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00180}00180\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00181}00181\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00182}00182\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_enable(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00184}00184\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00185}00185\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00195}00195\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00196}00196\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00197}00197\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_disable(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00199}00199\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00200}00200\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00213}00213\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00214}00214\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00215}00215\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_setSlaveAddress(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ slaveAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00218}00218\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00219}00219\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00233}00233\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00234}00234\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00235}00235\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_setMode(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ mode);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00238}00238\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00239}00239\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00251}00251\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00252}00252\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00253}00253\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_slavePutData(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ transmitData);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00256}00256\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00257}00257\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00266}00266\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00267}00267\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00268}00268\ \textcolor{keyword}{extern}\ uint8\_t\ USCI\_B\_I2C\_slaveGetData(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00270}00270\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00271}00271\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00286}00286\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00287}00287\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00288}00288\ \textcolor{keyword}{extern}\ uint8\_t\ USCI\_B\_I2C\_isBusBusy(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00290}00290\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00291}00291\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00307}00307\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00308}00308\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00309}00309\ \textcolor{keyword}{extern}\ uint8\_t\ USCI\_B\_I2C\_isBusy(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00311}00311\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00312}00312\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00325}00325\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00326}00326\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00327}00327\ \textcolor{keyword}{extern}\ uint8\_t\ USCI\_B\_I2C\_masterIsStopSent(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00329}00329\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00330}00330\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00343}00343\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00344}00344\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00345}00345\ \textcolor{keyword}{extern}\ uint8\_t\ USCI\_B\_I2C\_masterIsStartSent(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00347}00347\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00348}00348\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00356}00356\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00357}00357\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00358}00358\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_masterSendStart(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00360}00360\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00361}00361\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00382}00382\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00383}00383\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00384}00384\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_enableInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ mask);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00386}00386\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00387}00387\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00388}00388\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00409}00409\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00410}00410\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00411}00411\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_disableInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ mask);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00413}00413\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00414}00414\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00415}00415\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00436}00436\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00437}00437\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00438}00438\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_clearInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00439}00439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ mask);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00440}00440\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00441}00441\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00442}00442\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00469}00469\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00470}00470\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00471}00471\ \textcolor{keyword}{extern}\ uint8\_t\ USCI\_B\_I2C\_getInterruptStatus(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ mask);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00473}00473\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00474}00474\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00475}00475\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00489}00489\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00490}00490\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00491}00491\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_masterSendSingleByte(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00492}00492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ txData);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00493}00493\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00494}00494\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00495}00495\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00510}00510\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00511}00511\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00512}00512\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ USCI\_B\_I2C\_masterSendSingleByteWithTimeout(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ txData,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ timeout);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00515}00515\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00516}00516\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00517}00517\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00531}00531\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00532}00532\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00533}00533\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_masterSendMultiByteStart(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ txData);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00535}00535\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00536}00536\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00537}00537\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00549}00549\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00550}00550\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00551}00551\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ USCI\_B\_I2C\_masterSendMultiByteStartWithTimeout(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00552}00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ txData,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ timeout);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00554}00554\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00555}00555\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00556}00556\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00569}00569\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00570}00570\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00571}00571\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_masterSendMultiByteNext(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00572}00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ txData);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00573}00573\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00574}00574\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00575}00575\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00589}00589\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00590}00590\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00591}00591\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ USCI\_B\_I2C\_masterSendMultiByteNextWithTimeout(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00592}00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ txData,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ timeout);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00594}00594\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00595}00595\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00596}00596\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00610}00610\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00611}00611\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00612}00612\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_masterSendMultiByteFinish(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00613}00613\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ txData);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00614}00614\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00615}00615\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00616}00616\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00631}00631\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00632}00632\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00633}00633\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ USCI\_B\_I2C\_masterSendMultiByteFinishWithTimeout(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00634}00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ txData,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ timeout);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00636}00636\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00637}00637\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00638}00638\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00651}00651\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00652}00652\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00653}00653\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_masterSendMultiByteStop(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00654}00654\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00655}00655\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00656}00656\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00670}00670\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00671}00671\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00672}00672\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ USCI\_B\_I2C\_masterSendMultiByteStopWithTimeout(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00673}00673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ timeout);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00674}00674\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00675}00675\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00676}00676\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00687}00687\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00688}00688\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00689}00689\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_masterReceiveMultiByteStart(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00690}00690\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00691}00691\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00692}00692\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00701}00701\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00702}00702\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00703}00703\ \textcolor{keyword}{extern}\ uint8\_t\ USCI\_B\_I2C\_masterReceiveMultiByteNext(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00704}00704\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00705}00705\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00706}00706\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00718}00718\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00719}00719\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00720}00720\ \textcolor{keyword}{extern}\ uint8\_t\ USCI\_B\_I2C\_masterReceiveMultiByteFinish(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00721}00721\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00722}00722\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00723}00723\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00738}00738\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00739}00739\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00740}00740\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ USCI\_B\_I2C\_masterReceiveMultiByteFinishWithTimeout(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00741}00741\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *rxData,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00742}00742\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ timeout);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00743}00743\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00744}00744\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00745}00745\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00756}00756\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00757}00757\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00758}00758\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_masterReceiveMultiByteStop(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00759}00759\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00760}00760\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00761}00761\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00773}00773\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00774}00774\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00775}00775\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ USCI\_B\_I2C\_masterReceiveSingleStart(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00776}00776\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00777}00777\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00778}00778\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00791}00791\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00792}00792\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00793}00793\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ USCI\_B\_I2C\_masterReceiveSingleStartWithTimeout(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00794}00794\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ timeout);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00795}00795\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00796}00796\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00797}00797\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00806}00806\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00807}00807\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00808}00808\ \textcolor{keyword}{extern}\ uint8\_t\ USCI\_B\_I2C\_masterReceiveSingle(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00809}00809\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00810}00810\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00811}00811\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00820}00820\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00821}00821\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00822}00822\ \textcolor{keyword}{extern}\ uint32\_t\ USCI\_B\_I2C\_getReceiveBufferAddressForDMA(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00823}00823\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00824}00824\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00825}00825\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00834}00834\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00835}00835\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00836}00836\ \textcolor{keyword}{extern}\ uint32\_t\ USCI\_B\_I2C\_getTransmitBufferAddressForDMA(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00837}00837\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00838}00838\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00839}00839\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00840}00840\ \textcolor{comment}{//\ Mark\ the\ end\ of\ the\ C\ bindings\ section\ for\ C++\ compilers.}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00841}00841\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00842}00842\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00843}00843\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00844}00844\ \}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00845}00845\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00846}00846\ }
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00847}00847\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{usci__b__i2c_8h_source_l00848}00848\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MSP430WARE\_USCI\_B\_I2C\_H\_\_}}
+
+\end{DoxyCode}

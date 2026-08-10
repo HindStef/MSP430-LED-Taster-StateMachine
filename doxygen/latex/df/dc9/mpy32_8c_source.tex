@@ -1,0 +1,147 @@
+\doxysection{mpy32.\+c}
+\hypertarget{mpy32_8c_source}{}\label{mpy32_8c_source}\index{driverlib/MSP430F5xx\_6xx/mpy32.c@{driverlib/MSP430F5xx\_6xx/mpy32.c}}
+\doxymbox{\hyperlink{mpy32_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00003}00003\ \textcolor{comment}{//\ mpy32.c\ -\/\ Driver\ for\ the\ mpy32\ Module.}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00007}00007\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00011}00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00012}00012\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_MPY32\_\_}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{mpy32_8h}{mpy32.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00021}00021\ \textcolor{keywordtype}{void}\ MPY32\_setWriteDelay\ (uint16\_t\ writeDelaySelect)}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00023}00023\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_MPY32CTL0)\ \&=\ \string~(MPYDLY32\ +\ MPYDLYWRTEN);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00024}00024\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_MPY32CTL0)\ |=\ writeDelaySelect;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00025}00025\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00027}00027\ \textcolor{keywordtype}{void}\ MPY32\_enableSaturationMode\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00028}00028\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00029}00029\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(MPY32\_BASE\ +\ OFS\_MPY32CTL0\_L)\ |=\ MPYSAT;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00032}00032\ \textcolor{keywordtype}{void}\ MPY32\_disableSaturationMode\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00034}00034\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(MPY32\_BASE\ +\ OFS\_MPY32CTL0\_L)\ \&=\ \string~(MPYSAT);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00035}00035\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00037}00037\ uint8\_t\ MPY32\_getSaturationMode\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(MPY32\_BASE\ +\ OFS\_MPY32CTL0\_L)\ \&(MPYSAT));}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00042}00042\ \textcolor{keywordtype}{void}\ MPY32\_enableFractionalMode\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00043}00043\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00044}00044\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(MPY32\_BASE\ +\ OFS\_MPY32CTL0\_L)\ |=\ MPYFRAC;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00047}00047\ \textcolor{keywordtype}{void}\ MPY32\_disableFractionalMode\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00048}00048\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00049}00049\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(MPY32\_BASE\ +\ OFS\_MPY32CTL0\_L)\ \&=\ \string~(MPYFRAC);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00052}00052\ uint8\_t\ MPY32\_getFractionalMode\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00053}00053\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(MPY32\_BASE\ +\ OFS\_MPY32CTL0\_L)\ \&(MPYFRAC));}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00055}00055\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00057}00057\ \textcolor{keywordtype}{void}\ MPY32\_setOperandOne8Bit\ (uint8\_t\ multiplicationType,}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00058}00058\ \ \ \ \ uint8\_t\ operand)}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00059}00059\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00060}00060\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(MPY32\_BASE\ +\ OFS\_MPY\ +\ multiplicationType)\ =\ operand;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00063}00063\ \textcolor{keywordtype}{void}\ MPY32\_setOperandOne16Bit\ (uint8\_t\ multiplicationType,}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00064}00064\ \ \ \ \ uint16\_t\ operand)}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00065}00065\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00066}00066\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_MPY\ +\ multiplicationType)\ =\ operand;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00069}00069\ \textcolor{keywordtype}{void}\ MPY32\_setOperandOne24Bit\ (uint8\_t\ multiplicationType,}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00070}00070\ \ \ \ \ uint32\_t\ operand)}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00071}00071\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00072}00072\ \ \ \ \ multiplicationType\ <<=\ 1;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00073}00073\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_MPY32L\ +\ multiplicationType)\ =\ operand;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00074}00074\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(MPY32\_BASE\ +\ OFS\_MPY32H\ +\ multiplicationType)\ =\ (operand\ >>\ 16);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00077}00077\ \textcolor{keywordtype}{void}\ MPY32\_setOperandOne32Bit\ (uint8\_t\ multiplicationType,}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00078}00078\ \ \ \ \ uint32\_t\ operand)}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00079}00079\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00080}00080\ \ \ \ \ multiplicationType\ <<=\ 1;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00081}00081\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_MPY32L\ +\ multiplicationType)\ =\ operand;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00082}00082\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_MPY32H\ +\ multiplicationType)\ =\ (operand\ >>\ 16);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00085}00085\ \textcolor{keywordtype}{void}\ MPY32\_setOperandTwo8Bit\ (uint8\_t\ operand)}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00086}00086\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00087}00087\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(MPY32\_BASE\ +\ OFS\_OP2)\ =\ operand;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00088}00088\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00090}00090\ \textcolor{keywordtype}{void}\ MPY32\_setOperandTwo16Bit\ (uint16\_t\ operand)}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00091}00091\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00092}00092\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_OP2)\ =\ operand;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00093}00093\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00095}00095\ \textcolor{keywordtype}{void}\ MPY32\_setOperandTwo24Bit\ (uint32\_t\ operand)}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00096}00096\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00097}00097\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_OP2L)\ =\ operand;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00098}00098\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(MPY32\_BASE\ +\ OFS\_OP2H)\ =\ (operand\ >>\ 16);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00101}00101\ \textcolor{keywordtype}{void}\ MPY32\_setOperandTwo32Bit\ (uint32\_t\ operand)}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00102}00102\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00103}00103\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_OP2L)\ =\ operand;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00104}00104\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_OP2H)\ =\ (operand\ >>\ 16);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00107}00107\ uint64\_t\ MPY32\_getResult\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00108}00108\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00109}00109\ \ \ \ \ uint64\_t\ result;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00111}00111\ \ \ \ \ result\ =\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_RES0);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00112}00112\ \ \ \ \ result\ +=\ ((uint64\_t)\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_RES1)\ <<\ 16);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00113}00113\ \ \ \ \ result\ +=\ ((uint64\_t)\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_RES2)\ <<\ 32);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00114}00114\ \ \ \ \ result\ +=\ ((uint64\_t)\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_RES3)\ <<\ 48);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00115}00115\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ result\ );}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00116}00116\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00118}00118\ uint16\_t\ MPY32\_getSumExtension\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00119}00119\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_SUMEXT)\ );}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00121}00121\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00123}00123\ uint16\_t\ MPY32\_getCarryBitValue\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00124}00124\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00125}00125\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_MPY32CTL0)\ |\ MPYC);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00126}00126\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00127}00127\ \textcolor{keywordtype}{void}\ MPY32\_clearCarryBitValue\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00128}00128\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00129}00129\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_MPY32CTL0)\ \&=\ \string~MPYC;}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00131}00131\ \textcolor{keywordtype}{void}\ MPY32\_preloadResult\ (uint64\_t\ result)}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00132}00132\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00133}00133\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_RES0)\ =\ (result\ \&\ 0xFFFF);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00134}00134\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_RES1)\ =\ ((result\ >>\ 16)\ \&\ 0xFFFF);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00135}00135\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_RES2)\ =\ ((result\ >>\ 32)\ \&\ 0xFFFF);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00136}00136\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(MPY32\_BASE\ +\ OFS\_RES3)\ =\ ((result\ >>\ 48)\ \&\ 0xFFFF);}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00137}00137\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00139}00139\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00140}00140\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00141}00141\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00144}00144\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8c_source_l00145}00145\ \textcolor{comment}{//*****************************************************************************}}
+
+\end{DoxyCode}

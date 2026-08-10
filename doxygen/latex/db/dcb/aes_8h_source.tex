@@ -1,0 +1,187 @@
+\doxysection{aes.\+h}
+\hypertarget{aes_8h_source}{}\label{aes_8h_source}\index{driverlib/MSP430F5xx\_6xx/aes.h@{driverlib/MSP430F5xx\_6xx/aes.h}}
+\doxymbox{\hyperlink{aes_8h}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00003}00003\ \textcolor{comment}{//\ aes.h\ -\/\ Driver\ for\ the\ AES\ Module.}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_\_MSP430WARE\_AES\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_\_MSP430WARE\_AES\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00012}00012\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_AES\_\_}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00014}00014\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00015}00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00016}00016\ \textcolor{comment}{//\ If\ building\ with\ a\ C++\ compiler,\ make\ all\ of\ the\ definitions\ in\ this\ header}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00017}00017\ \textcolor{comment}{//\ have\ a\ C\ binding.}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00019}00019\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00020}00020\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00021}00021\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00023}00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00025}00025\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00026}00026\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00027}00027\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ toThe\ following\ are\ values\ that}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00028}00028\ \textcolor{comment}{//\ can\ be\ returned\ by\ the\ AES\_isBusy()\ function.}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00029}00029\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00030}00030\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00031}00031\ \textcolor{preprocessor}{\#define\ AES\_BUSY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AESBUSY}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ AES\_NOT\_BUSY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00034}00034\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00035}00035\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00036}00036\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ toThe\ following\ are\ values\ that}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00037}00037\ \textcolor{comment}{//\ can\ be\ returned\ by\ the\ AES\_getErrorFlagStatus()\ function.}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00038}00038\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00039}00039\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00040}00040\ \textcolor{preprocessor}{\#define\ AES\_ERROR\_OCCURRED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AESERRFG}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00041}00041\ \textcolor{preprocessor}{\#define\ AES\_NO\_ERROR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00043}00043\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00044}00044\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00045}00045\ \textcolor{comment}{//\ Prototypes\ for\ the\ APIs.}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00046}00046\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00047}00047\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00049}00049\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00050}00050\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00060}00060\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00061}00061\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00062}00062\ \textcolor{keyword}{extern}\ uint8\_t\ AES\_setCipherKey(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *CipherKey);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00065}00065\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00066}00066\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00079}00079\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00080}00080\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00081}00081\ \textcolor{keyword}{extern}\ uint8\_t\ AES\_encryptData(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *Data,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *encryptedData);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00085}00085\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00086}00086\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00100}00100\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00101}00101\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00102}00102\ \textcolor{keyword}{extern}\ uint8\_t\ AES\_decryptData(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *Data,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *decryptedData);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00106}00106\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00107}00107\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00118}00118\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00119}00119\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00120}00120\ \textcolor{keyword}{extern}\ uint8\_t\ AES\_setDecipherKey(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *CipherKey);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00123}00123\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00124}00124\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00137}00137\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00138}00138\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00139}00139\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ AES\_clearInterrupt(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00141}00141\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00142}00142\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00152}00152\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00153}00153\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00154}00154\ \textcolor{keyword}{extern}\ uint32\_t\ AES\_getInterruptStatus(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00156}00156\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00157}00157\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00168}00168\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00169}00169\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00170}00170\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ AES\_enableInterrupt(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00172}00172\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00173}00173\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00184}00184\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00185}00185\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00186}00186\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ AES\_disableInterrupt(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00188}00188\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00189}00189\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00200}00200\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00201}00201\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00202}00202\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ AES\_reset(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00204}00204\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00205}00205\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00221}00221\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00222}00222\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00223}00223\ \textcolor{keyword}{extern}\ uint8\_t\ AES\_startEncryptData(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *Data,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *encryptedData);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00227}00227\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00228}00228\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00243}00243\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00244}00244\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00245}00245\ \textcolor{keyword}{extern}\ uint8\_t\ AES\_startDecryptData(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *Data);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00248}00248\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00249}00249\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00261}00261\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00262}00262\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00263}00263\ \textcolor{keyword}{extern}\ uint8\_t\ AES\_startSetDecipherKey(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *CipherKey);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00266}00266\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00267}00267\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00280}00280\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00281}00281\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00282}00282\ \textcolor{keyword}{extern}\ uint8\_t\ AES\_getDataOut(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *OutputData);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00285}00285\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00286}00286\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00299}00299\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00300}00300\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00301}00301\ \textcolor{keyword}{extern}\ uint8\_t\ AES\_isBusy(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00303}00303\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00304}00304\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00316}00316\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00317}00317\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00318}00318\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ AES\_clearErrorFlag(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00320}00320\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00321}00321\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00335}00335\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00336}00336\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00337}00337\ \textcolor{keyword}{extern}\ uint32\_t\ AES\_getErrorFlagStatus(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00339}00339\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00340}00340\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00352}00352\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00353}00353\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00354}00354\ \textcolor{keyword}{extern}\ uint8\_t\ AES\_startDecryptDataUsingEncryptionKey(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *Data);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00357}00357\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00358}00358\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00371}00371\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00372}00372\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00373}00373\ \textcolor{keyword}{extern}\ uint8\_t\ AES\_decryptDataUsingEncryptionKey(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ *Data,}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *decryptedData);}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00377}00377\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00378}00378\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00379}00379\ \textcolor{comment}{//\ Mark\ the\ end\ of\ the\ C\ bindings\ section\ for\ C++\ compilers.}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00380}00380\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00381}00381\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00382}00382\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00383}00383\ \}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00384}00384\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00385}00385\ }
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00386}00386\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{aes_8h_source_l00387}00387\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MSP430WARE\_AES\_H\_\_}}
+
+\end{DoxyCode}

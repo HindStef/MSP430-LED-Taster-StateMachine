@@ -1,0 +1,134 @@
+\doxysection{sysctl.\+c}
+\hypertarget{sysctl_8c_source}{}\label{sysctl_8c_source}\index{driverlib/MSP430F5xx\_6xx/sysctl.c@{driverlib/MSP430F5xx\_6xx/sysctl.c}}
+\doxymbox{\hyperlink{sysctl_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00003}00003\ \textcolor{comment}{//\ sysctl.c\ -\/\ Driver\ for\ the\ sysctl\ Module.}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00007}00007\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00011}00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00012}00012\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_SYS\_\_}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{sysctl_8h}{sysctl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00021}00021\ \textcolor{keywordtype}{void}\ SysCtl\_enableDedicatedJTAGPins\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00023}00023\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSCTL\_L)\ |=\ SYSJTAGPIN;}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00026}00026\ uint8\_t\ SysCtl\_getBSLEntryIndication\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00027}00027\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00028}00028\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSCTL\_L)\ \&\ SYSBSLIND)\{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (SYSCTL\_BSLENTRY\_INDICATED)\ ;}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00030}00030\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (SYSCTL\_BSLENTRY\_NOTINDICATED)\ ;}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00035}00035\ \textcolor{keywordtype}{void}\ SysCtl\_enablePMMAccessProtect\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00037}00037\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSCTL\_L)\ |=\ SYSPMMPE;}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00038}00038\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00040}00040\ \textcolor{keywordtype}{void}\ SysCtl\_enableRAMBasedInterruptVectors\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00041}00041\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00042}00042\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSCTL\_L)\ |=\ SYSRIVECT;}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00045}00045\ \textcolor{keywordtype}{void}\ SysCtl\_disableRAMBasedInterruptVectors\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00046}00046\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00047}00047\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSCTL\_L)\ \&=\ \string~(SYSRIVECT);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00050}00050\ \textcolor{keywordtype}{void}\ SysCtl\_enableBSLProtect\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00051}00051\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00052}00052\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(SYS\_BASE\ +\ OFS\_SYSBSLC)\ |=\ SYSBSLPE;}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00055}00055\ \textcolor{keywordtype}{void}\ SysCtl\_disableBSLProtect\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00056}00056\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00057}00057\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(SYS\_BASE\ +\ OFS\_SYSBSLC)\ \&=\ \string~(SYSBSLPE);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00060}00060\ \textcolor{keywordtype}{void}\ SysCtl\_enableBSLMemory\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00061}00061\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00062}00062\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(SYS\_BASE\ +\ OFS\_SYSBSLC)\ \&=\ \string~(SYSBSLOFF);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00065}00065\ \textcolor{keywordtype}{void}\ SysCtl\_disableBSLMemory\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00066}00066\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00067}00067\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(SYS\_BASE\ +\ OFS\_SYSBSLC)\ |=\ SYSBSLOFF;}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00070}00070\ \textcolor{keywordtype}{void}\ SysCtl\_setRAMAssignedToBSL\ (uint8\_t\ BSLRAMAssignment)}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00071}00071\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00072}00072\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSBSLC\_L)\ \&=\ \string~(SYSBSLR);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00073}00073\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSBSLC\_L)\ |=\ BSLRAMAssignment;}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00076}00076\ \textcolor{keywordtype}{void}\ SysCtl\_setBSLSize\ (uint8\_t\ BSLSizeSelect)}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00077}00077\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00078}00078\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSBSLC\_L)\ \&=\ \string~(SYSBSLSIZE0\ +\ SYSBSLSIZE1);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00079}00079\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSBSLC\_L)\ |=\ BSLSizeSelect;}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00082}00082\ \textcolor{keywordtype}{void}\ SysCtl\_initJTAGMailbox\ (uint8\_t\ mailboxSizeSelect,}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00083}00083\ \ \ \ \ uint8\_t\ autoClearInboxFlagSelect)}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00084}00084\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00085}00085\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSJMBC\_L)\ \&=\ \string~(JMBCLR1OFF\ +\ JMBCLR0OFF\ +\ JMBMODE);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00086}00086\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSJMBC\_L)\ |=}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ mailboxSizeSelect\ +\ autoClearInboxFlagSelect;}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00088}00088\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00090}00090\ uint8\_t\ SysCtl\_getJTAGMailboxFlagStatus\ (uint8\_t\ mailboxFlagMask)}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00091}00091\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSJMBC\_L)\ \&\ mailboxFlagMask);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00093}00093\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00095}00095\ \textcolor{keywordtype}{void}\ SysCtl\_clearJTAGMailboxFlagStatus\ (uint8\_t\ mailboxFlagMask)}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00096}00096\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00097}00097\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(SYS\_BASE\ +\ OFS\_SYSJMBC\_L)\ \&=\ \string~(mailboxFlagMask);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00098}00098\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00100}00100\ uint16\_t\ SysCtl\_getJTAGInboxMessage16Bit\ (uint8\_t\ inboxSelect)}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00101}00101\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(SYS\_BASE\ +\ OFS\_SYSJMBI0\ +\ inboxSelect)\ );}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00103}00103\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00105}00105\ uint32\_t\ SysCtl\_getJTAGInboxMessage32Bit\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00106}00106\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00107}00107\ \ \ \ \ uint32\_t\ JTAGInboxMessageLow\ =\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(SYS\_BASE\ +\ OFS\_SYSJMBI0);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00108}00108\ \ \ \ \ uint32\_t\ JTAGInboxMessageHigh\ =\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(SYS\_BASE\ +\ OFS\_SYSJMBI1);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ (JTAGInboxMessageHigh\ <<\ 16)\ +\ JTAGInboxMessageLow\ );}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00111}00111\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00113}00113\ \textcolor{keywordtype}{void}\ SysCtl\_setJTAGOutgoingMessage16Bit\ (uint8\_t\ outboxSelect,}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00114}00114\ \ \ \ \ uint16\_t\ outgoingMessage)}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00115}00115\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00116}00116\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(SYS\_BASE\ +\ OFS\_SYSJMBO0\ +\ outboxSelect)\ =\ outgoingMessage;}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00117}00117\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00119}00119\ \textcolor{keywordtype}{void}\ SysCtl\_setJTAGOutgoingMessage32Bit\ (uint32\_t\ outgoingMessage)}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00120}00120\ \{}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00121}00121\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(SYS\_BASE\ +\ OFS\_SYSJMBO0)\ =\ (outgoingMessage);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00122}00122\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(SYS\_BASE\ +\ OFS\_SYSJMBO1)\ =\ (outgoingMessage\ >>\ 16);}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00126}00126\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00127}00127\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00128}00128\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00131}00131\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{sysctl_8c_source_l00132}00132\ \textcolor{comment}{//*****************************************************************************}}
+
+\end{DoxyCode}

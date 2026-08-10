@@ -1,0 +1,58 @@
+\doxysection{pmap.\+c}
+\hypertarget{pmap_8c_source}{}\label{pmap_8c_source}\index{driverlib/MSP430F5xx\_6xx/pmap.c@{driverlib/MSP430F5xx\_6xx/pmap.c}}
+\doxymbox{\hyperlink{pmap_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00003}00003\ \textcolor{comment}{//\ pmap.c\ -\/\ Driver\ for\ the\ pmap\ Module.}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00007}00007\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00011}00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00012}00012\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_PORT\_MAPPING\_\_}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{pmap_8h}{pmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00021}00021\ \textcolor{keywordtype}{void}\ PMAP\_initPorts\ (\ uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00022}00022\ \ \ \ \ PMAP\_initPortsParam\ *param)}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//Store\ current\ interrupt\ state,\ then\ disable\ all\ interrupts}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00026}00026\ \ \ \ \ uint16\_t\ globalInterruptState\ =\ \_\_get\_SR\_register()\ \&\ GIE;}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00027}00027\ \ \ \ \ \_\_disable\_interrupt();}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//Get\ write-\/access\ to\ port\ mapping\ registers:}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00030}00030\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_PMAPKEYID)\ =\ PMAPPW;}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//Enable/Disable\ reconfiguration\ during\ runtime}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00033}00033\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PMAPCTL)\ \&=\ \string~PMAPRECFG;}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00034}00034\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PMAPCTL)\ |=\ param-\/>portMapReconfigure;}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//Configure\ Port\ Mapping:}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00037}00037\ \ \ \ \ uint16\_t\ i;}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ param-\/>numberOfPorts\ *\ 8;\ i++)}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ param-\/>PxMAPy[i]\ =\ param-\/>portMapping[i];}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//Disable\ write-\/access\ to\ port\ mapping\ registers:}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00044}00044\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PMAPKEYID)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//Restore\ previous\ interrupt\ state}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00047}00047\ \ \ \ \ \_\_bis\_SR\_register(globalInterruptState);}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00050}00050\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00051}00051\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00052}00052\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00055}00055\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8c_source_l00056}00056\ \textcolor{comment}{//*****************************************************************************}}
+
+\end{DoxyCode}

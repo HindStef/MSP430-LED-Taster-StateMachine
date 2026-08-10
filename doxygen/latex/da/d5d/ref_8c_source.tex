@@ -1,0 +1,95 @@
+\doxysection{ref.\+c}
+\hypertarget{ref_8c_source}{}\label{ref_8c_source}\index{driverlib/MSP430F5xx\_6xx/ref.c@{driverlib/MSP430F5xx\_6xx/ref.c}}
+\doxymbox{\hyperlink{ref_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00003}00003\ \textcolor{comment}{//\ ref.c\ -\/\ Driver\ for\ the\ ref\ Module.}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00007}00007\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00011}00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00012}00012\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_REF\_\_}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{ref_8h}{ref.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00021}00021\ \textcolor{keywordtype}{void}\ Ref\_setReferenceVoltage\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00022}00022\ \ \ \ \ uint8\_t\ referenceVoltageSelect)}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00024}00024\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_REFCTL0\_L)\ \&=\ \string~(REFVSEL\_3);}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00025}00025\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_REFCTL0\_L)\ |=\ referenceVoltageSelect;}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00026}00026\ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00028}00028\ \textcolor{keywordtype}{void}\ Ref\_disableTempSensor\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00029}00029\ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00030}00030\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_REFCTL0\_L)\ |=\ REFTCOFF;}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00033}00033\ \textcolor{keywordtype}{void}\ Ref\_enableTempSensor\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00034}00034\ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00035}00035\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_REFCTL0\_L)\ \&=\ \string~(REFTCOFF);}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00038}00038\ \textcolor{keywordtype}{void}\ Ref\_enableReferenceVoltageOutput\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00040}00040\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_REFCTL0\_L)\ |=\ REFOUT;}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00043}00043\ \textcolor{keywordtype}{void}\ Ref\_disableReferenceVoltageOutput\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00044}00044\ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00045}00045\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_REFCTL0\_L)\ \&=\ \string~(REFOUT);}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00048}00048\ \textcolor{keywordtype}{void}\ Ref\_enableReferenceVoltage\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00050}00050\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_REFCTL0\_L)\ |=\ REFON;}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00053}00053\ \textcolor{keywordtype}{void}\ Ref\_disableReferenceVoltage\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00054}00054\ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00055}00055\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_REFCTL0\_L)\ \&=\ \string~(REFON);}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00058}00058\ uint16\_t\ Ref\_getBandgapMode\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00059}00059\ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}((baseAddress)\ +\ OFS\_REFCTL0)\ \&\ BGMODE);}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00063}00063\ \textcolor{keywordtype}{bool}\ Ref\_isBandgapActive\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00064}00064\ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}((baseAddress)\ +\ OFS\_REFCTL0)\ \&\ REFBGACT)\{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (REF\_ACTIVE)\ ;}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00067}00067\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (REF\_INACTIVE)\ ;}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00070}00070\ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00072}00072\ uint16\_t\ Ref\_isRefGenBusy\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00073}00073\ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}((baseAddress)\ +\ OFS\_REFCTL0)\ \&\ REFGENBUSY);}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00077}00077\ \textcolor{keywordtype}{bool}\ Ref\_isRefGenActive\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00078}00078\ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}((baseAddress)\ +\ OFS\_REFCTL0)\ \&\ REFGENACT)\{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (REF\_ACTIVE)\ ;}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00081}00081\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (REF\_INACTIVE)\ ;}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00087}00087\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00088}00088\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00089}00089\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00092}00092\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ref_8c_source_l00093}00093\ \textcolor{comment}{//*****************************************************************************}}
+
+\end{DoxyCode}

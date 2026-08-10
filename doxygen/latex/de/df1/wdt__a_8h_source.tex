@@ -1,0 +1,107 @@
+\doxysection{wdt\+\_\+a.\+h}
+\hypertarget{wdt__a_8h_source}{}\label{wdt__a_8h_source}\index{driverlib/MSP430F5xx\_6xx/wdt\_a.h@{driverlib/MSP430F5xx\_6xx/wdt\_a.h}}
+\doxymbox{\hyperlink{wdt__a_8h}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00003}00003\ \textcolor{comment}{//\ wdt\_a.h\ -\/\ Driver\ for\ the\ WDT\_A\ Module.}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_\_MSP430WARE\_WDT\_A\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_\_MSP430WARE\_WDT\_A\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00012}00012\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_WDT\_A\_\_}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00014}00014\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00015}00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00016}00016\ \textcolor{comment}{//\ If\ building\ with\ a\ C++\ compiler,\ make\ all\ of\ the\ definitions\ in\ this\ header}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00017}00017\ \textcolor{comment}{//\ have\ a\ C\ binding.}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00019}00019\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00020}00020\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00021}00021\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00023}00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00025}00025\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00026}00026\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00027}00027\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ clockSelect\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00028}00028\ \textcolor{comment}{//\ functions:\ WDT\_A\_initWatchdogTimer(),\ and\ WDT\_A\_initIntervalTimer().}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00029}00029\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00030}00030\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00031}00031\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKSOURCE\_SMCLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTSSEL\_0)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKSOURCE\_ACLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTSSEL\_1)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKSOURCE\_VLOCLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTSSEL\_2)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00034}00034\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKSOURCE\_XCLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTSSEL\_3)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00036}00036\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00037}00037\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00038}00038\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ clockDivider\ parameter}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00039}00039\ \textcolor{comment}{//\ for\ functions:\ WDT\_A\_initWatchdogTimer(),\ and\ WDT\_A\_initIntervalTimer().}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00040}00040\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00041}00041\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00042}00042\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKDIVIDER\_2G\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTIS\_0)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00043}00043\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKDIVIDER\_128M\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTIS\_1)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00044}00044\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKDIVIDER\_8192K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTIS\_2)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00045}00045\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKDIVIDER\_512K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTIS\_3)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00046}00046\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKDIVIDER\_32K\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTIS\_4)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00047}00047\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKDIVIDER\_8192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTIS\_5)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00048}00048\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKDIVIDER\_512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTIS\_6)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00049}00049\ \textcolor{preprocessor}{\#define\ WDT\_A\_CLOCKDIVIDER\_64\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (WDTIS\_7)}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00051}00051\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00052}00052\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00053}00053\ \textcolor{comment}{//\ Prototypes\ for\ the\ APIs.}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00054}00054\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00055}00055\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00057}00057\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00058}00058\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00067}00067\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00068}00068\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00069}00069\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ WDT\_A\_hold(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00071}00071\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00072}00072\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00081}00081\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00082}00082\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00083}00083\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ WDT\_A\_start(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00085}00085\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00086}00086\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00094}00094\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00095}00095\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00096}00096\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ WDT\_A\_resetTimer(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00098}00098\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00099}00099\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00128}00128\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00129}00129\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00130}00130\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ WDT\_A\_initWatchdogTimer(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ clockSelect,}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ clockDivider);}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00134}00134\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00135}00135\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00163}00163\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00164}00164\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00165}00165\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ WDT\_A\_initIntervalTimer(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ clockSelect,}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ clockDivider);}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00169}00169\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00170}00170\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00171}00171\ \textcolor{comment}{//\ Mark\ the\ end\ of\ the\ C\ bindings\ section\ for\ C++\ compilers.}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00172}00172\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00173}00173\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00174}00174\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00175}00175\ \}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00176}00176\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00178}00178\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{wdt__a_8h_source_l00179}00179\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MSP430WARE\_WDT\_A\_H\_\_}}
+
+\end{DoxyCode}

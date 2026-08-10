@@ -1,0 +1,416 @@
+\doxysection{adc10\+\_\+a.\+h}
+\hypertarget{adc10__a_8h_source}{}\label{adc10__a_8h_source}\index{driverlib/MSP430F5xx\_6xx/adc10\_a.h@{driverlib/MSP430F5xx\_6xx/adc10\_a.h}}
+\doxymbox{\hyperlink{adc10__a_8h}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00003}00003\ \textcolor{comment}{//\ adc10\_a.h\ -\/\ Driver\ for\ the\ ADC10\_A\ Module.}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_\_MSP430WARE\_ADC10\_A\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_\_MSP430WARE\_ADC10\_A\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00012}00012\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_ADC10\_A\_\_}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00014}00014\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00015}00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00016}00016\ \textcolor{comment}{//\ If\ building\ with\ a\ C++\ compiler,\ make\ all\ of\ the\ definitions\ in\ this\ header}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00017}00017\ \textcolor{comment}{//\ have\ a\ C\ binding.}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00019}00019\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00020}00020\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00021}00021\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00023}00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00025}00025\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00026}00026\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00027}00027\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ clockSourceSelect}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00028}00028\ \textcolor{comment}{//\ parameter\ for\ functions:\ ADC10\_A\_init().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00029}00029\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00030}00030\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00031}00031\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKSOURCE\_ADC10OSC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SSEL\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKSOURCE\_ACLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SSEL\_1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKSOURCE\_MCLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SSEL\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00034}00034\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKSOURCE\_SMCLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SSEL\_3)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00036}00036\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00037}00037\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00038}00038\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ clockSourceDivider}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00039}00039\ \textcolor{comment}{//\ parameter\ for\ functions:\ ADC10\_A\_init().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00040}00040\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00041}00041\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00042}00042\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_0\ +\ ADC10PDIV\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00043}00043\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_1\ +\ ADC10PDIV\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00044}00044\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_2\ +\ ADC10PDIV\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00045}00045\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_3\ +\ ADC10PDIV\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00046}00046\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_4\ +\ ADC10PDIV\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00047}00047\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_5\ +\ ADC10PDIV\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00048}00048\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_6\ +\ ADC10PDIV\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00049}00049\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_7\ +\ ADC10PDIV\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00050}00050\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_12\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_2\ +\ ADC10PDIV\_1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00051}00051\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_16\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_3\ +\ ADC10PDIV\_1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00052}00052\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_20\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_4\ +\ ADC10PDIV\_1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00053}00053\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_24\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_5\ +\ ADC10PDIV\_1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00054}00054\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_28\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_6\ +\ ADC10PDIV\_1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00055}00055\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_32\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_7\ +\ ADC10PDIV\_1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00056}00056\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_64\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_0\ +\ ADC10PDIV\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00057}00057\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_1\ +\ ADC10PDIV\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00058}00058\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_2\ +\ ADC10PDIV\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00059}00059\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_3\ +\ ADC10PDIV\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00060}00060\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_4\ +\ ADC10PDIV\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00061}00061\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_5\ +\ ADC10PDIV\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00062}00062\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_6\ +\ ADC10PDIV\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00063}00063\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CLOCKDIVIDER\_512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DIV\_7\ +\ ADC10PDIV\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00065}00065\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00066}00066\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00067}00067\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00068}00068\ \textcolor{comment}{//\ sampleHoldSignalSourceSelect\ parameter\ for\ functions:\ ADC10\_A\_init().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00069}00069\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00070}00070\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00071}00071\ \textcolor{preprocessor}{\#define\ ADC10\_A\_SAMPLEHOLDSOURCE\_SC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHS\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00072}00072\ \textcolor{preprocessor}{\#define\ ADC10\_A\_SAMPLEHOLDSOURCE\_1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHS\_1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00073}00073\ \textcolor{preprocessor}{\#define\ ADC10\_A\_SAMPLEHOLDSOURCE\_2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHS\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00074}00074\ \textcolor{preprocessor}{\#define\ ADC10\_A\_SAMPLEHOLDSOURCE\_3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHS\_3)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00076}00076\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00077}00077\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00078}00078\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ multipleSamplesEnabled}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00079}00079\ \textcolor{comment}{//\ parameter\ for\ functions:\ ADC10\_A\_setupSamplingTimer().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00080}00080\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00081}00081\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00082}00082\ \textcolor{preprocessor}{\#define\ ADC10\_A\_MULTIPLESAMPLESDISABLE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(ADC10MSC))}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00083}00083\ \textcolor{preprocessor}{\#define\ ADC10\_A\_MULTIPLESAMPLESENABLE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10MSC)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00085}00085\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00086}00086\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00087}00087\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ clockCycleHoldCount}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00088}00088\ \textcolor{comment}{//\ parameter\ for\ functions:\ ADC10\_A\_setupSamplingTimer().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00089}00089\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00090}00090\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00091}00091\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_4\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00092}00092\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_8\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00093}00093\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_16\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00094}00094\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_32\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_3)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00095}00095\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_64\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_4)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00096}00096\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_96\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_5)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00097}00097\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_128\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_6)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00098}00098\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_192\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_7)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00099}00099\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_256\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_8)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00100}00100\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_384\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_9)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00101}00101\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_512\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_10)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00102}00102\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_768\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_11)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00103}00103\ \textcolor{preprocessor}{\#define\ ADC10\_A\_CYCLEHOLD\_1024\_CYCLES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SHT\_12)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00105}00105\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00106}00106\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00107}00107\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00108}00108\ \textcolor{comment}{//\ positiveRefVoltageSourceSelect\ parameter\ for\ functions:}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00109}00109\ \textcolor{comment}{//\ ADC10\_A\_configureMemory().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00110}00110\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00111}00111\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00112}00112\ \textcolor{preprocessor}{\#define\ ADC10\_A\_VREFPOS\_AVCC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(ADC10SREF0\ +\ ADC10SREF1))}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00113}00113\ \textcolor{preprocessor}{\#define\ ADC10\_A\_VREFPOS\_EXT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SREF1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00114}00114\ \textcolor{preprocessor}{\#define\ ADC10\_A\_VREFPOS\_INT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SREF0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00116}00116\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00117}00117\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00118}00118\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ inputSourceSelect}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00119}00119\ \textcolor{comment}{//\ parameter\ for\ functions:\ ADC10\_A\_configureMemory().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00120}00120\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00121}00121\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00122}00122\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00123}00123\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00124}00124\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00125}00125\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_3)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00126}00126\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_4)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00127}00127\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_5)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00128}00128\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_6)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00129}00129\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_7)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00130}00130\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_8)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00131}00131\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A9\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_9)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00132}00132\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_TEMPSENSOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_10)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00133}00133\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_BATTERYMONITOR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_11)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00134}00134\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A12\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_12)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00135}00135\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A13\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_13)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00136}00136\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A14\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_14)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00137}00137\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INPUT\_A15\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INCH\_15)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00139}00139\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00140}00140\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00141}00141\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00142}00142\ \textcolor{comment}{//\ negativeRefVoltageSourceSelect\ parameter\ for\ functions:}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00143}00143\ \textcolor{comment}{//\ ADC10\_A\_configureMemory().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00144}00144\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00145}00145\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00146}00146\ \textcolor{preprocessor}{\#define\ ADC10\_A\_VREFNEG\_AVSS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(ADC10SREF2))}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00147}00147\ \textcolor{preprocessor}{\#define\ ADC10\_A\_VREFNEG\_EXT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SREF2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00149}00149\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00150}00150\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00151}00151\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ interruptMask\ parameter}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00152}00152\ \textcolor{comment}{//\ for\ functions:\ ADC10\_A\_enableInterrupt(),\ and\ ADC10\_A\_disableInterrupt().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00153}00153\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00154}00154\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00155}00155\ \textcolor{preprocessor}{\#define\ ADC10\_A\_TIMEOVERFLOW\_INT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10TOVIE)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00156}00156\ \textcolor{preprocessor}{\#define\ ADC10\_A\_OVERFLOW\_INT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10OVIE)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00157}00157\ \textcolor{preprocessor}{\#define\ ADC10\_A\_ABOVETHRESHOLD\_INT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10HIIE)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00158}00158\ \textcolor{preprocessor}{\#define\ ADC10\_A\_BELOWTHRESHOLD\_INT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10LOIE)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00159}00159\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INSIDEWINDOW\_INT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INIE)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00160}00160\ \textcolor{preprocessor}{\#define\ ADC10\_A\_COMPLETED\_INT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10IE0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00162}00162\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00163}00163\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00164}00164\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ interruptFlagMask}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00165}00165\ \textcolor{comment}{//\ parameter\ for\ functions:\ ADC10\_A\_clearInterrupt(),\ and}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00166}00166\ \textcolor{comment}{//\ ADC10\_A\_getInterruptStatus().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00167}00167\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00168}00168\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00169}00169\ \textcolor{preprocessor}{\#define\ ADC10\_A\_TIMEOVERFLOW\_INTFLAG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10TOVIFG)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00170}00170\ \textcolor{preprocessor}{\#define\ ADC10\_A\_OVERFLOW\_INTFLAG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10OVIFG)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00171}00171\ \textcolor{preprocessor}{\#define\ ADC10\_A\_ABOVETHRESHOLD\_INTFLAG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10HIIFG)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00172}00172\ \textcolor{preprocessor}{\#define\ ADC10\_A\_BELOWTHRESHOLD\_INTFLAG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10LOIFG)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00173}00173\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INSIDEWINDOW\_INTFLAG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10INIFG)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00174}00174\ \textcolor{preprocessor}{\#define\ ADC10\_A\_COMPLETED\_INTFLAG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10IFG0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00176}00176\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00177}00177\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00178}00178\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00179}00179\ \textcolor{comment}{//\ conversionSequenceModeSelect\ parameter\ for\ functions:}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00180}00180\ \textcolor{comment}{//\ ADC10\_A\_startConversion().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00181}00181\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00182}00182\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00183}00183\ \textcolor{preprocessor}{\#define\ ADC10\_A\_SINGLECHANNEL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10CONSEQ\_0)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00184}00184\ \textcolor{preprocessor}{\#define\ ADC10\_A\_SEQOFCHANNELS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10CONSEQ\_1)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00185}00185\ \textcolor{preprocessor}{\#define\ ADC10\_A\_REPEATED\_SINGLECHANNEL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10CONSEQ\_2)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00186}00186\ \textcolor{preprocessor}{\#define\ ADC10\_A\_REPEATED\_SEQOFCHANNELS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10CONSEQ\_3)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00188}00188\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00189}00189\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00190}00190\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ preempt\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00191}00191\ \textcolor{comment}{//\ functions:\ ADC10\_A\_disableConversions().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00192}00192\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00193}00193\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00194}00194\ \textcolor{preprocessor}{\#define\ ADC10\_A\_COMPLETECONVERSION\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ false}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00195}00195\ \textcolor{preprocessor}{\#define\ ADC10\_A\_PREEMPTCONVERSION\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ true}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00197}00197\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00198}00198\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00199}00199\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ resolutionSelect}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00200}00200\ \textcolor{comment}{//\ parameter\ for\ functions:\ ADC10\_A\_setResolution().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00201}00201\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00202}00202\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00203}00203\ \textcolor{preprocessor}{\#define\ ADC10\_A\_RESOLUTION\_8BIT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(ADC10RES))}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00204}00204\ \textcolor{preprocessor}{\#define\ ADC10\_A\_RESOLUTION\_10BIT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10RES)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00206}00206\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00207}00207\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00208}00208\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ invertedSignal\ parameter}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00209}00209\ \textcolor{comment}{//\ for\ functions:\ ADC10\_A\_setSampleHoldSignalInversion().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00210}00210\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00211}00211\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00212}00212\ \textcolor{preprocessor}{\#define\ ADC10\_A\_NONINVERTEDSIGNAL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(ADC10ISSH))}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00213}00213\ \textcolor{preprocessor}{\#define\ ADC10\_A\_INVERTEDSIGNAL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10ISSH)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00215}00215\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00216}00216\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00217}00217\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ readBackFormat\ parameter}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00218}00218\ \textcolor{comment}{//\ for\ functions:\ ADC10\_A\_setDataReadBackFormat().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00219}00219\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00220}00220\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00221}00221\ \textcolor{preprocessor}{\#define\ ADC10\_A\_UNSIGNED\_BINARY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(ADC10DF))}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00222}00222\ \textcolor{preprocessor}{\#define\ ADC10\_A\_SIGNED\_2SCOMPLEMENT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10DF)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00224}00224\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00225}00225\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00226}00226\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ samplingRateSelect}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00227}00227\ \textcolor{comment}{//\ parameter\ for\ functions:\ ADC10\_A\_setReferenceBufferSamplingRate().}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00228}00228\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00229}00229\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00230}00230\ \textcolor{preprocessor}{\#define\ ADC10\_A\_MAXSAMPLINGRATE\_200KSPS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(ADC10SR))}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00231}00231\ \textcolor{preprocessor}{\#define\ ADC10\_A\_MAXSAMPLINGRATE\_50KSPS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (ADC10SR)}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00233}00233\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00234}00234\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00235}00235\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ toThe\ following\ are\ values\ that}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00236}00236\ \textcolor{comment}{//\ can\ be\ returned\ by\ the\ ADC10\_A\_isBusy()\ function.}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00237}00237\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00238}00238\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00239}00239\ \textcolor{preprocessor}{\#define\ ADC10\_A\_BUSY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ADC10BUSY}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00240}00240\ \textcolor{preprocessor}{\#define\ ADC10\_A\_NOTBUSY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00242}00242\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00243}00243\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00244}00244\ \textcolor{comment}{//\ Prototypes\ for\ the\ APIs.}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00245}00245\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00246}00246\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00248}00248\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00249}00249\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00313}00313\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00314}00314\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00315}00315\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ ADC10\_A\_init(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ sampleHoldSignalSourceSelect,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ clockSourceSelect,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ clockSourceDivider);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00320}00320\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00321}00321\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00331}00331\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00332}00332\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00333}00333\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_enable(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00335}00335\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00336}00336\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00346}00346\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00347}00347\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00348}00348\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_disable(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00350}00350\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00351}00351\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00391}00391\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00392}00392\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00393}00393\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_setupSamplingTimer(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ clockCycleHoldCount,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ multipleSamplesEnabled);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00396}00396\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00397}00397\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00398}00398\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00408}00408\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00409}00409\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00410}00410\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_disableSamplingTimer(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00412}00412\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00413}00413\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00463}00463\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00464}00464\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00465}00465\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_configureMemory(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ inputSourceSelect,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ positiveRefVoltageSourceSelect,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ negativeRefVoltageSourceSelect);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00469}00469\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00470}00470\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00471}00471\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00498}00498\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00499}00499\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00500}00500\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_enableInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ interruptMask);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00502}00502\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00503}00503\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00504}00504\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00531}00531\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00532}00532\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00533}00533\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_disableInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ interruptMask);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00535}00535\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00536}00536\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00537}00537\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00566}00566\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00567}00567\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00568}00568\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_clearInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ interruptFlagMask);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00570}00570\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00571}00571\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00572}00572\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00597}00597\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00598}00598\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00599}00599\ \textcolor{keyword}{extern}\ uint16\_t\ ADC10\_A\_getInterruptStatus(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00600}00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ interruptFlagMask);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00601}00601\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00602}00602\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00603}00603\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00644}00644\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00645}00645\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00646}00646\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_startConversion(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ conversionSequenceModeSelect);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00648}00648\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00649}00649\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00650}00650\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00678}00678\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00679}00679\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00680}00680\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_disableConversions(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00681}00681\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ preempt);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00682}00682\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00683}00683\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00684}00684\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00697}00697\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00698}00698\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00699}00699\ \textcolor{keyword}{extern}\ int16\_t\ ADC10\_A\_getResults(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00700}00700\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00701}00701\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00702}00702\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00716}00716\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00717}00717\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00718}00718\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_setResolution(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00719}00719\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ resolutionSelect);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00720}00720\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00721}00721\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00722}00722\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00742}00742\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00743}00743\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00744}00744\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_setSampleHoldSignalInversion(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00745}00745\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ invertedSignal);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00746}00746\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00747}00747\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00748}00748\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00767}00767\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00768}00768\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00769}00769\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_setDataReadBackFormat(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00770}00770\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ readBackFormat);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00771}00771\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00772}00772\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00773}00773\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00783}00783\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00784}00784\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00785}00785\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_enableReferenceBurst(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00786}00786\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00787}00787\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00788}00788\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00797}00797\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00798}00798\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00799}00799\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_disableReferenceBurst(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00800}00800\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00801}00801\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00802}00802\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00817}00817\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00818}00818\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00819}00819\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_setReferenceBufferSamplingRate(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00820}00820\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ samplingRateSelect);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00821}00821\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00822}00822\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00823}00823\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00836}00836\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00837}00837\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00838}00838\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ ADC10\_A\_setWindowComp(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00839}00839\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ highThreshold,}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00840}00840\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ lowThreshold);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00841}00841\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00842}00842\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00843}00843\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00852}00852\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00853}00853\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00854}00854\ \textcolor{keyword}{extern}\ uint32\_t\ ADC10\_A\_getMemoryAddressForDMA(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00855}00855\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00856}00856\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00857}00857\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00869}00869\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00870}00870\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00871}00871\ \textcolor{keyword}{extern}\ uint16\_t\ ADC10\_A\_isBusy(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00872}00872\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00873}00873\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00874}00874\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00875}00875\ \textcolor{comment}{//\ Mark\ the\ end\ of\ the\ C\ bindings\ section\ for\ C++\ compilers.}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00876}00876\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00877}00877\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00878}00878\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00879}00879\ \}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00880}00880\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00881}00881\ }
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00882}00882\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{adc10__a_8h_source_l00883}00883\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MSP430WARE\_ADC10\_A\_H\_\_}}
+
+\end{DoxyCode}

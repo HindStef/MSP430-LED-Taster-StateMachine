@@ -1,0 +1,335 @@
+\doxysection{timer\+\_\+a.\+c}
+\hypertarget{timer__a_8c_source}{}\label{timer__a_8c_source}\index{driverlib/MSP430F5xx\_6xx/timer\_a.c@{driverlib/MSP430F5xx\_6xx/timer\_a.c}}
+\doxymbox{\hyperlink{timer__a_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00003}00003\ \textcolor{comment}{//\ timer\_a.c\ -\/\ Driver\ for\ the\ timer\_a\ Module.}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00007}00007\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00011}00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00012}00012\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_TxA7\_\_}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{timer__a_8h}{timer\_a.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00021}00021\ \textcolor{keywordtype}{void}\ Timer\_A\_startCounter\ (\ uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00022}00022\ \ \ \ \ uint16\_t\ timerMode}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00023}00023\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00025}00025\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ \&=\ \string~MC\_3;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00026}00026\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ |=\ timerMode;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00029}00029\ \textcolor{keywordtype}{void}\ Timer\_A\_initContinuousMode\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00030}00030\ \ \ \ \ Timer\_A\_initContinuousModeParam\ *param)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00031}00031\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00033}00033\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ OFS\_TAxCTL)\ \&=\ \string~(TIMER\_A\_CLOCKSOURCE\_INVERTED\_EXTERNAL\_TXCLK\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_UPDOWN\_MODE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_DO\_CLEAR\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_TAIE\_INTERRUPT\_ENABLE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ID\_\_8}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00040}00040\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxEX0)\ \&=\ \string~TAIDEX\_7;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00042}00042\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxEX0)\ |=\ param-\/>clockSourceDivider\&0x7;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00043}00043\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ |=\ (param-\/>clockSource\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>timerClear\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>timerInterruptEnable\_TAIE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((param-\/>clockSourceDivider>>3)<<6));}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{if}(param-\/>startTimer)\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ |=\ TIMER\_A\_CONTINUOUS\_MODE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00053}00053\ \textcolor{keywordtype}{void}\ Timer\_A\_initUpMode\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00054}00054\ \ \ \ \ Timer\_A\_initUpModeParam\ *param)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00055}00055\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00057}00057\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ \&=}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ \string~(TIMER\_A\_CLOCKSOURCE\_INVERTED\_EXTERNAL\_TXCLK\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_UPDOWN\_MODE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_DO\_CLEAR\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_TAIE\_INTERRUPT\_ENABLE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ ID\_\_8}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00064}00064\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxEX0)\ \&=\ \string~TAIDEX\_7;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00066}00066\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxEX0)\ |=\ param-\/>clockSourceDivider\&0x7;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00067}00067\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ |=\ (param-\/>clockSource\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>timerClear\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>timerInterruptEnable\_TAIE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((param-\/>clockSourceDivider>>3)<<6));}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{if}\ (param-\/>startTimer)\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ |=\ TIMER\_A\_UP\_MODE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (TIMER\_A\_CCIE\_CCR0\_INTERRUPT\_ENABLE\ ==}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ param-\/>captureCompareInterruptEnable\_CCR0\_CCIE)\{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCCTL0)\ \ |=\ TIMER\_A\_CCIE\_CCR0\_INTERRUPT\_ENABLE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00079}00079\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCCTL0)\ \ \&=\ \string~TIMER\_A\_CCIE\_CCR0\_INTERRUPT\_ENABLE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00083}00083\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCCR0)\ =\ param-\/>timerPeriod;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00086}00086\ \textcolor{keywordtype}{void}\ Timer\_A\_initUpDownMode(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00087}00087\ \ \ \ \ Timer\_A\_initUpDownModeParam\ *param)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00088}00088\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00089}00089\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ \&=}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \string~(TIMER\_A\_CLOCKSOURCE\_INVERTED\_EXTERNAL\_TXCLK\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_UPDOWN\_MODE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_DO\_CLEAR\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_TAIE\_INTERRUPT\_ENABLE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ ID\_\_8}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00096}00096\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxEX0)\ \&=\ \string~TAIDEX\_7;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00098}00098\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxEX0)\ |=\ param-\/>clockSourceDivider\&0x7;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00099}00099\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ |=\ (param-\/>clockSource\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>timerClear\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>timerInterruptEnable\_TAIE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((param-\/>clockSourceDivider>>3)<<6));}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (param-\/>startTimer)\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ |=\ TIMER\_A\_UPDOWN\_MODE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{if}\ (TIMER\_A\_CCIE\_CCR0\_INTERRUPT\_ENABLE\ ==}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ param-\/>captureCompareInterruptEnable\_CCR0\_CCIE)\{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCCTL0)\ \ |=\ TIMER\_A\_CCIE\_CCR0\_INTERRUPT\_ENABLE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00111}00111\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCCTL0)\ \ \&=\ \string~TIMER\_A\_CCIE\_CCR0\_INTERRUPT\_ENABLE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00115}00115\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCCR0)\ \ =\ param-\/>timerPeriod;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00116}00116\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00118}00118\ \textcolor{keywordtype}{void}\ Timer\_A\_initCaptureMode(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00119}00119\ \ \ \ \ Timer\_A\_initCaptureModeParam\ *param)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00120}00120\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00121}00121\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ param-\/>captureRegister\ )\ |=\ CAP;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00123}00123\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ param-\/>captureRegister)\ \&=}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00124}00124\ \ \ \ \ \ \ \ \ \string~(TIMER\_A\_CAPTUREMODE\_RISING\_AND\_FALLING\_EDGE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_CAPTURE\_INPUTSELECT\_Vcc\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_CAPTURE\_SYNCHRONOUS\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_DO\_CLEAR\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_TAIE\_INTERRUPT\_ENABLE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ CM\_3}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00132}00132\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ param-\/>captureRegister)\ |=\ (param-\/>captureMode\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>captureInputSelect\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>synchronizeCaptureSource\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>captureInterruptEnable\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>captureOutputMode}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00138}00138\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00140}00140\ \textcolor{keywordtype}{void}\ Timer\_A\_initCompareMode(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00141}00141\ \ \ \ \ Timer\_A\_initCompareModeParam\ *param)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00142}00142\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00143}00143\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ param-\/>compareRegister\ )\ \&=\ \string~CAP;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00145}00145\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ param-\/>compareRegister)\ \&=}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00146}00146\ \ \ \ \ \ \ \ \ \string~(TIMER\_A\_CAPTURECOMPARE\_INTERRUPT\_ENABLE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_OUTPUTMODE\_RESET\_SET}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00150}00150\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ param-\/>compareRegister)\ |=\ (param-\/>compareInterruptEnable\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>compareOutputMode}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00154}00154\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ param-\/>compareRegister\ +\ OFS\_TAxR)\ =\ param-\/>compareValue;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00155}00155\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00157}00157\ \textcolor{keywordtype}{void}\ Timer\_A\_enableInterrupt\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00158}00158\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00159}00159\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ |=\ TAIE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00160}00160\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00162}00162\ \textcolor{keywordtype}{void}\ Timer\_A\_disableInterrupt\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00163}00163\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00164}00164\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ \&=\ \string~TAIE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00165}00165\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00167}00167\ uint32\_t\ Timer\_A\_getInterruptStatus\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00168}00168\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00169}00169\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ \&\ TAIFG\ );}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00170}00170\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00172}00172\ \textcolor{keywordtype}{void}\ Timer\_A\_enableCaptureCompareInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00173}00173\ \ \ \ \ uint16\_t\ captureCompareRegister}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00174}00174\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00175}00175\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00176}00176\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ captureCompareRegister)\ |=\ CCIE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00177}00177\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00179}00179\ \textcolor{keywordtype}{void}\ Timer\_A\_disableCaptureCompareInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00180}00180\ \ \ \ \ uint16\_t\ captureCompareRegister}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00181}00181\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00182}00182\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00183}00183\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ captureCompareRegister)\ \&=\ \string~CCIE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00184}00184\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00186}00186\ uint32\_t\ Timer\_A\_getCaptureCompareInterruptStatus\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00187}00187\ \ \ \ \ \ \ \ uint16\_t\ captureCompareRegister,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00188}00188\ \ \ \ \ \ \ \ uint16\_t\ mask}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00189}00189\ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00190}00190\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00191}00191\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ captureCompareRegister)\ \&\ mask\ );}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00192}00192\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00194}00194\ \textcolor{keywordtype}{void}\ Timer\_A\_clear\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00195}00195\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00196}00196\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ |=\ TACLR;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00197}00197\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00199}00199\ uint8\_t\ Timer\_A\_getSynchronizedCaptureCompareInput}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00200}00200\ \ \ \ \ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00201}00201\ \ \ \ \ uint16\_t\ captureCompareRegister,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00202}00202\ \ \ \ \ uint16\_t\ \textcolor{keyword}{synchronized}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00203}00203\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00204}00204\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00205}00205\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ captureCompareRegister)\ \&\ \textcolor{keyword}{synchronized})\{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00206}00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ TIMER\_A\_CAPTURECOMPARE\_INPUT\_HIGH)\ ;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00207}00207\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00208}00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ TIMER\_A\_CAPTURECOMPARE\_INPUT\_LOW)\ ;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00209}00209\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00210}00210\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00212}00212\ uint8\_t\ Timer\_A\_getOutputForOutputModeOutBitValue}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00213}00213\ \ \ \ \ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00214}00214\ \ \ \ \ uint16\_t\ captureCompareRegister}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00215}00215\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00216}00216\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00217}00217\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ captureCompareRegister)\ \&\ OUT)\{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ TIMER\_A\_OUTPUTMODE\_OUTBITVALUE\_HIGH)\ ;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00219}00219\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ TIMER\_A\_OUTPUTMODE\_OUTBITVALUE\_LOW)\ ;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00221}00221\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00222}00222\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00224}00224\ uint16\_t\ Timer\_A\_getCaptureCompareCount}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00225}00225\ \ \ \ \ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00226}00226\ \ \ \ \ uint16\_t\ captureCompareRegister}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00227}00227\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00228}00228\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00229}00229\ \ \ \ \ \textcolor{keywordflow}{return}\ \ (\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxR\ +\ captureCompareRegister));}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00230}00230\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00232}00232\ \textcolor{keywordtype}{void}\ Timer\_A\_setOutputForOutputModeOutBitValue}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00233}00233\ \ \ \ \ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00234}00234\ \ \ \ \ uint16\_t\ captureCompareRegister,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00235}00235\ \ \ \ \ uint8\_t\ outputModeOutBitValue}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00236}00236\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00237}00237\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00239}00239\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ captureCompareRegister)\ \&=\ \string~OUT;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00240}00240\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ captureCompareRegister)\ |=\ outputModeOutBitValue;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00241}00241\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00243}00243\ \textcolor{keywordtype}{void}\ Timer\_A\_outputPWM(uint16\_t\ baseAddress,\ Timer\_A\_outputPWMParam\ *param)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00244}00244\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00245}00245\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ \ \&=}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00246}00246\ \ \ \ \ \ \ \ \ \string~(\ TIMER\_A\_CLOCKSOURCE\_INVERTED\_EXTERNAL\_TXCLK\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_UPDOWN\_MODE\ +\ TIMER\_A\_DO\_CLEAR\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_TAIE\_INTERRUPT\_ENABLE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ ID\_\_8}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00251}00251\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxEX0)\ \&=\ \string~TAIDEX\_7;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00253}00253\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxEX0)\ |=\ param-\/>clockSourceDivider\&0x7;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00254}00254\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ \ |=\ (param-\/>clockSource\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_UP\_MODE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_DO\_CLEAR\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((param-\/>clockSourceDivider>>3)<<6));}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00259}00259\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCCR0)\ =\ param-\/>timerPeriod;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00261}00261\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCCTL0)\ \ \&=}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00262}00262\ \ \ \ \ \ \ \ \ \string~(TIMER\_A\_CAPTURECOMPARE\_INTERRUPT\_ENABLE\ +}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ TIMER\_A\_OUTPUTMODE\_RESET\_SET);}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00265}00265\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ param-\/>compareRegister)\ |=\ param-\/>compareOutputMode;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00267}00267\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ param-\/>compareRegister\ +\ OFS\_TAxR)\ =\ param-\/>dutyCycle;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00268}00268\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00270}00270\ \textcolor{keywordtype}{void}\ Timer\_A\_stop\ (\ uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00271}00271\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00272}00272\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ \ \&=\ \string~MC\_3;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00273}00273\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00275}00275\ \textcolor{keywordtype}{void}\ Timer\_A\_setCompareValue\ (\ \ uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00276}00276\ \ \ \ \ uint16\_t\ compareRegister,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00277}00277\ \ \ \ \ uint16\_t\ compareValue}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00278}00278\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00279}00279\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00280}00280\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ compareRegister\ +\ OFS\_TAxR)\ =\ compareValue;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00281}00281\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00283}00283\ \textcolor{keywordtype}{void}\ Timer\_A\_setOutputMode(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ compareRegister,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ compareOutputMode)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00286}00286\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00287}00287\ \ \ \ \ uint16\_t\ temp\ =\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ compareRegister);}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00288}00288\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ compareRegister)\ =\ temp\ \&\ \string~(OUTMOD\_7)\ |\ compareOutputMode;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00289}00289\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00290}00290\ \textcolor{keywordtype}{void}\ Timer\_A\_clearTimerInterrupt\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00291}00291\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00292}00292\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxCTL)\ \&=\ \string~TAIFG;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00293}00293\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00295}00295\ \textcolor{keywordtype}{void}\ Timer\_A\_clearCaptureCompareInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00296}00296\ \ \ \ \ uint16\_t\ captureCompareRegister}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00297}00297\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00298}00298\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00299}00299\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ captureCompareRegister)\ \ \&=\ \string~CCIFG;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00300}00300\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00302}00302\ uint16\_t\ Timer\_A\_getCounterValue\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00303}00303\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00304}00304\ \ \ \ uint16\_t\ voteOne,\ voteTwo,\ res;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00306}00306\ \ \ \ \ voteTwo\ =\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxR);}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00308}00308\ \ \ \ \textcolor{keywordflow}{do}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00309}00309\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00310}00310\ \ \ \ \ \ \ \ \ voteOne\ =\ voteTwo;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00311}00311\ \ \ \ \ \ \ \ \ voteTwo\ =\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_TAxR);}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00313}00313\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(voteTwo\ >\ voteOne)\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00314}00314\ \ \ \ \ \ \ \ \ \ res\ =\ voteTwo\ -\/\ voteOne;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00315}00315\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}(voteOne\ >\ voteTwo)\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00316}00316\ \ \ \ \ \ \ \ \ \ res\ =\ voteOne\ -\/\ voteTwo;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00317}00317\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00318}00318\ \ \ \ \ \ \ \ \ \ res\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00319}00319\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00321}00321\ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (\ res\ >\ TIMER\_A\_THRESHOLD);}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00323}00323\ \ \ \ \ \textcolor{keywordflow}{return}\ voteTwo;}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00324}00324\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00327}00327\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00328}00328\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00329}00329\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00332}00332\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8c_source_l00333}00333\ \textcolor{comment}{//*****************************************************************************}}
+
+\end{DoxyCode}

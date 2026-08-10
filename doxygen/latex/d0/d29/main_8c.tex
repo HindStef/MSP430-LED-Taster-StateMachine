@@ -1,0 +1,694 @@
+\doxysection{main.\+c-\/Dateireferenz}
+\hypertarget{main_8c}{}\label{main_8c}\index{main.c@{main.c}}
+
+
+LED-\/\+Taste-\/\+State\+Machine State Machine zur Auswertung eines Tasters zur Steuerung einer LED.  
+
+
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include "{}msp430.\+h"{}}\newline
+{\ttfamily \+\#include "{}driverlib.\+h"{}}\newline
+{\ttfamily \+\#include "{}BCUart.\+h"{}}\newline
+Include-\/\+Abhängigkeitsdiagramm für main.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/d10/main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Datenstrukturen}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_button__t}{Button\+\_\+t}}
+\item 
+struct \doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Makrodefinitionen}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{main_8c_a2e699cd3601e5b0fec029441306d46aa}{DEBOUNCE\+\_\+\+TIME\+\_\+\+MS}}~20U     /\+\texorpdfstring{$\ast$}{*} Entprellzeit                  \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{main_8c_a6f6289e063d8b621ec46bbd1d2809f62}{LONG\+\_\+\+PRESS\+\_\+\+THRESHOLD\+\_\+\+MS}}~2000U   /\+\texorpdfstring{$\ast$}{*} Schwelle fuer langen Tastendruck \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{main_8c_a8cfc4352ae90bdf0d97b6f3599f73acc}{BLINK\+\_\+\+PERIOD\+\_\+\+MS}}~330U
+\item 
+\+\#define \doxymbox{\hyperlink{main_8c_a75c828ed6c02fcd44084e67a032e422c}{FOREVER}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{main_8c_a2eddf48fa63431bcbfcab672956ac233}{LED\+\_\+\+ROT}}~0x01  /\+\texorpdfstring{$\ast$}{*} rote LED an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{main_8c_aa31746117f2029075e00c1419533f16f}{LED\+\_\+\+ROT\+\_\+\+MASK}}~2  /\+\texorpdfstring{$\ast$}{*} Taster an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{main_8c_a391f22f1623e951933eeb272e9c512b6}{LED\+\_\+\+GREEN\+\_\+\+P4}}~0x80
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Aufzählungen}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{main_8c_a098a4f7b480119bf5527bac80303b5af}{Button\+State\+\_\+t}} \{ \doxymbox{\hyperlink{main_8c_a098a4f7b480119bf5527bac80303b5afaf8041b38709ebc4af3022ca2cc3928fb}{BTN\+\_\+\+STATE\+\_\+\+IDLE}} = 0
+, \doxymbox{\hyperlink{main_8c_a098a4f7b480119bf5527bac80303b5afaa9f3171d83f414386bc39d24347ebbbd}{BTN\+\_\+\+STATE\+\_\+\+DEBOUNCE}}
+, \doxymbox{\hyperlink{main_8c_a098a4f7b480119bf5527bac80303b5afab088038be9100ece8c66cb0cc0e72c4c}{BTN\+\_\+\+STATE\+\_\+\+PRESSED}}
+, \doxymbox{\hyperlink{main_8c_a098a4f7b480119bf5527bac80303b5afa3c74179557254c95984c2910d7bd3774}{BTN\+\_\+\+STATE\+\_\+\+LONG\+\_\+\+DETECTED}}
+ \}
+\item 
+enum \doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808b}{Button\+Event\+\_\+t}} \{ \doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808bac558c9856b11d3796599f67070be670e}{BTN\+\_\+\+EVT\+\_\+\+NONE}} = 0
+, \doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808ba6567b587e4be0f8ebb842d97dabf1851}{BTN\+\_\+\+EVT\+\_\+\+SHORT\+\_\+\+PRESS}}
+, \doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808ba52cb0933ddb4a225d7d7008289650106}{BTN\+\_\+\+EVT\+\_\+\+LONG\+\_\+\+PRESS}}
+, \doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808ba04f24781eb420d6db87e390b9a70619c}{BTN\+\_\+\+EVT\+\_\+\+RELEASE}}
+ \}
+\item 
+enum \doxymbox{\hyperlink{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5}{Led\+State\+\_\+t}} \{ \doxymbox{\hyperlink{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5a0eebea54c4dc200be6939742385ee789}{LED\+\_\+\+STATE\+\_\+\+OFF}} = 0
+, \doxymbox{\hyperlink{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5a024f137d8368d2d31196fbcfb8345550}{LED\+\_\+\+STATE\+\_\+\+ON}}
+, \doxymbox{\hyperlink{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5a1ece422fa8a2fee52f384f6833704a1f}{LED\+\_\+\+STATE\+\_\+\+BLINK}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funktionen}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{main_8c_a7dfd9b79bc5a37d7df40207afbc5431f}{setup}} (void)
+\begin{DoxyCompactList}\small\item\em Ports und Timer einrichten. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8c_a1874631cc718c96363194def377c9010}{Stop\+Watchdog}} (void)
+\begin{DoxyCompactList}\small\item\em Watchdog ausschalten. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8c_a812dd7d99fdfe16bc1b8b0c324abc99f}{init\+\_\+clock}} (void)
+\begin{DoxyCompactList}\small\item\em Systemtak einstellen. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{main_8c_ab7aacd7eef9518969f3d6ecf946b3f77}{read\+\_\+\+Key\+S1}} (void)
+\begin{DoxyCompactList}\small\item\em gibt den Zustand des Tasters S1 zurück S1 an P2.\+1 S1 0x02 Taster an Port\+B.\+1 \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8c_a73d3a21a8c40631b3f0d0e4f82a7a187}{delay}} (uint32\+\_\+t x)
+\begin{DoxyCompactList}\small\item\em delay.\+c \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8c_a16451156c0206670a702e5809c302113}{str\+\_\+to\+\_\+bc\+UART}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}s\+Str)
+\begin{DoxyCompactList}\small\item\em sendet eine string an den MSP430 Backchannel UART. \end{DoxyCompactList}\item 
+static bool \doxymbox{\hyperlink{main_8c_a137df2d65e6c7f17465d134883fa5a56}{Button\+\_\+\+Read\+Raw}} (void)
+\begin{DoxyCompactList}\small\item\em Liefert den aktuellen (entprellten oder rohen) Tasterpegel. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{main_8c_a9bdd6c2793087b0207fd0464ce017df1}{LED\+\_\+\+Set\+Hardware}} (bool on)
+\begin{DoxyCompactList}\small\item\em Schaltet die LED hardwarenah ein/\+aus. TODO:\+ An reale GPIO-\/\+Ansteuerung anpassen, z.\+B.:\+ if (on) \{ LED\+\_\+\+PORT \texorpdfstring{$\vert$}{|}= LED\+\_\+\+MASK; \} else \{ LED\+\_\+\+PORT \&= \texorpdfstring{$\sim$}{\string~}\+LED\+\_\+\+MASK; \}. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59}{Button\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_button__t}{Button\+\_\+t}} \texorpdfstring{$\ast$}{*}btn)
+\item 
+static \doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808b}{Button\+Event\+\_\+t}} \doxymbox{\hyperlink{main_8c_a7294f3e15e28e0bbe48469461aca9588}{Button\+\_\+\+Process\+\_\+1ms}} (\doxymbox{\hyperlink{struct_button__t}{Button\+\_\+t}} \texorpdfstring{$\ast$}{*}btn)
+\begin{DoxyCompactList}\small\item\em Zyklisch (alle 1 ms) aufzurufende Button-\/\+FSM. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{main_8c_ab0168987d8bc3c3d7b066f74b56fdf21}{LED\+\_\+\+Init}} (\doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}} \texorpdfstring{$\ast$}{*}led)
+\item 
+static void \doxymbox{\hyperlink{main_8c_a3dce655dd03e27a06b8aa56167d545c2}{LED\+\_\+\+Handle\+Event}} (\doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}} \texorpdfstring{$\ast$}{*}led, \doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808b}{Button\+Event\+\_\+t}} event)
+\begin{DoxyCompactList}\small\item\em Verarbeitet ein Button-\/\+Ereignis und aktualisiert den LED-\/\+Zustand. Zustandsuebergaenge gemaess Aufgabenstellung:\+ \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{main_8c_a451a90035e860d931a19c1a8890b8a11}{LED\+\_\+\+Process\+\_\+1ms}} (\doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}} \texorpdfstring{$\ast$}{*}led)
+\begin{DoxyCompactList}\small\item\em Zyklisch (alle 1 ms) aufzurufende LED-\/\+FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat ueber \doxylink{main_8c_a3dce655dd03e27a06b8aa56167d545c2}{LED\+\_\+\+Handle\+Event()}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{main_8c_a2906a121ee398d028aa0a32520fdc4bf}{App\+\_\+1ms\+\_\+\+Tick}} (void)
+\begin{DoxyCompactList}\small\item\em Zentraler 1ms-\/\+Tick, z.\+B. aus Timer-\/\+ISR oder Hauptschleife aufgerufen. Verbindet Button-\/\+FSM (Ereigniserzeugung) mit LED-\/\+FSM (Ereignis-\/ verarbeitung + eigenes Zeitverhalten fuer das Blinken). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variablen}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{struct_button__t}{Button\+\_\+t}} \doxymbox{\hyperlink{main_8c_a92608fc040bdd8cd975bb320981bcf72}{g\+\_\+button}}
+\item 
+static \doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}} \doxymbox{\hyperlink{main_8c_a7509f7a29aef901eeaf5872132682ca9}{g\+\_\+led}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Ausführliche Beschreibung}
+LED-\/\+Taste-\/\+State\+Machine State Machine zur Auswertung eines Tasters zur Steuerung einer LED. 
+
+\begin{DoxyAuthor}{Autor}
+Stefan Hinderegger
+\end{DoxyAuthor}
+\begin{DoxyRefDesc}{Noch zu erledigen}
+\item[\doxymbox{\hyperlink{todo__todo000001}{Noch zu erledigen}}]doxygen Dokumentation.\end{DoxyRefDesc}
+\hypertarget{main_8c_TODO}{}\doxysubsection{\texorpdfstring{todo}{todo}}\label{main_8c_TODO}
+
+
+Definiert in Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+
+
+\label{main_8c_doc-define-members}
+\Hypertarget{main_8c_doc-define-members}
+\doxysubsection{Makro-\/\+Dokumentation}
+\Hypertarget{main_8c_a8cfc4352ae90bdf0d97b6f3599f73acc}\index{main.c@{main.c}!BLINK\_PERIOD\_MS@{BLINK\_PERIOD\_MS}}
+\index{BLINK\_PERIOD\_MS@{BLINK\_PERIOD\_MS}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{BLINK\_PERIOD\_MS}{BLINK\_PERIOD\_MS}}
+{\footnotesize\ttfamily \label{main_8c_a8cfc4352ae90bdf0d97b6f3599f73acc} 
+\+\#define BLINK\+\_\+\+PERIOD\+\_\+\+MS~330U}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00081}{81}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a2e699cd3601e5b0fec029441306d46aa}\index{main.c@{main.c}!DEBOUNCE\_TIME\_MS@{DEBOUNCE\_TIME\_MS}}
+\index{DEBOUNCE\_TIME\_MS@{DEBOUNCE\_TIME\_MS}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{DEBOUNCE\_TIME\_MS}{DEBOUNCE\_TIME\_MS}}
+{\footnotesize\ttfamily \label{main_8c_a2e699cd3601e5b0fec029441306d46aa} 
+\+\#define DEBOUNCE\+\_\+\+TIME\+\_\+\+MS~20U     /\+\texorpdfstring{$\ast$}{*} Entprellzeit                  \texorpdfstring{$\ast$}{*}/\+}
+
+Konfiguration /\+ Zeitkonstanten 
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00079}{79}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a75c828ed6c02fcd44084e67a032e422c}\index{main.c@{main.c}!FOREVER@{FOREVER}}
+\index{FOREVER@{FOREVER}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{FOREVER}{FOREVER}}
+{\footnotesize\ttfamily \label{main_8c_a75c828ed6c02fcd44084e67a032e422c} 
+\+\#define FOREVER~1}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00085}{85}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a391f22f1623e951933eeb272e9c512b6}\index{main.c@{main.c}!LED\_GREEN\_P4@{LED\_GREEN\_P4}}
+\index{LED\_GREEN\_P4@{LED\_GREEN\_P4}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LED\_GREEN\_P4}{LED\_GREEN\_P4}}
+{\footnotesize\ttfamily \label{main_8c_a391f22f1623e951933eeb272e9c512b6} 
+\+\#define LED\+\_\+\+GREEN\+\_\+\+P4~0x80}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00088}{88}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a2eddf48fa63431bcbfcab672956ac233}\index{main.c@{main.c}!LED\_ROT@{LED\_ROT}}
+\index{LED\_ROT@{LED\_ROT}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LED\_ROT}{LED\_ROT}}
+{\footnotesize\ttfamily \label{main_8c_a2eddf48fa63431bcbfcab672956ac233} 
+\+\#define LED\+\_\+\+ROT~0x01  /\+\texorpdfstring{$\ast$}{*} rote LED an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00086}{86}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_aa31746117f2029075e00c1419533f16f}\index{main.c@{main.c}!LED\_ROT\_MASK@{LED\_ROT\_MASK}}
+\index{LED\_ROT\_MASK@{LED\_ROT\_MASK}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LED\_ROT\_MASK}{LED\_ROT\_MASK}}
+{\footnotesize\ttfamily \label{main_8c_aa31746117f2029075e00c1419533f16f} 
+\+\#define LED\+\_\+\+ROT\+\_\+\+MASK~2  /\+\texorpdfstring{$\ast$}{*} Taster an Port\+A.\+0 \texorpdfstring{$\ast$}{*}/\+}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00087}{87}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a6f6289e063d8b621ec46bbd1d2809f62}\index{main.c@{main.c}!LONG\_PRESS\_THRESHOLD\_MS@{LONG\_PRESS\_THRESHOLD\_MS}}
+\index{LONG\_PRESS\_THRESHOLD\_MS@{LONG\_PRESS\_THRESHOLD\_MS}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LONG\_PRESS\_THRESHOLD\_MS}{LONG\_PRESS\_THRESHOLD\_MS}}
+{\footnotesize\ttfamily \label{main_8c_a6f6289e063d8b621ec46bbd1d2809f62} 
+\+\#define LONG\+\_\+\+PRESS\+\_\+\+THRESHOLD\+\_\+\+MS~2000U   /\+\texorpdfstring{$\ast$}{*} Schwelle fuer langen Tastendruck \texorpdfstring{$\ast$}{*}/\+}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00080}{80}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+
+
+\label{main_8c_doc-enum-members}
+\Hypertarget{main_8c_doc-enum-members}
+\doxysubsection{Dokumentation der Aufzählungstypen}
+\Hypertarget{main_8c_ae5736cc0356593df91646b7ad407808b}\index{main.c@{main.c}!ButtonEvent\_t@{ButtonEvent\_t}}
+\index{ButtonEvent\_t@{ButtonEvent\_t}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ButtonEvent\_t}{ButtonEvent\_t}}
+{\footnotesize\ttfamily \label{main_8c_ae5736cc0356593df91646b7ad407808b} 
+enum \doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808b}{Button\+Event\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Aufzählungswerte}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BTN\_EVT\_NONE@{BTN\_EVT\_NONE}!main.c@{main.c}}
+\index{main.c@{main.c}!BTN\_EVT\_NONE@{BTN\_EVT\_NONE}}
+}\Hypertarget{main_8c_ae5736cc0356593df91646b7ad407808bac558c9856b11d3796599f67070be670e}\label{main_8c_ae5736cc0356593df91646b7ad407808bac558c9856b11d3796599f67070be670e} 
+BTN\+\_\+\+EVT\+\_\+\+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BTN\_EVT\_SHORT\_PRESS@{BTN\_EVT\_SHORT\_PRESS}!main.c@{main.c}}
+\index{main.c@{main.c}!BTN\_EVT\_SHORT\_PRESS@{BTN\_EVT\_SHORT\_PRESS}}
+}\Hypertarget{main_8c_ae5736cc0356593df91646b7ad407808ba6567b587e4be0f8ebb842d97dabf1851}\label{main_8c_ae5736cc0356593df91646b7ad407808ba6567b587e4be0f8ebb842d97dabf1851} 
+BTN\+\_\+\+EVT\+\_\+\+SHORT\+\_\+\+PRESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BTN\_EVT\_LONG\_PRESS@{BTN\_EVT\_LONG\_PRESS}!main.c@{main.c}}
+\index{main.c@{main.c}!BTN\_EVT\_LONG\_PRESS@{BTN\_EVT\_LONG\_PRESS}}
+}\Hypertarget{main_8c_ae5736cc0356593df91646b7ad407808ba52cb0933ddb4a225d7d7008289650106}\label{main_8c_ae5736cc0356593df91646b7ad407808ba52cb0933ddb4a225d7d7008289650106} 
+BTN\+\_\+\+EVT\+\_\+\+LONG\+\_\+\+PRESS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BTN\_EVT\_RELEASE@{BTN\_EVT\_RELEASE}!main.c@{main.c}}
+\index{main.c@{main.c}!BTN\_EVT\_RELEASE@{BTN\_EVT\_RELEASE}}
+}\Hypertarget{main_8c_ae5736cc0356593df91646b7ad407808ba04f24781eb420d6db87e390b9a70619c}\label{main_8c_ae5736cc0356593df91646b7ad407808ba04f24781eb420d6db87e390b9a70619c} 
+BTN\+\_\+\+EVT\+\_\+\+RELEASE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00099}{99}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a098a4f7b480119bf5527bac80303b5af}\index{main.c@{main.c}!ButtonState\_t@{ButtonState\_t}}
+\index{ButtonState\_t@{ButtonState\_t}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{ButtonState\_t}{ButtonState\_t}}
+{\footnotesize\ttfamily \label{main_8c_a098a4f7b480119bf5527bac80303b5af} 
+enum \doxymbox{\hyperlink{main_8c_a098a4f7b480119bf5527bac80303b5af}{Button\+State\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Aufzählungswerte}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BTN\_STATE\_IDLE@{BTN\_STATE\_IDLE}!main.c@{main.c}}
+\index{main.c@{main.c}!BTN\_STATE\_IDLE@{BTN\_STATE\_IDLE}}
+}\Hypertarget{main_8c_a098a4f7b480119bf5527bac80303b5afaf8041b38709ebc4af3022ca2cc3928fb}\label{main_8c_a098a4f7b480119bf5527bac80303b5afaf8041b38709ebc4af3022ca2cc3928fb} 
+BTN\+\_\+\+STATE\+\_\+\+IDLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BTN\_STATE\_DEBOUNCE@{BTN\_STATE\_DEBOUNCE}!main.c@{main.c}}
+\index{main.c@{main.c}!BTN\_STATE\_DEBOUNCE@{BTN\_STATE\_DEBOUNCE}}
+}\Hypertarget{main_8c_a098a4f7b480119bf5527bac80303b5afaa9f3171d83f414386bc39d24347ebbbd}\label{main_8c_a098a4f7b480119bf5527bac80303b5afaa9f3171d83f414386bc39d24347ebbbd} 
+BTN\+\_\+\+STATE\+\_\+\+DEBOUNCE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BTN\_STATE\_PRESSED@{BTN\_STATE\_PRESSED}!main.c@{main.c}}
+\index{main.c@{main.c}!BTN\_STATE\_PRESSED@{BTN\_STATE\_PRESSED}}
+}\Hypertarget{main_8c_a098a4f7b480119bf5527bac80303b5afab088038be9100ece8c66cb0cc0e72c4c}\label{main_8c_a098a4f7b480119bf5527bac80303b5afab088038be9100ece8c66cb0cc0e72c4c} 
+BTN\+\_\+\+STATE\+\_\+\+PRESSED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BTN\_STATE\_LONG\_DETECTED@{BTN\_STATE\_LONG\_DETECTED}!main.c@{main.c}}
+\index{main.c@{main.c}!BTN\_STATE\_LONG\_DETECTED@{BTN\_STATE\_LONG\_DETECTED}}
+}\Hypertarget{main_8c_a098a4f7b480119bf5527bac80303b5afa3c74179557254c95984c2910d7bd3774}\label{main_8c_a098a4f7b480119bf5527bac80303b5afa3c74179557254c95984c2910d7bd3774} 
+BTN\+\_\+\+STATE\+\_\+\+LONG\+\_\+\+DETECTED&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00092}{92}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5}\index{main.c@{main.c}!LedState\_t@{LedState\_t}}
+\index{LedState\_t@{LedState\_t}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LedState\_t}{LedState\_t}}
+{\footnotesize\ttfamily \label{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5} 
+enum \doxymbox{\hyperlink{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5}{Led\+State\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Aufzählungswerte}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LED\_STATE\_OFF@{LED\_STATE\_OFF}!main.c@{main.c}}
+\index{main.c@{main.c}!LED\_STATE\_OFF@{LED\_STATE\_OFF}}
+}\Hypertarget{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5a0eebea54c4dc200be6939742385ee789}\label{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5a0eebea54c4dc200be6939742385ee789} 
+LED\+\_\+\+STATE\+\_\+\+OFF&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LED\_STATE\_ON@{LED\_STATE\_ON}!main.c@{main.c}}
+\index{main.c@{main.c}!LED\_STATE\_ON@{LED\_STATE\_ON}}
+}\Hypertarget{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5a024f137d8368d2d31196fbcfb8345550}\label{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5a024f137d8368d2d31196fbcfb8345550} 
+LED\+\_\+\+STATE\+\_\+\+ON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LED\_STATE\_BLINK@{LED\_STATE\_BLINK}!main.c@{main.c}}
+\index{main.c@{main.c}!LED\_STATE\_BLINK@{LED\_STATE\_BLINK}}
+}\Hypertarget{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5a1ece422fa8a2fee52f384f6833704a1f}\label{main_8c_a1a58ff6a65f9680b7d3e265772dce1e5a1ece422fa8a2fee52f384f6833704a1f} 
+LED\+\_\+\+STATE\+\_\+\+BLINK&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00113}{113}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+
+
+\label{main_8c_doc-func-members}
+\Hypertarget{main_8c_doc-func-members}
+\doxysubsection{Dokumentation der Funktionen}
+\Hypertarget{main_8c_a2906a121ee398d028aa0a32520fdc4bf}\index{main.c@{main.c}!App\_1ms\_Tick@{App\_1ms\_Tick}}
+\index{App\_1ms\_Tick@{App\_1ms\_Tick}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{App\_1ms\_Tick()}{App\_1ms\_Tick()}}
+{\footnotesize\ttfamily \label{main_8c_a2906a121ee398d028aa0a32520fdc4bf} 
+void App\+\_\+1ms\+\_\+\+Tick (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Zentraler 1ms-\/\+Tick, z.\+B. aus Timer-\/\+ISR oder Hauptschleife aufgerufen. Verbindet Button-\/\+FSM (Ereigniserzeugung) mit LED-\/\+FSM (Ereignis-\/ verarbeitung + eigenes Zeitverhalten fuer das Blinken). 
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00461}{461}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d29/main_8c_a2906a121ee398d028aa0a32520fdc4bf_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59}\index{main.c@{main.c}!Button\_Init@{Button\_Init}}
+\index{Button\_Init@{Button\_Init}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Button\_Init()}{Button\_Init()}}
+{\footnotesize\ttfamily \label{main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59} 
+void Button\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_button__t}{Button\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{btn}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00295}{295}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{d0/d29/main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_a7294f3e15e28e0bbe48469461aca9588}\index{main.c@{main.c}!Button\_Process\_1ms@{Button\_Process\_1ms}}
+\index{Button\_Process\_1ms@{Button\_Process\_1ms}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Button\_Process\_1ms()}{Button\_Process\_1ms()}}
+{\footnotesize\ttfamily \label{main_8c_a7294f3e15e28e0bbe48469461aca9588} 
+\doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808b}{Button\+Event\+\_\+t}} Button\+\_\+\+Process\+\_\+1ms (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_button__t}{Button\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{btn}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Zyklisch (alle 1 ms) aufzurufende Button-\/\+FSM. 
+
+
+\begin{DoxyParams}{Parameter}
+{\em btn} & Zeiger auf Button-\/\+Instanz. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+Erkanntes Ereignis (oder BTN\+\_\+\+EVT\+\_\+\+NONE, wenn keins aufgetreten ist). 
+\end{DoxyReturn}
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00307}{307}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d29/main_8c_a7294f3e15e28e0bbe48469461aca9588_cgraph}
+\end{center}
+\end{figure}
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{d0/d29/main_8c_a7294f3e15e28e0bbe48469461aca9588_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_a137df2d65e6c7f17465d134883fa5a56}\index{main.c@{main.c}!Button\_ReadRaw@{Button\_ReadRaw}}
+\index{Button\_ReadRaw@{Button\_ReadRaw}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Button\_ReadRaw()}{Button\_ReadRaw()}}
+{\footnotesize\ttfamily \label{main_8c_a137df2d65e6c7f17465d134883fa5a56} 
+bool Button\+\_\+\+Read\+Raw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Liefert den aktuellen (entprellten oder rohen) Tasterpegel. 
+
+\begin{DoxyReturn}{Rückgabe}
+true = Taste gedrueckt false = Taste losgelassen
+\end{DoxyReturn}
+TODO:\+ An reale GPIO-\/\+Abfrage anpassen, z.\+B.:\+ return (P0\+\_\+\+PIN\+\_\+\+BUTTON == 0); /\+/\+ Taster aktiv-\/low 
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00258}{258}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{d0/d29/main_8c_a137df2d65e6c7f17465d134883fa5a56_cgraph}
+\end{center}
+\end{figure}
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d29/main_8c_a137df2d65e6c7f17465d134883fa5a56_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_a73d3a21a8c40631b3f0d0e4f82a7a187}\index{main.c@{main.c}!delay@{delay}}
+\index{delay@{delay}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{delay()}{delay()}}
+{\footnotesize\ttfamily \label{main_8c_a73d3a21a8c40631b3f0d0e4f82a7a187} 
+void delay (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{x}{}\end{DoxyParamCaption})}
+
+
+
+delay.\+c 
+
+
+\begin{DoxyParams}{Parameter}
+{\em x} & Verzögerungszähler als long int \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Rückgabe}
+void 
+\end{DoxyReturn}
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00221}{221}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a812dd7d99fdfe16bc1b8b0c324abc99f}\index{main.c@{main.c}!init\_clock@{init\_clock}}
+\index{init\_clock@{init\_clock}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{init\_clock()}{init\_clock()}}
+{\footnotesize\ttfamily \label{main_8c_a812dd7d99fdfe16bc1b8b0c324abc99f} 
+void init\+\_\+clock (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Systemtak einstellen. 
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00158}{158}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{d0/d29/main_8c_a812dd7d99fdfe16bc1b8b0c324abc99f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_a3dce655dd03e27a06b8aa56167d545c2}\index{main.c@{main.c}!LED\_HandleEvent@{LED\_HandleEvent}}
+\index{LED\_HandleEvent@{LED\_HandleEvent}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LED\_HandleEvent()}{LED\_HandleEvent()}}
+{\footnotesize\ttfamily \label{main_8c_a3dce655dd03e27a06b8aa56167d545c2} 
+void LED\+\_\+\+Handle\+Event (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{led}{, }\item[{\doxymbox{\hyperlink{main_8c_ae5736cc0356593df91646b7ad407808b}{Button\+Event\+\_\+t}}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Verarbeitet ein Button-\/\+Ereignis und aktualisiert den LED-\/\+Zustand. Zustandsuebergaenge gemaess Aufgabenstellung:\+ 
+
+
+\begin{DoxyItemize}
+\item SHORT\+\_\+\+PRESS:\+ OFF \texorpdfstring{$<$}{<}-\/\texorpdfstring{$>$}{>} ON (Toggle)
+\item LONG\+\_\+\+PRESS :\+ -\/\texorpdfstring{$>$}{>} BLINK (unabhaengig vom vorherigen Zustand) 
+\end{DoxyItemize}
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00394}{394}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d29/main_8c_a3dce655dd03e27a06b8aa56167d545c2_cgraph}
+\end{center}
+\end{figure}
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=285pt]{d0/d29/main_8c_a3dce655dd03e27a06b8aa56167d545c2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_ab0168987d8bc3c3d7b066f74b56fdf21}\index{main.c@{main.c}!LED\_Init@{LED\_Init}}
+\index{LED\_Init@{LED\_Init}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LED\_Init()}{LED\_Init()}}
+{\footnotesize\ttfamily \label{main_8c_ab0168987d8bc3c3d7b066f74b56fdf21} 
+void LED\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{led}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00381}{381}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{d0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_cgraph}
+\end{center}
+\end{figure}
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{d0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_a451a90035e860d931a19c1a8890b8a11}\index{main.c@{main.c}!LED\_Process\_1ms@{LED\_Process\_1ms}}
+\index{LED\_Process\_1ms@{LED\_Process\_1ms}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LED\_Process\_1ms()}{LED\_Process\_1ms()}}
+{\footnotesize\ttfamily \label{main_8c_a451a90035e860d931a19c1a8890b8a11} 
+void LED\+\_\+\+Process\+\_\+1ms (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{led}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Zyklisch (alle 1 ms) aufzurufende LED-\/\+FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat ueber \doxylink{main_8c_a3dce655dd03e27a06b8aa56167d545c2}{LED\+\_\+\+Handle\+Event()}. 
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00435}{435}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=304pt]{d0/d29/main_8c_a451a90035e860d931a19c1a8890b8a11_cgraph}
+\end{center}
+\end{figure}
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{d0/d29/main_8c_a451a90035e860d931a19c1a8890b8a11_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_a9bdd6c2793087b0207fd0464ce017df1}\index{main.c@{main.c}!LED\_SetHardware@{LED\_SetHardware}}
+\index{LED\_SetHardware@{LED\_SetHardware}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LED\_SetHardware()}{LED\_SetHardware()}}
+{\footnotesize\ttfamily \label{main_8c_a9bdd6c2793087b0207fd0464ce017df1} 
+void LED\+\_\+\+Set\+Hardware (\begin{DoxyParamCaption}\item[{bool}]{on}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Schaltet die LED hardwarenah ein/\+aus. TODO:\+ An reale GPIO-\/\+Ansteuerung anpassen, z.\+B.:\+ if (on) \{ LED\+\_\+\+PORT \texorpdfstring{$\vert$}{|}= LED\+\_\+\+MASK; \} else \{ LED\+\_\+\+PORT \&= \texorpdfstring{$\sim$}{\string~}\+LED\+\_\+\+MASK; \}. 
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00267}{267}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d29/main_8c_a9bdd6c2793087b0207fd0464ce017df1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_ab7aacd7eef9518969f3d6ecf946b3f77}\index{main.c@{main.c}!read\_KeyS1@{read\_KeyS1}}
+\index{read\_KeyS1@{read\_KeyS1}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{read\_KeyS1()}{read\_KeyS1()}}
+{\footnotesize\ttfamily \label{main_8c_ab7aacd7eef9518969f3d6ecf946b3f77} 
+bool read\+\_\+\+Key\+S1 (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+gibt den Zustand des Tasters S1 zurück S1 an P2.\+1 S1 0x02 Taster an Port\+B.\+1 
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00235}{235}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d29/main_8c_ab7aacd7eef9518969f3d6ecf946b3f77_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_a7dfd9b79bc5a37d7df40207afbc5431f}\index{main.c@{main.c}!setup@{setup}}
+\index{setup@{setup}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{main_8c_a7dfd9b79bc5a37d7df40207afbc5431f} 
+void setup (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Ports und Timer einrichten. 
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00185}{185}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d29/main_8c_a7dfd9b79bc5a37d7df40207afbc5431f_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_a1874631cc718c96363194def377c9010}\index{main.c@{main.c}!StopWatchdog@{StopWatchdog}}
+\index{StopWatchdog@{StopWatchdog}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{StopWatchdog()}{StopWatchdog()}}
+{\footnotesize\ttfamily \label{main_8c_a1874631cc718c96363194def377c9010} 
+void Stop\+Watchdog (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Watchdog ausschalten. 
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00151}{151}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{d0/d29/main_8c_a1874631cc718c96363194def377c9010_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{main_8c_a16451156c0206670a702e5809c302113}\index{main.c@{main.c}!str\_to\_bcUART@{str\_to\_bcUART}}
+\index{str\_to\_bcUART@{str\_to\_bcUART}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{str\_to\_bcUART()}{str\_to\_bcUART()}}
+{\footnotesize\ttfamily \label{main_8c_a16451156c0206670a702e5809c302113} 
+void str\+\_\+to\+\_\+bc\+UART (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{s\+Str}{}\end{DoxyParamCaption})}
+
+
+
+sendet eine string an den MSP430 Backchannel UART. 
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00450}{450}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=258pt]{d0/d29/main_8c_a16451156c0206670a702e5809c302113_cgraph}
+\end{center}
+\end{figure}
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d29/main_8c_a16451156c0206670a702e5809c302113_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{main_8c_doc-var-members}
+\Hypertarget{main_8c_doc-var-members}
+\doxysubsection{Variablen-\/\+Dokumentation}
+\Hypertarget{main_8c_a92608fc040bdd8cd975bb320981bcf72}\index{main.c@{main.c}!g\_button@{g\_button}}
+\index{g\_button@{g\_button}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{g\_button}{g\_button}}
+{\footnotesize\ttfamily \label{main_8c_a92608fc040bdd8cd975bb320981bcf72} 
+\doxymbox{\hyperlink{struct_button__t}{Button\+\_\+t}} g\+\_\+button\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00127}{127}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+
+\Hypertarget{main_8c_a7509f7a29aef901eeaf5872132682ca9}\index{main.c@{main.c}!g\_led@{g\_led}}
+\index{g\_led@{g\_led}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{g\_led}{g\_led}}
+{\footnotesize\ttfamily \label{main_8c_a7509f7a29aef901eeaf5872132682ca9} 
+\doxymbox{\hyperlink{struct_led__t}{Led\+\_\+t}} g\+\_\+led\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{main_8c_source_l00128}{128}} der Datei \doxymbox{\hyperlink{main_8c_source}{main.\+c}}.
+

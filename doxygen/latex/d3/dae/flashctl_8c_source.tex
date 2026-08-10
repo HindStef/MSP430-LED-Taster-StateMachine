@@ -1,0 +1,279 @@
+\doxysection{flashctl.\+c}
+\hypertarget{flashctl_8c_source}{}\label{flashctl_8c_source}\index{driverlib/MSP430F5xx\_6xx/flashctl.c@{driverlib/MSP430F5xx\_6xx/flashctl.c}}
+\doxymbox{\hyperlink{flashctl_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00003}00003\ \textcolor{comment}{//\ flashctl.c\ -\/\ Driver\ for\ the\ flashctl\ Module.}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00007}00007\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00011}00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00012}00012\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_FLASH\_\_}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{flashctl_8h}{flashctl.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00021}00021\ \textcolor{keywordtype}{void}\ FlashCtl\_eraseSegment\ (\ uint8\_t\ *flash\_ptr)\{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//Clear\ Lock\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00023}00023\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//Set\ Erase\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00026}00026\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY\ +\ ERASE;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//Dummy\ write\ to\ erase\ Flash\ seg}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00029}00029\ \ \ \ \ *flash\_ptr\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//test\ busy}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{while}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ \&\ BUSY)\ ;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//Clear\ ERASE\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00035}00035\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//Set\ LOCK\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00038}00038\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY\ +\ LOCK;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00041}00041\ \textcolor{keywordtype}{void}\ FlashCtl\_eraseBank\ (\ uint8\_t\ *flash\_ptr)\{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00042}00042\ \ \ \ \ uint16\_t\ interruptState;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//Clear\ Lock\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00045}00045\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{while}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ \&\ BUSY);}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//FLASH34\ errata:\ no\ concurrent\ access\ to\ flash\ bank\ while\ erasing}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00050}00050\ \ \ \ \ interruptState\ =\ \_\_get\_interrupt\_state();}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00051}00051\ \ \ \ \ \_\_disable\_interrupt();}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00052}00052\ \ \ \ \ \_\_no\_operation();}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//Set\ MERAS\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00055}00055\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY\ +\ MERAS;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//Dummy\ write\ to\ erase\ Flash\ seg}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00058}00058\ \ \ \ \ *flash\_ptr\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//test\ busy}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{while}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ \&\ BUSY);}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//FLASH34\ errata}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//Re-\/enable\ interrupt\ state\ to\ whatever\ it\ was\ before}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (interruptState\ \&\ GIE)}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ \_\_enable\_interrupt();}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//Clear\ MERAS\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00071}00071\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//Set\ LOCK\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00074}00074\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY\ +\ LOCK;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00077}00077\ \textcolor{keywordtype}{void}\ FlashCtl\_performMassErase\ (\ uint8\_t\ *flash\_ptr)\{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//Clear\ Lock\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00079}00079\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00080}00080\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{while}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ \&\ BUSY)\ ;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//Set\ MERAS\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00084}00084\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY\ +\ MERAS\ +\ ERASE;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//Dummy\ write\ to\ erase\ Flash\ seg}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00087}00087\ \ \ \ \ *flash\_ptr\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00089}00089\ \ \ \ \ \textcolor{comment}{//test\ busy}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{while}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ \&\ BUSY)\ ;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//Clear\ MERAS\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00093}00093\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//Set\ LOCK\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00096}00096\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY\ +\ LOCK;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00099}00099\ \textcolor{keywordtype}{bool}\ FlashCtl\_performEraseCheck\ (uint8\_t\ *flash\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00100}00100\ \ \ \ \ uint16\_t\ numberOfBytes}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00101}00101\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00102}00102\ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00103}00103\ \ \ \ \ uint16\_t\ i;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ numberOfBytes;\ i++)}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00106}00106\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//was\ erasing\ successfull?}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((*(flash\_ptr\ +\ i))\ !=\ 0xFF)\{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a9024ed05f7df784637ef7b44ca8caf97}{STATUS\_FAIL}})\ ;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_ae56fdb340b23940f7a64ed2e37c1774a}{STATUS\_SUCCESS}})\ ;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00113}00113\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00115}00115\ \textcolor{keywordtype}{void}\ FlashCtl\_write8\ (uint8\_t\ *data\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00116}00116\ \ \ \ \ uint8\_t\ *flash\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00117}00117\ \ \ \ \ uint16\_t\ count}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00118}00118\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00119}00119\ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//Clear\ Lock\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00121}00121\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//Enable\ byte/word\ write\ mode}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00124}00124\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY\ +\ WRT;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{while}\ (count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00127}00127\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{comment}{//test\ busy}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ \&\ BUSY)\ ;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Write\ to\ Flash}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00132}00132\ \ \ \ \ \ \ \ \ *flash\_ptr++\ =\ *data\_ptr++;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00133}00133\ \ \ \ \ \ \ \ \ count-\/-\/;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00136}00136\ \ \ \ \ \textcolor{comment}{//Clear\ WRT\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00137}00137\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00139}00139\ \ \ \ \ \textcolor{comment}{//Set\ LOCK\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00140}00140\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY\ +\ LOCK;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00141}00141\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00143}00143\ \textcolor{keywordtype}{void}\ FlashCtl\_write16\ (uint16\_t\ *data\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00144}00144\ \ \ \ \ uint16\_t\ *flash\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00145}00145\ \ \ \ \ uint16\_t\ count}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00146}00146\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00147}00147\ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00148}00148\ \ \ \ \ \textcolor{comment}{//Clear\ Lock\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00149}00149\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00151}00151\ \ \ \ \ \textcolor{comment}{//Enable\ byte/word\ write\ mode}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00152}00152\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY\ +\ WRT;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00154}00154\ \ \ \ \ \textcolor{keywordflow}{while}\ (count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00155}00155\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{comment}{//test\ busy}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00157}00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ \&\ BUSY)\ ;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Write\ to\ Flash}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00160}00160\ \ \ \ \ \ \ \ \ *flash\_ptr++\ =\ *data\_ptr++;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00161}00161\ \ \ \ \ \ \ \ \ count-\/-\/;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00164}00164\ \ \ \ \ \textcolor{comment}{//Clear\ WRT\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00165}00165\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00167}00167\ \ \ \ \ \textcolor{comment}{//Set\ LOCK\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00168}00168\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY\ +\ LOCK;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00169}00169\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00171}00171\ \textcolor{keywordtype}{void}\ FlashCtl\_write32\ (uint32\_t\ *data\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00172}00172\ \ \ \ \ uint32\_t\ *flash\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00173}00173\ \ \ \ \ uint16\_t\ count}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00174}00174\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00175}00175\ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00176}00176\ \ \ \ \ \textcolor{comment}{//Clear\ Lock\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00177}00177\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00179}00179\ \ \ \ \ \textcolor{comment}{//Enable\ long-\/word\ write}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00180}00180\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY\ +\ BLKWRT;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00182}00182\ \ \ \ \ \textcolor{keywordflow}{while}\ (count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00183}00183\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{comment}{//test\ busy}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ \&\ BUSY)\ ;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Write\ to\ Flash}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00188}00188\ \ \ \ \ \ \ \ \ *flash\_ptr++\ =\ *data\_ptr++;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00190}00190\ \ \ \ \ \ \ \ \ count-\/-\/;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00191}00191\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00193}00193\ \ \ \ \ \textcolor{comment}{//Clear\ BLKWRT\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00194}00194\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00196}00196\ \ \ \ \ \textcolor{comment}{//Set\ LOCK\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00197}00197\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY\ +\ LOCK;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00198}00198\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00200}00200\ \textcolor{keywordtype}{void}\ FlashCtl\_fillMemory32\ (uint32\_t\ value,}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00201}00201\ \ \ \ \ uint32\_t\ *flash\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00202}00202\ \ \ \ \ uint16\_t\ count}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00203}00203\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00204}00204\ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00205}00205\ \ \ \ \ \textcolor{comment}{//Clear\ Lock\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00206}00206\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00208}00208\ \ \ \ \ \textcolor{comment}{//Enable\ long-\/word\ write}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00209}00209\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY\ +\ BLKWRT;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00211}00211\ \ \ \ \ \textcolor{comment}{//test\ busy}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00212}00212\ \ \ \ \ \textcolor{keywordflow}{while}\ (count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00213}00213\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00214}00214\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ ((\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(FLASH\_BASE\ +\ OFS\_FCTL3))\ \&\ BUSY)\ ;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00216}00216\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Write\ to\ Flash}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00217}00217\ \ \ \ \ \ \ \ \ *flash\_ptr++\ =\ value;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00219}00219\ \ \ \ \ \ \ \ \ count-\/-\/;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00220}00220\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00222}00222\ \ \ \ \ \textcolor{comment}{//Clear\ BLKWRT\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00223}00223\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL1)\ =\ FWKEY;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00225}00225\ \ \ \ \ \textcolor{comment}{//Set\ LOCK\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00226}00226\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY\ +\ LOCK;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00227}00227\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00229}00229\ uint8\_t\ FlashCtl\_getStatus\ (uint8\_t\ mask}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00230}00230\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00231}00231\ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00232}00232\ \ \ \ \ \textcolor{keywordflow}{return}\ ((\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ \&\ mask\ ));}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00233}00233\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00235}00235\ \textcolor{keywordtype}{void}\ FlashCtl\_lockInfoA\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00236}00236\ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00237}00237\ \ \ \ \ \textcolor{comment}{//Disable\ global\ interrupts\ while\ doing\ RMW\ operation\ on\ LOCKA\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00238}00238\ \ \ \ \ uint16\_t\ gieStatus;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00239}00239\ \ \ \ \ gieStatus\ =\ \_\_get\_SR\_register()\ \&\ GIE;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Store\ current\ SR\ register}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00240}00240\ \ \ \ \ \_\_disable\_interrupt();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Disable\ global\ interrupt}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00242}00242\ \ \ \ \ \textcolor{comment}{//Set\ the\ LOCKA\ bit\ in\ FCTL3.}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00243}00243\ \ \ \ \ \textcolor{comment}{//Since\ LOCKA\ toggles\ when\ you\ write\ a\ 1\ (and\ writing\ 0\ has\ no\ effect),}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00244}00244\ \ \ \ \ \textcolor{comment}{//read\ the\ register,\ XOR\ with\ LOCKA\ mask,\ mask\ the\ lower\ byte}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00245}00245\ \ \ \ \ \textcolor{comment}{//and\ write\ it\ back.}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00246}00246\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00247}00247\ \ \ \ \ \ \ \ \ +\ ((\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ \string^\ LOCKA)\ \&\ 0xFF);}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00249}00249\ \ \ \ \ \textcolor{comment}{//Reinstate\ SR\ register\ to\ restore\ global\ interrupt\ enable\ status}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00250}00250\ \ \ \ \ \_\_bis\_SR\_register(gieStatus);}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00251}00251\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00253}00253\ \textcolor{keywordtype}{void}\ FlashCtl\_unlockInfoA\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00254}00254\ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00255}00255\ \ \ \ \ \textcolor{comment}{//Disable\ global\ interrupts\ while\ doing\ RMW\ operation\ on\ LOCKA\ bit}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00256}00256\ \ \ \ \ uint16\_t\ gieStatus;}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00257}00257\ \ \ \ \ gieStatus\ =\ \_\_get\_SR\_register()\ \&\ GIE;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Store\ current\ SR\ register}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00258}00258\ \ \ \ \ \_\_disable\_interrupt();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Disable\ global\ interrupt}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00260}00260\ \ \ \ \ \textcolor{comment}{//Clear\ the\ LOCKA\ bit\ in\ FCTL3.}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00261}00261\ \ \ \ \ \textcolor{comment}{//Since\ LOCKA\ toggles\ when\ you\ write\ a\ 1\ (and\ writing\ 0\ has\ no\ effect),}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00262}00262\ \ \ \ \ \textcolor{comment}{//read\ the\ register,\ mask\ the\ lower\ byte,\ and\ write\ it\ back.}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00263}00263\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ =\ FWKEY\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00264}00264\ \ \ \ \ \ \ \ \ +\ (\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(FLASH\_BASE\ +\ OFS\_FCTL3)\ \&\ 0xFF);}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00266}00266\ \ \ \ \ \textcolor{comment}{//Reinstate\ SR\ register\ to\ restore\ global\ interrupt\ enable\ status}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00267}00267\ \ \ \ \ \_\_bis\_SR\_register(gieStatus);}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00268}00268\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00271}00271\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00272}00272\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00273}00273\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00276}00276\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8c_source_l00277}00277\ \textcolor{comment}{//*****************************************************************************}}
+
+\end{DoxyCode}

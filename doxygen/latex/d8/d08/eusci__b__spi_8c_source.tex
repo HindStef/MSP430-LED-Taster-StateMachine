@@ -1,0 +1,197 @@
+\doxysection{eusci\+\_\+b\+\_\+spi.\+c}
+\hypertarget{eusci__b__spi_8c_source}{}\label{eusci__b__spi_8c_source}\index{driverlib/MSP430F5xx\_6xx/eusci\_b\_spi.c@{driverlib/MSP430F5xx\_6xx/eusci\_b\_spi.c}}
+\doxymbox{\hyperlink{eusci__b__spi_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00003}00003\ \textcolor{comment}{//\ eusci\_b\_spi.c\ -\/\ Driver\ for\ the\ eusci\_b\_spi\ Module.}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00007}00007\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00011}00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00012}00012\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_EUSCI\_Bx\_\_}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{eusci__b__spi_8h}{eusci\_b\_spi.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00021}00021\ \textcolor{keywordtype}{void}\ EUSCI\_B\_SPI\_initMaster\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00022}00022\ \ \ \ \ EUSCI\_B\_SPI\_initMasterParam\ *param)}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00023}00023\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//Disable\ the\ USCI\ Module}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00025}00025\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ |=\ UCSWRST;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//Reset\ OFS\_UCBxCTLW0\ values}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00028}00028\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ \&=\ \string~(UCCKPH\ +\ UCCKPL\ +\ UC7BIT\ +\ UCMSB\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ UCMST\ +\ UCMODE\_3\ +\ UCSYNC);}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//Reset\ OFS\_UCBxCTLW0\ values}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00032}00032\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ \&=\ \string~(UCSSEL\_3);}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//Select\ Clock}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00035}00035\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ |=\ (uint16\_t)param-\/>selectClockSource;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00037}00037\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxBRW)\ =}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ (uint16\_t)(param-\/>clockSourceFrequency\ /\ param-\/>desiredSpiClock);}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00040}00040\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00041}00041\ \textcolor{comment}{\ \ \ \ \ *\ Configure\ as\ SPI\ master\ mode.}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00042}00042\ \textcolor{comment}{\ \ \ \ \ *\ Clock\ phase\ select,\ polarity,\ msb}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00043}00043\ \textcolor{comment}{\ \ \ \ \ *\ UCMST\ =\ Master\ mode}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00044}00044\ \textcolor{comment}{\ \ \ \ \ *\ UCSYNC\ =\ Synchronous\ mode}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00045}00045\ \textcolor{comment}{\ \ \ \ \ *\ UCMODE\_0\ =\ 3-\/pin\ SPI}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00046}00046\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00047}00047\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ |=\ (}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ param-\/>msbFirst\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ param-\/>clockPhase\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ param-\/>clockPolarity\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ UCMST\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ UCSYNC\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ param-\/>spiMode}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00055}00055\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00057}00057\ \textcolor{keywordtype}{void}\ EUSCI\_B\_SPI\_select4PinFunctionality\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00058}00058\ \ \ \ \ uint16\_t\ select4PinFunctionality}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00059}00059\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00060}00060\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00061}00061\ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ \&=\ \string~UCSTEM;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00062}00062\ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ |=\ select4PinFunctionality;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00065}00065\ \textcolor{keywordtype}{void}\ EUSCI\_B\_SPI\_changeMasterClock\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00066}00066\ \ \ \ \ EUSCI\_B\_SPI\_changeMasterClockParam\ *param)}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00067}00067\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//Disable\ the\ USCI\ Module}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00069}00069\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ |=\ UCSWRST;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00071}00071\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxBRW)\ =}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ (uint16\_t)(param-\/>clockSourceFrequency\ /\ param-\/>desiredSpiClock);}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//Reset\ the\ UCSWRST\ bit\ to\ enable\ the\ USCI\ Module}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00075}00075\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ \&=\ \string~(UCSWRST);}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00078}00078\ \textcolor{keywordtype}{void}\ EUSCI\_B\_SPI\_initSlave\ (uint16\_t\ baseAddress,\ EUSCI\_B\_SPI\_initSlaveParam\ *param)}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00079}00079\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//Disable\ USCI\ Module}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00081}00081\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ \ |=\ UCSWRST;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//Reset\ OFS\_UCBxCTLW0\ register}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00084}00084\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ \&=\ \string~(UCMSB\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UC7BIT\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCMST\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCCKPL\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCCKPH\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCMODE\_3}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//Clock\ polarity,\ phase\ select,\ msbFirst,\ SYNC,\ Mode0}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00093}00093\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ |=\ (param-\/>clockPhase\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>clockPolarity\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>msbFirst\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCSYNC\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>spiMode}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00101}00101\ \textcolor{keywordtype}{void}\ EUSCI\_B\_SPI\_changeClockPhasePolarity\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00102}00102\ \ \ \ \ uint16\_t\ clockPhase,}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00103}00103\ \ \ \ \ uint16\_t\ clockPolarity}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00104}00104\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00105}00105\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00106}00106\ \ \ \textcolor{comment}{//Disable\ the\ USCI\ Module}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00107}00107\ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ |=\ UCSWRST;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00109}00109\ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ \&=\ \string~(UCCKPH\ +\ UCCKPL);}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00111}00111\ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ |=\ (}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ clockPhase\ +}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ clockPolarity}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00116}00116\ \ \ \textcolor{comment}{//Reset\ the\ UCSWRST\ bit\ to\ enable\ the\ USCI\ Module}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00117}00117\ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ \&=\ \string~(UCSWRST);}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00118}00118\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00120}00120\ \textcolor{keywordtype}{void}\ EUSCI\_B\_SPI\_transmitData\ (\ uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00121}00121\ \ \ \ \ uint8\_t\ transmitData}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00122}00122\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00123}00123\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00124}00124\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxTXBUF)\ =\ transmitData;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00125}00125\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00127}00127\ uint8\_t\ EUSCI\_B\_SPI\_receiveData\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00128}00128\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00129}00129\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxRXBUF))\ ;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00132}00132\ \textcolor{keywordtype}{void}\ EUSCI\_B\_SPI\_enableInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00133}00133\ \ \ \ \ uint16\_t\ mask}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00134}00134\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00135}00135\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00136}00136\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxIE)\ |=\ mask;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00137}00137\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00139}00139\ \textcolor{keywordtype}{void}\ EUSCI\_B\_SPI\_disableInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00140}00140\ \ \ \ \ uint16\_t\ mask}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00141}00141\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00142}00142\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00143}00143\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxIE)\ \&=\ \string~mask;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00144}00144\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00146}00146\ uint8\_t\ EUSCI\_B\_SPI\_getInterruptStatus\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00147}00147\ \ \ \ \ uint8\_t\ mask}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00148}00148\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00149}00149\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00150}00150\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxIFG)\ \&\ mask\ );}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00151}00151\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00153}00153\ \textcolor{keywordtype}{void}\ EUSCI\_B\_SPI\_clearInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00154}00154\ \ \ \ \ uint16\_t\ mask}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00155}00155\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00156}00156\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00157}00157\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxIFG)\ \&=\ \ \string~mask;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00158}00158\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00160}00160\ \textcolor{keywordtype}{void}\ EUSCI\_B\_SPI\_enable\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00161}00161\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00162}00162\ \ \ \ \ \textcolor{comment}{//Reset\ the\ UCSWRST\ bit\ to\ enable\ the\ USCI\ Module}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00163}00163\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ \&=\ \string~(UCSWRST);}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00164}00164\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00166}00166\ \textcolor{keywordtype}{void}\ EUSCI\_B\_SPI\_disable\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00167}00167\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00168}00168\ \ \ \ \ \textcolor{comment}{//Set\ the\ UCSWRST\ bit\ to\ disable\ the\ USCI\ Module}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00169}00169\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxCTLW0)\ |=\ UCSWRST;}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00170}00170\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00172}00172\ uint32\_t\ EUSCI\_B\_SPI\_getReceiveBufferAddress\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00173}00173\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ baseAddress\ +\ OFS\_UCBxRXBUF\ );}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00175}00175\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00177}00177\ uint32\_t\ EUSCI\_B\_SPI\_getTransmitBufferAddress\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00178}00178\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00179}00179\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ baseAddress\ +\ OFS\_UCBxTXBUF\ );}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00180}00180\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00182}00182\ uint16\_t\ EUSCI\_B\_SPI\_isBusy\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00183}00183\ \{}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00184}00184\ \ \ \ \ \textcolor{comment}{//Return\ the\ bus\ busy\ status.}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00185}00185\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCBxSTATW)\ \&\ UCBUSY);}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00186}00186\ \}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00189}00189\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00190}00190\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00191}00191\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00194}00194\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{eusci__b__spi_8c_source_l00195}00195\ \textcolor{comment}{//*****************************************************************************}}
+
+\end{DoxyCode}

@@ -1,0 +1,153 @@
+\doxysection{tec.\+c}
+\hypertarget{tec_8c_source}{}\label{tec_8c_source}\index{driverlib/MSP430F5xx\_6xx/tec.c@{driverlib/MSP430F5xx\_6xx/tec.c}}
+\doxymbox{\hyperlink{tec_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00003}00003\ \textcolor{comment}{//\ tec.c\ -\/\ Driver\ for\ the\ tec\ Module.}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00007}00007\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00011}00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00012}00012\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_TEV0\_\_}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{tec_8h}{tec.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00021}00021\ \textcolor{keywordtype}{void}\ TEC\_initExternalClearInput\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ signalType,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ signalHold,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ polarityBit}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00026}00026\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00027}00027\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XCTL2\_L)\ \ \&=\ \string~(TEC\_EXTERNAL\_CLEAR\_SIGNALTYPE\_LEVEL\_SENSITIVE\ +}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TEC\_EXTERNAL\_CLEAR\_SIGNAL\_HELD\ +}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TEC\_EXTERNAL\_CLEAR\_POLARITY\_RISING\_EDGE\_OR\_HIGH\_LEVEL}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00032}00032\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XCTL2\_L)\ \ |=\ (signalType\ +}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ signalHold\ +}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ polarityBit}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00036}00036\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00038}00038\ \textcolor{keywordtype}{void}\ TEC\_initExternalFaultInput(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00039}00039\ \ \ \ \ TEC\_initExternalFaultInputParam\ *param)}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00040}00040\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00041}00041\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XCTL2\_L)\ \ \&=\ \string~((TEC\_EXTERNAL\_FAULT\_SIGNALTYPE\_LEVEL\_SENSITIVE\ <<\ param-\/>selectedExternalFault)+}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (TEC\_EXTERNAL\_FAULT\_POLARITY\_RISING\_EDGE\_OR\_HIGH\_LEVEL\ <<\ param-\/>selectedExternalFault)+}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (TEC\_EXTERNAL\_FAULT\_SIGNAL\_HELD\ <<\ param-\/>selectedExternalFault\ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00046}00046\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XCTL2\_L)\ \ |=\ ((param-\/>signalType\ <<\ param-\/>selectedExternalFault)+}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (param-\/>polarityBit\ <<\ param-\/>selectedExternalFault)\ +}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (param-\/>signalHold\ <<\ param-\/>selectedExternalFault\ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00052}00052\ \textcolor{keywordtype}{void}\ TEC\_enableExternalFaultInput\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ channelEventBlock}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00055}00055\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00056}00056\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XCTL0\_H)\ \ |=\ (1\ <<\ channelEventBlock\ );}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00059}00059\ \textcolor{keywordtype}{void}\ TEC\_disableExternalFaultInput\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ channelEventBlock}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00062}00062\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00063}00063\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XCTL0\_H)\ \ \&=\ \string~(1\ <<\ channelEventBlock\ );}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00066}00066\ \textcolor{keywordtype}{void}\ TEC\_enableExternalClearInput\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00067}00067\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00068}00068\ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XCTL2\_L)\ \ |=\ TECEXCLREN;}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00071}00071\ \textcolor{keywordtype}{void}\ TEC\_disableExternalClearInput\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00073}00073\ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XCTL2\_L)\ \ \&=\ \string~TECEXCLREN;}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00076}00076\ \textcolor{keywordtype}{void}\ TEC\_enableAuxiliaryClearSignal\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00077}00077\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00078}00078\ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XCTL2\_L)\ \ |=\ TECAXCLREN;}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00081}00081\ \textcolor{keywordtype}{void}\ TEC\_disableAuxiliaryClearSignal\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00082}00082\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00083}00083\ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XCTL2\_L)\ \ \&=\ \string~TECAXCLREN;}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00086}00086\ \textcolor{keywordtype}{void}\ TEC\_clearInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00087}00087\ \ \ \ \ uint8\_t\ mask}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00088}00088\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00089}00089\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00090}00090\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XINT\_L)\ \ \&=\ \string~mask;}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00093}00093\ uint8\_t\ TEC\_getInterruptStatus\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00094}00094\ \ \ \ \ uint8\_t\ mask}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00095}00095\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00096}00096\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00097}00097\ \ \ \ \ \textcolor{comment}{//Return\ the\ interrupt\ status\ of\ the\ request\ masked\ bit.}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XINT\_L)\ \&\ mask);}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00101}00101\ \textcolor{keywordtype}{void}\ TEC\_enableInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00102}00102\ \ \ \ \ uint8\_t\ mask}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00103}00103\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00104}00104\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//Enable\ the\ interrupt\ masked\ bit}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00106}00106\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XINT\_H)\ |=\ mask;}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00107}00107\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00109}00109\ \textcolor{keywordtype}{void}\ TEC\_disableInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00110}00110\ \ \ \ \ uint8\_t\ mask}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00111}00111\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00112}00112\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//Disable\ the\ interrupt\ masked\ bit}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00114}00114\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0XINT\_H)\ \&=\ \string~(mask);}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00117}00117\ uint8\_t\ TEC\_getExternalFaultStatus\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00118}00118\ \ \ \ \ uint8\_t\ mask}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00119}00119\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00120}00120\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00121}00121\ \ \ \ \ \textcolor{comment}{//Return\ the\ interrupt\ status\ of\ the\ request\ masked\ bit.}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0STA\_L)\ \&\ mask);}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00125}00125\ \textcolor{keywordtype}{void}\ TEC\_clearExternalFaultStatus\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00126}00126\ \ \ \ \ uint8\_t\ mask}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00127}00127\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00128}00128\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00129}00129\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0STA\_L)\ \ \&=\ \string~mask;}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00132}00132\ uint8\_t\ TEC\_getExternalClearStatus\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00134}00134\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//Return\ the\ interrupt\ status\ of\ the\ request\ masked\ bit.}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00136}00136\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0STA\_L)\ \&\ TECXCLRSTA);}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00137}00137\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00139}00139\ \textcolor{keywordtype}{void}\ TEC\_clearExternalClearStatus\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00140}00140\ \{}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00141}00141\ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_TEC0STA\_L)\ \ \&=\ \string~TECXCLRSTA;}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00142}00142\ \}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00145}00145\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00146}00146\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00147}00147\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00150}00150\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{tec_8c_source_l00151}00151\ \textcolor{comment}{//*****************************************************************************}}
+
+\end{DoxyCode}

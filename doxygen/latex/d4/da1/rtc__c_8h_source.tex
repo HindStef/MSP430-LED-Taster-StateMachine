@@ -1,0 +1,391 @@
+\doxysection{rtc\+\_\+c.\+h}
+\hypertarget{rtc__c_8h_source}{}\label{rtc__c_8h_source}\index{driverlib/MSP430F5xx\_6xx/rtc\_c.h@{driverlib/MSP430F5xx\_6xx/rtc\_c.h}}
+\doxymbox{\hyperlink{rtc__c_8h}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00003}00003\ \textcolor{comment}{//\ rtc\_c.h\ -\/\ Driver\ for\ the\ RTC\_C\ Module.}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_\_MSP430WARE\_RTC\_C\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_\_MSP430WARE\_RTC\_C\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00012}00012\ \textcolor{preprocessor}{\#if\ defined(\_\_MSP430\_HAS\_RTC\_C\_\_)\ ||\ defined(\_\_MSP430\_HAS\_RTC\_CE\_\_)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00014}00014\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00015}00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00016}00016\ \textcolor{comment}{//\ If\ building\ with\ a\ C++\ compiler,\ make\ all\ of\ the\ definitions\ in\ this\ header}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00017}00017\ \textcolor{comment}{//\ have\ a\ C\ binding.}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00019}00019\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00020}00020\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00021}00021\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00023}00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00026}00026\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00027}00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00030}00030\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00031}00031\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00032}00032\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }Calendar\ \{}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00034}00034\ \ \ \ \ uint8\_t\ Seconds;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00036}00036\ \ \ \ \ uint8\_t\ Minutes;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00038}00038\ \ \ \ \ uint8\_t\ Hours;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00040}00040\ \ \ \ \ uint8\_t\ DayOfWeek;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00042}00042\ \ \ \ \ uint8\_t\ DayOfMonth;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00044}00044\ \ \ \ \ uint8\_t\ Month;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00046}00046\ \ \ \ \ uint16\_t\ Year;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00047}00047\ \}\ Calendar;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00049}00049\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00050}00050\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00053}00053\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00054}00054\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00055}00055\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }RTC\_C\_configureCalendarAlarmParam\ \{}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00059}00059\ \ \ \ \ uint8\_t\ minutesAlarm;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00063}00063\ \ \ \ \ uint8\_t\ hoursAlarm;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00067}00067\ \ \ \ \ uint8\_t\ dayOfWeekAlarm;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00071}00071\ \ \ \ \ uint8\_t\ dayOfMonthAlarm;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00072}00072\ \}\ RTC\_C\_configureCalendarAlarmParam;}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00075}00075\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00076}00076\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00077}00077\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ frequencySelect\ parameter}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00078}00078\ \textcolor{comment}{//\ for\ functions:\ RTC\_C\_setCalibrationFrequency().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00079}00079\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00080}00080\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00081}00081\ \textcolor{preprocessor}{\#define\ RTC\_C\_CALIBRATIONFREQ\_OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCCALF\_0)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00082}00082\ \textcolor{preprocessor}{\#define\ RTC\_C\_CALIBRATIONFREQ\_512HZ\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCCALF\_1)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00083}00083\ \textcolor{preprocessor}{\#define\ RTC\_C\_CALIBRATIONFREQ\_256HZ\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCCALF\_2)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00084}00084\ \textcolor{preprocessor}{\#define\ RTC\_C\_CALIBRATIONFREQ\_1HZ\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCCALF\_3)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00086}00086\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00087}00087\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00088}00088\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ offsetDirection\ parameter}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00089}00089\ \textcolor{comment}{//\ for\ functions:\ RTC\_C\_setCalibrationData().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00090}00090\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00091}00091\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00092}00092\ \textcolor{preprocessor}{\#define\ RTC\_C\_CALIBRATION\_DOWN1PPM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(RTCCALS))}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00093}00093\ \textcolor{preprocessor}{\#define\ RTC\_C\_CALIBRATION\_UP1PPM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCCALS)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00095}00095\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00096}00096\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00097}00097\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ offsetDirection\ parameter}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00098}00098\ \textcolor{comment}{//\ for\ functions:\ RTC\_C\_setTemperatureCompensation().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00099}00099\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00100}00100\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00101}00101\ \textcolor{preprocessor}{\#define\ RTC\_C\_COMPENSATION\_DOWN1PPM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(RTCTCMPS))}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00102}00102\ \textcolor{preprocessor}{\#define\ RTC\_C\_COMPENSATION\_UP1PPM\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCTCMPS)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00104}00104\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00105}00105\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00106}00106\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ clockSelect\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00107}00107\ \textcolor{comment}{//\ functions:\ RTC\_C\_initCounter().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00108}00108\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00109}00109\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00110}00110\ \textcolor{preprocessor}{\#define\ RTC\_C\_CLOCKSELECT\_32KHZ\_OSC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCSSEL\_0)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00111}00111\ \textcolor{preprocessor}{\#define\ RTC\_C\_CLOCKSELECT\_RT1PS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCSSEL\_2)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00113}00113\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00114}00114\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00115}00115\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ counterSizeSelect}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00116}00116\ \textcolor{comment}{//\ parameter\ for\ functions:\ RTC\_C\_initCounter().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00117}00117\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00118}00118\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00119}00119\ \textcolor{preprocessor}{\#define\ RTC\_C\_COUNTERSIZE\_8BIT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCTEV\_0)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00120}00120\ \textcolor{preprocessor}{\#define\ RTC\_C\_COUNTERSIZE\_16BIT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCTEV\_1)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00121}00121\ \textcolor{preprocessor}{\#define\ RTC\_C\_COUNTERSIZE\_24BIT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCTEV\_2)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00122}00122\ \textcolor{preprocessor}{\#define\ RTC\_C\_COUNTERSIZE\_32BIT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCTEV\_3)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00124}00124\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00125}00125\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00126}00126\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ formatSelect\ parameter}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00127}00127\ \textcolor{comment}{//\ for\ functions:\ RTC\_C\_initCalendar().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00128}00128\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00129}00129\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00130}00130\ \textcolor{preprocessor}{\#define\ RTC\_C\_FORMAT\_BINARY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(RTCBCD))}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00131}00131\ \textcolor{preprocessor}{\#define\ RTC\_C\_FORMAT\_BCD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCBCD)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00133}00133\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00134}00134\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00135}00135\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00136}00136\ \textcolor{comment}{//\ functions:\ RTC\_C\_configureCalendarAlarm(),\ RTC\_C\_configureCalendarAlarm(),}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00137}00137\ \textcolor{comment}{//\ RTC\_C\_configureCalendarAlarm(),\ and\ RTC\_C\_configureCalendarAlarm().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00138}00138\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00139}00139\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00140}00140\ \textcolor{preprocessor}{\#define\ RTC\_C\_ALARMCONDITION\_OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x80)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00142}00142\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00143}00143\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00144}00144\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ eventSelect\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00145}00145\ \textcolor{comment}{//\ functions:\ RTC\_C\_setCalendarEvent().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00146}00146\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00147}00147\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00148}00148\ \textcolor{preprocessor}{\#define\ RTC\_C\_CALENDAREVENT\_MINUTECHANGE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCTEV\_0)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00149}00149\ \textcolor{preprocessor}{\#define\ RTC\_C\_CALENDAREVENT\_HOURCHANGE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCTEV\_1)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00150}00150\ \textcolor{preprocessor}{\#define\ RTC\_C\_CALENDAREVENT\_NOON\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCTEV\_2)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00151}00151\ \textcolor{preprocessor}{\#define\ RTC\_C\_CALENDAREVENT\_MIDNIGHT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RTCTEV\_3)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00153}00153\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00154}00154\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00155}00155\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ prescaleDivider\ parameter}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00156}00156\ \textcolor{comment}{//\ for\ functions:\ RTC\_C\_initCounterPrescale().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00157}00157\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00158}00158\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00159}00159\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSDIVIDER\_2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0PSDIV\_0)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00160}00160\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSDIVIDER\_4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0PSDIV\_1)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00161}00161\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSDIVIDER\_8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0PSDIV\_2)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00162}00162\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSDIVIDER\_16\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0PSDIV\_3)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00163}00163\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSDIVIDER\_32\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0PSDIV\_4)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00164}00164\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSDIVIDER\_64\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0PSDIV\_5)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00165}00165\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSDIVIDER\_128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0PSDIV\_6)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00166}00166\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSDIVIDER\_256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0PSDIV\_7)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00168}00168\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00169}00169\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00170}00170\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ prescaleClockSelect}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00171}00171\ \textcolor{comment}{//\ parameter\ for\ functions:\ RTC\_C\_initCounterPrescale().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00172}00172\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00173}00173\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00174}00174\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSCLOCKSELECT\_ACLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT1SSEL\_0)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00175}00175\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSCLOCKSELECT\_SMCLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT1SSEL\_1)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00176}00176\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSCLOCKSELECT\_RT0PS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT1SSEL\_2)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00178}00178\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00179}00179\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00180}00180\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ prescaleEventDivider}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00181}00181\ \textcolor{comment}{//\ parameter\ for\ functions:\ RTC\_C\_definePrescaleEvent().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00182}00182\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00183}00183\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00184}00184\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSEVENTDIVIDER\_2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0IP\_0)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00185}00185\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSEVENTDIVIDER\_4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0IP\_1)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00186}00186\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSEVENTDIVIDER\_8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0IP\_2)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00187}00187\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSEVENTDIVIDER\_16\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0IP\_3)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00188}00188\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSEVENTDIVIDER\_32\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0IP\_4)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00189}00189\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSEVENTDIVIDER\_64\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0IP\_5)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00190}00190\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSEVENTDIVIDER\_128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0IP\_6)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00191}00191\ \textcolor{preprocessor}{\#define\ RTC\_C\_PSEVENTDIVIDER\_256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (RT0IP\_7)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00193}00193\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00194}00194\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00195}00195\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ prescaleSelect\ parameter}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00196}00196\ \textcolor{comment}{//\ for\ functions:\ RTC\_C\_initCounterPrescale(),\ RTC\_C\_holdCounterPrescale(),}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00197}00197\ \textcolor{comment}{//\ RTC\_C\_startCounterPrescale(),\ RTC\_C\_definePrescaleEvent(),}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00198}00198\ \textcolor{comment}{//\ RTC\_C\_getPrescaleValue(),\ and\ RTC\_C\_setPrescaleValue().}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00199}00199\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00200}00200\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00201}00201\ \textcolor{preprocessor}{\#define\ RTC\_C\_PRESCALE\_0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x0)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00202}00202\ \textcolor{preprocessor}{\#define\ RTC\_C\_PRESCALE\_1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x2)}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00204}00204\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00205}00205\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00206}00206\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ interruptMask\ parameter}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00207}00207\ \textcolor{comment}{//\ for\ functions:\ RTC\_C\_enableInterrupt(),\ and\ RTC\_C\_disableInterrupt();\ the}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00208}00208\ \textcolor{comment}{//\ interruptFlagMask\ parameter\ for\ functions:\ RTC\_C\_getInterruptStatus(),\ and}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00209}00209\ \textcolor{comment}{//\ RTC\_C\_clearInterrupt()\ as\ well\ as\ returned\ by\ the\ RTC\_C\_getInterruptStatus()}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00210}00210\ \textcolor{comment}{//\ function.}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00211}00211\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00212}00212\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00213}00213\ \textcolor{preprocessor}{\#define\ RTC\_C\_TIME\_EVENT\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RTCTEVIE}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00214}00214\ \textcolor{preprocessor}{\#define\ RTC\_C\_CLOCK\_ALARM\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RTCAIE}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00215}00215\ \textcolor{preprocessor}{\#define\ RTC\_C\_CLOCK\_READ\_READY\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RTCRDYIE}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00216}00216\ \textcolor{preprocessor}{\#define\ RTC\_C\_PRESCALE\_TIMER0\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00217}00217\ \textcolor{preprocessor}{\#define\ RTC\_C\_PRESCALE\_TIMER1\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00218}00218\ \textcolor{preprocessor}{\#define\ RTC\_C\_OSCILLATOR\_FAULT\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RTCOFIE}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00220}00220\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00221}00221\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00222}00222\ \textcolor{comment}{//\ Prototypes\ for\ the\ APIs.}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00223}00223\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00224}00224\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00226}00226\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00227}00227\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00235}00235\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00236}00236\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00237}00237\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_startClock(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00239}00239\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00240}00240\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00248}00248\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00249}00249\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00250}00250\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_holdClock(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00252}00252\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00253}00253\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00274}00274\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00275}00275\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00276}00276\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_setCalibrationFrequency(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ frequencySelect);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00279}00279\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00280}00280\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00300}00300\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00301}00301\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00302}00302\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_setCalibrationData(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ offsetDirection,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ offsetValue);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00306}00306\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00307}00307\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00329}00329\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00330}00330\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00331}00331\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_initCounter(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ clockSelect,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ counterSizeSelect);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00335}00335\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00336}00336\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00356}00356\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00357}00357\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00358}00358\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ RTC\_C\_setTemperatureCompensation(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ offsetDirection,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ offsetValue);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00362}00362\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00363}00363\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00388}00388\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00389}00389\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00390}00390\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_initCalendar(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Calendar\ *CalendarTime,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ formatSelect);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00394}00394\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00395}00395\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00406}00406\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00407}00407\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00408}00408\ \textcolor{keyword}{extern}\ Calendar\ RTC\_C\_getCalendarTime(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00410}00410\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00411}00411\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00425}00425\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00426}00426\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00427}00427\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_configureCalendarAlarm(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RTC\_C\_configureCalendarAlarmParam\ *param);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00430}00430\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00431}00431\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00448}00448\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00449}00449\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00450}00450\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_setCalendarEvent(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ eventSelect);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00452}00452\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00453}00453\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00454}00454\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00464}00464\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00465}00465\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00466}00466\ \textcolor{keyword}{extern}\ uint32\_t\ RTC\_C\_getCounterValue(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00467}00467\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00468}00468\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00469}00469\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00479}00479\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00480}00480\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00481}00481\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_setCounterValue(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ counterValue);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00483}00483\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00484}00484\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00485}00485\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00519}00519\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00520}00520\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00521}00521\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_initCounterPrescale(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ prescaleSelect,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00523}00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ prescaleClockSelect,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ prescaleDivider);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00525}00525\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00526}00526\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00527}00527\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00543}00543\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00544}00544\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00545}00545\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_holdCounterPrescale(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ prescaleSelect);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00547}00547\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00548}00548\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00549}00549\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00562}00562\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00563}00563\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00564}00564\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_startCounterPrescale(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00565}00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ prescaleSelect);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00566}00566\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00567}00567\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00568}00568\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00594}00594\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00595}00595\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00596}00596\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_definePrescaleEvent(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00597}00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ prescaleSelect,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00598}00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ prescaleEventDivider);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00599}00599\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00600}00600\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00601}00601\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00615}00615\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00616}00616\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00617}00617\ \textcolor{keyword}{extern}\ uint8\_t\ RTC\_C\_getPrescaleValue(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00618}00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ prescaleSelect);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00619}00619\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00620}00620\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00621}00621\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00637}00637\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00638}00638\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00639}00639\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_setPrescaleValue(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ prescaleSelect,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ prescaleCounterValue);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00642}00642\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00643}00643\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00644}00644\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00669}00669\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00670}00670\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00671}00671\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_enableInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00672}00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ interruptMask);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00673}00673\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00674}00674\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00675}00675\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00700}00700\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00701}00701\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00702}00702\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_disableInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00703}00703\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ interruptMask);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00704}00704\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00705}00705\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00706}00706\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00745}00745\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00746}00746\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00747}00747\ \textcolor{keyword}{extern}\ uint8\_t\ RTC\_C\_getInterruptStatus(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00748}00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ interruptFlagMask);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00749}00749\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00750}00750\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00751}00751\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00776}00776\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00777}00777\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00778}00778\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ RTC\_C\_clearInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00779}00779\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ interruptFlagMask);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00780}00780\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00781}00781\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00782}00782\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00793}00793\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00794}00794\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00795}00795\ \textcolor{keyword}{extern}\ uint16\_t\ RTC\_C\_convertBCDToBinary(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00796}00796\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ valueToConvert);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00797}00797\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00798}00798\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00799}00799\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00810}00810\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00811}00811\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00812}00812\ \textcolor{keyword}{extern}\ uint16\_t\ RTC\_C\_convertBinaryToBCD(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00813}00813\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ valueToConvert);}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00814}00814\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00815}00815\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00816}00816\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00817}00817\ \textcolor{comment}{//\ Mark\ the\ end\ of\ the\ C\ bindings\ section\ for\ C++\ compilers.}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00818}00818\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00819}00819\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00820}00820\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00821}00821\ \}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00822}00822\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00823}00823\ }
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00824}00824\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{rtc__c_8h_source_l00825}00825\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MSP430WARE\_RTC\_C\_H\_\_}}
+
+\end{DoxyCode}

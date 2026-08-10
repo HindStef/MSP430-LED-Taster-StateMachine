@@ -1,0 +1,322 @@
+\doxysection{comp\+\_\+b.\+h}
+\hypertarget{comp__b_8h_source}{}\label{comp__b_8h_source}\index{driverlib/MSP430F5xx\_6xx/comp\_b.h@{driverlib/MSP430F5xx\_6xx/comp\_b.h}}
+\doxymbox{\hyperlink{comp__b_8h}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00003}00003\ \textcolor{comment}{//\ comp\_b.h\ -\/\ Driver\ for\ the\ COMP\_B\ Module.}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_\_MSP430WARE\_COMP\_B\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_\_MSP430WARE\_COMP\_B\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00012}00012\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_COMPB\_\_}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00014}00014\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00015}00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00016}00016\ \textcolor{comment}{//\ If\ building\ with\ a\ C++\ compiler,\ make\ all\ of\ the\ definitions\ in\ this\ header}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00017}00017\ \textcolor{comment}{//\ have\ a\ C\ binding.}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00019}00019\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00020}00020\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00021}00021\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00023}00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00026}00026\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00027}00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00029}00029\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00030}00030\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00031}00031\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }Comp\_B\_initParam\ \{}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00051}00051\ \ \ \ \ uint8\_t\ positiveTerminalInput;}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00071}00071\ \ \ \ \ uint8\_t\ negativeTerminalInput;}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00077}00077\ \ \ \ \ uint16\_t\ powerModeSelect;}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00087}00087\ \ \ \ \ uint8\_t\ outputFilterEnableAndDelayLevel;}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00092}00092\ \ \ \ \ uint16\_t\ invertedOutputPolarity;}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00093}00093\ \}\ Comp\_B\_initParam;}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00095}00095\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00096}00096\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00099}00099\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00100}00100\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00101}00101\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }Comp\_B\_configureReferenceVoltageParam\ \{}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00109}00109\ \ \ \ \ uint16\_t\ supplyVoltageReferenceBase;}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00112}00112\ \ \ \ \ uint16\_t\ lowerLimitSupplyVoltageFractionOf32;}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00115}00115\ \ \ \ \ uint16\_t\ upperLimitSupplyVoltageFractionOf32;}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00121}00121\ \ \ \ \ uint16\_t\ referenceAccuracy;}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00122}00122\ \}\ Comp\_B\_configureReferenceVoltageParam;}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00125}00125\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00126}00126\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00127}00127\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ powerModeSelect\ parameter}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00128}00128\ \textcolor{comment}{//\ for\ functions:\ Comp\_B\_init();\ the\ param\ parameter\ for\ functions:}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00129}00129\ \textcolor{comment}{//\ Comp\_B\_init().}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00130}00130\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00131}00131\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00132}00132\ \textcolor{preprocessor}{\#define\ COMP\_B\_POWERMODE\_HIGHSPEED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBPWRMD\_0)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00133}00133\ \textcolor{preprocessor}{\#define\ COMP\_B\_POWERMODE\_NORMALMODE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBPWRMD\_1)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00134}00134\ \textcolor{preprocessor}{\#define\ COMP\_B\_POWERMODE\_ULTRALOWPOWER\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBPWRMD\_2)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00136}00136\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00137}00137\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00138}00138\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ positiveTerminalInput}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00139}00139\ \textcolor{comment}{//\ parameter\ for\ functions:\ Comp\_B\_init();\ the\ inputPort\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00140}00140\ \textcolor{comment}{//\ functions:\ Comp\_B\_disableInputBuffer(),\ and\ Comp\_B\_enableInputBuffer();\ the}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00141}00141\ \textcolor{comment}{//\ param\ parameter\ for\ functions:\ Comp\_B\_init(),\ and\ Comp\_B\_init();\ the}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00142}00142\ \textcolor{comment}{//\ negativeTerminalInput\ parameter\ for\ functions:\ Comp\_B\_init().}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00143}00143\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00144}00144\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00145}00145\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_0)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00146}00146\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_1)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00147}00147\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_2)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00148}00148\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_3)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00149}00149\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_4)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00150}00150\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_5)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00151}00151\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_6)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00152}00152\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_7)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00153}00153\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_8)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00154}00154\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT9\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_9)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00155}00155\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT10\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_10)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00156}00156\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT11\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_11)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00157}00157\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT12\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_12)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00158}00158\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT13\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_13)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00159}00159\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT14\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_14)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00160}00160\ \textcolor{preprocessor}{\#define\ COMP\_B\_INPUT15\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIPSEL\_15)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00161}00161\ \textcolor{preprocessor}{\#define\ COMP\_B\_VREF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x10)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00163}00163\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00164}00164\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00165}00165\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00166}00166\ \textcolor{comment}{//\ outputFilterEnableAndDelayLevel\ parameter\ for\ functions:\ Comp\_B\_init();\ the}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00167}00167\ \textcolor{comment}{//\ param\ parameter\ for\ functions:\ Comp\_B\_init().}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00168}00168\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00169}00169\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00170}00170\ \textcolor{preprocessor}{\#define\ COMP\_B\_FILTEROUTPUT\_OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00171}00171\ \textcolor{preprocessor}{\#define\ COMP\_B\_FILTEROUTPUT\_DLYLVL1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBF\ +\ CBFDLY\_0)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00172}00172\ \textcolor{preprocessor}{\#define\ COMP\_B\_FILTEROUTPUT\_DLYLVL2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBF\ +\ CBFDLY\_1)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00173}00173\ \textcolor{preprocessor}{\#define\ COMP\_B\_FILTEROUTPUT\_DLYLVL3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBF\ +\ CBFDLY\_2)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00174}00174\ \textcolor{preprocessor}{\#define\ COMP\_B\_FILTEROUTPUT\_DLYLVL4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBF\ +\ CBFDLY\_3)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00176}00176\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00177}00177\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00178}00178\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ invertedOutputPolarity}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00179}00179\ \textcolor{comment}{//\ parameter\ for\ functions:\ Comp\_B\_init();\ the\ param\ parameter\ for\ functions:}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00180}00180\ \textcolor{comment}{//\ Comp\_B\_init().}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00181}00181\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00182}00182\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00183}00183\ \textcolor{preprocessor}{\#define\ COMP\_B\_NORMALOUTPUTPOLARITY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(CBOUTPOL))}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00184}00184\ \textcolor{preprocessor}{\#define\ COMP\_B\_INVERTEDOUTPUTPOLARITY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBOUTPOL)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00186}00186\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00187}00187\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00188}00188\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00189}00189\ \textcolor{comment}{//\ functions:\ Comp\_B\_configureReferenceVoltage().}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00190}00190\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00191}00191\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00192}00192\ \textcolor{preprocessor}{\#define\ COMP\_B\_ACCURACY\_STATIC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!CBREFACC)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00193}00193\ \textcolor{preprocessor}{\#define\ COMP\_B\_ACCURACY\_CLOCKED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBREFACC)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00195}00195\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00196}00196\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00197}00197\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00198}00198\ \textcolor{comment}{//\ functions:\ Comp\_B\_configureReferenceVoltage().}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00199}00199\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00200}00200\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00201}00201\ \textcolor{preprocessor}{\#define\ COMP\_B\_VREFBASE\_VCC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBREFL\_0)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00202}00202\ \textcolor{preprocessor}{\#define\ COMP\_B\_VREFBASE1\_5V\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBREFL\_1)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00203}00203\ \textcolor{preprocessor}{\#define\ COMP\_B\_VREFBASE2\_0V\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBREFL\_2)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00204}00204\ \textcolor{preprocessor}{\#define\ COMP\_B\_VREFBASE2\_5V\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBREFL\_3)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00206}00206\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00207}00207\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00208}00208\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ interruptMask\ parameter}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00209}00209\ \textcolor{comment}{//\ for\ functions:\ Comp\_B\_enableInterrupt(),\ and\ Comp\_B\_disableInterrupt().}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00210}00210\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00211}00211\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00212}00212\ \textcolor{preprocessor}{\#define\ COMP\_B\_OUTPUT\_INT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CBIE}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00213}00213\ \textcolor{preprocessor}{\#define\ COMP\_B\_OUTPUTINVERTED\_INT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CBIIE}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00215}00215\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00216}00216\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00217}00217\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ interruptFlagMask}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00218}00218\ \textcolor{comment}{//\ parameter\ for\ functions:\ Comp\_B\_clearInterrupt(),\ and}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00219}00219\ \textcolor{comment}{//\ Comp\_B\_getInterruptStatus()\ as\ well\ as\ returned\ by\ the}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00220}00220\ \textcolor{comment}{//\ Comp\_B\_getInterruptStatus()\ function.}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00221}00221\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00222}00222\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00223}00223\ \textcolor{preprocessor}{\#define\ COMP\_B\_OUTPUT\_FLAG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CBIFG}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00224}00224\ \textcolor{preprocessor}{\#define\ COMP\_B\_OUTPUTINVERTED\_FLAG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CBIIFG}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00226}00226\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00227}00227\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00228}00228\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ edgeDirection\ parameter}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00229}00229\ \textcolor{comment}{//\ for\ functions:\ Comp\_B\_setInterruptEdgeDirection().}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00230}00230\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00231}00231\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00232}00232\ \textcolor{preprocessor}{\#define\ COMP\_B\_RISINGEDGE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(CBIES))}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00233}00233\ \textcolor{preprocessor}{\#define\ COMP\_B\_FALLINGEDGE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBIES)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00235}00235\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00236}00236\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00237}00237\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ toThe\ following\ are\ values\ that}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00238}00238\ \textcolor{comment}{//\ can\ be\ returned\ by\ the\ Comp\_B\_outputValue()\ function.}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00239}00239\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00240}00240\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00241}00241\ \textcolor{preprocessor}{\#define\ COMP\_B\_LOW\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x0)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00242}00242\ \textcolor{preprocessor}{\#define\ COMP\_B\_HIGH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (CBOUT)}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00244}00244\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00245}00245\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00246}00246\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ selectType\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00247}00247\ \textcolor{comment}{//\ functions:\ Comp\_B\_selectReferenceVoltage().}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00248}00248\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00249}00249\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00250}00250\ \textcolor{preprocessor}{\#define\ COMP\_B\_VREF\_AUTO\_SELECT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0000}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00251}00251\ \textcolor{preprocessor}{\#define\ COMP\_B\_VREF\_MANUAL\_SELECT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CBMRVS}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00253}00253\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00254}00254\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00255}00255\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ selectVRef\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00256}00256\ \textcolor{comment}{//\ functions:\ Comp\_B\_selectReferenceVoltage().}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00257}00257\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00258}00258\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00259}00259\ \textcolor{preprocessor}{\#define\ COMP\_B\_SELECT\_VREF0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0000}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00260}00260\ \textcolor{preprocessor}{\#define\ COMP\_B\_SELECT\_VREF1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CBMRVL}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00262}00262\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00263}00263\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00264}00264\ \textcolor{comment}{//\ Prototypes\ for\ the\ APIs.}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00265}00265\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00266}00266\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00268}00268\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00269}00269\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00283}00283\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00284}00284\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00285}00285\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ Comp\_B\_init(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Comp\_B\_initParam\ *param);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00288}00288\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00289}00289\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00303}00303\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00304}00304\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00305}00305\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_configureReferenceVoltage(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Comp\_B\_configureReferenceVoltageParam\ *param);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00308}00308\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00309}00309\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00325}00325\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00326}00326\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00327}00327\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_enableInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ interruptMask);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00330}00330\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00331}00331\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00347}00347\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00348}00348\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00349}00349\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_disableInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ interruptMask);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00352}00352\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00353}00353\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00369}00369\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00370}00370\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00371}00371\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_clearInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ interruptFlagMask);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00374}00374\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00375}00375\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00392}00392\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00393}00393\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00394}00394\ \textcolor{keyword}{extern}\ uint8\_t\ Comp\_B\_getInterruptStatus(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ interruptFlagMask);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00396}00396\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00397}00397\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00398}00398\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00420}00420\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00421}00421\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00422}00422\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_setInterruptEdgeDirection(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ edgeDirection);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00424}00424\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00425}00425\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00426}00426\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00437}00437\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00438}00438\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00439}00439\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_toggleInterruptEdgeDirection(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00440}00440\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00441}00441\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00442}00442\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00450}00450\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00451}00451\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00452}00452\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_enable(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00454}00454\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00455}00455\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00464}00464\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00465}00465\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00466}00466\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_disable(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00467}00467\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00468}00468\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00469}00469\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00478}00478\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00479}00479\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00480}00480\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_shortInputs(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00481}00481\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00482}00482\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00483}00483\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00493}00493\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00494}00494\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00495}00495\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_unshortInputs(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00496}00496\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00497}00497\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00498}00498\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00532}00532\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00533}00533\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00534}00534\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_disableInputBuffer(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ inputPort);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00536}00536\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00537}00537\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00538}00538\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00570}00570\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00571}00571\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00572}00572\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_enableInputBuffer(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00573}00573\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ inputPort);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00574}00574\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00575}00575\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00576}00576\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00588}00588\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00589}00589\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00590}00590\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_swapIO(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00591}00591\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00592}00592\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00593}00593\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00604}00604\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00605}00605\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00606}00606\ \textcolor{keyword}{extern}\ uint16\_t\ Comp\_B\_outputValue(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00607}00607\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00608}00608\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00609}00609\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00633}00633\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00634}00634\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00635}00635\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Comp\_B\_selectReferenceVoltage(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ selectType,}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ selectVRef);}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00638}00638\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00639}00639\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00640}00640\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00641}00641\ \textcolor{comment}{//\ Mark\ the\ end\ of\ the\ C\ bindings\ section\ for\ C++\ compilers.}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00642}00642\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00643}00643\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00644}00644\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00645}00645\ \}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00646}00646\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00647}00647\ }
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00648}00648\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{comp__b_8h_source_l00649}00649\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MSP430WARE\_COMP\_B\_H\_\_}}
+
+\end{DoxyCode}

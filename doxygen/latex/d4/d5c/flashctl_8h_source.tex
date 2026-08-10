@@ -1,0 +1,134 @@
+\doxysection{flashctl.\+h}
+\hypertarget{flashctl_8h_source}{}\label{flashctl_8h_source}\index{driverlib/MSP430F5xx\_6xx/flashctl.h@{driverlib/MSP430F5xx\_6xx/flashctl.h}}
+\doxymbox{\hyperlink{flashctl_8h}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00003}00003\ \textcolor{comment}{//\ flashctl.h\ -\/\ Driver\ for\ the\ FLASHCTL\ Module.}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_\_MSP430WARE\_FLASHCTL\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_\_MSP430WARE\_FLASHCTL\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00012}00012\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_FLASH\_\_}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00014}00014\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00015}00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00016}00016\ \textcolor{comment}{//\ If\ building\ with\ a\ C++\ compiler,\ make\ all\ of\ the\ definitions\ in\ this\ header}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00017}00017\ \textcolor{comment}{//\ have\ a\ C\ binding.}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00019}00019\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00020}00020\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00021}00021\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00023}00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00025}00025\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00026}00026\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00027}00027\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ mask\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00028}00028\ \textcolor{comment}{//\ functions:\ FlashCtl\_getStatus()\ as\ well\ as\ returned\ by\ the}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00029}00029\ \textcolor{comment}{//\ FlashCtl\_getStatus()\ function.}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00030}00030\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00031}00031\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ FLASHCTL\_READY\_FOR\_NEXT\_WRITE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WAIT}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ FLASHCTL\_ACCESS\_VIOLATION\_INTERRUPT\_FLAG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ACCVIFG}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00034}00034\ \textcolor{preprocessor}{\#define\ FLASHCTL\_PASSWORD\_WRITTEN\_INCORRECTLY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KEYV}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00035}00035\ \textcolor{preprocessor}{\#define\ FLASHCTL\_BUSY\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BUSY}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00037}00037\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00038}00038\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00039}00039\ \textcolor{comment}{//\ Prototypes\ for\ the\ APIs.}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00040}00040\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00041}00041\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00043}00043\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00044}00044\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00054}00054\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00055}00055\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00056}00056\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ FlashCtl\_eraseSegment(uint8\_t\ *flash\_ptr);}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00058}00058\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00059}00059\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00068}00068\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00069}00069\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00070}00070\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ FlashCtl\_eraseBank(uint8\_t\ *flash\_ptr);}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00072}00072\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00073}00073\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00086}00086\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00087}00087\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00088}00088\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ FlashCtl\_performMassErase(uint8\_t\ *flash\_ptr);}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00090}00090\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00091}00091\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00101}00101\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00102}00102\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00103}00103\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ FlashCtl\_performEraseCheck(uint8\_t\ *flash\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ numberOfBytes);}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00106}00106\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00107}00107\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00119}00119\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00120}00120\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00121}00121\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ FlashCtl\_write8(uint8\_t\ *data\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ *flash\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ count);}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00125}00125\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00126}00126\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00139}00139\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00140}00140\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00141}00141\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ FlashCtl\_write16(uint16\_t\ *data\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ *flash\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ count);}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00145}00145\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00146}00146\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00159}00159\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00160}00160\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00161}00161\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ FlashCtl\_write32(uint32\_t\ *data\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ *flash\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ count);}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00165}00165\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00166}00166\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00179}00179\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00180}00180\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00181}00181\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ FlashCtl\_fillMemory32(uint32\_t\ value,}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ *flash\_ptr,}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ count);}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00185}00185\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00186}00186\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00206}00206\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00207}00207\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00208}00208\ \textcolor{keyword}{extern}\ uint8\_t\ FlashCtl\_getStatus(uint8\_t\ mask);}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00210}00210\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00211}00211\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00220}00220\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00221}00221\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00222}00222\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ FlashCtl\_lockInfoA(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00224}00224\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00225}00225\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00233}00233\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00234}00234\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00235}00235\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ FlashCtl\_unlockInfoA(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00237}00237\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00238}00238\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00239}00239\ \textcolor{comment}{//\ Mark\ the\ end\ of\ the\ C\ bindings\ section\ for\ C++\ compilers.}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00240}00240\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00241}00241\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00242}00242\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00243}00243\ \}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00244}00244\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00246}00246\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{flashctl_8h_source_l00247}00247\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MSP430WARE\_FLASHCTL\_H\_\_}}
+
+\end{DoxyCode}

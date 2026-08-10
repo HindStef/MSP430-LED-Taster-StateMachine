@@ -1,0 +1,128 @@
+\doxysection{BCUart.\+c-\/Dateireferenz}
+\hypertarget{_b_c_uart_8c}{}\label{_b_c_uart_8c}\index{BCUart.c@{BCUart.c}}
+{\ttfamily \+\#include "{}msp430.\+h"{}}\newline
+{\ttfamily \+\#include "{}BCUart.\+h"{}}\newline
+Include-\/\+Abhängigkeitsdiagramm für BCUart.\+c:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{db/d50/_b_c_uart_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Funktionen}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{_b_c_uart_8c_a735d170f53369022348d8ba9bd6e387e}{bc\+Uart\+Init}} (void)
+\item 
+void \doxymbox{\hyperlink{_b_c_uart_8c_a9b399aee0e8c3f2fd6c0de505201b8d2}{bc\+Uart\+Send}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}buf, uint8\+\_\+t len)
+\item 
+uint16\+\_\+t \doxymbox{\hyperlink{_b_c_uart_8c_a944384d9981322ad9f3784c29c29873f}{bc\+Uart\+Receive\+Bytes\+In\+Buffer}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}buf)
+\item 
+\+\_\+\+\_\+interrupt void \doxymbox{\hyperlink{_b_c_uart_8c_adf309db8f60e6e7125961ed5f5789587}{bc\+Uart\+ISR}} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variablen}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{_b_c_uart_8c_a4e2782cdf2f1242bc935ee47f369494f}{bc\+Uart\+Rcv\+Buf}} \+[\doxymbox{\hyperlink{_b_c_uart_8h_ac1f4e7162cb8656bf60d1f287ca5ce1f}{BC\+\_\+\+RXBUF\+\_\+\+SIZE}}]\+
+\item 
+uint16\+\_\+t \doxymbox{\hyperlink{_b_c_uart_8c_a35207cf444774c32f9ec8a6e8ca32dcf}{bc\+Uart\+Rcv\+Buf\+Index}} = 0
+\item 
+uint8\+\_\+t \doxymbox{\hyperlink{_b_c_uart_8c_aba8158301a99ddbb33fb4027dce97d67}{bc\+Uart\+Rx\+Thresh\+Reached}} = 0
+\end{DoxyCompactItemize}
+
+
+\label{_b_c_uart_8c_doc-func-members}
+\Hypertarget{_b_c_uart_8c_doc-func-members}
+\doxysubsection{Dokumentation der Funktionen}
+\Hypertarget{_b_c_uart_8c_a735d170f53369022348d8ba9bd6e387e}\index{BCUart.c@{BCUart.c}!bcUartInit@{bcUartInit}}
+\index{bcUartInit@{bcUartInit}!BCUart.c@{BCUart.c}}
+\doxysubsubsection{\texorpdfstring{bcUartInit()}{bcUartInit()}}
+{\footnotesize\ttfamily \label{_b_c_uart_8c_a735d170f53369022348d8ba9bd6e387e} 
+void bc\+Uart\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{_b_c_uart_8c_source_l00051}{51}} der Datei \doxymbox{\hyperlink{_b_c_uart_8c_source}{BCUart.\+c}}.
+
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{d3/d9a/_b_c_uart_8c_a735d170f53369022348d8ba9bd6e387e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{_b_c_uart_8c_adf309db8f60e6e7125961ed5f5789587}\index{BCUart.c@{BCUart.c}!bcUartISR@{bcUartISR}}
+\index{bcUartISR@{bcUartISR}!BCUart.c@{BCUart.c}}
+\doxysubsubsection{\texorpdfstring{bcUartISR()}{bcUartISR()}}
+{\footnotesize\ttfamily \label{_b_c_uart_8c_adf309db8f60e6e7125961ed5f5789587} 
+\+\_\+\+\_\+interrupt void bc\+Uart\+ISR (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{_b_c_uart_8c_source_l00118}{118}} der Datei \doxymbox{\hyperlink{_b_c_uart_8c_source}{BCUart.\+c}}.
+
+\Hypertarget{_b_c_uart_8c_a944384d9981322ad9f3784c29c29873f}\index{BCUart.c@{BCUart.c}!bcUartReceiveBytesInBuffer@{bcUartReceiveBytesInBuffer}}
+\index{bcUartReceiveBytesInBuffer@{bcUartReceiveBytesInBuffer}!BCUart.c@{BCUart.c}}
+\doxysubsubsection{\texorpdfstring{bcUartReceiveBytesInBuffer()}{bcUartReceiveBytesInBuffer()}}
+{\footnotesize\ttfamily \label{_b_c_uart_8c_a944384d9981322ad9f3784c29c29873f} 
+uint16\+\_\+t bc\+Uart\+Receive\+Bytes\+In\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buf}{}\end{DoxyParamCaption})}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{_b_c_uart_8c_source_l00091}{91}} der Datei \doxymbox{\hyperlink{_b_c_uart_8c_source}{BCUart.\+c}}.
+
+\Hypertarget{_b_c_uart_8c_a9b399aee0e8c3f2fd6c0de505201b8d2}\index{BCUart.c@{BCUart.c}!bcUartSend@{bcUartSend}}
+\index{bcUartSend@{bcUartSend}!BCUart.c@{BCUart.c}}
+\doxysubsubsection{\texorpdfstring{bcUartSend()}{bcUartSend()}}
+{\footnotesize\ttfamily \label{_b_c_uart_8c_a9b399aee0e8c3f2fd6c0de505201b8d2} 
+void bc\+Uart\+Send (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{buf}{, }\item[{uint8\+\_\+t}]{len}{}\end{DoxyParamCaption})}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{_b_c_uart_8c_source_l00074}{74}} der Datei \doxymbox{\hyperlink{_b_c_uart_8c_source}{BCUart.\+c}}.
+
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d9a/_b_c_uart_8c_a9b399aee0e8c3f2fd6c0de505201b8d2_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{_b_c_uart_8c_doc-var-members}
+\Hypertarget{_b_c_uart_8c_doc-var-members}
+\doxysubsection{Variablen-\/\+Dokumentation}
+\Hypertarget{_b_c_uart_8c_a4e2782cdf2f1242bc935ee47f369494f}\index{BCUart.c@{BCUart.c}!bcUartRcvBuf@{bcUartRcvBuf}}
+\index{bcUartRcvBuf@{bcUartRcvBuf}!BCUart.c@{BCUart.c}}
+\doxysubsubsection{\texorpdfstring{bcUartRcvBuf}{bcUartRcvBuf}}
+{\footnotesize\ttfamily \label{_b_c_uart_8c_a4e2782cdf2f1242bc935ee47f369494f} 
+uint8\+\_\+t bc\+Uart\+Rcv\+Buf\+[\doxymbox{\hyperlink{_b_c_uart_8h_ac1f4e7162cb8656bf60d1f287ca5ce1f}{BC\+\_\+\+RXBUF\+\_\+\+SIZE}}]\+}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{_b_c_uart_8c_source_l00039}{39}} der Datei \doxymbox{\hyperlink{_b_c_uart_8c_source}{BCUart.\+c}}.
+
+\Hypertarget{_b_c_uart_8c_a35207cf444774c32f9ec8a6e8ca32dcf}\index{BCUart.c@{BCUart.c}!bcUartRcvBufIndex@{bcUartRcvBufIndex}}
+\index{bcUartRcvBufIndex@{bcUartRcvBufIndex}!BCUart.c@{BCUart.c}}
+\doxysubsubsection{\texorpdfstring{bcUartRcvBufIndex}{bcUartRcvBufIndex}}
+{\footnotesize\ttfamily \label{_b_c_uart_8c_a35207cf444774c32f9ec8a6e8ca32dcf} 
+uint16\+\_\+t bc\+Uart\+Rcv\+Buf\+Index = 0}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{_b_c_uart_8c_source_l00042}{42}} der Datei \doxymbox{\hyperlink{_b_c_uart_8c_source}{BCUart.\+c}}.
+
+\Hypertarget{_b_c_uart_8c_aba8158301a99ddbb33fb4027dce97d67}\index{BCUart.c@{BCUart.c}!bcUartRxThreshReached@{bcUartRxThreshReached}}
+\index{bcUartRxThreshReached@{bcUartRxThreshReached}!BCUart.c@{BCUart.c}}
+\doxysubsubsection{\texorpdfstring{bcUartRxThreshReached}{bcUartRxThreshReached}}
+{\footnotesize\ttfamily \label{_b_c_uart_8c_aba8158301a99ddbb33fb4027dce97d67} 
+uint8\+\_\+t bc\+Uart\+Rx\+Thresh\+Reached = 0}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{_b_c_uart_8c_source_l00046}{46}} der Datei \doxymbox{\hyperlink{_b_c_uart_8c_source}{BCUart.\+c}}.
+

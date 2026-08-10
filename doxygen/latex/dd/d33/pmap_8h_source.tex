@@ -1,0 +1,76 @@
+\doxysection{pmap.\+h}
+\hypertarget{pmap_8h_source}{}\label{pmap_8h_source}\index{driverlib/MSP430F5xx\_6xx/pmap.h@{driverlib/MSP430F5xx\_6xx/pmap.h}}
+\doxymbox{\hyperlink{pmap_8h}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00003}00003\ \textcolor{comment}{//\ pmap.h\ -\/\ Driver\ for\ the\ PMAP\ Module.}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_\_MSP430WARE\_PMAP\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_\_MSP430WARE\_PMAP\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00012}00012\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_PORT\_MAPPING\_\_}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00014}00014\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00015}00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00016}00016\ \textcolor{comment}{//\ If\ building\ with\ a\ C++\ compiler,\ make\ all\ of\ the\ definitions\ in\ this\ header}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00017}00017\ \textcolor{comment}{//\ have\ a\ C\ binding.}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00019}00019\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00020}00020\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00021}00021\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00023}00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00026}00026\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00027}00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00029}00029\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00030}00030\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00031}00031\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }PMAP\_initPortsParam\ \{}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t*\ portMapping;}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00035}00035\ \ \ \ \ uint8\_t*\ PxMAPy;}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00037}00037\ \ \ \ \ uint8\_t\ numberOfPorts;}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00042}00042\ \ \ \ \ uint8\_t\ portMapReconfigure;}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00043}00043\ \}\ PMAP\_initPortsParam;}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00046}00046\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00047}00047\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00048}00048\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00049}00049\ \textcolor{comment}{//\ functions:\ PMAP\_initPorts().}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00050}00050\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00051}00051\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00052}00052\ \textcolor{preprocessor}{\#define\ PMAP\_ENABLE\_RECONFIGURATION\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PMAPRECFG}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00053}00053\ \textcolor{preprocessor}{\#define\ PMAP\_DISABLE\_RECONFIGURATION\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00055}00055\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00056}00056\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00057}00057\ \textcolor{comment}{//\ Prototypes\ for\ the\ APIs.}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00058}00058\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00059}00059\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00061}00061\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00062}00062\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00071}00071\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00072}00072\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00073}00073\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ PMAP\_initPorts(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PMAP\_initPortsParam\ *param);}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00076}00076\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00077}00077\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00078}00078\ \textcolor{comment}{//\ Mark\ the\ end\ of\ the\ C\ bindings\ section\ for\ C++\ compilers.}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00079}00079\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00080}00080\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00081}00081\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00083}00083\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00085}00085\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{pmap_8h_source_l00086}00086\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MSP430WARE\_PMAP\_H\_\_}}
+
+\end{DoxyCode}

@@ -1,0 +1,511 @@
+\doxysection{timer\+\_\+a.\+h}
+\hypertarget{timer__a_8h_source}{}\label{timer__a_8h_source}\index{driverlib/MSP430F5xx\_6xx/timer\_a.h@{driverlib/MSP430F5xx\_6xx/timer\_a.h}}
+\doxymbox{\hyperlink{timer__a_8h}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00003}00003\ \textcolor{comment}{//\ timer\_a.h\ -\/\ Driver\ for\ the\ TIMER\_A\ Module.}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_\_MSP430WARE\_TIMER\_A\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_\_MSP430WARE\_TIMER\_A\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00012}00012\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_TxA7\_\_}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00014}00014\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00015}00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00016}00016\ \textcolor{comment}{//\ If\ building\ with\ a\ C++\ compiler,\ make\ all\ of\ the\ definitions\ in\ this\ header}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00017}00017\ \textcolor{comment}{//\ have\ a\ C\ binding.}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00019}00019\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00020}00020\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00021}00021\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00023}00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00026}00026\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00027}00027\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00028}00028\ \textcolor{comment}{//\ The\ following\ is\ a\ parameter\ used\ for\ Timer\_A\_getCounterValue\ that}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00029}00029\ \textcolor{comment}{//\ determines\ the\ maximum\ difference\ in\ counts\ of\ the\ TAxR\ register\ for\ a}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00030}00030\ \textcolor{comment}{//\ majority\ vote.}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00031}00031\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00032}00032\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ TIMER\_A\_THRESHOLD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 50}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00035}00035\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00036}00036\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00039}00039\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00040}00040\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00041}00041\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }Timer\_A\_initContinuousModeParam\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00048}00048\ \ \ \ \ uint16\_t\ clockSource;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00071}00071\ \ \ \ \ uint16\_t\ clockSourceDivider;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00076}00076\ \ \ \ \ uint16\_t\ timerInterruptEnable\_TAIE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00082}00082\ \ \ \ \ uint16\_t\ timerClear;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{bool}\ startTimer;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00085}00085\ \}\ Timer\_A\_initContinuousModeParam;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00087}00087\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00088}00088\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00091}00091\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00092}00092\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00093}00093\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }Timer\_A\_initCaptureModeParam\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00104}00104\ \ \ \ \ uint16\_t\ captureRegister;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00111}00111\ \ \ \ \ uint16\_t\ captureMode;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00118}00118\ \ \ \ \ uint16\_t\ captureInputSelect;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00123}00123\ \ \ \ \ uint16\_t\ synchronizeCaptureSource;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00128}00128\ \ \ \ \ uint16\_t\ captureInterruptEnable;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00139}00139\ \ \ \ \ uint16\_t\ captureOutputMode;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00140}00140\ \}\ Timer\_A\_initCaptureModeParam;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00142}00142\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00143}00143\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00146}00146\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00147}00147\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00148}00148\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }Timer\_A\_initUpDownModeParam\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00155}00155\ \ \ \ \ uint16\_t\ clockSource;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00178}00178\ \ \ \ \ uint16\_t\ clockSourceDivider;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00180}00180\ \ \ \ \ uint16\_t\ timerPeriod;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00185}00185\ \ \ \ \ uint16\_t\ timerInterruptEnable\_TAIE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00190}00190\ \ \ \ \ uint16\_t\ captureCompareInterruptEnable\_CCR0\_CCIE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00196}00196\ \ \ \ \ uint16\_t\ timerClear;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00198}00198\ \ \ \ \ \textcolor{keywordtype}{bool}\ startTimer;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00199}00199\ \}\ Timer\_A\_initUpDownModeParam;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00201}00201\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00202}00202\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00204}00204\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00205}00205\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00206}00206\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }Timer\_A\_outputPWMParam\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00213}00213\ \ \ \ \ uint16\_t\ clockSource;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00236}00236\ \ \ \ \ uint16\_t\ clockSourceDivider;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00238}00238\ \ \ \ \ uint16\_t\ timerPeriod;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00249}00249\ \ \ \ \ uint16\_t\ compareRegister;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00260}00260\ \ \ \ \ uint16\_t\ compareOutputMode;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00262}00262\ \ \ \ \ uint16\_t\ dutyCycle;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00263}00263\ \}\ Timer\_A\_outputPWMParam;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00265}00265\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00266}00266\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00268}00268\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00269}00269\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00270}00270\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }Timer\_A\_initUpModeParam\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00277}00277\ \ \ \ \ uint16\_t\ clockSource;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00300}00300\ \ \ \ \ uint16\_t\ clockSourceDivider;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00303}00303\ \ \ \ \ uint16\_t\ timerPeriod;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00308}00308\ \ \ \ \ uint16\_t\ timerInterruptEnable\_TAIE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00313}00313\ \ \ \ \ uint16\_t\ captureCompareInterruptEnable\_CCR0\_CCIE;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00319}00319\ \ \ \ \ uint16\_t\ timerClear;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00321}00321\ \ \ \ \ \textcolor{keywordtype}{bool}\ startTimer;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00322}00322\ \}\ Timer\_A\_initUpModeParam;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00324}00324\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00325}00325\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00328}00328\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00329}00329\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00330}00330\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }Timer\_A\_initCompareModeParam\ \{}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00341}00341\ \ \ \ \ uint16\_t\ compareRegister;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00346}00346\ \ \ \ \ uint16\_t\ compareInterruptEnable;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00357}00357\ \ \ \ \ uint16\_t\ compareOutputMode;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00359}00359\ \ \ \ \ uint16\_t\ compareValue;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00360}00360\ \}\ Timer\_A\_initCompareModeParam;}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00362}00362\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00363}00363\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00364}00364\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00365}00365\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00366}00366\ \textcolor{comment}{//\ functions:\ Timer\_A\_initContinuousMode(),\ Timer\_A\_initUpMode(),}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00367}00367\ \textcolor{comment}{//\ Timer\_A\_initUpDownMode(),\ and\ Timer\_A\_outputPWM().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00368}00368\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00369}00369\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00370}00370\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00371}00371\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00372}00372\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00373}00373\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00374}00374\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00375}00375\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x05}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00376}00376\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x06}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00377}00377\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x18}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00378}00378\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_10\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0C}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00379}00379\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_12\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0D}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00380}00380\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_14\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0E}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00381}00381\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_16\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0F}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00382}00382\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_20\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x14}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00383}00383\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_24\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x15}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00384}00384\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_28\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x16}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00385}00385\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_32\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x17}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00386}00386\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_40\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x1C}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00387}00387\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_48\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x1D}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00388}00388\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_56\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x1E}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00389}00389\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_DIVIDER\_64\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x1F}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00390}00390\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00391}00391\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00392}00392\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00393}00393\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ timerMode\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00394}00394\ \textcolor{comment}{//\ functions:\ Timer\_A\_startCounter().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00395}00395\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00396}00396\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00397}00397\ \textcolor{preprocessor}{\#define\ TIMER\_A\_STOP\_MODE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MC\_0}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00398}00398\ \textcolor{preprocessor}{\#define\ TIMER\_A\_UP\_MODE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MC\_1}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00399}00399\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CONTINUOUS\_MODE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MC\_2}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00400}00400\ \textcolor{preprocessor}{\#define\ TIMER\_A\_UPDOWN\_MODE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MC\_3}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00402}00402\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00403}00403\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00404}00404\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00405}00405\ \textcolor{comment}{//\ functions:\ Timer\_A\_initContinuousMode(),\ Timer\_A\_initUpMode(),\ and}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00406}00406\ \textcolor{comment}{//\ Timer\_A\_initUpDownMode().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00407}00407\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00408}00408\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00409}00409\ \textcolor{preprocessor}{\#define\ TIMER\_A\_DO\_CLEAR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TACLR}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00410}00410\ \textcolor{preprocessor}{\#define\ TIMER\_A\_SKIP\_CLEAR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00412}00412\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00413}00413\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00414}00414\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00415}00415\ \textcolor{comment}{//\ functions:\ Timer\_A\_initContinuousMode(),\ Timer\_A\_initUpMode(),}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00416}00416\ \textcolor{comment}{//\ Timer\_A\_initUpDownMode(),\ and\ Timer\_A\_outputPWM().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00417}00417\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00418}00418\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00419}00419\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_EXTERNAL\_TXCLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TASSEL\_\_TACLK}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00420}00420\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_ACLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TASSEL\_\_ACLK}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00421}00421\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_SMCLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TASSEL\_\_SMCLK}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00422}00422\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CLOCKSOURCE\_INVERTED\_EXTERNAL\_TXCLK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TASSEL\_\_INCLK}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00424}00424\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00425}00425\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00426}00426\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00427}00427\ \textcolor{comment}{//\ functions:\ Timer\_A\_initContinuousMode(),\ Timer\_A\_initUpMode(),\ and}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00428}00428\ \textcolor{comment}{//\ Timer\_A\_initUpDownMode().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00429}00429\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00430}00430\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00431}00431\ \textcolor{preprocessor}{\#define\ TIMER\_A\_TAIE\_INTERRUPT\_ENABLE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TAIE}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00432}00432\ \textcolor{preprocessor}{\#define\ TIMER\_A\_TAIE\_INTERRUPT\_DISABLE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00434}00434\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00435}00435\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00436}00436\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00437}00437\ \textcolor{comment}{//\ functions:\ Timer\_A\_initUpMode(),\ and\ Timer\_A\_initUpDownMode().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00438}00438\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00439}00439\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00440}00440\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CCIE\_CCR0\_INTERRUPT\_ENABLE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CCIE}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00441}00441\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CCIE\_CCR0\_INTERRUPT\_DISABLE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00442}00442\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00443}00443\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00444}00444\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00445}00445\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00446}00446\ \textcolor{comment}{//\ functions:\ Timer\_A\_initCaptureMode(),\ and\ Timer\_A\_initCompareMode().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00447}00447\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00448}00448\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00449}00449\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_INTERRUPT\_DISABLE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00450}00450\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_INTERRUPT\_ENABLE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CCIE}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00451}00451\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00452}00452\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00453}00453\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00454}00454\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00455}00455\ \textcolor{comment}{//\ functions:\ Timer\_A\_initCaptureMode().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00456}00456\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00457}00457\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00458}00458\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURE\_INPUTSELECT\_CCIxA\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CCIS\_0}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00459}00459\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURE\_INPUTSELECT\_CCIxB\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CCIS\_1}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00460}00460\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURE\_INPUTSELECT\_GND\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CCIS\_2}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00461}00461\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURE\_INPUTSELECT\_Vcc\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CCIS\_3}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00463}00463\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00464}00464\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00465}00465\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ compareOutputMode}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00466}00466\ \textcolor{comment}{//\ parameter\ for\ functions:\ Timer\_A\_setOutputMode();\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00467}00467\ \textcolor{comment}{//\ functions:\ Timer\_A\_initCaptureMode(),\ Timer\_A\_initCompareMode(),\ and}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00468}00468\ \textcolor{comment}{//\ Timer\_A\_outputPWM().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00469}00469\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00470}00470\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00471}00471\ \textcolor{preprocessor}{\#define\ TIMER\_A\_OUTPUTMODE\_OUTBITVALUE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OUTMOD\_0}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00472}00472\ \textcolor{preprocessor}{\#define\ TIMER\_A\_OUTPUTMODE\_SET\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OUTMOD\_1}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00473}00473\ \textcolor{preprocessor}{\#define\ TIMER\_A\_OUTPUTMODE\_TOGGLE\_RESET\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OUTMOD\_2}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00474}00474\ \textcolor{preprocessor}{\#define\ TIMER\_A\_OUTPUTMODE\_SET\_RESET\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OUTMOD\_3}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00475}00475\ \textcolor{preprocessor}{\#define\ TIMER\_A\_OUTPUTMODE\_TOGGLE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OUTMOD\_4}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00476}00476\ \textcolor{preprocessor}{\#define\ TIMER\_A\_OUTPUTMODE\_RESET\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OUTMOD\_5}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00477}00477\ \textcolor{preprocessor}{\#define\ TIMER\_A\_OUTPUTMODE\_TOGGLE\_SET\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OUTMOD\_6}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00478}00478\ \textcolor{preprocessor}{\#define\ TIMER\_A\_OUTPUTMODE\_RESET\_SET\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OUTMOD\_7}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00479}00479\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00480}00480\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00481}00481\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00482}00482\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ compareRegister\ parameter}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00483}00483\ \textcolor{comment}{//\ for\ functions:\ Timer\_A\_setCompareValue(),\ and\ Timer\_A\_setOutputMode();\ the}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00484}00484\ \textcolor{comment}{//\ captureCompareRegister\ parameter\ for\ functions:}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00485}00485\ \textcolor{comment}{//\ Timer\_A\_enableCaptureCompareInterrupt(),}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00486}00486\ \textcolor{comment}{//\ Timer\_A\_disableCaptureCompareInterrupt(),}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00487}00487\ \textcolor{comment}{//\ Timer\_A\_getCaptureCompareInterruptStatus(),}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00488}00488\ \textcolor{comment}{//\ Timer\_A\_getSynchronizedCaptureCompareInput(),}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00489}00489\ \textcolor{comment}{//\ Timer\_A\_getOutputForOutputModeOutBitValue(),}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00490}00490\ \textcolor{comment}{//\ Timer\_A\_getCaptureCompareCount(),}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00491}00491\ \textcolor{comment}{//\ Timer\_A\_setOutputForOutputModeOutBitValue(),\ and}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00492}00492\ \textcolor{comment}{//\ Timer\_A\_clearCaptureCompareInterrupt();\ the\ param\ parameter\ for\ functions:}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00493}00493\ \textcolor{comment}{//\ Timer\_A\_initCaptureMode(),\ Timer\_A\_initCompareMode(),\ and}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00494}00494\ \textcolor{comment}{//\ Timer\_A\_outputPWM().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00495}00495\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00496}00496\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00497}00497\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_REGISTER\_0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00498}00498\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_REGISTER\_1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00499}00499\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_REGISTER\_2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x06}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00500}00500\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_REGISTER\_3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00501}00501\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_REGISTER\_4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0A}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00502}00502\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_REGISTER\_5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0C}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00503}00503\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_REGISTER\_6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0E}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00504}00504\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00505}00505\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00506}00506\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00507}00507\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00508}00508\ \textcolor{comment}{//\ functions:\ Timer\_A\_initCaptureMode().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00509}00509\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00510}00510\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00511}00511\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTUREMODE\_NO\_CAPTURE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CM\_0}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00512}00512\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTUREMODE\_RISING\_EDGE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CM\_1}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00513}00513\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTUREMODE\_FALLING\_EDGE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CM\_2}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00514}00514\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTUREMODE\_RISING\_AND\_FALLING\_EDGE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CM\_3}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00515}00515\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00516}00516\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00517}00517\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00518}00518\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ param\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00519}00519\ \textcolor{comment}{//\ functions:\ Timer\_A\_initCaptureMode().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00520}00520\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00521}00521\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00522}00522\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURE\_ASYNCHRONOUS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00523}00523\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURE\_SYNCHRONOUS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SCS}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00524}00524\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00525}00525\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00526}00526\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00527}00527\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ mask\ parameter\ for}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00528}00528\ \textcolor{comment}{//\ functions:\ Timer\_A\_getCaptureCompareInterruptStatus()\ as\ well\ as\ returned\ by}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00529}00529\ \textcolor{comment}{//\ the\ Timer\_A\_getCaptureCompareInterruptStatus()\ function.}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00530}00530\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00531}00531\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00532}00532\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURE\_OVERFLOW\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ COV}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00533}00533\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_INTERRUPT\_FLAG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CCIFG}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00534}00534\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00535}00535\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00536}00536\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00537}00537\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ synchronized\ parameter}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00538}00538\ \textcolor{comment}{//\ for\ functions:\ Timer\_A\_getSynchronizedCaptureCompareInput().}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00539}00539\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00540}00540\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00541}00541\ \textcolor{preprocessor}{\#define\ TIMER\_A\_READ\_SYNCHRONIZED\_CAPTURECOMPAREINPUT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SCCI}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00542}00542\ \textcolor{preprocessor}{\#define\ TIMER\_A\_READ\_CAPTURE\_COMPARE\_INPUT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CCI}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00543}00543\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00544}00544\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00545}00545\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00546}00546\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ toThe\ following\ are\ values\ that}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00547}00547\ \textcolor{comment}{//\ can\ be\ returned\ by\ the\ Timer\_A\_getSynchronizedCaptureCompareInput()}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00548}00548\ \textcolor{comment}{//\ function.}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00549}00549\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00550}00550\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00551}00551\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_INPUT\_HIGH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00552}00552\ \textcolor{preprocessor}{\#define\ TIMER\_A\_CAPTURECOMPARE\_INPUT\_LOW\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00553}00553\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00554}00554\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00555}00555\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00556}00556\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ outputModeOutBitValue}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00557}00557\ \textcolor{comment}{//\ parameter\ for\ functions:\ Timer\_A\_setOutputForOutputModeOutBitValue()\ as\ well}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00558}00558\ \textcolor{comment}{//\ as\ returned\ by\ the\ Timer\_A\_getOutputForOutputModeOutBitValue()\ function.}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00559}00559\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00560}00560\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00561}00561\ \textcolor{preprocessor}{\#define\ TIMER\_A\_OUTPUTMODE\_OUTBITVALUE\_HIGH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OUT}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00562}00562\ \textcolor{preprocessor}{\#define\ TIMER\_A\_OUTPUTMODE\_OUTBITVALUE\_LOW\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00563}00563\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00564}00564\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00565}00565\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00566}00566\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ toThe\ following\ are\ values\ that}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00567}00567\ \textcolor{comment}{//\ can\ be\ returned\ by\ the\ Timer\_A\_getInterruptStatus()\ function.}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00568}00568\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00569}00569\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00570}00570\ \textcolor{preprocessor}{\#define\ TIMER\_A\_INTERRUPT\_NOT\_PENDING\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00571}00571\ \textcolor{preprocessor}{\#define\ TIMER\_A\_INTERRUPT\_PENDING\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00572}00572\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00573}00573\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00574}00574\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00575}00575\ \textcolor{comment}{//\ Prototypes\ for\ the\ APIs.}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00576}00576\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00577}00577\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00578}00578\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00579}00579\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00580}00580\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00597}00597\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00598}00598\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00599}00599\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_startCounter(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00600}00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ timerMode);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00601}00601\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00602}00602\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00603}00603\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00612}00612\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00613}00613\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00614}00614\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_initContinuousMode(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00615}00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Timer\_A\_initContinuousModeParam\ *param);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00616}00616\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00617}00617\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00618}00618\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00628}00628\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00629}00629\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00630}00630\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_initUpMode(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Timer\_A\_initUpModeParam\ *param);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00632}00632\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00633}00633\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00634}00634\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00644}00644\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00645}00645\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00646}00646\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_initUpDownMode(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Timer\_A\_initUpDownModeParam\ *param);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00648}00648\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00649}00649\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00650}00650\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00659}00659\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00660}00660\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00661}00661\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_initCaptureMode(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Timer\_A\_initCaptureModeParam\ *param);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00663}00663\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00664}00664\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00665}00665\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00674}00674\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00675}00675\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00676}00676\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_initCompareMode(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00677}00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Timer\_A\_initCompareModeParam\ *param);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00678}00678\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00679}00679\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00680}00680\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00690}00690\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00691}00691\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00692}00692\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_enableInterrupt(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00693}00693\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00694}00694\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00695}00695\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00703}00703\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00704}00704\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00705}00705\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_disableInterrupt(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00706}00706\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00707}00707\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00708}00708\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00717}00717\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00718}00718\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00719}00719\ \textcolor{keyword}{extern}\ uint32\_t\ Timer\_A\_getInterruptStatus(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00720}00720\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00721}00721\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00722}00722\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00741}00741\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00742}00742\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00743}00743\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_enableCaptureCompareInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00744}00744\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ captureCompareRegister);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00745}00745\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00746}00746\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00747}00747\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00764}00764\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00765}00765\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00766}00766\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_disableCaptureCompareInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00767}00767\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ captureCompareRegister);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00768}00768\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00769}00769\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00770}00770\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00792}00792\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00793}00793\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00794}00794\ \textcolor{keyword}{extern}\ uint32\_t\ Timer\_A\_getCaptureCompareInterruptStatus(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00795}00795\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ captureCompareRegister,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00796}00796\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ mask);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00797}00797\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00798}00798\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00799}00799\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00807}00807\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00808}00808\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00809}00809\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_clear(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00810}00810\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00811}00811\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00812}00812\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00833}00833\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00834}00834\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00835}00835\ \textcolor{keyword}{extern}\ uint8\_t\ Timer\_A\_getSynchronizedCaptureCompareInput(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00836}00836\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ captureCompareRegister,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00837}00837\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ \textcolor{keyword}{synchronized});}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00838}00838\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00839}00839\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00840}00840\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00857}00857\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00858}00858\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00859}00859\ \textcolor{keyword}{extern}\ uint8\_t\ Timer\_A\_getOutputForOutputModeOutBitValue(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00860}00860\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ captureCompareRegister);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00861}00861\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00862}00862\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00863}00863\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00878}00878\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00879}00879\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00880}00880\ \textcolor{keyword}{extern}\ uint16\_t\ Timer\_A\_getCaptureCompareCount(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00881}00881\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ captureCompareRegister);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00882}00882\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00883}00883\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00884}00884\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00905}00905\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00906}00906\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00907}00907\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_setOutputForOutputModeOutBitValue(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00908}00908\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ captureCompareRegister,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00909}00909\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ outputModeOutBitValue);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00910}00910\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00911}00911\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00912}00912\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00922}00922\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00923}00923\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00924}00924\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_outputPWM(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00925}00925\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Timer\_A\_outputPWMParam\ *param);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00926}00926\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00927}00927\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00928}00928\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00936}00936\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00937}00937\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00938}00938\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_stop(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00939}00939\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00940}00940\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00941}00941\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00961}00961\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00962}00962\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00963}00963\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_setCompareValue(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00964}00964\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ compareRegister,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00965}00965\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ compareValue);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00966}00966\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00967}00967\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00968}00968\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00997}00997\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00998}00998\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l00999}00999\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_setOutputMode(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01000}01000\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ compareRegister,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01001}01001\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ compareOutputMode);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01002}01002\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01003}01003\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01004}01004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01012}01012\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01013}01013\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01014}01014\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_clearTimerInterrupt(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01015}01015\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01016}01016\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01017}01017\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01035}01035\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01036}01036\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01037}01037\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ Timer\_A\_clearCaptureCompareInterrupt(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01038}01038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ captureCompareRegister);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01039}01039\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01040}01040\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01041}01041\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01052}01052\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01053}01053\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01054}01054\ \textcolor{keyword}{extern}\ uint16\_t\ Timer\_A\_getCounterValue(uint16\_t\ baseAddress);}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01055}01055\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01056}01056\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01057}01057\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01058}01058\ \textcolor{comment}{//\ Mark\ the\ end\ of\ the\ C\ bindings\ section\ for\ C++\ compilers.}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01059}01059\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01060}01060\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01061}01061\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01062}01062\ \}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01063}01063\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01064}01064\ }
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01065}01065\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{timer__a_8h_source_l01066}01066\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MSP430WARE\_TIMER\_A\_H\_\_}}
+
+\end{DoxyCode}

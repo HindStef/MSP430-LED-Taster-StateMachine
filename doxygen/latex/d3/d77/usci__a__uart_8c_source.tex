@@ -1,0 +1,227 @@
+\doxysection{usci\+\_\+a\+\_\+uart.\+c}
+\hypertarget{usci__a__uart_8c_source}{}\label{usci__a__uart_8c_source}\index{driverlib/MSP430F5xx\_6xx/usci\_a\_uart.c@{driverlib/MSP430F5xx\_6xx/usci\_a\_uart.c}}
+\doxymbox{\hyperlink{usci__a__uart_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00003}00003\ \textcolor{comment}{//\ usci\_a\_uart.c\ -\/\ Driver\ for\ the\ usci\_a\_uart\ Module.}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00007}00007\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00011}00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00012}00012\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_USCI\_Ax\_\_}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{usci__a__uart_8h}{usci\_a\_uart.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00021}00021\ \textcolor{keywordtype}{bool}\ USCI\_A\_UART\_init(uint16\_t\ baseAddress,\ USCI\_A\_UART\_initParam\ *param)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{bool}\ retVal\ =\ \doxymbox{\hyperlink{hw__memmap_8h_ae56fdb340b23940f7a64ed2e37c1774a}{STATUS\_SUCCESS}};}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//Disable\ the\ USCI\ Module}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00026}00026\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ |=\ UCSWRST;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//Clock\ source\ select}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00029}00029\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ \&=\ \string~UCSSEL\_3;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00030}00030\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ |=\ param-\/>selectClockSource;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//MSB,\ LSB\ select}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00033}00033\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ \&=\ \string~UCMSB;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00034}00034\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ |=\ param-\/>msborLsbFirst;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//UCSPB\ =\ 0(1\ stop\ bit)\ OR\ 1(2\ stop\ bits)}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00038}00038\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ \&=\ \string~UCSPB;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00039}00039\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ |=\ param-\/>numberofStopBits;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//Parity}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{switch}\ (param-\/>parity)\{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ USCI\_A\_UART\_NO\_PARITY:}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//No\ Parity}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ \&=\ \string~UCPEN;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ USCI\_A\_UART\_ODD\_PARITY:}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Odd\ Parity}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ |=\ UCPEN;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ \&=\ \string~UCPAR;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ USCI\_A\_UART\_EVEN\_PARITY:}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Even\ Parity}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ |=\ UCPEN;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ |=\ UCPAR;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//Modulation\ Control\ Registers}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00061}00061\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_UCAxBRW\ )\ =\ param-\/>clockPrescalar;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00062}00062\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxMCTL)\ =\ ((param-\/>firstModReg<<4)\ +}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (param-\/>secondModReg\ <<1)\ +}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ param-\/>overSampling\ );}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//Asynchronous\ mode\ \&\ 8\ bit\ character\ select\ \&\ clear\ mode}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00067}00067\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ \&=\ \ \string~(UCSYNC\ +}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UC7BIT\ +}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCMODE\_3}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//Configure\ \ UART\ mode.}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00073}00073\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ |=\ param-\/>uartMode\ ;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//Reset\ UCRXIE,\ UCBRKIE,\ UCDORM,\ UCTXADDR,\ UCTXBRK}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00076}00076\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ \ \&=\ \string~(UCRXEIE\ +\ UCBRKIE\ +\ UCDORM\ +}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UCTXADDR\ +\ UCTXBRK}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{return}\ (retVal)\ ;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00081}00081\ \textcolor{keywordtype}{void}\ USCI\_A\_UART\_transmitData\ (\ uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00082}00082\ \ \ \ \ uint8\_t\ transmitData}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00083}00083\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00084}00084\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//If\ interrupts\ are\ not\ used,\ poll\ for\ flags}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxIE)\ \&\ UCTXIE))\{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Poll\ for\ transmit\ interrupt\ flag}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!(\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxIFG)\ \&\ UCTXIFG));}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00091}00091\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxTXBUF)\ =\ transmitData;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00092}00092\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00094}00094\ uint8\_t\ USCI\_A\_UART\_receiveData\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00095}00095\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//If\ interrupts\ are\ not\ used,\ poll\ for\ flags}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxIE)\ \&\ UCRXIE))\{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Poll\ for\ receive\ interrupt\ flag}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!(\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxIFG)\ \&\ UCRXIFG));}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00100}00100\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxRXBUF))\ ;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00103}00103\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00105}00105\ \textcolor{keywordtype}{void}\ USCI\_A\_UART\_enableInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00106}00106\ \ \ \ \ uint8\_t\ mask}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00107}00107\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00108}00108\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00109}00109\ \ \ \ \ uint8\_t\ locMask;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00111}00111\ \ \ \ \ locMask\ =\ (mask\ \&\ (USCI\_A\_UART\_RECEIVE\_INTERRUPT}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ |\ USCI\_A\_UART\_TRANSMIT\_INTERRUPT));}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00113}00113\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxIE)\ |=\ locMask;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00115}00115\ \ \ \ \ locMask\ =\ (mask\ \&\ (USCI\_A\_UART\_RECEIVE\_ERRONEOUSCHAR\_INTERRUPT}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ |\ USCI\_A\_UART\_BREAKCHAR\_INTERRUPT));}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00117}00117\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ |=\ locMask;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00118}00118\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00120}00120\ \textcolor{keywordtype}{void}\ USCI\_A\_UART\_disableInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00121}00121\ \ \ \ \ uint8\_t\ mask}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00122}00122\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00123}00123\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00124}00124\ \ \ \ \ uint8\_t\ locMask;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{if}(locMask\ =\ (mask\ \&\ (USCI\_A\_UART\_RECEIVE\_INTERRUPT}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00127}00127\ \ \ \ \ \ \ \ \ |\ USCI\_A\_UART\_TRANSMIT\_INTERRUPT)))\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00128}00128\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxIE)\ \&=\ \string~locMask;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{if}(locMask\ =\ (mask\ \&\ (USCI\_A\_UART\_RECEIVE\_ERRONEOUSCHAR\_INTERRUPT}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00132}00132\ \ \ \ \ \ \ \ \ |\ USCI\_A\_UART\_BREAKCHAR\_INTERRUPT)))\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00133}00133\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ \&=\ \string~locMask;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00137}00137\ uint8\_t\ USCI\_A\_UART\_getInterruptStatus\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00138}00138\ \ \ \ \ uint8\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00139}00139\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00140}00140\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxIFG)\ \&\ mask\ );}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00141}00141\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00143}00143\ \textcolor{keywordtype}{void}\ USCI\_A\_UART\_clearInterrupt\ (uint16\_t\ baseAddress,\ uint8\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00144}00144\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00145}00145\ \ \ \ \ \textcolor{comment}{//Clear\ the\ UART\ interrupt\ source.}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00146}00146\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxIFG)\ \&=\ \string~(mask);}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00147}00147\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00149}00149\ \textcolor{keywordtype}{void}\ USCI\_A\_UART\_enable\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00150}00150\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00151}00151\ \ \ \ \ \textcolor{comment}{//Reset\ the\ UCSWRST\ bit\ to\ enable\ the\ USCI\ Module}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00152}00152\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ \&=\ \string~(UCSWRST);}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00153}00153\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00155}00155\ \textcolor{keywordtype}{void}\ USCI\_A\_UART\_disable\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00156}00156\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//Set\ the\ UCSWRST\ bit\ to\ disable\ the\ USCI\ Module}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00158}00158\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ |=\ UCSWRST;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00159}00159\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00161}00161\ uint8\_t\ USCI\_A\_UART\_queryStatusFlags\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00162}00162\ \ \ \ \ uint8\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00163}00163\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxSTAT)\ \&\ mask\ );}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00165}00165\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00167}00167\ \textcolor{keywordtype}{void}\ USCI\_A\_UART\_setDormant\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00168}00168\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00169}00169\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ |=\ UCDORM;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00170}00170\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00172}00172\ \textcolor{keywordtype}{void}\ USCI\_A\_UART\_resetDormant\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00173}00173\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00174}00174\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ \&=\ \string~UCDORM;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00175}00175\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00177}00177\ \textcolor{keywordtype}{void}\ USCI\_A\_UART\_transmitAddress\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00178}00178\ \ \ \ \ uint8\_t\ transmitAddress)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00179}00179\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00180}00180\ \ \ \ \ \textcolor{comment}{//Set\ UCTXADDR\ bit}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00181}00181\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ |=\ UCTXADDR;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00183}00183\ \ \ \ \ \textcolor{comment}{//Place\ next\ byte\ to\ be\ sent\ into\ the\ transmit\ buffer}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00184}00184\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxTXBUF)\ =\ transmitAddress;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00185}00185\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00187}00187\ \textcolor{keywordtype}{void}\ USCI\_A\_UART\_transmitBreak\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00188}00188\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00189}00189\ \ \ \ \ \textcolor{comment}{//Set\ UCTXADDR\ bit}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00190}00190\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL1)\ |=\ UCTXBRK;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00192}00192\ \ \ \ \ \textcolor{comment}{//If\ current\ mode\ is\ automatic\ baud-\/rate\ detection}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00193}00193\ \ \ \ \ \textcolor{keywordflow}{if}\ (USCI\_A\_UART\_AUTOMATIC\_BAUDRATE\_DETECTION\_MODE\ ==}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00194}00194\ \ \ \ \ \ \ \ \ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxCTL0)\ \&}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00195}00195\ \ \ \ \ \ \ \ \ \ USCI\_A\_UART\_AUTOMATIC\_BAUDRATE\_DETECTION\_MODE))\{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00196}00196\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxTXBUF)\ =\ USCI\_A\_UART\_AUTOMATICBAUDRATE\_SYNC;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00197}00197\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00198}00198\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxTXBUF)\ =\ DEFAULT\_SYNC;}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00199}00199\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00201}00201\ \ \ \ \ \textcolor{comment}{//If\ interrupts\ are\ not\ used,\ poll\ for\ flags}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00202}00202\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxIE)\ \&\ UCTXIE))\{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00203}00203\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Poll\ for\ transmit\ interrupt\ flag}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00204}00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!(\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_UCAxIFG)\ \&\ UCTXIFG));}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00205}00205\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00206}00206\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00208}00208\ uint32\_t\ USCI\_A\_UART\_getReceiveBufferAddressForDMA\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00209}00209\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00210}00210\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ baseAddress\ +\ OFS\_UCAxRXBUF\ );}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00211}00211\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00213}00213\ uint32\_t\ USCI\_A\_UART\_getTransmitBufferAddressForDMA\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00214}00214\ \{}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00215}00215\ \ \ \ \ \textcolor{keywordflow}{return}\ (\ baseAddress\ +\ OFS\_UCAxTXBUF\ );}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00216}00216\ \}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00219}00219\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00220}00220\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00221}00221\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00224}00224\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{usci__a__uart_8c_source_l00225}00225\ \textcolor{comment}{//*****************************************************************************}}
+
+\end{DoxyCode}

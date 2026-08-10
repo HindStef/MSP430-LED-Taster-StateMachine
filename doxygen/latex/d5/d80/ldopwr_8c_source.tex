@@ -1,0 +1,169 @@
+\doxysection{ldopwr.\+c}
+\hypertarget{ldopwr_8c_source}{}\label{ldopwr_8c_source}\index{driverlib/MSP430F5xx\_6xx/ldopwr.c@{driverlib/MSP430F5xx\_6xx/ldopwr.c}}
+\doxymbox{\hyperlink{ldopwr_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00003}00003\ \textcolor{comment}{//\ ldopwr.c\ -\/\ Driver\ for\ the\ ldopwr\ Module.}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00007}00007\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00011}00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00012}00012\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_PU\_\_}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{ldopwr_8h}{ldopwr.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00021}00021\ \textcolor{keywordtype}{void}\ LDOPWR\_unLockConfiguration\ (\ uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00023}00023\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LDOKEYPID)\ =\ 0x9628;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00026}00026\ \textcolor{keywordtype}{void}\ LDOPWR\_lockConfiguration\ (\ uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00027}00027\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00028}00028\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LDOKEYPID)\ =\ 0x0000;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00031}00031\ \textcolor{keywordtype}{void}\ LDOPWR\_enablePort\_U\_inputs\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00033}00033\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_H)\ |=\ PUIPE\_H;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00036}00036\ \textcolor{keywordtype}{void}\ LDOPWR\_disablePort\_U\_inputs\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00037}00037\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00038}00038\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_H)\ \&=\ \string~PUIPE\_H;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00041}00041\ \textcolor{keywordtype}{void}\ LDOPWR\_enablePort\_U\_outputs\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00043}00043\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ |=\ PUOPE;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00046}00046\ \textcolor{keywordtype}{void}\ LDOPWR\_disablePort\_U\_outputs\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00047}00047\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00048}00048\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ \&=\ \string~PUOPE;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00051}00051\ uint8\_t\ LDOPWR\_getPort\_U1\_inputData\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{return}\ ((\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ \&\ PUIN1)\ >>\ 3\ );}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00056}00056\ uint8\_t\ LDOPWR\_getPort\_U0\_inputData\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00057}00057\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{return}\ ((\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ \&\ PUIN0)\ >>\ 2\ );}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00059}00059\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00061}00061\ uint8\_t\ LDOPWR\_getPort\_U1\_outputData\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00062}00062\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{return}\ ((\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ \&\ PUOUT1)\ >>\ 1\ );}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00066}00066\ uint8\_t\ LDOPWR\_getPort\_U0\_outputData\ (uint16\_t\ baseAddress\ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00067}00067\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ \&\ PUOUT0);}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00071}00071\ \textcolor{keywordtype}{void}\ LDOPWR\_setPort\_U1\_outputData\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00072}00072\ \ \ \ \ uint8\_t\ value}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00073}00073\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00074}00074\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00075}00075\ \ \ \ \ \textcolor{keywordflow}{if}\ (LDOPWR\_PORTU\_PIN\_HIGH\ ==\ value)\{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ |=\ PUOUT1;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00077}00077\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ \&=\ \string~PUOUT1;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00082}00082\ \textcolor{keywordtype}{void}\ LDOPWR\_setPort\_U0\_outputData\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00083}00083\ \ \ \ \ uint8\_t\ value}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00084}00084\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00085}00085\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00086}00086\ \ \ \ \ \textcolor{keywordflow}{if}\ (LDOPWR\_PORTU\_PIN\_HIGH\ ==\ value)\{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ |=\ PUOUT0;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00088}00088\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ \&=\ \string~PUOUT0;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00093}00093\ \textcolor{keywordtype}{void}\ LDOPWR\_togglePort\_U1\_outputData\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00094}00094\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00095}00095\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ \string^=\ PUOUT1;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00098}00098\ \textcolor{keywordtype}{void}\ LDOPWR\_togglePort\_U0\_outputData\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00099}00099\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00100}00100\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_PUCTL\_L)\ \string^=\ PUOUT0;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00101}00101\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00103}00103\ \textcolor{keywordtype}{void}\ LDOPWR\_enableInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00104}00104\ \ \ \ \ uint16\_t\ mask}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00105}00105\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00106}00106\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00107}00107\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LDOPWRCTL\_H)\ |=\ mask;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00108}00108\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00110}00110\ \textcolor{keywordtype}{void}\ LDOPWR\_disableInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00111}00111\ \ \ \ \ uint16\_t\ mask}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00112}00112\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00113}00113\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00114}00114\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LDOPWRCTL\_H)\ \&=\ \string~mask;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00117}00117\ \textcolor{keywordtype}{void}\ LDOPWR\_enable\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00119}00119\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LDOPWRCTL\_H)\ |=\ LDOOEN\_H;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00122}00122\ \textcolor{keywordtype}{void}\ LDOPWR\_disable\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00123}00123\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00124}00124\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LDOPWRCTL\_H)\ \&=\ \string~LDOOEN\_H;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00125}00125\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00127}00127\ uint8\_t\ LDOPWR\_getInterruptStatus\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00128}00128\ \ \ \ \ uint16\_t\ mask}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00129}00129\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00130}00130\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LDOPWRCTL\_L)\ \&\ mask);}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00132}00132\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00134}00134\ \textcolor{keywordtype}{void}\ LDOPWR\_clearInterrupt\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00135}00135\ \ \ \ \ uint16\_t\ mask}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00136}00136\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00137}00137\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00138}00138\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LDOPWRCTL\_L)\ \&=\ \ \string~mask;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00139}00139\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00141}00141\ uint8\_t\ LDOPWR\_isLDOInputValid\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00142}00142\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00143}00143\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LDOPWRCTL\_L)\ \&\ LDOBGVBV);}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00144}00144\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00146}00146\ \textcolor{keywordtype}{void}\ LDOPWR\_enableOverloadAutoOff\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00147}00147\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00148}00148\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LDOPWRCTL\_L)\ |=\ OVLAOFF\_L;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00149}00149\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00151}00151\ \textcolor{keywordtype}{void}\ LDOPWR\_disableOverloadAutoOff\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00152}00152\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00153}00153\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LDOPWRCTL\_L)\ \&=\ \string~OVLAOFF\_L;}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00154}00154\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00156}00156\ uint8\_t\ LDOPWR\_getOverloadAutoOffStatus\ (uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00157}00157\ \{}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00158}00158\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LDOPWRCTL\_L)\ \&\ OVLAOFF\_L);}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00159}00159\ \}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00161}00161\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00162}00162\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00163}00163\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00166}00166\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{ldopwr_8c_source_l00167}00167\ \textcolor{comment}{//*****************************************************************************}}
+
+\end{DoxyCode}

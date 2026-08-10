@@ -1,0 +1,300 @@
+\doxysection{lcd\+\_\+b.\+c}
+\hypertarget{lcd__b_8c_source}{}\label{lcd__b_8c_source}\index{driverlib/MSP430F5xx\_6xx/lcd\_b.c@{driverlib/MSP430F5xx\_6xx/lcd\_b.c}}
+\doxymbox{\hyperlink{lcd__b_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00003}00003\ \textcolor{comment}{//\ lcd\_b.c\ -\/\ Driver\ for\ the\ lcd\_b\ Module.}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00007}00007\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00011}00011\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00012}00012\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_LCD\_B\_\_}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{lcd__b_8h}{lcd\_b.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00021}00021\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00022}00022\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00023}00023\ \textcolor{comment}{//\ Initialization\ parameter\ instance}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00025}00025\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00026}00026\ \textcolor{keyword}{const}\ LCD\_B\_initParam\ LCD\_B\_INIT\_PARAM\ =\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00027}00027\ \ \ \ \ \ \ \ \ LCD\_B\_CLOCKSOURCE\_ACLK,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00028}00028\ \ \ \ \ \ \ \ \ LCD\_B\_CLOCKDIVIDER\_1,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ LCD\_B\_CLOCKPRESCALAR\_1,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00030}00030\ \ \ \ \ \ \ \ \ LCD\_B\_STATIC,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ LCD\_B\_SEGMENTS\_DISABLED}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00032}00032\ \};}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00034}00034\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ setLCDFunction(uint16\_t\ baseAddress,\ uint8\_t\ index,\ uint16\_t\ value)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00035}00035\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{switch}\ (index)\{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBPCTL0)\ |=\ value;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBPCTL1)\ |=\ value;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBPCTL2)\ |=\ value;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBPCTL3)\ |=\ value;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{default}:\textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00053}00053\ \textcolor{keywordtype}{void}\ LCD\_B\_init(uint16\_t\ baseAddress,\ LCD\_B\_initParam\ *initParams)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00054}00054\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00055}00055\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00056}00056\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~(LCDMX0\ |\ LCDMX1\ |\ LCDSSEL\ |\ LCDSON}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00057}00057\ \ \ \ \ \ \ |\ LCDDIV\_31);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00059}00059\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ |=\ initParams-\/>muxRate;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00060}00060\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ |=\ initParams-\/>clockSource;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00061}00061\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ |=\ initParams-\/>segments;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00062}00062\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ |=\ initParams-\/>clockDivider;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00063}00063\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ |=\ initParams-\/>clockPrescalar;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00066}00066\ \textcolor{keywordtype}{void}\ LCD\_B\_on(uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00067}00067\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00068}00068\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ |=\ LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00069}00069\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00071}00071\ \textcolor{keywordtype}{void}\ LCD\_B\_off(uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00073}00073\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00076}00076\ \textcolor{keywordtype}{void}\ LCD\_B\_clearInterrupt(uint16\_t\ baseAddress,\ uint16\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00077}00077\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00078}00078\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LCDBCTL1\_L)\ \&=\ \string~(mask>>8);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00081}00081\ uint16\_t\ LCD\_B\_getInterruptStatus(uint16\_t\ baseAddress,\ uint16\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00082}00082\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LCDBCTL1\_L)\ \&\ (mask>>8));}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00086}00086\ \textcolor{keywordtype}{void}\ LCD\_B\_enableInterrupt\ (uint16\_t\ baseAddress,\ uint16\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00087}00087\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00088}00088\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL1)\ |=\ mask;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00089}00089\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00091}00091\ \textcolor{keywordtype}{void}\ LCD\_B\_disableInterrupt\ (uint16\_t\ baseAddress,\ uint16\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00092}00092\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00093}00093\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL1)\ \&=\ \string~mask;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00096}00096\ \textcolor{keywordtype}{void}\ LCD\_B\_clearAllMemory(uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00097}00097\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00098}00098\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBMEMCTL)\ |=\ LCDCLRM;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00100}00100\ \ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00101}00101\ \textcolor{keywordtype}{void}\ LCD\_B\_clearAllBlinkingMemory(uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00102}00102\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00103}00103\ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBMEMCTL)\ |=\ LCDCLRBM;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00104}00104\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00106}00106\ \textcolor{keywordtype}{void}\ LCD\_B\_selectDisplayMemory(uint16\_t\ baseAddress,\ uint16\_t\ displayMemory)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00107}00107\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00108}00108\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBMEMCTL)\ \&=\ \string~LCDDISP;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00109}00109\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBMEMCTL)\ |=\ displayMemory;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00112}00112\ \textcolor{keywordtype}{void}\ LCD\_B\_setBlinkingControl\ (uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ clockDivider,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ clockPrescalar,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ mode)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00116}00116\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00117}00117\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBBLKCTL)\ \&=\ \string~(LCDBLKDIV0\ |\ LCDBLKDIV1\ |\ LCDBLKDIV2\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00118}00118\ \ \ \ \ \ \ |\ LCDBLKPRE0\ |\ LCDBLKPRE1\ |\ LCDBLKPRE2\ |\ LCDBLKMOD0\ |\ LCDBLKMOD1);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00119}00119\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00120}00120\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBBLKCTL)\ |=\ clockDivider\ |\ clockPrescalar\ |\ mode;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00121}00121\ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00123}00123\ \textcolor{keywordtype}{void}\ LCD\_B\_enableChargePump(uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00124}00124\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00125}00125\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00126}00126\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ |=\ LCDCPEN;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00127}00127\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00129}00129\ \textcolor{keywordtype}{void}\ LCD\_B\_disableChargePump(uint16\_t\ baseAddress)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00130}00130\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00131}00131\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00132}00132\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ \&=\ \string~LCDCPEN;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00133}00133\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00135}00135\ \textcolor{keywordtype}{void}\ LCD\_B\_selectBias(uint16\_t\ baseAddress,\ uint16\_t\ bias)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00136}00136\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00137}00137\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00138}00138\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ \&=\ \string~LCD2B;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00140}00140\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ |=\ bias;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00141}00141\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00143}00143\ \textcolor{keywordtype}{void}\ LCD\_B\_selectChargePumpReference(uint16\_t\ baseAddress,\ uint16\_t\ reference)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00144}00144\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00145}00145\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00146}00146\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ \&=\ \string~VLCDREF\_3;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00148}00148\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ |=\ reference;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00149}00149\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00151}00151\ \textcolor{keywordtype}{void}\ LCD\_B\_setVLCDSource(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00152}00152\ \ \ \ \ uint16\_t\ vlcdSource,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00153}00153\ \ \ \ \ uint16\_t\ v2v3v4Source,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00154}00154\ \ \ \ \ uint16\_t\ v5Source)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00155}00155\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00156}00156\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00157}00157\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ \&=\ \string~VLCDEXT;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00158}00158\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ \&=\ \string~LCDREXT;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00159}00159\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ \&=\ \string~LCDEXTBIAS;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00160}00160\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ \&=\ \string~R03EXT;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00162}00162\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ |=\ vlcdSource;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00163}00163\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ |=\ v2v3v4Source;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00164}00164\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ |=\ v5Source;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00165}00165\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00167}00167\ \textcolor{keywordtype}{void}\ LCD\_B\_setVLCDVoltage(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00168}00168\ \ \ \ \ uint16\_t\ voltage)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00169}00169\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00170}00170\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00171}00171\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ \&=\ \string~VLCD\_15;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00173}00173\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBVCTL)\ |=\ voltage;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00174}00174\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00176}00176\ \textcolor{keywordtype}{void}\ LCD\_B\_setPinAsLCDFunction\ (uint16\_t\ baseAddress,\ uint8\_t\ pin)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00177}00177\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00178}00178\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00180}00180\ \ \ \ \ uint8\_t\ idx\ =\ pin>>4;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00181}00181\ \ \ \ \ uint16\_t\ val\ =\ 1<<(pin\ \&\ 0xF);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00183}00183\ \ \ \ \ setLCDFunction(baseAddress,\ idx,\ val);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00185}00185\ \}\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00187}00187\ \textcolor{keywordtype}{void}\ LCD\_B\_setPinAsPortFunction\ (uint16\_t\ baseAddress,\ uint8\_t\ pin)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00188}00188\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00189}00189\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00191}00191\ \ \ \ \ uint8\_t\ idx\ =\ pin>>4;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00192}00192\ \ \ \ \ uint16\_t\ val\ =\ 1<<(pin\ \&\ 0xF);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00194}00194\ \ \ \ \ \textcolor{keywordflow}{switch}\ (idx)\{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBPCTL0)\ \&=\ \string~val;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00198}00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBPCTL1)\ \&=\ \string~val;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBPCTL2)\ \&=\ \string~val;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00204}00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBPCTL3)\ \&=\ \string~val;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00208}00208\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00210}00210\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00212}00212\ \textcolor{keywordtype}{void}\ LCD\_B\_setPinAsLCDFunctionEx(uint16\_t\ baseAddress,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00213}00213\ \ \ \ \ uint8\_t\ startPin,}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00214}00214\ \ \ \ \ uint8\_t\ endPin)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00215}00215\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00216}00216\ \ \ \ \ uint8\_t\ startIdx\ =\ startPin>>4;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00217}00217\ \ \ \ \ uint8\_t\ endIdx\ =\ endPin>>4;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00218}00218\ \ \ \ \ uint8\_t\ startPos\ =\ startPin\ \&\ 0xF;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00219}00219\ \ \ \ \ uint8\_t\ endPos\ =\ endPin\ \&\ 0xF;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00220}00220\ \ \ \ \ uint16\_t\ val\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00221}00221\ \ \ \ \ uint8\_t\ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00223}00223\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCTL0)\ \&=\ \string~LCDON;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00225}00225\ \ \ \ \ \textcolor{keywordflow}{if}\ (startIdx\ ==\ endIdx)\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00226}00226\ \ \ \ \ \ \ \ \ val\ =\ (0xFFFF>>(15-\/endPos))\ \&\ (0xFFFF<<startPos);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00228}00228\ \ \ \ \ \ \ \ \ setLCDFunction(baseAddress,\ startIdx,\ val);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00230}00230\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00231}00231\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00232}00232\ \ \ \ \ \ \ \ \ val\ =\ 0xFFFF>>(15-\/endPos);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00233}00233\ \ \ \ \ \ \ \ \ setLCDFunction(baseAddress,\ endIdx,\ val);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i=endIdx-\/1;\ i>startIdx;\ i-\/-\/)\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ setLCDFunction(baseAddress,\ i,\ 0xFFFF);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00237}00237\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00239}00239\ \ \ \ \ \ \ \ \ val\ =\ 0xFFFF<<startPos;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00240}00240\ \ \ \ \ \ \ \ \ setLCDFunction(baseAddress,\ startIdx,\ val);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00241}00241\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00242}00242\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00244}00244\ \textcolor{keywordtype}{void}\ LCD\_B\_setMemory(uint16\_t\ baseAddress,\ uint8\_t\ memory,\ uint8\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00245}00245\ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00246}00246\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LCDM1\ +\ memory)\ =\ mask;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00247}00247\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00249}00249\ \textcolor{keywordtype}{void}\ LCD\_B\_updateMemory(uint16\_t\ baseAddress,\ uint8\_t\ memory,\ uint8\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00250}00250\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00251}00251\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LCDM1\ +\ memory)\ |=\ mask;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00252}00252\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00254}00254\ \textcolor{keywordtype}{void}\ LCD\_B\_toggleMemory(uint16\_t\ baseAddress,\ uint8\_t\ memory,\ uint8\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00255}00255\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00256}00256\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LCDM1\ +\ memory)\ \string^=\ mask;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00257}00257\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00259}00259\ \textcolor{keywordtype}{void}\ LCD\_B\_clearMemory(uint16\_t\ baseAddress,\ uint8\_t\ memory,\ uint8\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00260}00260\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00261}00261\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LCDM1\ +\ memory)\ \&=\ \string~mask;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00262}00262\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00264}00264\ \textcolor{keywordtype}{void}\ LCD\_B\_setBlinkingMemory(uint16\_t\ baseAddress,\ uint8\_t\ memory,\ uint8\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00265}00265\ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00266}00266\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LCDBM1\ +\ memory)\ =\ mask;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00267}00267\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00269}00269\ \textcolor{keywordtype}{void}\ LCD\_B\_updateBlinkingMemory(uint16\_t\ baseAddress,\ uint8\_t\ memory,\ uint8\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00270}00270\ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00271}00271\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LCDBM1\ +\ memory)\ |=\ mask;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00272}00272\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00274}00274\ \textcolor{keywordtype}{void}\ LCD\_B\_toggleBlinkingMemory(uint16\_t\ baseAddress,\ uint8\_t\ memory,\ uint8\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00275}00275\ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00276}00276\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LCDBM1\ +\ memory)\ \string^=\ mask;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00277}00277\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00279}00279\ \textcolor{keywordtype}{void}\ LCD\_B\_clearBlinkingMemory(uint16\_t\ baseAddress,\ uint8\_t\ memory,\ uint8\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00280}00280\ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00281}00281\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(baseAddress\ +\ OFS\_LCDBM1\ +\ memory)\ \&=\ \string~mask;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00282}00282\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00284}00284\ \textcolor{keywordtype}{void}\ LCD\_B\_configureChargePump(uint16\_t\ baseAddress,\ uint16\_t\ autoDisabled)}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00285}00285\ \{}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00286}00286\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCPCTL)\ \&=\ \string~(LCDCPDIS7\ |\ LCDCPDIS6\ |\ LCDCPDIS5}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00287}00287\ \ \ \ \ \ \ \ \ |\ LCDCPDIS4\ |\ LCDCPDIS3\ |\ LCDCPDIS2\ |\ LCDCPDIS1\ |\ LCDCPDIS0);}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00289}00289\ \ \ \ \ \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(baseAddress\ +\ OFS\_LCDBCPCTL)\ |=\ autoDisabled;}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00290}00290\ \}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00292}00292\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00293}00293\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00294}00294\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00297}00297\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{lcd__b_8c_source_l00298}00298\ \textcolor{comment}{//*****************************************************************************}}
+
+\end{DoxyCode}

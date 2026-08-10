@@ -1,0 +1,214 @@
+\doxysection{mpy32.\+h}
+\hypertarget{mpy32_8h_source}{}\label{mpy32_8h_source}\index{driverlib/MSP430F5xx\_6xx/mpy32.h@{driverlib/MSP430F5xx\_6xx/mpy32.h}}
+\doxymbox{\hyperlink{mpy32_8h}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00001}00001\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00002}00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00003}00003\ \textcolor{comment}{//\ mpy32.h\ -\/\ Driver\ for\ the\ MPY32\ Module.}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00005}00005\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_\_MSP430WARE\_MPY32\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_\_MSP430WARE\_MPY32\_H\_\_}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00012}00012\ \textcolor{preprocessor}{\#ifdef\ \_\_MSP430\_HAS\_MPY32\_\_}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00014}00014\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00015}00015\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00016}00016\ \textcolor{comment}{//\ If\ building\ with\ a\ C++\ compiler,\ make\ all\ of\ the\ definitions\ in\ this\ header}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00017}00017\ \textcolor{comment}{//\ have\ a\ C\ binding.}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00019}00019\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00020}00020\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00021}00021\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00023}00023\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{hw__memmap_8h}{inc/hw\_memmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00027}00027\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00028}00028\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00029}00029\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ writeDelaySelect}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00030}00030\ \textcolor{comment}{//\ parameter\ for\ functions:\ MPY32\_setWriteDelay().}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00031}00031\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00032}00032\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ MPY32\_WRITEDELAY\_OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!(MPYDLY32\ +\ MPYDLYWRTEN))}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00034}00034\ \textcolor{preprocessor}{\#define\ MPY32\_WRITEDELAY\_32BIT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (MPYDLYWRTEN)}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00035}00035\ \textcolor{preprocessor}{\#define\ MPY32\_WRITEDELAY\_64BIT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (MPYDLY32\ +\ MPYDLYWRTEN)}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00037}00037\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00038}00038\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00039}00039\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ to\ the\ multiplicationType}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00040}00040\ \textcolor{comment}{//\ parameter\ for\ functions:\ MPY32\_setOperandOne8Bit(),}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00041}00041\ \textcolor{comment}{//\ MPY32\_setOperandOne16Bit(),\ MPY32\_setOperandOne24Bit(),\ and}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00042}00042\ \textcolor{comment}{//\ MPY32\_setOperandOne32Bit().}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00043}00043\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00044}00044\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00045}00045\ \textcolor{preprocessor}{\#define\ MPY32\_MULTIPLY\_UNSIGNED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x00)}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00046}00046\ \textcolor{preprocessor}{\#define\ MPY32\_MULTIPLY\_SIGNED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x02)}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00047}00047\ \textcolor{preprocessor}{\#define\ MPY32\_MULTIPLYACCUMULATE\_UNSIGNED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x04)}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00048}00048\ \textcolor{preprocessor}{\#define\ MPY32\_MULTIPLYACCUMULATE\_SIGNED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (0x06)}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00050}00050\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00051}00051\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00052}00052\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ toThe\ following\ are\ values\ that}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00053}00053\ \textcolor{comment}{//\ can\ be\ returned\ by\ the\ MPY32\_getSaturationMode()\ function.}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00054}00054\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00055}00055\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00056}00056\ \textcolor{preprocessor}{\#define\ MPY32\_SATURATION\_MODE\_DISABLED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00057}00057\ \textcolor{preprocessor}{\#define\ MPY32\_SATURATION\_MODE\_ENABLED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPYSAT}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00059}00059\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00060}00060\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00061}00061\ \textcolor{comment}{//\ The\ following\ are\ values\ that\ can\ be\ passed\ toThe\ following\ are\ values\ that}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00062}00062\ \textcolor{comment}{//\ can\ be\ returned\ by\ the\ MPY32\_getFractionalMode()\ function.}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00063}00063\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00064}00064\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00065}00065\ \textcolor{preprocessor}{\#define\ MPY32\_FRACTIONAL\_MODE\_DISABLED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00066}00066\ \textcolor{preprocessor}{\#define\ MPY32\_FRACTIONAL\_MODE\_ENABLED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MPYFRAC}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00068}00068\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00069}00069\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00070}00070\ \textcolor{comment}{//\ Prototypes\ for\ the\ APIs.}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00071}00071\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00072}00072\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00074}00074\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00075}00075\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00097}00097\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00098}00098\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00099}00099\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_setWriteDelay(uint16\_t\ writeDelaySelect);}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00101}00101\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00102}00102\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00114}00114\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00115}00115\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00116}00116\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_enableSaturationMode(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00118}00118\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00119}00119\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00127}00127\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00128}00128\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00129}00129\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_disableSaturationMode(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00131}00131\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00132}00132\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00143}00143\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00144}00144\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00145}00145\ \textcolor{keyword}{extern}\ uint8\_t\ MPY32\_getSaturationMode(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00147}00147\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00148}00148\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00155}00155\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00156}00156\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00157}00157\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_enableFractionalMode(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00159}00159\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00160}00160\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00167}00167\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00168}00168\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00169}00169\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_disableFractionalMode(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00171}00171\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00172}00172\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00183}00183\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00184}00184\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00185}00185\ \textcolor{keyword}{extern}\ uint8\_t\ MPY32\_getFractionalMode(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00187}00187\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00188}00188\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00205}00205\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00206}00206\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00207}00207\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_setOperandOne8Bit(uint8\_t\ multiplicationType,}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ operand);}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00210}00210\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00211}00211\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00228}00228\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00229}00229\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00230}00230\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_setOperandOne16Bit(uint8\_t\ multiplicationType,}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint16\_t\ operand);}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00233}00233\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00234}00234\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00251}00251\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00252}00252\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00253}00253\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_setOperandOne24Bit(uint8\_t\ multiplicationType,}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ operand);}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00256}00256\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00257}00257\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00274}00274\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00275}00275\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00276}00276\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_setOperandOne32Bit(uint8\_t\ multiplicationType,}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ operand);}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00279}00279\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00280}00280\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00289}00289\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00290}00290\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00291}00291\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_setOperandTwo8Bit(uint8\_t\ operand);}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00293}00293\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00294}00294\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00304}00304\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00305}00305\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00306}00306\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_setOperandTwo16Bit(uint16\_t\ operand);}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00308}00308\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00309}00309\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00319}00319\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00320}00320\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00321}00321\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_setOperandTwo24Bit(uint32\_t\ operand);}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00323}00323\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00324}00324\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00334}00334\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00335}00335\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00336}00336\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_setOperandTwo32Bit(uint32\_t\ operand);}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00338}00338\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00339}00339\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00346}00346\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00347}00347\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00348}00348\ \textcolor{keyword}{extern}\ uint64\_t\ MPY32\_getResult(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00350}00350\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00351}00351\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00361}00361\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00362}00362\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00363}00363\ \textcolor{keyword}{extern}\ uint16\_t\ MPY32\_getSumExtension(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00365}00365\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00366}00366\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00375}00375\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00376}00376\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00377}00377\ \textcolor{keyword}{extern}\ uint16\_t\ MPY32\_getCarryBitValue(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00379}00379\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00380}00380\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00387}00387\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00388}00388\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00389}00389\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_clearCarryBitValue(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00390}00390\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00391}00391\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00392}00392\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00400}00400\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00401}00401\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00402}00402\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ MPY32\_preloadResult(uint64\_t\ result);}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00404}00404\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00405}00405\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00406}00406\ \textcolor{comment}{//\ Mark\ the\ end\ of\ the\ C\ bindings\ section\ for\ C++\ compilers.}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00407}00407\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00408}00408\ \textcolor{comment}{//*****************************************************************************}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00409}00409\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00410}00410\ \}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00411}00411\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00413}00413\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mpy32_8h_source_l00414}00414\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_MSP430WARE\_MPY32\_H\_\_}}
+
+\end{DoxyCode}

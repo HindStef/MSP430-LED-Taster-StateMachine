@@ -1,0 +1,134 @@
+\doxysection{BCUart.\+c}
+\hypertarget{_b_c_uart_8c_source}{}\label{_b_c_uart_8c_source}\doxymbox{\hyperlink{_b_c_uart_8c}{gehe zur Dokumentation dieser Datei}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00001}00001\ \textcolor{comment}{/*\ -\/-\/COPYRIGHT-\/-\/,BSD}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00002}00002\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2012,\ Texas\ Instruments\ Incorporated}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00003}00003\ \textcolor{comment}{\ *\ All\ rights\ reserved.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00004}00004\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00005}00005\ \textcolor{comment}{\ *\ Redistribution\ and\ use\ in\ source\ and\ binary\ forms,\ with\ or\ without}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00006}00006\ \textcolor{comment}{\ *\ modification,\ are\ permitted\ provided\ that\ the\ following\ conditions}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00007}00007\ \textcolor{comment}{\ *\ are\ met:}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00009}00009\ \textcolor{comment}{\ *\ *\ \ Redistributions\ of\ source\ code\ must\ retain\ the\ above\ copyright}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00010}00010\ \textcolor{comment}{\ *\ \ \ \ notice,\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00011}00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00012}00012\ \textcolor{comment}{\ *\ *\ \ Redistributions\ in\ binary\ form\ must\ reproduce\ the\ above\ copyright}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00013}00013\ \textcolor{comment}{\ *\ \ \ \ notice,\ this\ list\ of\ conditions\ and\ the\ following\ disclaimer\ in\ the}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00014}00014\ \textcolor{comment}{\ *\ \ \ \ documentation\ and/or\ other\ materials\ provided\ with\ the\ distribution.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00016}00016\ \textcolor{comment}{\ *\ *\ \ Neither\ the\ name\ of\ Texas\ Instruments\ Incorporated\ nor\ the\ names\ of}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00017}00017\ \textcolor{comment}{\ *\ \ \ \ its\ contributors\ may\ be\ used\ to\ endorse\ or\ promote\ products\ derived}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00018}00018\ \textcolor{comment}{\ *\ \ \ \ from\ this\ software\ without\ specific\ prior\ written\ permission.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00019}00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00020}00020\ \textcolor{comment}{\ *\ THIS\ SOFTWARE\ IS\ PROVIDED\ BY\ THE\ COPYRIGHT\ HOLDERS\ AND\ CONTRIBUTORS\ "{}AS\ IS"{}}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00021}00021\ \textcolor{comment}{\ *\ AND\ ANY\ EXPRESS\ OR\ IMPLIED\ WARRANTIES,\ INCLUDING,\ BUT\ NOT\ LIMITED\ TO,}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00022}00022\ \textcolor{comment}{\ *\ THE\ IMPLIED\ WARRANTIES\ OF\ MERCHANTABILITY\ AND\ FITNESS\ FOR\ A\ PARTICULAR}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00023}00023\ \textcolor{comment}{\ *\ PURPOSE\ ARE\ DISCLAIMED.\ IN\ NO\ EVENT\ SHALL\ THE\ COPYRIGHT\ OWNER\ OR}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00024}00024\ \textcolor{comment}{\ *\ CONTRIBUTORS\ BE\ LIABLE\ FOR\ ANY\ DIRECT,\ INDIRECT,\ INCIDENTAL,\ SPECIAL,}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00025}00025\ \textcolor{comment}{\ *\ EXEMPLARY,\ OR\ CONSEQUENTIAL\ DAMAGES\ (INCLUDING,\ BUT\ NOT\ LIMITED\ TO,}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00026}00026\ \textcolor{comment}{\ *\ PROCUREMENT\ OF\ SUBSTITUTE\ GOODS\ OR\ SERVICES;\ LOSS\ OF\ USE,\ DATA,\ OR\ PROFITS;}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00027}00027\ \textcolor{comment}{\ *\ OR\ BUSINESS\ INTERRUPTION)\ HOWEVER\ CAUSED\ AND\ ON\ ANY\ THEORY\ OF\ LIABILITY,}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00028}00028\ \textcolor{comment}{\ *\ WHETHER\ IN\ CONTRACT,\ STRICT\ LIABILITY,\ OR\ TORT\ (INCLUDING\ NEGLIGENCE\ OR}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00029}00029\ \textcolor{comment}{\ *\ OTHERWISE)\ ARISING\ IN\ ANY\ WAY\ OUT\ OF\ THE\ USE\ OF\ THIS\ SOFTWARE,}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00030}00030\ \textcolor{comment}{\ *\ EVEN\ IF\ ADVISED\ OF\ THE\ POSSIBILITY\ OF\ SUCH\ DAMAGE.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00031}00031\ \textcolor{comment}{\ *\ -\/-\//COPYRIGHT-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00032}00032\ \ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}msp430.h"{}}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_b_c_uart_8h}{BCUart.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00036}00036\ \textcolor{comment}{//\ Receive\ buffer\ for\ the\ UART.\ \ Incoming\ bytes\ need\ a\ place\ to\ go\ immediately,}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00037}00037\ \textcolor{comment}{//\ otherwise\ there\ might\ be\ an\ overrun\ when\ the\ next\ comes\ in.\ \ The\ USCI\ ISR}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00038}00038\ \textcolor{comment}{//\ puts\ them\ here.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00039}\doxymbox{\hyperlink{_b_c_uart_8c_a4e2782cdf2f1242bc935ee47f369494f}{00039}}\ uint8\_t\ \ \doxymbox{\hyperlink{_b_c_uart_8c_a4e2782cdf2f1242bc935ee47f369494f}{bcUartRcvBuf}}[\doxymbox{\hyperlink{_b_c_uart_8h_ac1f4e7162cb8656bf60d1f287ca5ce1f}{BC\_RXBUF\_SIZE}}];}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00041}00041\ \textcolor{comment}{//\ The\ index\ within\ bcUartRcvBuf,\ where\ the\ next\ byte\ will\ be\ written.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00042}\doxymbox{\hyperlink{_b_c_uart_8c_a35207cf444774c32f9ec8a6e8ca32dcf}{00042}}\ uint16\_t\ \doxymbox{\hyperlink{_b_c_uart_8c_a35207cf444774c32f9ec8a6e8ca32dcf}{bcUartRcvBufIndex}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00044}00044\ \textcolor{comment}{//\ Boolean\ flag\ indicating\ whether\ bcUartRcvBufIndex\ has\ reached\ the}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00045}00045\ \textcolor{comment}{//\ threshold\ BC\_RX\_WAKE\_THRESH.\ \ 0\ =\ FALSE,\ 1\ =\ TRUE}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00046}\doxymbox{\hyperlink{_b_c_uart_8c_aba8158301a99ddbb33fb4027dce97d67}{00046}}\ uint8\_t\ \ \doxymbox{\hyperlink{_b_c_uart_8c_aba8158301a99ddbb33fb4027dce97d67}{bcUartRxThreshReached}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00049}00049\ \textcolor{comment}{//\ Initializes\ the\ USCI\_A1\ module\ as\ a\ UART,\ using\ baudrate\ settings\ in}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00050}00050\ \textcolor{comment}{//\ bcUart.h.\ \ The\ baudrate\ is\ dependent\ on\ SMCLK\ speed.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00051}\doxymbox{\hyperlink{_b_c_uart_8c_a735d170f53369022348d8ba9bd6e387e}{00051}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_b_c_uart_8c_a735d170f53369022348d8ba9bd6e387e}{bcUartInit}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Always\ use\ the\ step-\/by-\/step\ init\ procedure\ listed\ in\ the\ USCI\ chapter\ of}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ the\ F5xx\ Family\ User's\ Guide}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00055}00055\ \ \ \ \ UCA1CTL1\ |=\ UCSWRST;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Put\ the\ USCI\ state\ machine\ in\ reset}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00056}00056\ \ \ \ \ UCA1CTL1\ |=\ UCSSEL\_\_SMCLK;\ \ \textcolor{comment}{//\ Use\ SMCLK\ as\ the\ bit\ clock}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ baudrate,\ UCA1\_BR0\ und\ UCA1\_BR1\ sind\ in\ BCUART.h\ definiert}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00059}00059\ \ \ \ \ UCA1BR0\ =\ \doxymbox{\hyperlink{_b_c_uart_8h_ac6532f7c236d47df04bbf11dda77d435}{UCA1\_BR0}};\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00060}00060\ \ \ \ \ UCA1BR1\ =\ \doxymbox{\hyperlink{_b_c_uart_8h_af984dfc79c19fd047f7ffaa33663681b}{UCA1\_BR1}};}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00061}00061\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//UCA1MCTL\ =\ (UCA1\_BRF\ <<\ 4)\ |\ (UCA1\_BRS\ <<\ 1)\ |\ (UCA1\_OS);}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//Oversampling\ (UCOS16\ =\ 1)}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00064}00064\ \ \ \ \ UCA1MCTL\ =\ UCBRS\_6\ |\ UCBRF\_5\ |\ (\doxymbox{\hyperlink{_b_c_uart_8h_acc18195ac8195bcc64f6b5d6235c0f4c}{UCA1\_OS}})\ ;\ \textcolor{comment}{//\ UCOS16;}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00066}00066\ \ \ \ \ P4SEL\ |=\ BIT4+BIT5;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Configure\ these\ pins\ as\ TXD/RXD}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00068}00068\ \ \ \ \ UCA1CTL1\ \&=\ \string~UCSWRST;\ \ \ \ \ \ \ \textcolor{comment}{//\ Take\ the\ USCI\ out\ of\ reset}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00069}00069\ \ \ \ \ UCA1IE\ |=\ UCRXIE;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Enable\ the\ RX\ interrupt.\ \ Now,\ when\ bytes\ are}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ rcv'ed,\ the\ USCI\_A1\ vector\ will\ be\ generated.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00073}00073\ \textcolor{comment}{//\ Sends\ 'len'\ bytes,\ starting\ at\ 'buf'}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00074}\doxymbox{\hyperlink{_b_c_uart_8c_a9b399aee0e8c3f2fd6c0de505201b8d2}{00074}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_b_c_uart_8c_a9b399aee0e8c3f2fd6c0de505201b8d2}{bcUartSend}}(uint8\_t\ *\ buf,\ uint8\_t\ len)}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00075}00075\ \{}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00076}00076\ \ \ \ \ uint8\_t\ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Write\ each\ byte\ in\ buf\ to\ USCI\ TX\ buffer,\ which\ sends\ it\ out}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{while}\ (i\ <\ len)}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00080}00080\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ UCA1TXBUF\ =\ *(buf+(i++));}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Wait\ until\ each\ bit\ has\ been\ clocked\ out...}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(!(UCTXIFG==(UCTXIFG\ \&\ UCA1IFG))\&\&((UCA1STAT\ \&\ UCBUSY)==UCBUSY));}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00086}00086\ \}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00089}00089\ \textcolor{comment}{//\ Copies\ into\ 'buf'\ whatever\ bytes\ have\ been\ received\ on\ the\ UART\ since\ the}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00090}00090\ \textcolor{comment}{//\ last\ fetch.\ \ Returns\ the\ number\ of\ bytes\ copied.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00091}\doxymbox{\hyperlink{_b_c_uart_8c_a944384d9981322ad9f3784c29c29873f}{00091}}\ uint16\_t\ \doxymbox{\hyperlink{_b_c_uart_8c_a944384d9981322ad9f3784c29c29873f}{bcUartReceiveBytesInBuffer}}(uint8\_t*\ buf)}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00092}00092\ \{}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00093}00093\ \ \ \ \ uint16\_t\ i,\ count;}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//\ Hold\ off\ ints\ for\ incoming\ data\ during\ the\ copy}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00096}00096\ \ \ \ \ UCA1IE\ \&=\ \string~UCRXIE;}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<\doxymbox{\hyperlink{_b_c_uart_8c_a35207cf444774c32f9ec8a6e8ca32dcf}{bcUartRcvBufIndex}};\ i++)}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00099}00099\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00100}00100\ \ \ \ \ \ \ \ \ buf[i]\ =\ \doxymbox{\hyperlink{_b_c_uart_8c_a4e2782cdf2f1242bc935ee47f369494f}{bcUartRcvBuf}}[i];}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00103}00103\ \ \ \ \ count\ =\ \doxymbox{\hyperlink{_b_c_uart_8c_a35207cf444774c32f9ec8a6e8ca32dcf}{bcUartRcvBufIndex}};}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00104}00104\ \ \ \ \ \doxymbox{\hyperlink{_b_c_uart_8c_a35207cf444774c32f9ec8a6e8ca32dcf}{bcUartRcvBufIndex}}\ =\ 0;\ \ \ \ \ \textcolor{comment}{//\ Move\ index\ back\ to\ the\ beginning\ of\ the\ buffer}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00105}00105\ \ \ \ \ \doxymbox{\hyperlink{_b_c_uart_8c_aba8158301a99ddbb33fb4027dce97d67}{bcUartRxThreshReached}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00107}00107\ \ \ \ \ \textcolor{comment}{//\ Restore\ USCI\ interrupts,\ to\ resume\ receiving\ data.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00108}00108\ \ \ \ \ UCA1IE\ |=\ UCRXIE;}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{return}\ count;}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00111}00111\ \}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00115}00115\ \textcolor{comment}{//\ The\ USCI\_A1\ receive\ interrupt\ service\ routine\ (ISR).\ \ Executes\ every\ time\ a}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00116}00116\ \textcolor{comment}{//\ byte\ is\ received\ on\ the\ back-\/channel\ UART.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00117}00117\ \textcolor{preprocessor}{\#pragma\ vector=USCI\_A1\_VECTOR}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00118}\doxymbox{\hyperlink{_b_c_uart_8c_adf309db8f60e6e7125961ed5f5789587}{00118}}\ \_\_interrupt\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{_b_c_uart_8c_adf309db8f60e6e7125961ed5f5789587}{bcUartISR}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00119}00119\ \{}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00120}00120\ \ \ \ \ \doxymbox{\hyperlink{_b_c_uart_8c_a4e2782cdf2f1242bc935ee47f369494f}{bcUartRcvBuf}}[\doxymbox{\hyperlink{_b_c_uart_8c_a35207cf444774c32f9ec8a6e8ca32dcf}{bcUartRcvBufIndex}}++]\ =\ UCA1RXBUF;\ \ \textcolor{comment}{//\ Fetch\ the\ byte,\ store}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ it\ in\ the\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//\ Wake\ main,\ to\ fetch\ data\ from\ the\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{if}(\doxymbox{\hyperlink{_b_c_uart_8c_a35207cf444774c32f9ec8a6e8ca32dcf}{bcUartRcvBufIndex}}\ >=\ \doxymbox{\hyperlink{_b_c_uart_8h_a3c790fb8d658b89aa793e485d7135343}{BC\_RX\_WAKE\_THRESH}})}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00125}00125\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00126}00126\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{_b_c_uart_8c_aba8158301a99ddbb33fb4027dce97d67}{bcUartRxThreshReached}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00127}00127\ \ \ \ \ \ \ \ \ \_\_bic\_SR\_register\_on\_exit(LPM3\_bits);\ \ \ \ \ \ \ \textcolor{comment}{//\ Exit\ LPM0-\/3}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00128}00128\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_c_uart_8c_source_l00129}00129\ \}}
+
+\end{DoxyCode}

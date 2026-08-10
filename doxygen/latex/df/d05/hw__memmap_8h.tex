@@ -1,0 +1,121 @@
+\doxysection{driverlib/\+\+MSP430\+F5xx\+\_\+6xx/\+inc/\+hw\+\_\+memmap.h-\/\+Dateireferenz}
+\hypertarget{hw__memmap_8h}{}\label{hw__memmap_8h}\index{driverlib/MSP430F5xx\_6xx/inc/hw\_memmap.h@{driverlib/MSP430F5xx\_6xx/inc/hw\_memmap.h}}
+{\ttfamily \+\#include $<$msp430.\+h$>$}\newline
+{\ttfamily \+\#include "{}msp430f5xx\+\_\+6xxgeneric.\+h"{}}\newline
+{\ttfamily \+\#include "{}stdint.\+h"{}}\newline
+{\ttfamily \+\#include "{}stdbool.\+h"{}}\newline
+Include-\/\+Abhängigkeitsdiagramm für hw\+\_\+memmap.\+h:\+
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/db7/hw__memmap_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Makrodefinitionen}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{hw__memmap_8h_a97af2b5e31182f676ac18b271c0edebf}{\+\_\+\+\_\+\+DRIVERLIB\+\_\+\+MSP430\+F5\+XX\+\_\+6\+XX\+\_\+\+FAMILY\+\_\+\+\_\+}}
+\item 
+\+\#define \doxymbox{\hyperlink{hw__memmap_8h_ae56fdb340b23940f7a64ed2e37c1774a}{STATUS\+\_\+\+SUCCESS}}~0x01
+\item 
+\+\#define \doxymbox{\hyperlink{hw__memmap_8h_a9024ed05f7df784637ef7b44ca8caf97}{STATUS\+\_\+\+FAIL}}~0x00
+\item 
+\+\#define \doxymbox{\hyperlink{hw__memmap_8h_a8de3ed741dadc9c979a4ff17c0a9116e}{NDEBUG}}
+\item 
+\+\#define \doxymbox{\hyperlink{hw__memmap_8h_a005bc3d0bebdd1031a77f1fba8947998}{HWREG32}}(x)
+\item 
+\+\#define \doxymbox{\hyperlink{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}{HWREG16}}(x)
+\item 
+\+\#define \doxymbox{\hyperlink{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}{HWREG8}}(x)
+\end{DoxyCompactItemize}
+
+
+\label{hw__memmap_8h_doc-define-members}
+\Hypertarget{hw__memmap_8h_doc-define-members}
+\doxysubsection{Makro-\/\+Dokumentation}
+\Hypertarget{hw__memmap_8h_a97af2b5e31182f676ac18b271c0edebf}\index{hw\_memmap.h@{hw\_memmap.h}!\_\_DRIVERLIB\_MSP430F5XX\_6XX\_FAMILY\_\_@{\_\_DRIVERLIB\_MSP430F5XX\_6XX\_FAMILY\_\_}}
+\index{\_\_DRIVERLIB\_MSP430F5XX\_6XX\_FAMILY\_\_@{\_\_DRIVERLIB\_MSP430F5XX\_6XX\_FAMILY\_\_}!hw\_memmap.h@{hw\_memmap.h}}
+\doxysubsubsection{\texorpdfstring{\_\_DRIVERLIB\_MSP430F5XX\_6XX\_FAMILY\_\_}{\_\_DRIVERLIB\_MSP430F5XX\_6XX\_FAMILY\_\_}}
+{\footnotesize\ttfamily \label{hw__memmap_8h_a97af2b5e31182f676ac18b271c0edebf} 
+\+\#define \+\_\+\+\_\+\+DRIVERLIB\+\_\+\+MSP430\+F5\+XX\+\_\+6\+XX\+\_\+\+FAMILY\+\_\+\+\_\+}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{hw__memmap_8h_source_l00004}{4}} der Datei \doxymbox{\hyperlink{hw__memmap_8h_source}{hw\+\_\+memmap.\+h}}.
+
+\Hypertarget{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143}\index{hw\_memmap.h@{hw\_memmap.h}!HWREG16@{HWREG16}}
+\index{HWREG16@{HWREG16}!hw\_memmap.h@{hw\_memmap.h}}
+\doxysubsubsection{\texorpdfstring{HWREG16}{HWREG16}}
+{\footnotesize\ttfamily \label{hw__memmap_8h_a7bb830016238e9f911612eddc5e58143} 
+\+\#define HWREG16(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Wert:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(*((\textcolor{keyword}{volatile}\ uint16\_t\ *)((uint16\_t)x)))}
+
+\end{DoxyCode}
+
+
+Definiert in Zeile \doxymbox{\hyperlink{hw__memmap_8h_source_l00039}{39}} der Datei \doxymbox{\hyperlink{hw__memmap_8h_source}{hw\+\_\+memmap.\+h}}.
+
+\Hypertarget{hw__memmap_8h_a005bc3d0bebdd1031a77f1fba8947998}\index{hw\_memmap.h@{hw\_memmap.h}!HWREG32@{HWREG32}}
+\index{HWREG32@{HWREG32}!hw\_memmap.h@{hw\_memmap.h}}
+\doxysubsubsection{\texorpdfstring{HWREG32}{HWREG32}}
+{\footnotesize\ttfamily \label{hw__memmap_8h_a005bc3d0bebdd1031a77f1fba8947998} 
+\+\#define HWREG32(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Wert:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(*((\textcolor{keyword}{volatile}\ uint32\_t\ *)((uint16\_t)x)))}
+
+\end{DoxyCode}
+
+
+Definiert in Zeile \doxymbox{\hyperlink{hw__memmap_8h_source_l00037}{37}} der Datei \doxymbox{\hyperlink{hw__memmap_8h_source}{hw\+\_\+memmap.\+h}}.
+
+\Hypertarget{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42}\index{hw\_memmap.h@{hw\_memmap.h}!HWREG8@{HWREG8}}
+\index{HWREG8@{HWREG8}!hw\_memmap.h@{hw\_memmap.h}}
+\doxysubsubsection{\texorpdfstring{HWREG8}{HWREG8}}
+{\footnotesize\ttfamily \label{hw__memmap_8h_a437bba8c6aaa7542f8d7522146157b42} 
+\+\#define HWREG8(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Wert:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(*((\textcolor{keyword}{volatile}\ uint8\_t\ *)((uint16\_t)x)))}
+
+\end{DoxyCode}
+
+
+Definiert in Zeile \doxymbox{\hyperlink{hw__memmap_8h_source_l00041}{41}} der Datei \doxymbox{\hyperlink{hw__memmap_8h_source}{hw\+\_\+memmap.\+h}}.
+
+\Hypertarget{hw__memmap_8h_a8de3ed741dadc9c979a4ff17c0a9116e}\index{hw\_memmap.h@{hw\_memmap.h}!NDEBUG@{NDEBUG}}
+\index{NDEBUG@{NDEBUG}!hw\_memmap.h@{hw\_memmap.h}}
+\doxysubsubsection{\texorpdfstring{NDEBUG}{NDEBUG}}
+{\footnotesize\ttfamily \label{hw__memmap_8h_a8de3ed741dadc9c979a4ff17c0a9116e} 
+\+\#define NDEBUG}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{hw__memmap_8h_source_l00030}{30}} der Datei \doxymbox{\hyperlink{hw__memmap_8h_source}{hw\+\_\+memmap.\+h}}.
+
+\Hypertarget{hw__memmap_8h_a9024ed05f7df784637ef7b44ca8caf97}\index{hw\_memmap.h@{hw\_memmap.h}!STATUS\_FAIL@{STATUS\_FAIL}}
+\index{STATUS\_FAIL@{STATUS\_FAIL}!hw\_memmap.h@{hw\_memmap.h}}
+\doxysubsubsection{\texorpdfstring{STATUS\_FAIL}{STATUS\_FAIL}}
+{\footnotesize\ttfamily \label{hw__memmap_8h_a9024ed05f7df784637ef7b44ca8caf97} 
+\+\#define STATUS\+\_\+\+FAIL~0x00}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{hw__memmap_8h_source_l00023}{23}} der Datei \doxymbox{\hyperlink{hw__memmap_8h_source}{hw\+\_\+memmap.\+h}}.
+
+\Hypertarget{hw__memmap_8h_ae56fdb340b23940f7a64ed2e37c1774a}\index{hw\_memmap.h@{hw\_memmap.h}!STATUS\_SUCCESS@{STATUS\_SUCCESS}}
+\index{STATUS\_SUCCESS@{STATUS\_SUCCESS}!hw\_memmap.h@{hw\_memmap.h}}
+\doxysubsubsection{\texorpdfstring{STATUS\_SUCCESS}{STATUS\_SUCCESS}}
+{\footnotesize\ttfamily \label{hw__memmap_8h_ae56fdb340b23940f7a64ed2e37c1774a} 
+\+\#define STATUS\+\_\+\+SUCCESS~0x01}
+
+
+
+Definiert in Zeile \doxymbox{\hyperlink{hw__memmap_8h_source_l00022}{22}} der Datei \doxymbox{\hyperlink{hw__memmap_8h_source}{hw\+\_\+memmap.\+h}}.
+
