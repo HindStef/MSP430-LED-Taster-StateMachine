@@ -42,32 +42,32 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = Mango-Front
+PROJECT_NAME           = "MSP430 Test FSM Switch Key on MSP430 Eval Board."
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = "0.16 / V16"
+PROJECT_NUMBER         = "0.01 / V0.01"
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewers a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "Firmware fuer Mango Front / Deckel - 27.014.00 , 27.014.02"
+PROJECT_BRIEF          = "FSM testprogramm on MSP-EXP430F5529LP"
 
 # With the PROJECT_LOGO tag one can specify a logo or an icon that is included
 # in the documentation. The maximum height of the logo should not exceed 55
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           = J:/Mango12X/Mango12-Sensor/Sensor-F380-2V34/GAI_Logo_180x180.bmp
+PROJECT_LOGO           = D:/Projekte/TI/workspace_ccstheia/LED-Taste-StateMachine/assert/5529_LP_straight.jpg
 
 # With the PROJECT_ICON tag one can specify an icon that is included in the tabs
 # when the HTML document is shown. Doxygen will copy the logo to the output
 # directory.
 
-PROJECT_ICON           = assets/GAI.ico
+PROJECT_ICON           = assert/DSC_1191klein.jpg
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -200,8 +200,7 @@ STRIP_FROM_PATH        =
 # using the -I flag.
 
 STRIP_FROM_INC_PATH    = inc \
-                         "N:\keil_8051\MCU\INC" \
-                         C:/SiLabs/MCU/INC
+                         .
 
 # If the SHORT_NAMES tag is set to YES, Doxygen will generate much shorter (but
 # less readable) file names. This can be useful if your file system doesn't
@@ -1029,10 +1028,7 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = . \
-                         module \
-                         inc \
-                         N:/keil_8051/MCU/INC/si_toolchain.h \
-                         N:/keil_8051/MCU/INC/compiler_defs.h
+                         inc
 
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. Internally Doxygen uses the UTF-8 encoding. Doxygen uses
@@ -1042,7 +1038,7 @@ INPUT                  = . \
 # See also: INPUT_FILE_ENCODING
 # The default value is: UTF-8.
 
-INPUT_ENCODING         = ISO-8859-1
+INPUT_ENCODING         = utf-8
 
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. The INPUT_FILE_ENCODING tag can be used to specify
@@ -1073,11 +1069,7 @@ INPUT_FILE_ENCODING    =
 # *.f18, *.f, *.for, *.vhd, *.vhdl, *.ucf, *.qsf and *.ice.
 
 FILE_PATTERNS          = *.c \
-                         *.cc \
-                         *.cpp \
-                         *.ccm \
-                         *.h \
-                         *.inc
+                         *.h
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.
@@ -1093,7 +1085,6 @@ RECURSIVE              = YES
 # run.
 
 EXCLUDE                = ".\archiv" \
-                         ".\Mango-Sensor-cppcheck-build-dir" \
                          ".\doxygen"
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or

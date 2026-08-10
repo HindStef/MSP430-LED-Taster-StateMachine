@@ -1,0 +1,7 @@
+<map id="Button_ReadRaw" name="Button_ReadRaw">
+<area shape="rect" id="Node000001" title="Liefert den aktuellen (entprellten oder rohen) Tasterpegel." alt="" coords="341,5,459,30"/>
+<area shape="rect" id="Node000002" href="$d0/d29/main_8c.html#a7294f3e15e28e0bbe48469461aca9588" title="Zyklisch (alle 1 ms) aufzurufende Button&#45;FSM." alt="" coords="156,5,293,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="323,18,294,20,293,15,328,18"/>
+<area shape="rect" id="Node000003" href="$d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,5,108,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="138,18,108,20,108,15,143,17"/>
+</map>

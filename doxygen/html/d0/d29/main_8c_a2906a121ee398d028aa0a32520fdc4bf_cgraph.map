@@ -1,0 +1,21 @@
+<map id="App_1ms_Tick" name="App_1ms_Tick">
+<area shape="rect" id="Node000001" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,55,108,79"/>
+<area shape="rect" id="Node000002" href="$d0/d29/main_8c.html#a7294f3e15e28e0bbe48469461aca9588" title="Zyklisch (alle 1 ms) aufzurufende Button&#45;FSM." alt="" coords="156,5,293,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,52,168,33,164,36,102,57"/>
+<area shape="rect" id="Node000007" href="$d0/d29/main_8c.html#a3dce655dd03e27a06b8aa56167d545c2" title="Verarbeitet ein Button&#45;Ereignis und aktualisiert den LED&#45;Zustand. Zustandsuebergaenge gemaess Aufgabe..." alt="" coords="163,55,286,79"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="108,64,150,66,145,68,109,70"/>
+<area shape="rect" id="Node000009" href="$d0/d29/main_8c.html#a451a90035e860d931a19c1a8890b8a11" title="Zyklisch (alle 1 ms) aufzurufende LED&#45;FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat..." alt="" coords="161,104,288,129"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="102,77,168,98,163,100,101,83"/>
+<area shape="rect" id="Node000003" href="$d0/d29/main_8c.html#a137df2d65e6c7f17465d134883fa5a56" title="Liefert den aktuellen (entprellten oder rohen) Tasterpegel." alt="" coords="344,5,462,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="293,15,331,17,326,18,294,20"/>
+<area shape="rect" id="Node000005" href="$d0/d29/main_8c.html#a16451156c0206670a702e5809c302113" title="sendet eine string an den MSP430 Backchannel UART." alt="" coords="352,55,455,79"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="272,28,344,50,339,50,272,33"/>
+<area shape="rect" id="Node000004" href="$d0/d29/main_8c.html#ab7aacd7eef9518969f3d6ecf946b3f77" title="gibt den Zustand des Tasters S1 zurück S1 an P2.1 S1 0x02 Taster an PortB.1" alt="" coords="513,5,603,30"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="463,15,500,17,495,18,463,20"/>
+<area shape="rect" id="Node000006" href="$d3/d9a/_b_c_uart_8c.html#a9b399aee0e8c3f2fd6c0de505201b8d2" title=" " alt="" coords="515,55,601,79"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="455,64,502,67,496,67,455,70"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="286,64,339,67,333,67,287,70"/>
+<area shape="rect" id="Node000008" href="$d0/d29/main_8c.html#a9bdd6c2793087b0207fd0464ce017df1" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="341,104,465,129"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="272,77,344,99,339,99,272,83"/>
+<area shape="poly" id="edge10_Node000009_Node000008" title=" " alt="" coords="288,114,328,116,323,116,288,119"/>
+</map>

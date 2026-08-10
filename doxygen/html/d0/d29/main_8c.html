@@ -1,0 +1,1224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MSP430 Test FSM Switch Key on MSP430 Eval Board.: main.c-Dateireferenz</title>
+<link rel="icon" href="../../DSC_1191klein.jpg" type="image/x-icon" />
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="../../5529_LP_straight.jpg"/></td>
+  <td id="projectalign">
+   <div id="projectname">MSP430 Test FSM Switch Key on MSP430 Eval Board.<span id="projectnumber">&#160;0.01 / V0.01</span>
+   </div>
+   <div id="projectbrief">FSM testprogramm on MSP-EXP430F5529LP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Suchen" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d0/d29/main_8c.html','../../',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Lade ...</div>
+<div class="SRStatus" id="Searching">Suche ...</div>
+<div class="SRStatus" id="NoMatches">Keine Treffer</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">main.c-Dateireferenz</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>LED-Taste-StateMachine State Machine zur Auswertung eines Tasters zur Steuerung einer LED.  
+<a href="#details">Mehr ...</a></p>
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;msp430.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d4/d3e/driverlib_8h_source.html">driverlib.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../db/d6c/_b_c_uart_8h_source.html">BCUart.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include-Abhängigkeitsdiagramm für main.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d4/d10/main_8c__incl.gif" border="0" usemap="#amain_8c" loading="lazy" alt=""/></div>
+<map name="amain_8c" id="amain_8c">
+<area shape="rect" title="LED&#45;Taste&#45;StateMachine State Machine zur Auswertung eines Tasters zur Steuerung einer LED." alt="" coords="3883,5,3940,30"/>
+<area shape="rect" title=" " alt="" coords="30,296,90,321"/>
+<area shape="poly" title=" " alt="" coords="3880,19,3236,22,2099,28,1497,35,953,46,526,61,375,70,276,81,207,89,151,97,126,103,101,114,75,130,47,153,25,174,12,195,8,219,14,247,24,266,38,284,33,286,20,269,9,249,3,219,7,194,21,171,43,149,72,126,99,109,125,98,150,92,206,84,275,75,374,65,525,55,953,40,1497,30,2099,23,3236,17,3885,19"/>
+<area shape="rect" title=" " alt="" coords="2477,296,2549,321"/>
+<area shape="poly" title=" " alt="" coords="3916,29,3920,60,3920,100,3911,141,3902,161,3888,177,3859,194,3812,210,3672,236,3488,258,3278,275,2857,298,2564,308,2564,303,2857,293,3277,270,3487,253,3671,231,3810,205,3857,189,3885,173,3897,158,3906,140,3915,99,3915,60,3912,33"/>
+<area shape="rect" title=" " alt="" coords="4000,78,4058,103"/>
+<area shape="poly" title=" " alt="" coords="3932,28,3999,70,3994,69,3930,33"/>
+<area shape="rect" title=" " alt="" coords="4082,78,4144,103"/>
+<area shape="poly" title=" " alt="" coords="3941,27,4070,74,4065,73,3941,32"/>
+<area shape="rect" title=" " alt="" coords="3474,296,3549,321"/>
+<area shape="poly" title=" " alt="" coords="3919,28,3938,70,3954,128,3958,160,3957,192,3949,223,3932,250,3907,268,3869,283,3822,293,3769,301,3659,309,3565,310,3565,305,3658,303,3768,295,3821,288,3867,277,3904,264,3928,246,3944,221,3952,192,3953,161,3949,129,3933,72,3916,33"/>
+<area shape="rect" href="../../d4/d3e/driverlib_8h.html" title=" " alt="" coords="1882,78,1957,103"/>
+<area shape="poly" title=" " alt="" coords="3880,22,1973,90,1972,84,3885,18"/>
+<area shape="rect" href="../../db/d6c/_b_c_uart_8h.html" title=" " alt="" coords="24,223,95,248"/>
+<area shape="poly" title=" " alt="" coords="3880,19,3159,21,2559,25,1896,33,1242,48,671,72,438,88,254,106,126,128,86,140,64,153,57,164,53,178,55,208,50,208,48,178,52,162,61,149,84,135,124,123,253,101,438,82,670,66,1242,43,1896,28,2559,19,3159,16,3885,19"/>
+<area shape="rect" href="../../df/d05/hw__memmap_8h.html" title=" " alt="" coords="1858,223,1982,248"/>
+<area shape="poly" title=" " alt="" coords="1879,95,1824,104,1757,115,1698,131,1676,141,1662,152,1651,173,1655,189,1671,202,1697,213,1767,226,1844,234,1839,234,1766,231,1695,218,1668,207,1651,192,1646,172,1658,149,1673,136,1696,126,1756,109,1823,98,1884,94"/>
+<area shape="rect" href="../../dc/dcd/eusci__b__i2c_8h.html" title=" " alt="" coords="1671,151,1768,175"/>
+<area shape="poly" title=" " alt="" coords="1889,103,1768,148,1767,142,1884,104"/>
+<area shape="rect" href="../../d1/d3c/ctsd16_8h.html" title=" " alt="" coords="1793,151,1860,175"/>
+<area shape="poly" title=" " alt="" coords="1907,102,1855,144,1853,139,1902,104"/>
+<area shape="rect" href="../../d0/d49/battbak_8h.html" title=" " alt="" coords="1884,151,1955,175"/>
+<area shape="poly" title=" " alt="" coords="1921,101,1922,137,1918,133,1918,105"/>
+<area shape="rect" href="../../db/df7/timer__b_8h.html" title=" " alt="" coords="1980,151,2052,175"/>
+<area shape="poly" title=" " alt="" coords="1936,101,1991,142,1986,141,1935,106"/>
+<area shape="rect" href="../../db/de4/timer__d_8h.html" title=" " alt="" coords="2076,151,2148,175"/>
+<area shape="poly" title=" " alt="" coords="1952,101,2068,145,2063,145,1951,106"/>
+<area shape="rect" href="../../dc/d8e/eusci__a__spi_8h.html" title=" " alt="" coords="2172,151,2270,175"/>
+<area shape="poly" title=" " alt="" coords="1958,98,2160,147,2155,147,1958,103"/>
+<area shape="rect" href="../../dc/dd7/eusci__a__uart_8h.html" title=" " alt="" coords="2294,151,2396,175"/>
+<area shape="poly" title=" " alt="" coords="1958,95,2281,150,2276,150,1958,100"/>
+<area shape="rect" href="../../d7/d3a/comp__b_8h.html" title=" " alt="" coords="2421,151,2496,175"/>
+<area shape="poly" title=" " alt="" coords="1958,92,2146,112,2408,151,2403,151,2146,117,1958,98"/>
+<area shape="rect" href="../../d7/dc3/tlv_8h.html" title=" " alt="" coords="2520,151,2562,175"/>
+<area shape="poly" title=" " alt="" coords="1958,90,2053,94,2187,104,2343,121,2507,151,2502,151,2342,126,2186,109,2052,99,1958,95"/>
+<area shape="rect" href="../../d8/da1/dac12__a_8h.html" title=" " alt="" coords="2587,151,2666,175"/>
+<area shape="poly" title=" " alt="" coords="1958,91,2211,108,2388,125,2574,150,2568,150,2387,130,2211,113,1958,96"/>
+<area shape="rect" href="../../de/d0e/timer__a_8h.html" title=" " alt="" coords="2690,151,2763,175"/>
+<area shape="poly" title=" " alt="" coords="1958,90,2252,104,2459,121,2677,150,2672,150,2459,127,2251,110,1958,95"/>
+<area shape="rect" href="../../d2/dd0/usci__a__uart_8h.html" title=" " alt="" coords="2787,151,2882,175"/>
+<area shape="poly" title=" " alt="" coords="1958,90,2288,105,2525,123,2774,151,2769,151,2525,128,2288,111,1958,95"/>
+<area shape="rect" href="../../d7/de4/pmm_8h.html" title=" " alt="" coords="2907,151,2965,175"/>
+<area shape="poly" title=" " alt="" coords="1957,89,2106,89,2334,96,2608,114,2751,129,2894,151,2889,151,2750,134,2607,119,2334,101,2106,95,1958,94"/>
+<area shape="rect" href="../../dd/d80/sysctl_8h.html" title=" " alt="" coords="2989,151,3050,175"/>
+<area shape="poly" title=" " alt="" coords="1958,88,2118,89,2366,95,2664,113,2820,128,2976,151,2971,151,2820,133,2664,118,2366,100,2117,94,1958,94"/>
+<area shape="rect" href="../../de/d52/adc10__a_8h.html" title=" " alt="" coords="3075,151,3154,175"/>
+<area shape="poly" title=" " alt="" coords="1958,89,2129,90,2397,97,2722,115,2892,129,3062,151,3057,151,2891,135,2722,120,2397,102,2128,95,1958,94"/>
+<area shape="rect" href="../../d4/d19/sfr_8h.html" title=" " alt="" coords="3178,151,3221,175"/>
+<area shape="poly" title=" " alt="" coords="1958,89,2184,93,2527,103,2887,120,3042,133,3165,151,3160,151,3041,138,2887,126,2527,108,2184,98,1958,95"/>
+<area shape="rect" href="../../d1/d2b/mpy32_8h.html" title=" " alt="" coords="3246,151,3314,175"/>
+<area shape="poly" title=" " alt="" coords="1958,90,2557,107,2938,124,3102,135,3233,151,3227,151,3102,141,2938,129,2557,112,1958,95"/>
+<area shape="rect" href="../../de/df1/wdt__a_8h.html" title=" " alt="" coords="3338,151,3403,175"/>
+<area shape="poly" title=" " alt="" coords="1958,90,2600,105,3010,122,3186,134,3326,151,3320,151,3186,139,3010,128,2600,110,1958,95"/>
+<area shape="rect" href="../../d2/d35/ucs_8h.html" title=" " alt="" coords="3427,151,3477,175"/>
+<area shape="poly" title=" " alt="" coords="1958,89,2225,92,2640,101,3078,119,3266,132,3414,151,3409,151,3265,137,3078,124,2640,106,2225,98,1958,95"/>
+<area shape="rect" href="../../dd/d33/pmap_8h.html" title=" " alt="" coords="3501,151,3563,175"/>
+<area shape="poly" title=" " alt="" coords="1958,89,2236,93,2673,102,3134,120,3332,132,3488,151,3482,151,3331,138,3134,125,2673,108,2236,98,1958,95"/>
+<area shape="rect" href="../../db/d1c/rtc__a_8h.html" title=" " alt="" coords="3587,151,3645,175"/>
+<area shape="poly" title=" " alt="" coords="1958,89,2250,92,2712,101,3200,118,3409,132,3574,151,3569,151,3409,137,3200,124,2712,106,2250,97,1958,95"/>
+<area shape="rect" href="../../de/ddb/usci__b__i2c_8h.html" title=" " alt="" coords="3669,151,3760,175"/>
+<area shape="poly" title=" " alt="" coords="1958,89,2748,105,3262,123,3483,134,3656,151,3651,151,3482,140,3262,128,2748,110,1958,95"/>
+<area shape="rect" href="../../dd/d92/usci__b__spi_8h.html" title=" " alt="" coords="3784,151,3874,175"/>
+<area shape="poly" title=" " alt="" coords="1958,89,2800,104,3350,122,3586,134,3771,151,3766,151,3586,139,3350,127,2800,109,1958,95"/>
+<area shape="rect" href="../../dc/df1/ldopwr_8h.html" title=" " alt="" coords="74,151,141,175"/>
+<area shape="poly" title=" " alt="" coords="1879,92,1571,98,1077,106,554,124,330,137,157,153,156,148,330,132,554,119,1077,101,1571,92,1884,92"/>
+<area shape="rect" href="../../d3/d03/lcd__c_8h.html" title=" " alt="" coords="166,151,226,175"/>
+<area shape="poly" title=" " alt="" coords="1879,92,1585,97,1115,106,619,123,406,137,242,153,241,148,406,131,619,118,1115,100,1585,92,1884,92"/>
+<area shape="rect" href="../../dd/d97/tec_8h.html" title=" " alt="" coords="249,151,297,175"/>
+<area shape="poly" title=" " alt="" coords="1879,92,1596,96,1147,104,673,122,470,136,313,154,312,148,469,130,673,116,1147,99,1596,91,1884,91"/>
+<area shape="rect" href="../../d4/da1/rtc__c_8h.html" title=" " alt="" coords="320,151,378,175"/>
+<area shape="poly" title=" " alt="" coords="1879,92,1609,98,1184,107,735,125,543,137,394,153,393,148,542,132,735,119,1184,102,1609,93,1884,92"/>
+<area shape="rect" href="../../d6/d7c/gpio_8h.html" title=" " alt="" coords="401,151,457,175"/>
+<area shape="poly" title=" " alt="" coords="1879,92,1622,98,1220,108,796,126,614,138,473,153,472,148,613,133,796,120,1220,103,1622,93,1884,92"/>
+<area shape="rect" href="../../dd/d60/adc12__a_8h.html" title=" " alt="" coords="481,151,561,175"/>
+<area shape="poly" title=" " alt="" coords="1879,93,1268,113,877,130,708,141,577,153,576,148,708,136,876,125,1268,108,1885,92"/>
+<area shape="rect" href="../../db/dcb/aes_8h.html" title=" " alt="" coords="585,151,636,175"/>
+<area shape="poly" title=" " alt="" coords="1879,92,1651,99,1301,109,933,127,775,139,652,153,651,148,775,134,933,122,1300,104,1651,94,1884,92"/>
+<area shape="rect" href="../../d5/da8/oa_8h.html" title=" " alt="" coords="660,151,705,175"/>
+<area shape="poly" title=" " alt="" coords="1879,92,1663,99,1332,109,986,127,837,139,721,153,720,148,837,134,986,121,1332,104,1663,94,1884,92"/>
+<area shape="rect" href="../../d8/dd1/rtc__b_8h.html" title=" " alt="" coords="729,151,788,175"/>
+<area shape="poly" title=" " alt="" coords="1879,93,1370,113,1050,130,912,141,803,153,803,148,911,136,1050,125,1370,108,1884,92"/>
+<area shape="rect" href="../../d0/d04/sd24__b_8h.html" title=" " alt="" coords="812,151,884,175"/>
+<area shape="poly" title=" " alt="" coords="1879,92,1727,96,1487,103,1199,121,1048,135,900,153,899,148,1048,130,1199,116,1487,98,1727,91,1884,91"/>
+<area shape="rect" href="../../db/d1a/ram_8h.html" title=" " alt="" coords="908,151,961,175"/>
+<area shape="poly" title=" " alt="" coords="1879,91,1736,94,1515,100,1250,118,1112,133,976,153,975,148,1112,128,1250,112,1514,94,1736,88,1884,91"/>
+<area shape="rect" href="../../d9/d95/dma_8h.html" title=" " alt="" coords="984,151,1039,175"/>
+<area shape="poly" title=" " alt="" coords="1879,92,1748,96,1546,104,1305,121,1179,135,1055,153,1055,148,1179,130,1305,116,1546,98,1748,91,1884,91"/>
+<area shape="rect" href="../../df/d5f/ref_8h.html" title=" " alt="" coords="1064,151,1109,175"/>
+<area shape="poly" title=" " alt="" coords="1879,92,1757,96,1572,104,1353,121,1238,135,1125,154,1124,148,1237,130,1352,116,1572,98,1757,91,1884,91"/>
+<area shape="rect" href="../../de/d4c/eusci__b__spi_8h.html" title=" " alt="" coords="1134,151,1231,175"/>
+<area shape="poly" title=" " alt="" coords="1879,94,1620,114,1437,131,1247,153,1246,148,1436,126,1619,109,1884,93"/>
+<area shape="rect" href="../../d5/d5d/usci__a__spi_8h.html" title=" " alt="" coords="1255,151,1345,175"/>
+<area shape="poly" title=" " alt="" coords="1879,95,1665,117,1360,153,1360,148,1664,111,1884,94"/>
+<area shape="rect" href="../../dd/d7d/lcd__b_8h.html" title=" " alt="" coords="1369,151,1430,175"/>
+<area shape="poly" title=" " alt="" coords="1879,95,1698,116,1575,132,1446,153,1445,148,1574,127,1697,111,1884,94"/>
+<area shape="rect" href="../../d4/d5c/flashctl_8h.html" title=" " alt="" coords="1454,151,1524,175"/>
+<area shape="poly" title=" " alt="" coords="1884,96,1736,120,1539,153,1539,148,1735,114,1879,97"/>
+<area shape="rect" href="../../dc/de6/crc_8h.html" title=" " alt="" coords="1548,151,1595,175"/>
+<area shape="poly" title=" " alt="" coords="1884,98,1763,123,1615,153,1611,154,1610,149,1614,148,1761,118,1879,99"/>
+<area shape="poly" title=" " alt="" coords="1857,242,106,308,105,303,1857,237"/>
+<area shape="poly" title=" " alt="" coords="1982,242,2464,301,2459,301,1982,247"/>
+<area shape="poly" title=" " alt="" coords="1982,237,3461,304,3456,305,1982,242"/>
+<area shape="rect" title=" " alt="" coords="1838,296,2002,321"/>
+<area shape="poly" title=" " alt="" coords="1922,247,1922,282,1918,279,1918,250"/>
+<area shape="poly" title=" " alt="" coords="1753,173,1875,218,1870,217,1752,179"/>
+<area shape="poly" title=" " alt="" coords="1843,173,1895,215,1890,213,1841,178"/>
+<area shape="poly" title=" " alt="" coords="1922,174,1922,210,1918,206,1918,178"/>
+<area shape="poly" title=" " alt="" coords="2002,175,1948,217,1946,212,1997,177"/>
+<area shape="poly" title=" " alt="" coords="2083,175,1966,220,1965,215,2077,176"/>
+<area shape="poly" title=" " alt="" coords="2175,175,1985,222,1984,217,2169,176"/>
+<area shape="poly" title=" " alt="" coords="2296,173,2283,178,1997,225,1997,219,2282,173,2291,174"/>
+<area shape="poly" title=" " alt="" coords="2423,173,2408,178,2185,210,1997,230,1997,225,2184,204,2407,173,2418,173"/>
+<area shape="poly" title=" " alt="" coords="2522,172,2508,178,2368,202,2228,219,1998,235,1997,229,2227,214,2367,197,2507,173,2517,173"/>
+<area shape="poly" title=" " alt="" coords="2589,173,2575,178,2414,199,2254,215,1998,233,1997,228,2254,209,2414,193,2574,173,2583,174"/>
+<area shape="poly" title=" " alt="" coords="2692,173,2679,178,2488,202,2297,219,1998,235,1998,229,2297,213,2487,197,2678,173,2687,174"/>
+<area shape="poly" title=" " alt="" coords="2789,173,2775,178,2554,201,2336,218,1997,235,1997,229,2335,212,2554,196,2774,173,2784,174"/>
+<area shape="poly" title=" " alt="" coords="2909,173,2895,178,2768,196,2638,210,2385,228,2161,236,1998,238,1998,232,2161,230,2384,222,2638,205,2767,191,2894,173,2903,173"/>
+<area shape="poly" title=" " alt="" coords="2991,173,2977,178,2838,197,2696,211,2417,229,2173,237,1997,238,1997,233,2173,231,2417,224,2695,206,2837,191,2977,173,2986,173"/>
+<area shape="poly" title=" " alt="" coords="3077,173,3063,178,2910,195,2754,209,2450,227,2185,235,1997,237,1997,232,2185,230,2449,222,2754,204,2909,190,3062,173,3071,174"/>
+<area shape="poly" title=" " alt="" coords="3180,172,3167,178,3061,192,2922,204,2586,221,2248,232,1998,236,1997,231,2248,226,2586,216,2921,199,3061,187,3166,173,3175,173"/>
+<area shape="poly" title=" " alt="" coords="3248,173,3233,178,3121,190,2973,200,2617,217,1997,235,1997,230,2616,212,2972,195,3121,185,3233,173,3243,174"/>
+<area shape="poly" title=" " alt="" coords="3340,173,3327,178,3205,191,3045,202,2661,219,1998,236,1998,230,2661,214,3045,197,3205,186,3326,173,3335,174"/>
+<area shape="poly" title=" " alt="" coords="3429,172,3415,178,3285,193,3114,206,2702,223,2293,233,1998,236,1998,231,2293,227,2702,218,3114,201,3285,188,3414,173,3424,173"/>
+<area shape="poly" title=" " alt="" coords="3503,173,3489,178,3352,193,3171,205,2737,222,2306,232,1998,236,1998,231,2306,227,2737,217,3171,199,3352,187,3489,173,3497,174"/>
+<area shape="poly" title=" " alt="" coords="3589,173,3575,178,3429,194,3237,206,2776,224,2320,233,1997,237,1997,231,2320,228,2776,218,3237,201,3429,188,3574,173,3583,173"/>
+<area shape="poly" title=" " alt="" coords="3671,174,3657,178,3504,191,3300,202,2814,219,1997,236,1997,231,2814,214,3300,197,3503,186,3657,173,3666,174"/>
+<area shape="poly" title=" " alt="" coords="3786,174,3772,178,3607,192,3389,203,2867,220,1998,236,1998,231,2867,215,3389,198,3607,186,3771,173,3781,174"/>
+<area shape="poly" title=" " alt="" coords="141,171,153,173,309,188,516,201,1011,218,1500,228,1844,234,1839,234,1500,233,1011,224,516,206,309,193,153,178,142,176"/>
+<area shape="poly" title=" " alt="" coords="226,171,237,173,385,189,581,201,1050,219,1514,228,1844,234,1839,234,1514,233,1050,224,580,207,385,194,237,178,227,176"/>
+<area shape="poly" title=" " alt="" coords="297,170,309,173,450,190,636,203,1083,221,1526,229,1844,234,1839,234,1526,234,1083,226,636,208,449,195,309,178,297,175"/>
+<area shape="poly" title=" " alt="" coords="378,171,389,173,522,188,698,200,1121,217,1541,227,1845,234,1839,234,1541,232,1121,223,698,205,522,193,389,178,378,176"/>
+<area shape="poly" title=" " alt="" coords="457,170,469,173,595,187,760,199,1158,216,1555,226,1845,233,1839,234,1555,232,1158,222,760,204,594,192,469,178,457,176"/>
+<area shape="poly" title=" " alt="" coords="561,171,573,173,689,184,841,194,1207,211,1844,232,1839,233,1207,216,841,199,688,189,573,178,561,176"/>
+<area shape="poly" title=" " alt="" coords="637,170,648,173,756,186,898,198,1242,215,1587,225,1845,233,1839,233,1587,231,1242,220,898,203,755,191,647,178,637,176"/>
+<area shape="poly" title=" " alt="" coords="706,170,717,173,819,186,952,198,1275,215,1599,225,1845,233,1839,233,1599,231,1274,220,952,203,818,192,717,178,706,175"/>
+<area shape="poly" title=" " alt="" coords="788,170,800,173,894,184,1017,194,1314,211,1845,232,1839,233,1314,216,1017,199,893,189,799,178,788,176"/>
+<area shape="poly" title=" " alt="" coords="884,171,896,173,1030,189,1167,203,1436,220,1671,229,1844,234,1839,234,1671,234,1436,226,1167,208,1030,195,895,178,884,176"/>
+<area shape="poly" title=" " alt="" coords="961,170,972,173,1094,191,1220,206,1466,224,1682,232,1845,235,1839,235,1682,237,1465,229,1219,211,1094,197,971,178,961,176"/>
+<area shape="poly" title=" " alt="" coords="1040,170,1052,173,1276,202,1498,220,1695,229,1845,234,1839,234,1695,234,1498,225,1275,208,1051,178,1040,176"/>
+<area shape="poly" title=" " alt="" coords="1110,170,1123,173,1325,202,1526,220,1706,229,1845,234,1839,234,1706,234,1526,225,1324,208,1122,178,1109,175"/>
+<area shape="poly" title=" " alt="" coords="1231,171,1243,173,1410,192,1576,208,1844,230,1839,230,1576,213,1409,198,1242,178,1231,176"/>
+<area shape="poly" title=" " alt="" coords="1345,171,1357,173,1624,205,1845,228,1840,228,1623,211,1357,178,1345,176"/>
+<area shape="poly" title=" " alt="" coords="1431,170,1443,173,1659,206,1845,228,1839,228,1659,211,1442,178,1431,176"/>
+<area shape="poly" title=" " alt="" coords="1524,170,1536,173,1700,201,1845,224,1839,224,1699,206,1535,178,1524,176"/>
+<area shape="poly" title=" " alt="" coords="1596,168,1615,173,1845,221,1839,221,1614,178,1596,174"/>
+<area shape="poly" title=" " alt="" coords="61,247,62,281,57,280,58,251"/>
+</map>
+</div>
+</div>
+<p><a href="../../d0/d29/main_8c_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Datenstrukturen</h2></td></tr>
+<tr class="memitem:Button_5Ft" id="r_Button_5Ft"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="../../dc/dc2/struct_button__t.html">Button_t</a></td></tr>
+<tr class="memitem:Led_5Ft" id="r_Led_5Ft"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:a2e699cd3601e5b0fec029441306d46aa" id="r_a2e699cd3601e5b0fec029441306d46aa"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2e699cd3601e5b0fec029441306d46aa">DEBOUNCE_TIME_MS</a>&#160;&#160;&#160;20U     /* Entprellzeit                  */</td></tr>
+<tr class="memitem:a6f6289e063d8b621ec46bbd1d2809f62" id="r_a6f6289e063d8b621ec46bbd1d2809f62"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a6f6289e063d8b621ec46bbd1d2809f62">LONG_PRESS_THRESHOLD_MS</a>&#160;&#160;&#160;2000U   /* Schwelle fuer langen Tastendruck */</td></tr>
+<tr class="memitem:a8cfc4352ae90bdf0d97b6f3599f73acc" id="r_a8cfc4352ae90bdf0d97b6f3599f73acc"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a8cfc4352ae90bdf0d97b6f3599f73acc">BLINK_PERIOD_MS</a>&#160;&#160;&#160;330U</td></tr>
+<tr class="memitem:a75c828ed6c02fcd44084e67a032e422c" id="r_a75c828ed6c02fcd44084e67a032e422c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a75c828ed6c02fcd44084e67a032e422c">FOREVER</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memitem:a2eddf48fa63431bcbfcab672956ac233" id="r_a2eddf48fa63431bcbfcab672956ac233"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a2eddf48fa63431bcbfcab672956ac233">LED_ROT</a>&#160;&#160;&#160;0x01  /* rote LED an PortA.0 */</td></tr>
+<tr class="memitem:aa31746117f2029075e00c1419533f16f" id="r_aa31746117f2029075e00c1419533f16f"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aa31746117f2029075e00c1419533f16f">LED_ROT_MASK</a>&#160;&#160;&#160;2  /* Taster an PortA.0 */</td></tr>
+<tr class="memitem:a391f22f1623e951933eeb272e9c512b6" id="r_a391f22f1623e951933eeb272e9c512b6"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a391f22f1623e951933eeb272e9c512b6">LED_GREEN_P4</a>&#160;&#160;&#160;0x80</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Aufzählungen</h2></td></tr>
+<tr class="memitem:a098a4f7b480119bf5527bac80303b5af" id="r_a098a4f7b480119bf5527bac80303b5af"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a098a4f7b480119bf5527bac80303b5af">ButtonState_t</a> { <a class="el" href="#a098a4f7b480119bf5527bac80303b5afaf8041b38709ebc4af3022ca2cc3928fb">BTN_STATE_IDLE</a> = 0
+, <a class="el" href="#a098a4f7b480119bf5527bac80303b5afaa9f3171d83f414386bc39d24347ebbbd">BTN_STATE_DEBOUNCE</a>
+, <a class="el" href="#a098a4f7b480119bf5527bac80303b5afab088038be9100ece8c66cb0cc0e72c4c">BTN_STATE_PRESSED</a>
+, <a class="el" href="#a098a4f7b480119bf5527bac80303b5afa3c74179557254c95984c2910d7bd3774">BTN_STATE_LONG_DETECTED</a>
+ }</td></tr>
+<tr class="memitem:ae5736cc0356593df91646b7ad407808b" id="r_ae5736cc0356593df91646b7ad407808b"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#ae5736cc0356593df91646b7ad407808b">ButtonEvent_t</a> { <a class="el" href="#ae5736cc0356593df91646b7ad407808bac558c9856b11d3796599f67070be670e">BTN_EVT_NONE</a> = 0
+, <a class="el" href="#ae5736cc0356593df91646b7ad407808ba6567b587e4be0f8ebb842d97dabf1851">BTN_EVT_SHORT_PRESS</a>
+, <a class="el" href="#ae5736cc0356593df91646b7ad407808ba52cb0933ddb4a225d7d7008289650106">BTN_EVT_LONG_PRESS</a>
+, <a class="el" href="#ae5736cc0356593df91646b7ad407808ba04f24781eb420d6db87e390b9a70619c">BTN_EVT_RELEASE</a>
+ }</td></tr>
+<tr class="memitem:a1a58ff6a65f9680b7d3e265772dce1e5" id="r_a1a58ff6a65f9680b7d3e265772dce1e5"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a1a58ff6a65f9680b7d3e265772dce1e5">LedState_t</a> { <a class="el" href="#a1a58ff6a65f9680b7d3e265772dce1e5a0eebea54c4dc200be6939742385ee789">LED_STATE_OFF</a> = 0
+, <a class="el" href="#a1a58ff6a65f9680b7d3e265772dce1e5a024f137d8368d2d31196fbcfb8345550">LED_STATE_ON</a>
+, <a class="el" href="#a1a58ff6a65f9680b7d3e265772dce1e5a1ece422fa8a2fee52f384f6833704a1f">LED_STATE_BLINK</a>
+ }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:a7dfd9b79bc5a37d7df40207afbc5431f" id="r_a7dfd9b79bc5a37d7df40207afbc5431f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7dfd9b79bc5a37d7df40207afbc5431f">setup</a> (void)</td></tr>
+<tr class="memdesc:a7dfd9b79bc5a37d7df40207afbc5431f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ports und Timer einrichten.  <br /></td></tr>
+<tr class="memitem:a1874631cc718c96363194def377c9010" id="r_a1874631cc718c96363194def377c9010"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1874631cc718c96363194def377c9010">StopWatchdog</a> (void)</td></tr>
+<tr class="memdesc:a1874631cc718c96363194def377c9010"><td class="mdescLeft">&#160;</td><td class="mdescRight">Watchdog ausschalten.  <br /></td></tr>
+<tr class="memitem:a812dd7d99fdfe16bc1b8b0c324abc99f" id="r_a812dd7d99fdfe16bc1b8b0c324abc99f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a812dd7d99fdfe16bc1b8b0c324abc99f">init_clock</a> (void)</td></tr>
+<tr class="memdesc:a812dd7d99fdfe16bc1b8b0c324abc99f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Systemtak einstellen.  <br /></td></tr>
+<tr class="memitem:ab7aacd7eef9518969f3d6ecf946b3f77" id="r_ab7aacd7eef9518969f3d6ecf946b3f77"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ab7aacd7eef9518969f3d6ecf946b3f77">read_KeyS1</a> (void)</td></tr>
+<tr class="memdesc:ab7aacd7eef9518969f3d6ecf946b3f77"><td class="mdescLeft">&#160;</td><td class="mdescRight">gibt den Zustand des Tasters S1 zurück S1 an P2.1 S1 0x02 Taster an PortB.1  <br /></td></tr>
+<tr class="memitem:a73d3a21a8c40631b3f0d0e4f82a7a187" id="r_a73d3a21a8c40631b3f0d0e4f82a7a187"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a73d3a21a8c40631b3f0d0e4f82a7a187">delay</a> (uint32_t x)</td></tr>
+<tr class="memdesc:a73d3a21a8c40631b3f0d0e4f82a7a187"><td class="mdescLeft">&#160;</td><td class="mdescRight">delay.c  <br /></td></tr>
+<tr class="memitem:a16451156c0206670a702e5809c302113" id="r_a16451156c0206670a702e5809c302113"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a16451156c0206670a702e5809c302113">str_to_bcUART</a> (uint8_t *sStr)</td></tr>
+<tr class="memdesc:a16451156c0206670a702e5809c302113"><td class="mdescLeft">&#160;</td><td class="mdescRight">sendet eine string an den MSP430 Backchannel UART.  <br /></td></tr>
+<tr class="memitem:a137df2d65e6c7f17465d134883fa5a56" id="r_a137df2d65e6c7f17465d134883fa5a56"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#a137df2d65e6c7f17465d134883fa5a56">Button_ReadRaw</a> (void)</td></tr>
+<tr class="memdesc:a137df2d65e6c7f17465d134883fa5a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Liefert den aktuellen (entprellten oder rohen) Tasterpegel.  <br /></td></tr>
+<tr class="memitem:a9bdd6c2793087b0207fd0464ce017df1" id="r_a9bdd6c2793087b0207fd0464ce017df1"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a9bdd6c2793087b0207fd0464ce017df1">LED_SetHardware</a> (bool on)</td></tr>
+<tr class="memdesc:a9bdd6c2793087b0207fd0464ce017df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO-Ansteuerung anpassen, z.B.: if (on) { LED_PORT |= LED_MASK; } else { LED_PORT &amp;= ~LED_MASK; }.  <br /></td></tr>
+<tr class="memitem:a1ac687a2cb5c5d3a70360cde7dd17d59" id="r_a1ac687a2cb5c5d3a70360cde7dd17d59"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a1ac687a2cb5c5d3a70360cde7dd17d59">Button_Init</a> (<a class="el" href="../../dc/dc2/struct_button__t.html">Button_t</a> *btn)</td></tr>
+<tr class="memitem:a7294f3e15e28e0bbe48469461aca9588" id="r_a7294f3e15e28e0bbe48469461aca9588"><td class="memItemLeft">static <a class="el" href="#ae5736cc0356593df91646b7ad407808b">ButtonEvent_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a7294f3e15e28e0bbe48469461aca9588">Button_Process_1ms</a> (<a class="el" href="../../dc/dc2/struct_button__t.html">Button_t</a> *btn)</td></tr>
+<tr class="memdesc:a7294f3e15e28e0bbe48469461aca9588"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zyklisch (alle 1 ms) aufzurufende Button-FSM.  <br /></td></tr>
+<tr class="memitem:ab0168987d8bc3c3d7b066f74b56fdf21" id="r_ab0168987d8bc3c3d7b066f74b56fdf21"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#ab0168987d8bc3c3d7b066f74b56fdf21">LED_Init</a> (<a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a> *led)</td></tr>
+<tr class="memitem:a3dce655dd03e27a06b8aa56167d545c2" id="r_a3dce655dd03e27a06b8aa56167d545c2"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a3dce655dd03e27a06b8aa56167d545c2">LED_HandleEvent</a> (<a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a> *led, <a class="el" href="#ae5736cc0356593df91646b7ad407808b">ButtonEvent_t</a> event)</td></tr>
+<tr class="memdesc:a3dce655dd03e27a06b8aa56167d545c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verarbeitet ein Button-Ereignis und aktualisiert den LED-Zustand. Zustandsuebergaenge gemaess Aufgabenstellung:  <br /></td></tr>
+<tr class="memitem:a451a90035e860d931a19c1a8890b8a11" id="r_a451a90035e860d931a19c1a8890b8a11"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="#a451a90035e860d931a19c1a8890b8a11">LED_Process_1ms</a> (<a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a> *led)</td></tr>
+<tr class="memdesc:a451a90035e860d931a19c1a8890b8a11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zyklisch (alle 1 ms) aufzurufende LED-FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat ueber <a class="el" href="#a3dce655dd03e27a06b8aa56167d545c2" title="Verarbeitet ein Button-Ereignis und aktualisiert den LED-Zustand. Zustandsuebergaenge gemaess Aufgabe...">LED_HandleEvent()</a>.  <br /></td></tr>
+<tr class="memitem:a2906a121ee398d028aa0a32520fdc4bf" id="r_a2906a121ee398d028aa0a32520fdc4bf"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2906a121ee398d028aa0a32520fdc4bf">App_1ms_Tick</a> (void)</td></tr>
+<tr class="memdesc:a2906a121ee398d028aa0a32520fdc4bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zentraler 1ms-Tick, z.B. aus Timer-ISR oder Hauptschleife aufgerufen. Verbindet Button-FSM (Ereigniserzeugung) mit LED-FSM (Ereignis- verarbeitung + eigenes Zeitverhalten fuer das Blinken).  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variablen</h2></td></tr>
+<tr class="memitem:a92608fc040bdd8cd975bb320981bcf72" id="r_a92608fc040bdd8cd975bb320981bcf72"><td class="memItemLeft">static <a class="el" href="../../dc/dc2/struct_button__t.html">Button_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a92608fc040bdd8cd975bb320981bcf72">g_button</a></td></tr>
+<tr class="memitem:a7509f7a29aef901eeaf5872132682ca9" id="r_a7509f7a29aef901eeaf5872132682ca9"><td class="memItemLeft">static <a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a>&#160;</td><td class="memItemRight"><a class="el" href="#a7509f7a29aef901eeaf5872132682ca9">g_led</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock"><p>LED-Taste-StateMachine State Machine zur Auswertung eines Tasters zur Steuerung einer LED. </p>
+
+<p class="definition">Definiert in Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Makro-Dokumentation</h2>
+<a id="a8cfc4352ae90bdf0d97b6f3599f73acc" name="a8cfc4352ae90bdf0d97b6f3599f73acc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cfc4352ae90bdf0d97b6f3599f73acc">&#9670;&#160;</a></span>BLINK_PERIOD_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BLINK_PERIOD_MS&#160;&#160;&#160;330U</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00054">54</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a2e699cd3601e5b0fec029441306d46aa" name="a2e699cd3601e5b0fec029441306d46aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e699cd3601e5b0fec029441306d46aa">&#9670;&#160;</a></span>DEBOUNCE_TIME_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBOUNCE_TIME_MS&#160;&#160;&#160;20U     /* Entprellzeit                  */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Konfiguration / Zeitkonstanten </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00052">52</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a75c828ed6c02fcd44084e67a032e422c" name="a75c828ed6c02fcd44084e67a032e422c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75c828ed6c02fcd44084e67a032e422c">&#9670;&#160;</a></span>FOREVER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FOREVER&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00058">58</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a391f22f1623e951933eeb272e9c512b6" name="a391f22f1623e951933eeb272e9c512b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a391f22f1623e951933eeb272e9c512b6">&#9670;&#160;</a></span>LED_GREEN_P4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LED_GREEN_P4&#160;&#160;&#160;0x80</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00061">61</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a2eddf48fa63431bcbfcab672956ac233" name="a2eddf48fa63431bcbfcab672956ac233"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eddf48fa63431bcbfcab672956ac233">&#9670;&#160;</a></span>LED_ROT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LED_ROT&#160;&#160;&#160;0x01  /* rote LED an PortA.0 */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00059">59</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="aa31746117f2029075e00c1419533f16f" name="aa31746117f2029075e00c1419533f16f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa31746117f2029075e00c1419533f16f">&#9670;&#160;</a></span>LED_ROT_MASK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LED_ROT_MASK&#160;&#160;&#160;2  /* Taster an PortA.0 */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00060">60</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a6f6289e063d8b621ec46bbd1d2809f62" name="a6f6289e063d8b621ec46bbd1d2809f62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f6289e063d8b621ec46bbd1d2809f62">&#9670;&#160;</a></span>LONG_PRESS_THRESHOLD_MS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LONG_PRESS_THRESHOLD_MS&#160;&#160;&#160;2000U   /* Schwelle fuer langen Tastendruck */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00053">53</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Dokumentation der Aufzählungstypen</h2>
+<a id="ae5736cc0356593df91646b7ad407808b" name="ae5736cc0356593df91646b7ad407808b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5736cc0356593df91646b7ad407808b">&#9670;&#160;</a></span>ButtonEvent_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#ae5736cc0356593df91646b7ad407808b">ButtonEvent_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Aufzählungswerte</th></tr><tr><td class="fieldname"><a id="ae5736cc0356593df91646b7ad407808bac558c9856b11d3796599f67070be670e" name="ae5736cc0356593df91646b7ad407808bac558c9856b11d3796599f67070be670e"></a>BTN_EVT_NONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae5736cc0356593df91646b7ad407808ba6567b587e4be0f8ebb842d97dabf1851" name="ae5736cc0356593df91646b7ad407808ba6567b587e4be0f8ebb842d97dabf1851"></a>BTN_EVT_SHORT_PRESS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae5736cc0356593df91646b7ad407808ba52cb0933ddb4a225d7d7008289650106" name="ae5736cc0356593df91646b7ad407808ba52cb0933ddb4a225d7d7008289650106"></a>BTN_EVT_LONG_PRESS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ae5736cc0356593df91646b7ad407808ba04f24781eb420d6db87e390b9a70619c" name="ae5736cc0356593df91646b7ad407808ba04f24781eb420d6db87e390b9a70619c"></a>BTN_EVT_RELEASE&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00072">72</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a098a4f7b480119bf5527bac80303b5af" name="a098a4f7b480119bf5527bac80303b5af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a098a4f7b480119bf5527bac80303b5af">&#9670;&#160;</a></span>ButtonState_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a098a4f7b480119bf5527bac80303b5af">ButtonState_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Aufzählungswerte</th></tr><tr><td class="fieldname"><a id="a098a4f7b480119bf5527bac80303b5afaf8041b38709ebc4af3022ca2cc3928fb" name="a098a4f7b480119bf5527bac80303b5afaf8041b38709ebc4af3022ca2cc3928fb"></a>BTN_STATE_IDLE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a098a4f7b480119bf5527bac80303b5afaa9f3171d83f414386bc39d24347ebbbd" name="a098a4f7b480119bf5527bac80303b5afaa9f3171d83f414386bc39d24347ebbbd"></a>BTN_STATE_DEBOUNCE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a098a4f7b480119bf5527bac80303b5afab088038be9100ece8c66cb0cc0e72c4c" name="a098a4f7b480119bf5527bac80303b5afab088038be9100ece8c66cb0cc0e72c4c"></a>BTN_STATE_PRESSED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a098a4f7b480119bf5527bac80303b5afa3c74179557254c95984c2910d7bd3774" name="a098a4f7b480119bf5527bac80303b5afa3c74179557254c95984c2910d7bd3774"></a>BTN_STATE_LONG_DETECTED&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00065">65</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a1a58ff6a65f9680b7d3e265772dce1e5" name="a1a58ff6a65f9680b7d3e265772dce1e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a58ff6a65f9680b7d3e265772dce1e5">&#9670;&#160;</a></span>LedState_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a1a58ff6a65f9680b7d3e265772dce1e5">LedState_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Aufzählungswerte</th></tr><tr><td class="fieldname"><a id="a1a58ff6a65f9680b7d3e265772dce1e5a0eebea54c4dc200be6939742385ee789" name="a1a58ff6a65f9680b7d3e265772dce1e5a0eebea54c4dc200be6939742385ee789"></a>LED_STATE_OFF&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1a58ff6a65f9680b7d3e265772dce1e5a024f137d8368d2d31196fbcfb8345550" name="a1a58ff6a65f9680b7d3e265772dce1e5a024f137d8368d2d31196fbcfb8345550"></a>LED_STATE_ON&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1a58ff6a65f9680b7d3e265772dce1e5a1ece422fa8a2fee52f384f6833704a1f" name="a1a58ff6a65f9680b7d3e265772dce1e5a1ece422fa8a2fee52f384f6833704a1f"></a>LED_STATE_BLINK&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00086">86</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Dokumentation der Funktionen</h2>
+<a id="a2906a121ee398d028aa0a32520fdc4bf" name="a2906a121ee398d028aa0a32520fdc4bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2906a121ee398d028aa0a32520fdc4bf">&#9670;&#160;</a></span>App_1ms_Tick()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void App_1ms_Tick </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zentraler 1ms-Tick, z.B. aus Timer-ISR oder Hauptschleife aufgerufen. Verbindet Button-FSM (Ereigniserzeugung) mit LED-FSM (Ereignis- verarbeitung + eigenes Zeitverhalten fuer das Blinken). </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00434">434</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a2906a121ee398d028aa0a32520fdc4bf_cgraph.gif" border="0" usemap="#ad0/d29/main_8c_a2906a121ee398d028aa0a32520fdc4bf_cgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a2906a121ee398d028aa0a32520fdc4bf_cgraph" id="ad0/d29/main_8c_a2906a121ee398d028aa0a32520fdc4bf_cgraph">
+<area shape="rect" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,55,108,79"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a7294f3e15e28e0bbe48469461aca9588" title="Zyklisch (alle 1 ms) aufzurufende Button&#45;FSM." alt="" coords="156,5,293,30"/>
+<area shape="poly" title=" " alt="" coords="100,52,168,33,164,36,102,57"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a3dce655dd03e27a06b8aa56167d545c2" title="Verarbeitet ein Button&#45;Ereignis und aktualisiert den LED&#45;Zustand. Zustandsuebergaenge gemaess Aufgabe..." alt="" coords="163,55,286,79"/>
+<area shape="poly" title=" " alt="" coords="108,64,150,66,145,68,109,70"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a451a90035e860d931a19c1a8890b8a11" title="Zyklisch (alle 1 ms) aufzurufende LED&#45;FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat..." alt="" coords="161,104,288,129"/>
+<area shape="poly" title=" " alt="" coords="102,77,168,98,163,100,101,83"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a137df2d65e6c7f17465d134883fa5a56" title="Liefert den aktuellen (entprellten oder rohen) Tasterpegel." alt="" coords="344,5,462,30"/>
+<area shape="poly" title=" " alt="" coords="293,15,331,17,326,18,294,20"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a16451156c0206670a702e5809c302113" title="sendet eine string an den MSP430 Backchannel UART." alt="" coords="352,55,455,79"/>
+<area shape="poly" title=" " alt="" coords="272,28,344,50,339,50,272,33"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#ab7aacd7eef9518969f3d6ecf946b3f77" title="gibt den Zustand des Tasters S1 zurück S1 an P2.1 S1 0x02 Taster an PortB.1" alt="" coords="513,5,603,30"/>
+<area shape="poly" title=" " alt="" coords="463,15,500,17,495,18,463,20"/>
+<area shape="rect" href="../../d3/d9a/_b_c_uart_8c.html#a9b399aee0e8c3f2fd6c0de505201b8d2" title=" " alt="" coords="515,55,601,79"/>
+<area shape="poly" title=" " alt="" coords="455,64,502,67,496,67,455,70"/>
+<area shape="poly" title=" " alt="" coords="286,64,339,67,333,67,287,70"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a9bdd6c2793087b0207fd0464ce017df1" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="341,104,465,129"/>
+<area shape="poly" title=" " alt="" coords="272,77,344,99,339,99,272,83"/>
+<area shape="poly" title=" " alt="" coords="288,114,328,116,323,116,288,119"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1ac687a2cb5c5d3a70360cde7dd17d59" name="a1ac687a2cb5c5d3a70360cde7dd17d59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ac687a2cb5c5d3a70360cde7dd17d59">&#9670;&#160;</a></span>Button_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Button_Init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dc/dc2/struct_button__t.html">Button_t</a> *</td>          <td class="paramname"><span class="paramname"><em>btn</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00268">268</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59_icgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59_icgraph" id="ad0/d29/main_8c_a1ac687a2cb5c5d3a70360cde7dd17d59_icgraph">
+<area shape="rect" title=" " alt="" coords="105,5,184,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a7dfd9b79bc5a37d7df40207afbc5431f" title="Ports und Timer einrichten." alt="" coords="5,5,57,30"/>
+<area shape="poly" title=" " alt="" coords="87,18,57,20,57,15,92,17"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7294f3e15e28e0bbe48469461aca9588" name="a7294f3e15e28e0bbe48469461aca9588"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7294f3e15e28e0bbe48469461aca9588">&#9670;&#160;</a></span>Button_Process_1ms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ae5736cc0356593df91646b7ad407808b">ButtonEvent_t</a> Button_Process_1ms </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../dc/dc2/struct_button__t.html">Button_t</a> *</td>          <td class="paramname"><span class="paramname"><em>btn</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zyklisch (alle 1 ms) aufzurufende Button-FSM. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">btn</td><td>Zeiger auf Button-Instanz. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Erkanntes Ereignis (oder BTN_EVT_NONE, wenn keins aufgetreten ist). </dd></dl>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00280">280</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a7294f3e15e28e0bbe48469461aca9588_cgraph.gif" border="0" usemap="#ad0/d29/main_8c_a7294f3e15e28e0bbe48469461aca9588_cgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a7294f3e15e28e0bbe48469461aca9588_cgraph" id="ad0/d29/main_8c_a7294f3e15e28e0bbe48469461aca9588_cgraph">
+<area shape="rect" title="Zyklisch (alle 1 ms) aufzurufende Button&#45;FSM." alt="" coords="5,31,143,55"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a137df2d65e6c7f17465d134883fa5a56" title="Liefert den aktuellen (entprellten oder rohen) Tasterpegel." alt="" coords="191,5,309,30"/>
+<area shape="poly" title=" " alt="" coords="143,30,178,28,173,29,144,36"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a16451156c0206670a702e5809c302113" title="sendet eine string an den MSP430 Backchannel UART." alt="" coords="198,55,302,79"/>
+<area shape="poly" title=" " alt="" coords="143,50,186,58,180,58,143,55"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#ab7aacd7eef9518969f3d6ecf946b3f77" title="gibt den Zustand des Tasters S1 zurück S1 an P2.1 S1 0x02 Taster an PortB.1" alt="" coords="357,5,446,30"/>
+<area shape="poly" title=" " alt="" coords="309,15,344,17,339,18,309,20"/>
+<area shape="rect" href="../../d3/d9a/_b_c_uart_8c.html#a9b399aee0e8c3f2fd6c0de505201b8d2" title=" " alt="" coords="358,55,445,79"/>
+<area shape="poly" title=" " alt="" coords="302,64,345,67,340,67,302,70"/>
+</map>
+</div>
+<div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a7294f3e15e28e0bbe48469461aca9588_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_a7294f3e15e28e0bbe48469461aca9588_icgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a7294f3e15e28e0bbe48469461aca9588_icgraph" id="ad0/d29/main_8c_a7294f3e15e28e0bbe48469461aca9588_icgraph">
+<area shape="rect" title="Zyklisch (alle 1 ms) aufzurufende Button&#45;FSM." alt="" coords="156,5,293,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,5,108,30"/>
+<area shape="poly" title=" " alt="" coords="138,18,108,20,108,15,143,17"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a137df2d65e6c7f17465d134883fa5a56" name="a137df2d65e6c7f17465d134883fa5a56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a137df2d65e6c7f17465d134883fa5a56">&#9670;&#160;</a></span>Button_ReadRaw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Button_ReadRaw </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Liefert den aktuellen (entprellten oder rohen) Tasterpegel. </p>
+<dl class="section return"><dt>Rückgabe</dt><dd>true = Taste gedrueckt false = Taste losgelassen</dd></dl>
+<p>TODO: An reale GPIO-Abfrage anpassen, z.B.: return (P0_PIN_BUTTON == 0); // Taster aktiv-low </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00231">231</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a137df2d65e6c7f17465d134883fa5a56_cgraph.gif" border="0" usemap="#ad0/d29/main_8c_a137df2d65e6c7f17465d134883fa5a56_cgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a137df2d65e6c7f17465d134883fa5a56_cgraph" id="ad0/d29/main_8c_a137df2d65e6c7f17465d134883fa5a56_cgraph">
+<area shape="rect" title="Liefert den aktuellen (entprellten oder rohen) Tasterpegel." alt="" coords="5,5,124,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#ab7aacd7eef9518969f3d6ecf946b3f77" title="gibt den Zustand des Tasters S1 zurück S1 an P2.1 S1 0x02 Taster an PortB.1" alt="" coords="172,5,261,30"/>
+<area shape="poly" title=" " alt="" coords="124,15,159,17,153,18,124,20"/>
+</map>
+</div>
+<div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a137df2d65e6c7f17465d134883fa5a56_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_a137df2d65e6c7f17465d134883fa5a56_icgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a137df2d65e6c7f17465d134883fa5a56_icgraph" id="ad0/d29/main_8c_a137df2d65e6c7f17465d134883fa5a56_icgraph">
+<area shape="rect" title="Liefert den aktuellen (entprellten oder rohen) Tasterpegel." alt="" coords="341,5,459,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a7294f3e15e28e0bbe48469461aca9588" title="Zyklisch (alle 1 ms) aufzurufende Button&#45;FSM." alt="" coords="156,5,293,30"/>
+<area shape="poly" title=" " alt="" coords="323,18,294,20,293,15,328,18"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,5,108,30"/>
+<area shape="poly" title=" " alt="" coords="138,18,108,20,108,15,143,17"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a73d3a21a8c40631b3f0d0e4f82a7a187" name="a73d3a21a8c40631b3f0d0e4f82a7a187"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73d3a21a8c40631b3f0d0e4f82a7a187">&#9670;&#160;</a></span>delay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delay </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>delay.c </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Verzögerungszähler als long int </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>void </dd></dl>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00194">194</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a812dd7d99fdfe16bc1b8b0c324abc99f" name="a812dd7d99fdfe16bc1b8b0c324abc99f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a812dd7d99fdfe16bc1b8b0c324abc99f">&#9670;&#160;</a></span>init_clock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_clock </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Systemtak einstellen. </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00131">131</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a812dd7d99fdfe16bc1b8b0c324abc99f_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_a812dd7d99fdfe16bc1b8b0c324abc99f_icgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a812dd7d99fdfe16bc1b8b0c324abc99f_icgraph" id="ad0/d29/main_8c_a812dd7d99fdfe16bc1b8b0c324abc99f_icgraph">
+<area shape="rect" title="Systemtak einstellen." alt="" coords="105,5,177,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a7dfd9b79bc5a37d7df40207afbc5431f" title="Ports und Timer einrichten." alt="" coords="5,5,57,30"/>
+<area shape="poly" title=" " alt="" coords="87,18,57,20,57,15,92,17"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3dce655dd03e27a06b8aa56167d545c2" name="a3dce655dd03e27a06b8aa56167d545c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3dce655dd03e27a06b8aa56167d545c2">&#9670;&#160;</a></span>LED_HandleEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LED_HandleEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a> *</td>          <td class="paramname"><span class="paramname"><em>led</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#ae5736cc0356593df91646b7ad407808b">ButtonEvent_t</a></td>          <td class="paramname"><span class="paramname"><em>event</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Verarbeitet ein Button-Ereignis und aktualisiert den LED-Zustand. Zustandsuebergaenge gemaess Aufgabenstellung: </p>
+<ul>
+<li>SHORT_PRESS: OFF &lt;-&gt; ON (Toggle)</li>
+<li>LONG_PRESS : -&gt; BLINK (unabhaengig vom vorherigen Zustand) </li>
+</ul>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00367">367</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a3dce655dd03e27a06b8aa56167d545c2_cgraph.gif" border="0" usemap="#ad0/d29/main_8c_a3dce655dd03e27a06b8aa56167d545c2_cgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a3dce655dd03e27a06b8aa56167d545c2_cgraph" id="ad0/d29/main_8c_a3dce655dd03e27a06b8aa56167d545c2_cgraph">
+<area shape="rect" title="Verarbeitet ein Button&#45;Ereignis und aktualisiert den LED&#45;Zustand. Zustandsuebergaenge gemaess Aufgabe..." alt="" coords="5,31,129,55"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a9bdd6c2793087b0207fd0464ce017df1" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="177,5,301,30"/>
+<area shape="poly" title=" " alt="" coords="128,31,164,28,159,30,130,37"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a16451156c0206670a702e5809c302113" title="sendet eine string an den MSP430 Backchannel UART." alt="" coords="187,55,290,79"/>
+<area shape="poly" title=" " alt="" coords="129,49,174,57,169,58,129,54"/>
+<area shape="rect" href="../../d3/d9a/_b_c_uart_8c.html#a9b399aee0e8c3f2fd6c0de505201b8d2" title=" " alt="" coords="349,55,435,79"/>
+<area shape="poly" title=" " alt="" coords="291,64,336,67,331,67,291,70"/>
+</map>
+</div>
+<div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a3dce655dd03e27a06b8aa56167d545c2_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_a3dce655dd03e27a06b8aa56167d545c2_icgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a3dce655dd03e27a06b8aa56167d545c2_icgraph" id="ad0/d29/main_8c_a3dce655dd03e27a06b8aa56167d545c2_icgraph">
+<area shape="rect" title="Verarbeitet ein Button&#45;Ereignis und aktualisiert den LED&#45;Zustand. Zustandsuebergaenge gemaess Aufgabe..." alt="" coords="156,5,279,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,5,108,30"/>
+<area shape="poly" title=" " alt="" coords="137,18,108,20,108,15,143,17"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab0168987d8bc3c3d7b066f74b56fdf21" name="ab0168987d8bc3c3d7b066f74b56fdf21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0168987d8bc3c3d7b066f74b56fdf21">&#9670;&#160;</a></span>LED_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LED_Init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a> *</td>          <td class="paramname"><span class="paramname"><em>led</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00354">354</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_cgraph.gif" border="0" usemap="#ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_cgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_cgraph" id="ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,74,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a9bdd6c2793087b0207fd0464ce017df1" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="122,5,246,30"/>
+<area shape="poly" title=" " alt="" coords="74,15,109,17,103,18,74,20"/>
+</map>
+</div>
+<div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_icgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_icgraph" id="ad0/d29/main_8c_ab0168987d8bc3c3d7b066f74b56fdf21_icgraph">
+<area shape="rect" title=" " alt="" coords="105,5,173,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a7dfd9b79bc5a37d7df40207afbc5431f" title="Ports und Timer einrichten." alt="" coords="5,5,57,30"/>
+<area shape="poly" title=" " alt="" coords="86,18,57,20,57,15,92,17"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a451a90035e860d931a19c1a8890b8a11" name="a451a90035e860d931a19c1a8890b8a11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a451a90035e860d931a19c1a8890b8a11">&#9670;&#160;</a></span>LED_Process_1ms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LED_Process_1ms </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a> *</td>          <td class="paramname"><span class="paramname"><em>led</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zyklisch (alle 1 ms) aufzurufende LED-FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat ueber <a class="el" href="#a3dce655dd03e27a06b8aa56167d545c2" title="Verarbeitet ein Button-Ereignis und aktualisiert den LED-Zustand. Zustandsuebergaenge gemaess Aufgabe...">LED_HandleEvent()</a>. </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00408">408</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a451a90035e860d931a19c1a8890b8a11_cgraph.gif" border="0" usemap="#ad0/d29/main_8c_a451a90035e860d931a19c1a8890b8a11_cgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a451a90035e860d931a19c1a8890b8a11_cgraph" id="ad0/d29/main_8c_a451a90035e860d931a19c1a8890b8a11_cgraph">
+<area shape="rect" title="Zyklisch (alle 1 ms) aufzurufende LED&#45;FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat..." alt="" coords="5,5,132,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a9bdd6c2793087b0207fd0464ce017df1" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="180,5,304,30"/>
+<area shape="poly" title=" " alt="" coords="132,15,167,17,162,18,132,20"/>
+</map>
+</div>
+<div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a451a90035e860d931a19c1a8890b8a11_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_a451a90035e860d931a19c1a8890b8a11_icgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a451a90035e860d931a19c1a8890b8a11_icgraph" id="ad0/d29/main_8c_a451a90035e860d931a19c1a8890b8a11_icgraph">
+<area shape="rect" title="Zyklisch (alle 1 ms) aufzurufende LED&#45;FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat..." alt="" coords="156,5,282,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,5,108,30"/>
+<area shape="poly" title=" " alt="" coords="137,18,108,20,108,15,143,17"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9bdd6c2793087b0207fd0464ce017df1" name="a9bdd6c2793087b0207fd0464ce017df1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bdd6c2793087b0207fd0464ce017df1">&#9670;&#160;</a></span>LED_SetHardware()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LED_SetHardware </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>on</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO-Ansteuerung anpassen, z.B.: if (on) { LED_PORT |= LED_MASK; } else { LED_PORT &amp;= ~LED_MASK; }. </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00240">240</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a9bdd6c2793087b0207fd0464ce017df1_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_a9bdd6c2793087b0207fd0464ce017df1_icgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a9bdd6c2793087b0207fd0464ce017df1_icgraph" id="ad0/d29/main_8c_a9bdd6c2793087b0207fd0464ce017df1_icgraph">
+<area shape="rect" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="330,55,454,79"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a3dce655dd03e27a06b8aa56167d545c2" title="Verarbeitet ein Button&#45;Ereignis und aktualisiert den LED&#45;Zustand. Zustandsuebergaenge gemaess Aufgabe..." alt="" coords="157,5,280,30"/>
+<area shape="poly" title=" " alt="" coords="329,50,265,33,265,28,334,49"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#ab0168987d8bc3c3d7b066f74b56fdf21" title=" " alt="" coords="185,104,253,129"/>
+<area shape="poly" title=" " alt="" coords="334,84,254,109,253,104,329,85"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a451a90035e860d931a19c1a8890b8a11" title="Zyklisch (alle 1 ms) aufzurufende LED&#45;FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat..." alt="" coords="156,55,282,79"/>
+<area shape="poly" title=" " alt="" coords="312,67,283,70,282,64,317,67"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,31,108,55"/>
+<area shape="poly" title=" " alt="" coords="139,31,109,38,107,33,144,28"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a7dfd9b79bc5a37d7df40207afbc5431f" title="Ports und Timer einrichten." alt="" coords="31,104,82,129"/>
+<area shape="poly" title=" " alt="" coords="168,119,82,119,82,114,170,114"/>
+<area shape="poly" title=" " alt="" coords="138,56,109,53,108,48,143,54"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab7aacd7eef9518969f3d6ecf946b3f77" name="ab7aacd7eef9518969f3d6ecf946b3f77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7aacd7eef9518969f3d6ecf946b3f77">&#9670;&#160;</a></span>read_KeyS1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool read_KeyS1 </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>gibt den Zustand des Tasters S1 zurück S1 an P2.1 S1 0x02 Taster an PortB.1 </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00208">208</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_ab7aacd7eef9518969f3d6ecf946b3f77_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_ab7aacd7eef9518969f3d6ecf946b3f77_icgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_ab7aacd7eef9518969f3d6ecf946b3f77_icgraph" id="ad0/d29/main_8c_ab7aacd7eef9518969f3d6ecf946b3f77_icgraph">
+<area shape="rect" title="gibt den Zustand des Tasters S1 zurück S1 an P2.1 S1 0x02 Taster an PortB.1" alt="" coords="507,5,597,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a137df2d65e6c7f17465d134883fa5a56" title="Liefert den aktuellen (entprellten oder rohen) Tasterpegel." alt="" coords="341,5,459,30"/>
+<area shape="poly" title=" " alt="" coords="489,18,460,20,459,15,494,18"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a7294f3e15e28e0bbe48469461aca9588" title="Zyklisch (alle 1 ms) aufzurufende Button&#45;FSM." alt="" coords="156,5,293,30"/>
+<area shape="poly" title=" " alt="" coords="323,18,294,20,293,15,328,18"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,5,108,30"/>
+<area shape="poly" title=" " alt="" coords="138,18,108,20,108,15,143,17"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a7dfd9b79bc5a37d7df40207afbc5431f" name="a7dfd9b79bc5a37d7df40207afbc5431f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dfd9b79bc5a37d7df40207afbc5431f">&#9670;&#160;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setup </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ports und Timer einrichten. </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00158">158</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a7dfd9b79bc5a37d7df40207afbc5431f_cgraph.gif" border="0" usemap="#ad0/d29/main_8c_a7dfd9b79bc5a37d7df40207afbc5431f_cgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a7dfd9b79bc5a37d7df40207afbc5431f_cgraph" id="ad0/d29/main_8c_a7dfd9b79bc5a37d7df40207afbc5431f_cgraph">
+<area shape="rect" title="Ports und Timer einrichten." alt="" coords="5,104,57,129"/>
+<area shape="rect" href="../../d3/d9a/_b_c_uart_8c.html#a735d170f53369022348d8ba9bd6e387e" title=" " alt="" coords="119,5,192,30"/>
+<area shape="poly" title=" " alt="" coords="40,102,67,72,103,41,114,36,110,40,106,45,71,76,45,105"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a1ac687a2cb5c5d3a70360cde7dd17d59" title=" " alt="" coords="116,55,195,79"/>
+<area shape="poly" title=" " alt="" coords="55,104,109,83,106,88,58,109"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a812dd7d99fdfe16bc1b8b0c324abc99f" title="Systemtak einstellen." alt="" coords="119,104,192,129"/>
+<area shape="poly" title=" " alt="" coords="56,114,106,114,102,118,58,119"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#ab0168987d8bc3c3d7b066f74b56fdf21" title=" " alt="" coords="121,153,190,178"/>
+<area shape="poly" title=" " alt="" coords="57,124,110,146,106,148,57,129"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a1874631cc718c96363194def377c9010" title="Watchdog ausschalten." alt="" coords="105,203,206,227"/>
+<area shape="poly" title=" " alt="" coords="43,126,71,156,106,188,115,195,109,194,103,192,67,160,42,132"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a9bdd6c2793087b0207fd0464ce017df1" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="254,153,378,178"/>
+<area shape="poly" title=" " alt="" coords="190,163,241,165,236,166,190,168"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1874631cc718c96363194def377c9010" name="a1874631cc718c96363194def377c9010"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1874631cc718c96363194def377c9010">&#9670;&#160;</a></span>StopWatchdog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StopWatchdog </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Watchdog ausschalten. </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00124">124</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a1874631cc718c96363194def377c9010_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_a1874631cc718c96363194def377c9010_icgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a1874631cc718c96363194def377c9010_icgraph" id="ad0/d29/main_8c_a1874631cc718c96363194def377c9010_icgraph">
+<area shape="rect" title="Watchdog ausschalten." alt="" coords="105,5,206,30"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a7dfd9b79bc5a37d7df40207afbc5431f" title="Ports und Timer einrichten." alt="" coords="5,5,57,30"/>
+<area shape="poly" title=" " alt="" coords="87,18,57,20,57,15,92,17"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a16451156c0206670a702e5809c302113" name="a16451156c0206670a702e5809c302113"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16451156c0206670a702e5809c302113">&#9670;&#160;</a></span>str_to_bcUART()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void str_to_bcUART </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *</td>          <td class="paramname"><span class="paramname"><em>sStr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sendet eine string an den MSP430 Backchannel UART. </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00423">423</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+<div class="dynheader">
+Hier ist ein Graph, der zeigt, was diese Funktion aufruft:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a16451156c0206670a702e5809c302113_cgraph.gif" border="0" usemap="#ad0/d29/main_8c_a16451156c0206670a702e5809c302113_cgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a16451156c0206670a702e5809c302113_cgraph" id="ad0/d29/main_8c_a16451156c0206670a702e5809c302113_cgraph">
+<area shape="rect" title="sendet eine string an den MSP430 Backchannel UART." alt="" coords="5,5,109,30"/>
+<area shape="rect" href="../../d3/d9a/_b_c_uart_8c.html#a9b399aee0e8c3f2fd6c0de505201b8d2" title=" " alt="" coords="157,5,243,30"/>
+<area shape="poly" title=" " alt="" coords="109,15,144,17,138,18,109,20"/>
+</map>
+</div>
+<div class="dynheader">
+Hier ist ein Graph der zeigt, wo diese Funktion aufgerufen wird:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/d29/main_8c_a16451156c0206670a702e5809c302113_icgraph.gif" border="0" usemap="#ad0/d29/main_8c_a16451156c0206670a702e5809c302113_icgraph" loading="lazy" alt=""/></div>
+<map name="ad0/d29/main_8c_a16451156c0206670a702e5809c302113_icgraph" id="ad0/d29/main_8c_a16451156c0206670a702e5809c302113_icgraph">
+<area shape="rect" title="sendet eine string an den MSP430 Backchannel UART." alt="" coords="341,31,444,55"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a7294f3e15e28e0bbe48469461aca9588" title="Zyklisch (alle 1 ms) aufzurufende Button&#45;FSM." alt="" coords="156,5,293,30"/>
+<area shape="poly" title=" " alt="" coords="323,33,294,31,294,25,328,33"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a3dce655dd03e27a06b8aa56167d545c2" title="Verarbeitet ein Button&#45;Ereignis und aktualisiert den LED&#45;Zustand. Zustandsuebergaenge gemaess Aufgabe..." alt="" coords="163,55,286,79"/>
+<area shape="poly" title=" " alt="" coords="328,52,287,61,286,56,323,53"/>
+<area shape="rect" href="../../d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,31,108,55"/>
+<area shape="poly" title=" " alt="" coords="138,31,109,38,107,33,143,29"/>
+<area shape="poly" title=" " alt="" coords="145,57,108,53,108,48,150,56"/>
+</map>
+</div>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variablen-Dokumentation</h2>
+<a id="a92608fc040bdd8cd975bb320981bcf72" name="a92608fc040bdd8cd975bb320981bcf72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92608fc040bdd8cd975bb320981bcf72">&#9670;&#160;</a></span>g_button</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dc/dc2/struct_button__t.html">Button_t</a> g_button</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00100">100</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+<a id="a7509f7a29aef901eeaf5872132682ca9" name="a7509f7a29aef901eeaf5872132682ca9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7509f7a29aef901eeaf5872132682ca9">&#9670;&#160;</a></span>g_led</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/d2f/struct_led__t.html">Led_t</a> g_led</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="../../d0/d29/main_8c_source.html#l00101">101</a> der Datei <a class="el" href="../../d0/d29/main_8c_source.html">main.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="../../d0/d29/main_8c.html">main.c</a></li>
+    <li class="footer">Erzeugt am <span class="timestamp"></span> für MSP430 Test FSM Switch Key on MSP430 Eval Board. von <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

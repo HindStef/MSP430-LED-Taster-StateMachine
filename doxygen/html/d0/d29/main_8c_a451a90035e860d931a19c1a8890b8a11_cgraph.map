@@ -1,0 +1,5 @@
+<map id="LED_Process_1ms" name="LED_Process_1ms">
+<area shape="rect" id="Node000001" title="Zyklisch (alle 1 ms) aufzurufende LED&#45;FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat..." alt="" coords="5,5,132,30"/>
+<area shape="rect" id="Node000002" href="$d0/d29/main_8c.html#a9bdd6c2793087b0207fd0464ce017df1" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="180,5,304,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,15,167,17,162,18,132,20"/>
+</map>

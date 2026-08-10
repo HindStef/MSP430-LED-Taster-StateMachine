@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MSP430 Test FSM Switch Key on MSP430 Eval Board.: BCUart.c Quellcode</title>
+<link rel="icon" href="../../DSC_1191klein.jpg" type="image/x-icon" />
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../codefolding.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="../../5529_LP_straight.jpg"/></td>
+  <td id="projectalign">
+   <div id="projectname">MSP430 Test FSM Switch Key on MSP430 Eval Board.<span id="projectnumber">&#160;0.01 / V0.01</span>
+   </div>
+   <div id="projectbrief">FSM testprogramm on MSP-EXP430F5529LP</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "../../search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('../../',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Suchen" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('d3/d9a/_b_c_uart_8c_source.html','../../',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Lade ...</div>
+<div class="SRStatus" id="Searching">Suche ...</div>
+<div class="SRStatus" id="NoMatches">Keine Treffer</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">BCUart.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d3/d9a/_b_c_uart_8c.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/* --COPYRIGHT--,BSD</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Copyright (c) 2012, Texas Instruments Incorporated</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * All rights reserved.</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * Redistribution and use in source and binary forms, with or without</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * modification, are permitted provided that the following conditions</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * are met:</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * *  Redistributions of source code must retain the above copyright</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> *    notice, this list of conditions and the following disclaimer.</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * *  Redistributions in binary form must reproduce the above copyright</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *    notice, this list of conditions and the following disclaimer in the</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *    documentation and/or other materials provided with the distribution.</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * *  Neither the name of Texas Instruments Incorporated nor the names of</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> *    its contributors may be used to endorse or promote products derived</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> *    from this software without specific prior written permission.</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"> * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment"> * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"> * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment"> * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment"> * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"> * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"> * --/COPYRIGHT--*/</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &quot;msp430.h&quot;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/d6c/_b_c_uart_8h.html">BCUart.h</a>&quot;</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// Receive buffer for the UART.  Incoming bytes need a place to go immediately,</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">// otherwise there might be an overrun when the next comes in.  The USCI ISR</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// puts them here.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="../../d3/d9a/_b_c_uart_8c.html#a4e2782cdf2f1242bc935ee47f369494f">   39</a></span>uint8_t  <a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#a4e2782cdf2f1242bc935ee47f369494f">bcUartRcvBuf</a>[<a class="code hl_define" href="../../db/d6c/_b_c_uart_8h.html#ac1f4e7162cb8656bf60d1f287ca5ce1f">BC_RXBUF_SIZE</a>];</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// The index within bcUartRcvBuf, where the next byte will be written.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../d3/d9a/_b_c_uart_8c.html#a35207cf444774c32f9ec8a6e8ca32dcf">   42</a></span>uint16_t <a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#a35207cf444774c32f9ec8a6e8ca32dcf">bcUartRcvBufIndex</a> = 0;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// Boolean flag indicating whether bcUartRcvBufIndex has reached the</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// threshold BC_RX_WAKE_THRESH.  0 = FALSE, 1 = TRUE</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="../../d3/d9a/_b_c_uart_8c.html#aba8158301a99ddbb33fb4027dce97d67">   46</a></span>uint8_t  <a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#aba8158301a99ddbb33fb4027dce97d67">bcUartRxThreshReached</a> = 0;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// Initializes the USCI_A1 module as a UART, using baudrate settings in</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">// bcUart.h.  The baudrate is dependent on SMCLK speed.</span></div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="../../d3/d9a/_b_c_uart_8c.html#a735d170f53369022348d8ba9bd6e387e">   51</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d3/d9a/_b_c_uart_8c.html#a735d170f53369022348d8ba9bd6e387e">bcUartInit</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// Always use the step-by-step init procedure listed in the USCI chapter of</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">// the F5xx Family User&#39;s Guide</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    UCA1CTL1 |= UCSWRST;        <span class="comment">// Put the USCI state machine in reset</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    UCA1CTL1 |= UCSSEL__SMCLK;  <span class="comment">// Use SMCLK as the bit clock</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// Set the baudrate, UCA1_BR0 und UCA1_BR1 sind in BCUART.h definiert</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    UCA1BR0 = <a class="code hl_define" href="../../db/d6c/_b_c_uart_8h.html#ac6532f7c236d47df04bbf11dda77d435">UCA1_BR0</a>; </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    UCA1BR1 = <a class="code hl_define" href="../../db/d6c/_b_c_uart_8h.html#af984dfc79c19fd047f7ffaa33663681b">UCA1_BR1</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">//UCA1MCTL = (UCA1_BRF &lt;&lt; 4) | (UCA1_BRS &lt;&lt; 1) | (UCA1_OS);</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">//Oversampling (UCOS16 = 1)</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    UCA1MCTL = UCBRS_6 | UCBRF_5 | (<a class="code hl_define" href="../../db/d6c/_b_c_uart_8h.html#acc18195ac8195bcc64f6b5d6235c0f4c">UCA1_OS</a>) ; <span class="comment">// UCOS16;</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    P4SEL |= BIT4+BIT5;         <span class="comment">// Configure these pins as TXD/RXD</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    UCA1CTL1 &amp;= ~UCSWRST;       <span class="comment">// Take the USCI out of reset</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    UCA1IE |= UCRXIE;           <span class="comment">// Enable the RX interrupt.  Now, when bytes are</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                                <span class="comment">// rcv&#39;ed, the USCI_A1 vector will be generated.</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}</div>
+</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">// Sends &#39;len&#39; bytes, starting at &#39;buf&#39;</span></div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="../../d3/d9a/_b_c_uart_8c.html#a9b399aee0e8c3f2fd6c0de505201b8d2">   74</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="../../d3/d9a/_b_c_uart_8c.html#a9b399aee0e8c3f2fd6c0de505201b8d2">bcUartSend</a>(uint8_t * buf, uint8_t len)</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>{</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    uint8_t i = 0;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// Write each byte in buf to USCI TX buffer, which sends it out</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">while</span> (i &lt; len)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        UCA1TXBUF = *(buf+(i++));</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="comment">// Wait until each bit has been clocked out...</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">while</span>(!(UCTXIFG==(UCTXIFG &amp; UCA1IFG))&amp;&amp;((UCA1STAT &amp; UCBUSY)==UCBUSY));</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">// Copies into &#39;buf&#39; whatever bytes have been received on the UART since the</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">// last fetch.  Returns the number of bytes copied.</span></div>
+<div class="foldopen" id="foldopen00091" data-start="{" data-end="}">
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="../../d3/d9a/_b_c_uart_8c.html#a944384d9981322ad9f3784c29c29873f">   91</a></span>uint16_t <a class="code hl_function" href="../../d3/d9a/_b_c_uart_8c.html#a944384d9981322ad9f3784c29c29873f">bcUartReceiveBytesInBuffer</a>(uint8_t* buf)</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>{</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    uint16_t i, count;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="comment">// Hold off ints for incoming data during the copy</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    UCA1IE &amp;= ~UCRXIE;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">for</span>(i=0; i&lt;<a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#a35207cf444774c32f9ec8a6e8ca32dcf">bcUartRcvBufIndex</a>; i++)</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        buf[i] = <a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#a4e2782cdf2f1242bc935ee47f369494f">bcUartRcvBuf</a>[i];</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    count = <a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#a35207cf444774c32f9ec8a6e8ca32dcf">bcUartRcvBufIndex</a>;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#a35207cf444774c32f9ec8a6e8ca32dcf">bcUartRcvBufIndex</a> = 0;     <span class="comment">// Move index back to the beginning of the buffer</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#aba8158301a99ddbb33fb4027dce97d67">bcUartRxThreshReached</a> = 0;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">// Restore USCI interrupts, to resume receiving data.</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    UCA1IE |= UCRXIE;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordflow">return</span> count;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>}</div>
+</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">// The USCI_A1 receive interrupt service routine (ISR).  Executes every time a</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">// byte is received on the back-channel UART.</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#pragma vector=USCI_A1_VECTOR</span></div>
+<div class="foldopen" id="foldopen00118" data-start="{" data-end="}">
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="../../d3/d9a/_b_c_uart_8c.html#adf309db8f60e6e7125961ed5f5789587">  118</a></span>__interrupt <span class="keywordtype">void</span> <a class="code hl_function" href="../../d3/d9a/_b_c_uart_8c.html#adf309db8f60e6e7125961ed5f5789587">bcUartISR</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>{</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#a4e2782cdf2f1242bc935ee47f369494f">bcUartRcvBuf</a>[<a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#a35207cf444774c32f9ec8a6e8ca32dcf">bcUartRcvBufIndex</a>++] = UCA1RXBUF;  <span class="comment">// Fetch the byte, store</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                                                    <span class="comment">// it in the buffer.</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="comment">// Wake main, to fetch data from the buffer.</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#a35207cf444774c32f9ec8a6e8ca32dcf">bcUartRcvBufIndex</a> &gt;= <a class="code hl_define" href="../../db/d6c/_b_c_uart_8h.html#a3c790fb8d658b89aa793e485d7135343">BC_RX_WAKE_THRESH</a>)</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    {</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <a class="code hl_variable" href="../../d3/d9a/_b_c_uart_8c.html#aba8158301a99ddbb33fb4027dce97d67">bcUartRxThreshReached</a> = 1;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        __bic_SR_register_on_exit(LPM3_bits);       <span class="comment">// Exit LPM0-3</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    }</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
+</div>
+<div class="ttc" id="a_b_c_uart_8c_html_a35207cf444774c32f9ec8a6e8ca32dcf"><div class="ttname"><a href="../../d3/d9a/_b_c_uart_8c.html#a35207cf444774c32f9ec8a6e8ca32dcf">bcUartRcvBufIndex</a></div><div class="ttdeci">uint16_t bcUartRcvBufIndex</div><div class="ttdef"><b>Definition</b> <a href="#l00042">BCUart.c:42</a></div></div>
+<div class="ttc" id="a_b_c_uart_8c_html_a4e2782cdf2f1242bc935ee47f369494f"><div class="ttname"><a href="../../d3/d9a/_b_c_uart_8c.html#a4e2782cdf2f1242bc935ee47f369494f">bcUartRcvBuf</a></div><div class="ttdeci">uint8_t bcUartRcvBuf[BC_RXBUF_SIZE]</div><div class="ttdef"><b>Definition</b> <a href="#l00039">BCUart.c:39</a></div></div>
+<div class="ttc" id="a_b_c_uart_8c_html_a735d170f53369022348d8ba9bd6e387e"><div class="ttname"><a href="../../d3/d9a/_b_c_uart_8c.html#a735d170f53369022348d8ba9bd6e387e">bcUartInit</a></div><div class="ttdeci">void bcUartInit(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00051">BCUart.c:51</a></div></div>
+<div class="ttc" id="a_b_c_uart_8c_html_a944384d9981322ad9f3784c29c29873f"><div class="ttname"><a href="../../d3/d9a/_b_c_uart_8c.html#a944384d9981322ad9f3784c29c29873f">bcUartReceiveBytesInBuffer</a></div><div class="ttdeci">uint16_t bcUartReceiveBytesInBuffer(uint8_t *buf)</div><div class="ttdef"><b>Definition</b> <a href="#l00091">BCUart.c:91</a></div></div>
+<div class="ttc" id="a_b_c_uart_8c_html_a9b399aee0e8c3f2fd6c0de505201b8d2"><div class="ttname"><a href="../../d3/d9a/_b_c_uart_8c.html#a9b399aee0e8c3f2fd6c0de505201b8d2">bcUartSend</a></div><div class="ttdeci">void bcUartSend(uint8_t *buf, uint8_t len)</div><div class="ttdef"><b>Definition</b> <a href="#l00074">BCUart.c:74</a></div></div>
+<div class="ttc" id="a_b_c_uart_8c_html_aba8158301a99ddbb33fb4027dce97d67"><div class="ttname"><a href="../../d3/d9a/_b_c_uart_8c.html#aba8158301a99ddbb33fb4027dce97d67">bcUartRxThreshReached</a></div><div class="ttdeci">uint8_t bcUartRxThreshReached</div><div class="ttdef"><b>Definition</b> <a href="#l00046">BCUart.c:46</a></div></div>
+<div class="ttc" id="a_b_c_uart_8c_html_adf309db8f60e6e7125961ed5f5789587"><div class="ttname"><a href="../../d3/d9a/_b_c_uart_8c.html#adf309db8f60e6e7125961ed5f5789587">bcUartISR</a></div><div class="ttdeci">__interrupt void bcUartISR(void)</div><div class="ttdef"><b>Definition</b> <a href="#l00118">BCUart.c:118</a></div></div>
+<div class="ttc" id="a_b_c_uart_8h_html"><div class="ttname"><a href="../../db/d6c/_b_c_uart_8h.html">BCUart.h</a></div></div>
+<div class="ttc" id="a_b_c_uart_8h_html_a3c790fb8d658b89aa793e485d7135343"><div class="ttname"><a href="../../db/d6c/_b_c_uart_8h.html#a3c790fb8d658b89aa793e485d7135343">BC_RX_WAKE_THRESH</a></div><div class="ttdeci">#define BC_RX_WAKE_THRESH</div><div class="ttdef"><b>Definition</b> <a href="../../db/d6c/_b_c_uart_8h_source.html#l00097">BCUart.h:97</a></div></div>
+<div class="ttc" id="a_b_c_uart_8h_html_ac1f4e7162cb8656bf60d1f287ca5ce1f"><div class="ttname"><a href="../../db/d6c/_b_c_uart_8h.html#ac1f4e7162cb8656bf60d1f287ca5ce1f">BC_RXBUF_SIZE</a></div><div class="ttdeci">#define BC_RXBUF_SIZE</div><div class="ttdef"><b>Definition</b> <a href="../../db/d6c/_b_c_uart_8h_source.html#l00091">BCUart.h:91</a></div></div>
+<div class="ttc" id="a_b_c_uart_8h_html_ac6532f7c236d47df04bbf11dda77d435"><div class="ttname"><a href="../../db/d6c/_b_c_uart_8h.html#ac6532f7c236d47df04bbf11dda77d435">UCA1_BR0</a></div><div class="ttdeci">#define UCA1_BR0</div><div class="ttdef"><b>Definition</b> <a href="../../db/d6c/_b_c_uart_8h_source.html#l00074">BCUart.h:74</a></div></div>
+<div class="ttc" id="a_b_c_uart_8h_html_acc18195ac8195bcc64f6b5d6235c0f4c"><div class="ttname"><a href="../../db/d6c/_b_c_uart_8h.html#acc18195ac8195bcc64f6b5d6235c0f4c">UCA1_OS</a></div><div class="ttdeci">#define UCA1_OS</div><div class="ttdef"><b>Definition</b> <a href="../../db/d6c/_b_c_uart_8h_source.html#l00067">BCUart.h:67</a></div></div>
+<div class="ttc" id="a_b_c_uart_8h_html_af984dfc79c19fd047f7ffaa33663681b"><div class="ttname"><a href="../../db/d6c/_b_c_uart_8h.html#af984dfc79c19fd047f7ffaa33663681b">UCA1_BR1</a></div><div class="ttdeci">#define UCA1_BR1</div><div class="ttdef"><b>Definition</b> <a href="../../db/d6c/_b_c_uart_8h_source.html#l00075">BCUart.h:75</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="../../d3/d9a/_b_c_uart_8c.html">BCUart.c</a></li>
+    <li class="footer">Erzeugt am <span class="timestamp"></span> für MSP430 Test FSM Switch Key on MSP430 Eval Board. von <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

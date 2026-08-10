@@ -1,0 +1,19 @@
+<map id="Erklärung des Graphen" name="Erklärung des Graphen">
+<area shape="rect" id="Node000009" title=" " alt="" coords="307,187,376,212"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="5,98,89,123"/>
+<area shape="poly" id="edge1" title=" " alt="" coords="102,125,308,186,305,190,101,130"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="9,7,85,32"/>
+<area shape="poly" id="edge2" title=" " alt="" coords="48,45,50,98,44,98,46,50"/>
+<area shape="rect" id="node4" title=" " alt="" coords="112,96,214,125"/>
+<area shape="poly" id="edge3" title=" " alt="" coords="206,129,320,186,315,187,204,135"/>
+<area shape="rect" id="node5" title=" " alt="" coords="238,96,325,125"/>
+<area shape="poly" id="edge4" title=" " alt="" coords="301,135,336,187,331,186,298,140"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="349,98,454,123"/>
+<area shape="poly" id="edge5" title=" " alt="" coords="387,135,351,189,348,184,382,137"/>
+<area shape="rect" id="node7" title=" " alt="" coords="478,96,565,125"/>
+<area shape="poly" id="edge6" title=" " alt="" coords="482,132,367,189,365,184,477,132"/>
+<area shape="rect" id="node8" title=" " alt="" coords="481,5,562,34"/>
+<area shape="poly" id="edge7" title=" " alt="" coords="523,48,524,97,519,94,520,52"/>
+<area shape="rect" id="node9" title=" " alt="" coords="590,96,640,125"/>
+<area shape="poly" id="edge8" title=" " alt="" coords="577,126,378,190,376,185,572,126"/>
+</map>

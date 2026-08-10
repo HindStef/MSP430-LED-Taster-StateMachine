@@ -1,0 +1,5 @@
+<map id="LED_HandleEvent" name="LED_HandleEvent">
+<area shape="rect" id="Node000001" title="Verarbeitet ein Button&#45;Ereignis und aktualisiert den LED&#45;Zustand. Zustandsuebergaenge gemaess Aufgabe..." alt="" coords="156,5,279,30"/>
+<area shape="rect" id="Node000002" href="$d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,5,108,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,18,108,20,108,15,143,17"/>
+</map>

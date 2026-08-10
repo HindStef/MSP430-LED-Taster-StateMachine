@@ -1,0 +1,9 @@
+<map id="read_KeyS1" name="read_KeyS1">
+<area shape="rect" id="Node000001" title="gibt den Zustand des Tasters S1 zurück S1 an P2.1 S1 0x02 Taster an PortB.1" alt="" coords="507,5,597,30"/>
+<area shape="rect" id="Node000002" href="$d0/d29/main_8c.html#a137df2d65e6c7f17465d134883fa5a56" title="Liefert den aktuellen (entprellten oder rohen) Tasterpegel." alt="" coords="341,5,459,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="489,18,460,20,459,15,494,18"/>
+<area shape="rect" id="Node000003" href="$d0/d29/main_8c.html#a7294f3e15e28e0bbe48469461aca9588" title="Zyklisch (alle 1 ms) aufzurufende Button&#45;FSM." alt="" coords="156,5,293,30"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="323,18,294,20,293,15,328,18"/>
+<area shape="rect" id="Node000004" href="$d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,5,108,30"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="138,18,108,20,108,15,143,17"/>
+</map>

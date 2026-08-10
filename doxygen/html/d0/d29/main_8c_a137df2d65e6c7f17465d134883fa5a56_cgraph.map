@@ -1,0 +1,5 @@
+<map id="Button_ReadRaw" name="Button_ReadRaw">
+<area shape="rect" id="Node000001" title="Liefert den aktuellen (entprellten oder rohen) Tasterpegel." alt="" coords="5,5,124,30"/>
+<area shape="rect" id="Node000002" href="$d0/d29/main_8c.html#ab7aacd7eef9518969f3d6ecf946b3f77" title="gibt den Zustand des Tasters S1 zurück S1 an P2.1 S1 0x02 Taster an PortB.1" alt="" coords="172,5,261,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,15,159,17,153,18,124,20"/>
+</map>

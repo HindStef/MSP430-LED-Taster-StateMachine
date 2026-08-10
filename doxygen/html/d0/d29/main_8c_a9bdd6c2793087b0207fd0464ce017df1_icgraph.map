@@ -1,0 +1,14 @@
+<map id="LED_SetHardware" name="LED_SetHardware">
+<area shape="rect" id="Node000001" title="Schaltet die LED hardwarenah ein/aus. TODO: An reale GPIO&#45;Ansteuerung anpassen, z...." alt="" coords="330,55,454,79"/>
+<area shape="rect" id="Node000002" href="$d0/d29/main_8c.html#a3dce655dd03e27a06b8aa56167d545c2" title="Verarbeitet ein Button&#45;Ereignis und aktualisiert den LED&#45;Zustand. Zustandsuebergaenge gemaess Aufgabe..." alt="" coords="157,5,280,30"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="329,50,265,33,265,28,334,49"/>
+<area shape="rect" id="Node000004" href="$d0/d29/main_8c.html#ab0168987d8bc3c3d7b066f74b56fdf21" title=" " alt="" coords="185,104,253,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="334,84,254,109,253,104,329,85"/>
+<area shape="rect" id="Node000006" href="$d0/d29/main_8c.html#a451a90035e860d931a19c1a8890b8a11" title="Zyklisch (alle 1 ms) aufzurufende LED&#45;FSM fuer das Blinkverhalten. Ereignisbehandlung erfolgt separat..." alt="" coords="156,55,282,79"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="312,67,283,70,282,64,317,67"/>
+<area shape="rect" id="Node000003" href="$d0/d29/main_8c.html#a2906a121ee398d028aa0a32520fdc4bf" title="Zentraler 1ms&#45;Tick, z.B. aus Timer&#45;ISR oder Hauptschleife aufgerufen. Verbindet Button&#45;FSM (Ereignise..." alt="" coords="5,31,108,55"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="139,31,109,38,107,33,144,28"/>
+<area shape="rect" id="Node000005" href="$d0/d29/main_8c.html#a7dfd9b79bc5a37d7df40207afbc5431f" title="Ports und Timer einrichten." alt="" coords="31,104,82,129"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="168,119,82,119,82,114,170,114"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="138,56,109,53,108,48,143,54"/>
+</map>
